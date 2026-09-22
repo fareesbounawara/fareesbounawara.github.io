@@ -8,6 +8,9 @@
   <meta name="description"
     content="Farees Bounawara — Filmmaker & Content Creator crafting high-impact visual stories." />
 
+  <!-- Favicon (أيقونة التبويب في المتصفح) -->
+  <link rel="icon" type="image/svg+xml" href="logo.png">
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -253,11 +256,10 @@
       gap: 10px;
     }
 
-    .logo img {
-      width: 34px;
-      height: 34px;
+    .logo svg {
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      object-fit: cover;
       border: 1px solid var(--border);
     }
 
@@ -527,7 +529,6 @@
       align-items: center;
     }
 
-    /* FAREES PROFILE PORTRAIT CONTAINER */
     .photo-card {
       position: relative;
       border-radius: 16px;
@@ -800,7 +801,7 @@
       display: none;
     }
 
-    /* EXCLUSIVE HUB (REELS & SCREENWRITING) */
+    /* EXCLUSIVE HUB */
     #exclusive-hub {
       padding: 80px 0 120px;
       background: var(--bg-alt);
@@ -834,7 +835,6 @@
       box-shadow: 0 0 25px var(--neon-dim);
     }
 
-    /* Vertical Reels Grid (9:16) */
     .reels-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1091,7 +1091,6 @@
     }
 
     @media (max-width: 600px) {
-
       .project-grid,
       .brand-matrix {
         grid-template-columns: 1fr;
@@ -1125,7 +1124,32 @@
     <div class="container">
       <nav>
         <a href="#hero" class="logo">
-          <img src="logo.png" alt="Logo" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop'" />
+          <!-- Logo SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+            <defs>
+              <radialGradient id="headerBgGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#00ff66" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#030405" stop-opacity="1"/>
+              </radialGradient>
+              <filter id="headerNeonGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="8" result="blur"/>
+                <feMerge>
+                  <feMergeNode in="blur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <rect width="100%" height="100%" fill="#030405"/>
+            <circle cx="250" cy="250" r="220" fill="url(#headerBgGlow)"/>
+            <circle cx="250" cy="250" r="160" fill="none" stroke="#00ff66" stroke-width="6" opacity="0.4" stroke-dasharray="15 10"/>
+            <circle cx="250" cy="250" r="130" fill="none" stroke="#00ff66" stroke-width="4" filter="url(#headerNeonGlow)"/>
+            <g transform="translate(190, 150)">
+              <rect x="0" y="0" width="24" height="180" rx="6" fill="#00ff66" filter="url(#headerNeonGlow)"/>
+              <rect x="24" y="0" width="90" height="24" rx="6" fill="#00ff66" filter="url(#headerNeonGlow)"/>
+              <rect x="24" y="75" width="70" height="20" rx="5" fill="#00ff66" filter="url(#headerNeonGlow)"/>
+            </g>
+            <circle cx="340" cy="310" r="12" fill="#00ff66" filter="url(#headerNeonGlow)"/>
+          </svg>
           FAREES<span>.</span>
         </a>
 
@@ -1186,7 +1210,6 @@
     <div class="container">
       <div class="about-grid">
 
-        <!-- FAREES PROFILE PORTRAIT -->
         <div class="photo-card reveal">
           <img src="me.jpg" alt="Farees Bounawara Profile Portrait" id="farees-profile-img"
             onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop'" />
@@ -1293,7 +1316,6 @@
       </div>
 
       <div class="project-grid">
-        <!-- Short Films -->
         <div class="project-card reveal-stagger" data-category="shortfilm" data-video="MFRUaT09vu4">
           <img src="https://img.youtube.com/vi/MFRUaT09vu4/hqdefault.jpg" alt="Painting of Hope Short Film" />
           <div class="project-overlay">
@@ -1321,7 +1343,6 @@
           </div>
         </div>
 
-        <!-- Commercials -->
         <div class="project-card reveal-stagger" data-category="commercial" data-video="bTM0uXiXq6s">
           <img src="https://img.youtube.com/vi/bTM0uXiXq6s/hqdefault.jpg" alt="الجلسة Al Jalsa" />
           <div class="project-overlay">
@@ -1375,7 +1396,6 @@
           </div>
         </div>
 
-        <!-- Documentaries -->
         <div class="project-card reveal-stagger" data-category="documentary" data-video="1K42KREV1SY">
           <img src="https://img.youtube.com/vi/1K42KREV1SY/hqdefault.jpg" alt="Documentary Reportage" />
           <div class="project-overlay">
@@ -1388,7 +1408,7 @@
     </div>
   </section>
 
-  <!-- EXCLUSIVE CONTENT HUB (INSTAGRAM REELS & SCREENWRITING) -->
+  <!-- EXCLUSIVE CONTENT HUB -->
   <section id="exclusive-hub">
     <div class="container">
       <div style="text-align: center;" class="reveal">
@@ -1406,7 +1426,6 @@
         </button>
       </div>
 
-      <!-- 1. INSTAGRAM REELS (VERTICAL 9:16) -->
       <div id="hub-reels-container" class="reels-grid">
         <a href="https://www.instagram.com/fareesbounawara/reel/DZAzHc2te-6/" target="_blank"
           class="reel-card reveal-stagger" data-reel-id="DZAzHc2te-6">
@@ -1577,7 +1596,6 @@
         </a>
       </div>
 
-      <!-- 2. SCREENWRITING SERIES (HORIZONTAL 16:9) -->
       <div id="hub-series-container" class="project-grid" style="display: none;">
         <div class="project-card reveal-stagger" data-video="xvhQX6-3Xuo">
           <img src="https://img.youtube.com/vi/xvhQX6-3Xuo/hqdefault.jpg" alt="كيف تكتب سيناريو" />
@@ -1681,7 +1699,6 @@
   </footer>
 
   <script>
-    // Translations Dictionary
     const translations = {
       en: {
         nav_about: "About", nav_clients: "Collaborations", nav_showcase: "Showcase", nav_hub: "Reels & Masterclass",
@@ -1861,7 +1878,6 @@
       else header.classList.remove('scrolled');
     });
 
-    // Cursor
     const cursorDot = document.querySelector('[data-cursor-dot]');
     const cursorOutline = document.querySelector('[data-cursor-outline]');
     window.addEventListener('mousemove', (e) => {
@@ -1870,7 +1886,6 @@
       cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
     });
 
-    // Lightbox
     const lightbox = document.getElementById('lightbox');
     const lightboxFrame = document.getElementById('lightbox-frame');
     const lightboxDirectLink = document.getElementById('lightbox-direct-link');
@@ -1899,7 +1914,6 @@
       });
     });
 
-    // Filter
     const filterBtns = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('#showcase .project-card');
 
@@ -1915,7 +1929,6 @@
       });
     });
 
-    // Hub Switcher
     function toggleHub(view) {
       const reelsContainer = document.getElementById('hub-reels-container');
       const seriesContainer = document.getElementById('hub-series-container');
@@ -1935,7 +1948,6 @@
       }
     }
 
-    // Particles
     if (window.particlesJS) {
       particlesJS('particles-js', {
         particles: {
@@ -1950,7 +1962,6 @@
       });
     }
 
-    // Reveal Animations
     const observerOptions = { root: null, rootMargin: '0px', threshold: 0.12 };
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
