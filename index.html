@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farees Bounawara | Filmmaker & Content Creator</title>
+  <meta name="description"
+    content="Farees Bounawara — Filmmaker & Content Creator crafting high-impact visual stories." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Particles.js -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+  <style>
+    :root {
+      --neon: #00ff66;
+      --neon-dim: rgba(0, 255, 102, 0.35);
+      --bg: #030405;
+      --bg-alt: #080b09;
+      --card: #0c110e;
+      --border: rgba(0, 255, 102, 0.2);
+      --text: #e7f3ec;
+      --muted: #8fa79c;
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'Outfit', sans-serif;
+    }
+
+    body.rtl {
+      direction: rtl;
+      font-family: 'Cairo', var(--font-body);
+    }
+
+    body.rtl .section-tag::before {
+      display: none;
+    }
+
+    body.rtl .section-tag::after {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--neon);
+      box-shadow: 0 0 8px var(--neon);
+      margin-right: 8px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: none;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    ::selection {
+      background: var(--neon);
+      color: #000;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--neon-dim);
+      border-radius: 10px;
+    }
+
+    .cursor-dot,
+    .cursor-outline {
+      pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      z-index: 10000;
+      transition: transform 0.15s ease-out, background 0.2s, border 0.2s;
+    }
+
+    .cursor-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--neon);
+    }
+
+    .cursor-outline {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--neon);
+      box-shadow: 0 0 10px var(--neon-dim);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--font-head);
+      letter-spacing: 0.5px;
+    }
+
+    body.rtl h1,
+    body.rtl h2,
+    body.rtl h3,
+    body.rtl h4 {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .glow-text {
+      color: var(--neon);
+      text-shadow: 0 0 10px var(--neon-dim), 0 0 30px rgba(0, 255, 102, 0.25);
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--neon);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--neon);
+      box-shadow: 0 0 8px var(--neon);
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    /* LOADER */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+      transition: opacity 0.7s ease, visibility 0.7s ease;
+    }
+
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .spinner {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 3px solid rgba(0, 255, 102, 0.15);
+      border-top-color: var(--neon);
+      box-shadow: 0 0 25px var(--neon-dim);
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      padding: 18px 0;
+      transition: all 0.35s ease;
+    }
+
+    header.scrolled {
+      background: rgba(3, 4, 5, 0.9);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: var(--font-head);
+      font-weight: 800;
+      font-size: 1.5rem;
+      white-space: nowrap;
+    }
+
+    .logo span {
+      color: var(--neon);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--neon);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .lang-switcher {
+      position: relative;
+      display: inline-block;
+    }
+
+    .lang-btn {
+      background: rgba(0, 255, 102, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-btn:hover {
+      border-color: var(--neon);
+      color: var(--neon);
+    }
+
+    .lang-dropdown {
+      position: absolute;
+      top: 110%;
+      right: 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+      min-width: 110px;
+      z-index: 100;
+    }
+
+    body.rtl .lang-dropdown {
+      right: auto;
+      left: 0;
+    }
+
+    .lang-dropdown.show {
+      display: flex;
+    }
+
+    .lang-option {
+      padding: 8px 14px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+      background: transparent;
+      border: none;
+      text-align: left;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    body.rtl .lang-option {
+      text-align: right;
+    }
+
+    .lang-option:hover {
+      background: rgba(0, 255, 102, 0.15);
+      color: var(--neon);
+    }
+
+    .prod-btn {
+      padding: 8px 16px;
+      background: rgba(0, 255, 102, 0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .prod-btn:hover {
+      border-color: var(--neon);
+      color: var(--neon);
+      box-shadow: 0 0 15px var(--neon-dim);
+    }
+
+    .nav-cta {
+      padding: 8px 18px;
+      background: var(--neon);
+      border-radius: 8px;
+      color: #000;
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover {
+      box-shadow: 0 0 20px var(--neon);
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 20px 80px;
+      overflow: hidden;
+    }
+
+    .hero-img-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.4) contrast(1.1);
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(3, 4, 5, 0.3) 0%, rgba(3, 4, 5, 0.92) 80%);
+      z-index: 1;
+    }
+
+    #particles-js {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(0, 255, 102, 0.08);
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--neon);
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-top: 225px;
+    }
+
+    .hero-title .accent {
+      color: var(--neon);
+      text-shadow: 0 0 25px var(--neon-dim);
+    }
+
+    .hero-sub {
+      font-size: clamp(1rem, 1.4vw, 1.2rem);
+      color: var(--muted);
+      max-width: 650px;
+      font-weight: 300;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--neon);
+      color: #000;
+      box-shadow: 0 0 20px var(--neon-dim);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px var(--neon);
+    }
+
+    .btn-outline {
+      border-color: var(--border);
+      color: var(--text);
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--neon);
+      color: var(--neon);
+      transform: translateY(-2px);
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--bg-alt);
+      padding: 120px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    /* FAREES PROFILE PORTRAIT CONTAINER */
+    .photo-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 4/5;
+      background: var(--card);
+      box-shadow: 0 0 30px rgba(0, 255, 102, 0.1);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .quote-box {
+      margin: 24px 0;
+      padding: 20px;
+      background: rgba(12, 17, 14, 0.8);
+      border-left: 4px solid var(--neon);
+      border-radius: 0 12px 12px 0;
+    }
+
+    body.rtl .quote-box {
+      border-left: none;
+      border-right: 4px solid var(--neon);
+      border-radius: 12px 0 0 12px;
+    }
+
+    .quote-box p {
+      font-style: italic;
+      color: #fff;
+      font-weight: 500;
+      font-size: 1.05rem;
+    }
+
+    .quote-box span {
+      display: block;
+      margin-top: 8px;
+      color: var(--neon);
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .counter-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .counter-card {
+      text-align: center;
+      padding: 18px 10px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--card);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .counter-card:hover {
+      border-color: var(--neon);
+      transform: translateY(-4px);
+      box-shadow: 0 0 15px var(--neon-dim);
+    }
+
+    .counter-num {
+      font-family: var(--font-head);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--neon);
+    }
+
+    .counter-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* BRAND MATRIX */
+    #clients {
+      padding: 100px 0;
+      background: var(--bg);
+    }
+
+    .brand-matrix {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: #111;
+      gap: 1px;
+      border: 1px solid #222;
+    }
+
+    .brand-tile {
+      background: #090a0b;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 130px;
+      padding: 24px 15px;
+      transition: background 0.3s ease;
+    }
+
+    .brand-tile:hover {
+      background: #101512;
+    }
+
+    .brand-tile-header {
+      background: #121815;
+      border: 1px solid var(--border);
+      grid-column: span 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .brand-tile-header h3 {
+      color: var(--neon);
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.3;
+    }
+
+    .brand-tag {
+      position: absolute;
+      top: 8px;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #555;
+      text-transform: uppercase;
+    }
+
+    .brand-logo-text {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ccc;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: center;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+
+    body.rtl .brand-logo-text {
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .brand-tile:hover .brand-logo-text {
+      color: var(--neon);
+      text-shadow: 0 0 12px var(--neon-dim);
+    }
+
+    /* SHOWCASE */
+    #showcase {
+      padding: 120px 0 60px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin: 36px 0 50px;
+    }
+
+    .filter-btn {
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      color: #000;
+      background: var(--neon);
+      border-color: var(--neon);
+      box-shadow: 0 0 20px var(--neon-dim);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .project-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+      border: 1px solid var(--border);
+      background: var(--card);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 40px rgba(0, 255, 102, 0.18);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .project-card:hover img {
+      transform: scale(1.08);
+      filter: brightness(0.4);
+    }
+
+    .project-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.9));
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .project-card:hover .project-overlay {
+      opacity: 1;
+    }
+
+    .project-overlay h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .project-badge {
+      padding: 4px 12px;
+      background: rgba(0, 255, 102, 0.15);
+      border: 1px solid var(--neon);
+      color: var(--neon);
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 999px;
+    }
+
+    .project-card.hide {
+      display: none;
+    }
+
+    /* EXCLUSIVE HUB (REELS & SCREENWRITING) */
+    #exclusive-hub {
+      padding: 80px 0 120px;
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+    }
+
+    .hub-toggle-wrapper {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0 45px;
+    }
+
+    .hub-toggle-btn {
+      padding: 12px 28px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(12, 17, 14, 0.9);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hub-toggle-btn.active {
+      background: var(--neon);
+      color: #000;
+      border-color: var(--neon);
+      box-shadow: 0 0 25px var(--neon-dim);
+    }
+
+    /* Vertical Reels Grid (9:16) */
+    .reels-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .reel-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 9/16;
+      border: 1px solid var(--border);
+      background: #000;
+      transition: transform 0.35s, box-shadow 0.35s;
+      display: block;
+    }
+
+    .reel-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--neon);
+      box-shadow: 0 12px 30px var(--neon-dim);
+    }
+
+    .reel-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: transform 0.5s;
+    }
+
+    .reel-card:hover img {
+      transform: scale(1.06);
+      opacity: 0.5;
+    }
+
+    .reel-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 20px;
+      background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.95));
+      text-align: center;
+    }
+
+    .reel-play-icon {
+      font-size: 2.2rem;
+      color: var(--neon);
+      margin-bottom: auto;
+      margin-top: auto;
+      text-shadow: 0 0 15px var(--neon);
+    }
+
+    /* LIGHTBOX */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 3, 3, 0.96);
+      z-index: 1200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      aspect-ratio: 16/9;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lightbox-inner iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      flex-grow: 1;
+    }
+
+    .lightbox-fallback {
+      padding: 12px;
+      background: #0a0e0c;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .lightbox-fallback p {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .lightbox-fallback a {
+      padding: 6px 14px;
+      background: var(--neon);
+      color: #000;
+      font-weight: 700;
+      font-size: 0.8rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 12px;
+      right: 15px;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1rem;
+    }
+
+    .lightbox-close:hover {
+      color: #000;
+      background: var(--neon);
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--bg);
+      padding: 120px 0;
+    }
+
+    .contact-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .direct-email-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px 30px;
+      margin-top: 20px;
+    }
+
+    .direct-email-card i {
+      font-size: 2.5rem;
+      color: var(--neon);
+      margin-bottom: 16px;
+    }
+
+    .direct-email-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .direct-email-card p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .email-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: var(--neon);
+      color: #000;
+      font-weight: 700;
+      border-radius: 8px;
+      transition: all 0.3s;
+    }
+
+    .email-link:hover {
+      box-shadow: 0 0 25px var(--neon);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      padding: 34px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    footer span {
+      color: var(--neon);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-stagger {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal-stagger.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 44px;
+      }
+
+      .project-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reels-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .brand-matrix {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .counter-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .reels-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .project-grid,
+      .brand-matrix {
+        grid-template-columns: 1fr;
+      }
+
+      * {
+        cursor: auto;
+      }
+
+      .cursor-dot,
+      .cursor-outline {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cursor-dot" data-cursor-dot></div>
+  <div class="cursor-outline" data-cursor-outline></div>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div class="spinner"></div>
+    <div class="loader-text">FAREES BOUNAWARA — CINEMATIC EXPERIENCE</div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="site-header">
+    <div class="container">
+      <nav>
+        <a href="#hero" class="logo">FAREES<span>.</span></a>
+
+        <ul class="nav-links">
+          <li><a href="#about" data-i18n="nav_about">About</a></li>
+          <li><a href="#clients" data-i18n="nav_clients">Collaborations</a></li>
+          <li><a href="#showcase" data-i18n="nav_showcase">Showcase</a></li>
+          <li><a href="#exclusive-hub" data-i18n="nav_hub">Reels & Masterclass</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="lang-switcher">
+            <button class="lang-btn" id="lang-btn">
+              <i class="fa-solid fa-globe"></i> <span id="current-lang">EN</span> <i class="fa-solid fa-chevron-down"
+                style="font-size: 0.6rem;"></i>
+            </button>
+            <div class="lang-dropdown" id="lang-dropdown">
+              <button class="lang-option" onclick="setLanguage('en')">English (EN)</button>
+              <button class="lang-option" onclick="setLanguage('fr')">Français (FR)</button>
+              <button class="lang-option" onclick="setLanguage('tn')">تونسي (TN)</button>
+            </div>
+          </div>
+
+          <a href="https://example.com" target="_blank" class="prod-btn">
+            <i class="fa-solid fa-clapperboard"></i> <span data-i18n="nav_prod">Production House</span>
+          </a>
+          <a href="#contact" class="nav-cta" data-i18n="nav_get_in_touch">Get In Touch</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <img src="bg.jpg" alt="Absolute Cinema Background" class="hero-img-bg" />
+    <div class="hero-overlay"></div>
+    <div id="particles-js"></div>
+
+    <div class="hero-inner">
+      <span class="hero-badge"><i class="fa-solid fa-film"></i> <span data-i18n="hero_role">Filmmaker & Content
+          Creator</span></span>
+      <h1 class="hero-title" data-i18n="hero_title"><span class="accent">ABSOLUTE CINEMA</span></h1>
+      <p class="hero-sub" data-i18n="hero_sub">I turn concepts into high-impact visuals designed to stand out across
+        screens worldwide.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary" onclick="openLightbox('MFRUaT09vu4')"><i class="fa-solid fa-play"></i> <span
+            data-i18n="hero_reel">Watch Short Film</span></button>
+        <a href="https://example.com" target="_blank" class="btn btn-outline"><i
+            class="fa-solid fa-arrow-up-right-from-square"></i> <span data-i18n="hero_prod">Visit Production
+            House</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- FAREES PROFILE PORTRAIT -->
+        <div class="photo-card reveal">
+          <img src="me.jpg" alt="Farees Bounawara Profile Portrait" id="farees-profile-img"
+            onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop'" />
+        </div>
+
+        <div class="reveal">
+          <span class="section-tag" data-i18n="about_tag">About Me</span>
+          <h2 class="section-title"><span data-i18n="about_title_1">Behind The</span> <span class="glow-text"
+              data-i18n="about_title_2">Lens</span></h2>
+
+          <p style="color: var(--text); font-size: 1.05rem; margin-bottom: 16px;" data-i18n="about_desc">
+            Born in Tunisia on August 29, 2000. Movies are not just hobbies for me; they are my true passion! Whether
+            it's watching movies, creating them, or writing scripts, I can't get enough of the magic of the silver
+            screen.
+          </p>
+
+          <div class="quote-box">
+            <p data-i18n="quote_text">"If I give up now, I'm going to regret it."</p>
+            <span>— Monkey D. Luffy (One Piece)</span>
+          </div>
+
+          <p style="color: var(--muted); margin-bottom: 24px;" data-i18n="about_call">
+            Join me on my journey through social media platforms and let's connect over cinematic passion!
+          </p>
+
+          <div class="counter-grid">
+            <a href="https://www.instagram.com/fareesbounawara/" target="_blank" class="counter-card reveal-stagger">
+              <div class="counter-num">+1500</div>
+              <div class="counter-label"><i class="fa-brands fa-instagram"></i> INSTAGRAM</div>
+            </a>
+            <a href="https://www.youtube.com/@fareesbounawara" target="_blank" class="counter-card reveal-stagger">
+              <div class="counter-num">+600</div>
+              <div class="counter-label"><i class="fa-brands fa-youtube"></i> YOUTUBE</div>
+            </a>
+            <a href="https://www.tiktok.com/@farees.bounawara" target="_blank" class="counter-card reveal-stagger">
+              <div class="counter-num">+1400</div>
+              <div class="counter-label"><i class="fa-brands fa-tiktok"></i> TIKTOK</div>
+            </a>
+            <div class="counter-card reveal-stagger">
+              <div class="counter-num">+3500</div>
+              <div class="counter-label"><i class="fa-solid fa-users"></i> <span
+                  data-i18n="stat_community">COMMUNITY</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND MATRIX -->
+  <section id="clients">
+    <div class="container">
+      <div class="brand-matrix">
+        <div class="brand-tile-header reveal-stagger">
+          <h3 data-i18n="brand_matrix_title">WE WENT WILD WITH THEM</h3>
+        </div>
+        <div class="brand-tile reveal-stagger">
+          <span class="brand-tag" data-i18n="tag_press">PRESS & MEDIA</span>
+          <div class="brand-logo-text" data-i18n="brand_chourouk">AL CHOUROUK</div>
+        </div>
+        <div class="brand-tile reveal-stagger">
+          <span class="brand-tag" data-i18n="tag_festival">ART FESTIVAL</span>
+          <div class="brand-logo-text">DREAM CITY</div>
+        </div>
+        <div class="brand-tile reveal-stagger">
+          <span class="brand-tag" data-i18n="tag_fashion">FASHION</span>
+          <div class="brand-logo-text">FASHION WEEK</div>
+        </div>
+        <div class="brand-tile reveal-stagger">
+          <span class="brand-tag" data-i18n="tag_fitness">FITNESS</span>
+          <div class="brand-logo-text">CANADIAN PRO GYM</div>
+        </div>
+        <div class="brand-tile reveal-stagger">
+          <span class="brand-tag" data-i18n="tag_cinema">CINEMA FESTIVAL</span>
+          <div class="brand-logo-text" data-i18n="brand_jcc">JCC</div>
+        </div>
+        <div class="brand-tile reveal-stagger">
+          <span class="brand-tag" data-i18n="tag_cinema">ETHNOGRAPHIC FILM</span>
+          <div class="brand-logo-text">JEAN ROUCH FESTIVAL</div>
+        </div>
+        <div class="brand-tile reveal-stagger">
+          <span class="brand-tag" data-i18n="tag_theatre">THEATRE</span>
+          <div class="brand-logo-text" data-i18n="brand_theatre">THÉÂTRE NATIONAL</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWCASE -->
+  <section id="showcase">
+    <div class="container">
+      <div style="text-align: center;" class="reveal">
+        <span class="section-tag" data-i18n="showcase_tag">Portfolio</span>
+        <h2 class="section-title"><span data-i18n="showcase_title_1">Selected</span> <span class="glow-text"
+            data-i18n="showcase_title_2">Works</span></h2>
+      </div>
+
+      <div class="filter-tabs reveal">
+        <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All Works</button>
+        <button class="filter-btn" data-filter="shortfilm" data-i18n="filter_shortfilm">Short Films</button>
+        <button class="filter-btn" data-filter="commercial" data-i18n="filter_commercial">Client & Commercials</button>
+        <button class="filter-btn" data-filter="documentary" data-i18n="filter_doc">Documentaries</button>
+      </div>
+
+      <div class="project-grid">
+        <!-- Short Films -->
+        <div class="project-card reveal-stagger" data-category="shortfilm" data-video="MFRUaT09vu4">
+          <img src="https://img.youtube.com/vi/MFRUaT09vu4/hqdefault.jpg" alt="Painting of Hope Short Film" />
+          <div class="project-overlay">
+            <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>PAINTING OF HOPE (Short Film)</h4>
+            <span class="project-badge" data-i18n="badge_sf">SHORT FILM</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal-stagger" data-category="shortfilm" data-video="PieT_6wz7Po">
+          <img src="https://img.youtube.com/vi/PieT_6wz7Po/hqdefault.jpg" alt="We're stuck in here" />
+          <div class="project-overlay">
+            <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>We're Stuck In Here, Send Help!</h4>
+            <span class="project-badge" data-i18n="badge_cinematic">CINEMATIC SHORT</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal-stagger" data-category="shortfilm" data-video="6UFxxsSb3X0">
+          <img src="https://img.youtube.com/vi/6UFxxsSb3X0/hqdefault.jpg" alt="EDEN Documentary" />
+          <div class="project-overlay">
+            <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>EDEN — Earth Documentary</h4>
+            <span class="project-badge" data-i18n="badge_doc">DOCUMENTARY FILM</span>
+          </div>
+        </div>
+
+        <!-- Commercials -->
+        <div class="project-card reveal-stagger" data-category="commercial" data-video="bTM0uXiXq6s">
+          <img src="https://img.youtube.com/vi/bTM0uXiXq6s/hqdefault.jpg" alt="الجلسة Al Jalsa" />
+          <div class="project-overlay">
+            <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>الجلسة — Al Jalsa</h4>
+            <span class="project-badge" data-i18n="badge_comm">COMMERCIAL</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal-stagger" data-category="commercial"
+          data-url="https://www.instagram.com/canadianprogym/reel/CzKIiKJPS1m/">
+          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop"
+            alt="Canadian Pro Gym" />
+          <div class="project-overlay">
+            <i class="fa-brands fa-instagram" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>Canadian Pro Gym Commercial</h4>
+            <span class="project-badge" data-i18n="badge_comm">COMMERCIAL</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal-stagger" data-category="commercial"
+          data-url="https://www.instagram.com/p/Ck9JqNQq8o1/">
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop"
+            alt="Fashion Week Show" />
+          <div class="project-overlay">
+            <i class="fa-brands fa-instagram" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>Fashion Week Coverage</h4>
+            <span class="project-badge" data-i18n="badge_comm">FASHION SHOW</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal-stagger" data-category="commercial"
+          data-url="https://www.instagram.com/reels/DTAxZHtFK5z/">
+          <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?q=80&w=800&auto=format&fit=crop"
+            alt="Al Chourouk News" />
+          <div class="project-overlay">
+            <i class="fa-brands fa-instagram" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>Al Chourouk Press Video</h4>
+            <span class="project-badge" data-i18n="badge_press">PRESS & NEWS</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal-stagger" data-category="commercial"
+          data-url="https://www.instagram.com/seif_oueslati_photography/reel/Csi19QvIZKq/">
+          <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=800&auto=format&fit=crop"
+            alt="Sushi Chef" />
+          <div class="project-overlay">
+            <i class="fa-brands fa-instagram" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>Sushi Chef Cinematic Reel</h4>
+            <span class="project-badge" data-i18n="badge_comm">COMMERCIAL</span>
+          </div>
+        </div>
+
+        <!-- Documentaries -->
+        <div class="project-card reveal-stagger" data-category="documentary" data-video="1K42KREV1SY">
+          <img src="https://img.youtube.com/vi/1K42KREV1SY/hqdefault.jpg" alt="Documentary Reportage" />
+          <div class="project-overlay">
+            <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>Documentary Reportage</h4>
+            <span class="project-badge" data-i18n="badge_doc">REPORTAGE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXCLUSIVE CONTENT HUB (INSTAGRAM REELS & SCREENWRITING) -->
+  <section id="exclusive-hub">
+    <div class="container">
+      <div style="text-align: center;" class="reveal">
+        <span class="section-tag" data-i18n="hub_tag">Exclusive Content</span>
+        <h2 class="section-title"><span data-i18n="hub_title_1">Reels &</span> <span class="glow-text"
+            data-i18n="hub_title_2">Screenwriting Masterclass</span></h2>
+      </div>
+
+      <div class="hub-toggle-wrapper reveal">
+        <button class="hub-toggle-btn active" id="btn-show-reels" onclick="toggleHub('reels')">
+          <i class="fa-brands fa-instagram"></i> <span data-i18n="hub_btn_reels">Instagram Reels (Vertical)</span>
+        </button>
+        <button class="hub-toggle-btn" id="btn-show-series" onclick="toggleHub('series')" style="margin-left: 10px;">
+          <i class="fa-solid fa-pen-nib"></i> <span data-i18n="hub_btn_series">How To Write A Script Series</span>
+        </button>
+      </div>
+
+      <!-- 1. INSTAGRAM REELS (VERTICAL 9:16) -->
+      <div id="hub-reels-container" class="reels-grid">
+        <a href="https://www.instagram.com/fareesbounawara/reel/DZAzHc2te-6/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DZAzHc2te-6">
+          <img src="thumbnail1.jpg" alt="Instagram Reel 1" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_1">فيلم في فيلم</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DY5IFwvKiM9/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DY5IFwvKiM9">
+          <img src="thumbnail2.jpg" alt="Instagram Reel 2" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_2">كيفاش بدل "ماكس فاكتور" تاريخ السينما؟ 🎥</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DYScOiUNQD_/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DYScOiUNQD_">
+          <img src="thumbnail3.jpg" alt="Instagram Reel 3" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_3">أفلام الويسترن</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DYP3Wg4twiZ/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DYP3Wg4twiZ">
+          <img src="thumbnail4.jpg" alt="Instagram Reel 4" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_4">علاش كانت الموسيقى موجودة قبل الكلام في السينما؟</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DYNSlBUNBpP/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DYNSlBUNBpP">
+          <img src="thumbnail5.jpg" alt="Instagram Reel 5" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_5">Rocky: من الفقر إلى الأوسكار</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DXAMMVmCvxP/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DXAMMVmCvxP">
+          <img src="thumbnail6.jpg" alt="Instagram Reel 6" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_6">نهاية العالم! 😱🎬</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVoXXDfCiLQ/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVoXXDfCiLQ">
+          <img src="thumbnail7.jpg" alt="Instagram Reel 7" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_7">العرب في هوليوود</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVgnJYsCqMS/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVgnJYsCqMS">
+          <img src="thumbnail8.jpg" alt="Instagram Reel 8" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_8">الـ Remakes في السينما</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVd_XrkjQse/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVd_XrkjQse">
+          <img src="thumbnail9.jpg" alt="Instagram Reel 9" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_9">Scorsese & De Niro</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVbZ9XeDRSI/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVbZ9XeDRSI">
+          <img src="thumbnail10.jpg" alt="Instagram Reel 10" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_10">المرض النفسي!</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVY4thlilqz/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVY4thlilqz">
+          <img src="thumbnail11.jpg" alt="Instagram Reel 11" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_11">الأوسكار؟ 🎭📜</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVWQcDoDczh/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVWQcDoDczh">
+          <img src="thumbnail12.jpg" alt="Instagram Reel 12" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_12">سر التشويق عند هيتشكوك! 🎬</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVTvYnrCoUk/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVTvYnrCoUk">
+          <img src="thumbnail13.jpg" alt="Instagram Reel 13" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_13">شنيا حكايتنا مع الرسوم المتحركة؟ 🤔📺</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVRKSCYChOF/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVRKSCYChOF">
+          <img src="thumbnail14.jpg" alt="Instagram Reel 14" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_14">كيفاش بدلت الألوان تاريخ السينما؟ 🎬🎨</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVMaiF6ips5/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVMaiF6ips5">
+          <img src="thumbnail15.jpg" alt="Instagram Reel 15" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_15">الرعب 🧛‍♂️</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVJdQraigvM/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVJdQraigvM">
+          <img src="thumbnail16.jpg" alt="Instagram Reel 16" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_16">72 season?</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVGu-68iq5Z/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVGu-68iq5Z">
+          <img src="thumbnail17.jpg" alt="Instagram Reel 17" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_17">الروايات والسينما؟ 📚🎬</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVEQuqIituq/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVEQuqIituq">
+          <img src="thumbnail18.jpg" alt="Instagram Reel 18" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_18">الكوميديا والضمار.. 🎭</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DVBroGyCkKh/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DVBroGyCkKh">
+          <img src="thumbnail19.jpg" alt="Instagram Reel 19" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_19">الخيال العلمي ماهوش كذبة؟ 🤖🪐</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DU_Fkj1ikyT/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DU_Fkj1ikyT">
+          <img src="thumbnail20.jpg" alt="Instagram Reel 20" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_20">Superheroes</h4>
+          </div>
+        </a>
+
+        <a href="https://www.instagram.com/fareesbounawara/reel/DU8gmybivrU/" target="_blank"
+          class="reel-card reveal-stagger" data-reel-id="DU8gmybivrU">
+          <img src="thumbnail21.jpg" alt="Instagram Reel 21" class="reel-thumb" />
+          <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
+            <h4 data-i18n="reel_21">علاش تربطت المسلسلات التونسية بشهر رمضان؟</h4>
+          </div>
+        </a>
+      </div>
+
+      <!-- 2. SCREENWRITING SERIES (HORIZONTAL 16:9) -->
+      <div id="hub-series-container" class="project-grid" style="display: none;">
+        <div class="project-card reveal-stagger" data-video="xvhQX6-3Xuo">
+          <img src="https://img.youtube.com/vi/xvhQX6-3Xuo/hqdefault.jpg" alt="كيف تكتب سيناريو" />
+          <div class="project-overlay">
+            <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>كيف تكتب سيناريو؟ (الحلقة 1)</h4>
+            <span class="project-badge" data-i18n="badge_screenwriting">SCREENWRITING SERIES</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal-stagger" data-video="80QS_REPhLo">
+          <img src="https://img.youtube.com/vi/80QS_REPhLo/hqdefault.jpg" alt="هيكل الفيلم" />
+          <div class="project-overlay">
+            <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>كيفاش تبني هيكل فيلم يشد المشاهد؟ (الحلقة 2)</h4>
+            <span class="project-badge" data-i18n="badge_screenwriting">SCREENWRITING SERIES</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal-stagger" data-video="D4FxuJR_IZk">
+          <img src="https://img.youtube.com/vi/D4FxuJR_IZk/hqdefault.jpg" alt="بناء الشخصية" />
+          <div class="project-overlay">
+            <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>كيفاش تبني شخصية سينمائية؟ (الحلقة 3)</h4>
+            <span class="project-badge" data-i18n="badge_screenwriting">SCREENWRITING SERIES</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal-stagger" data-video="ZsPhRG-SnFo">
+          <img src="https://img.youtube.com/vi/ZsPhRG-SnFo/hqdefault.jpg" alt="توظيف الحوار" />
+          <div class="project-overlay">
+            <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>كيفاش توظف الحوار فالسيناريو؟ (الحلقة 4)</h4>
+            <span class="project-badge" data-i18n="badge_screenwriting">SCREENWRITING SERIES</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal-stagger" data-video="545Lar-mdYo">
+          <img src="https://img.youtube.com/vi/545Lar-mdYo/hqdefault.jpg" alt="كواليس السينما" />
+          <div class="project-overlay">
+            <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>كيفاش تعمل سينما بإمكانيات شويا؟ (كواليس)</h4>
+            <span class="project-badge" data-i18n="badge_cinema">CINEMA SERIES</span>
+          </div>
+        </div>
+
+        <div class="project-card reveal-stagger" data-video="sPb4qyLc__w">
+          <img src="https://img.youtube.com/vi/sPb4qyLc__w/hqdefault.jpg" alt="أكبر 5 أخطاء" />
+          <div class="project-overlay">
+            <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
+            <h4>أكبر 5 أغلاط عملتهم في صناعة الأفلام</h4>
+            <span class="project-badge" data-i18n="badge_cinema">CINEMA SERIES</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+      <iframe id="lightbox-frame" src="" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      <div class="lightbox-fallback">
+        <p>Having trouble loading the video player? Watch it directly on YouTube.</p>
+        <a id="lightbox-direct-link" href="#" target="_blank"><i class="fa-brands fa-youtube"></i> Watch on YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 20px;" class="reveal">
+        <span class="section-tag" data-i18n="contact_tag">Contact</span>
+        <h2 class="section-title"><span data-i18n="contact_title_1">Let's</span> <span class="glow-text"
+            data-i18n="contact_title_2">Work Together</span></h2>
+      </div>
+
+      <div class="contact-wrap reveal">
+        <div class="direct-email-card">
+          <i class="fa-solid fa-envelope-open-text"></i>
+          <h3 data-i18n="contact_heading">Have a project in mind?</h3>
+          <p data-i18n="contact_sub">Click below to open your email app or Gmail directly and send me a message.</p>
+          <a href="mailto:bounawara.farees@gmail.com?subject=Project%20Inquiry%20-%20Farees%20Bounawara"
+            class="email-link">
+            <i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact_btn">Send Email
+              (bounawara.farees@gmail.com)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      &copy; <span id="year"></span> <span>Farees Bounawara</span>. <span data-i18n="footer_rights">All rights
+        reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Translations Dictionary
+    const translations = {
+      en: {
+        nav_about: "About", nav_clients: "Collaborations", nav_showcase: "Showcase", nav_hub: "Reels & Masterclass",
+        nav_contact: "Contact", nav_prod: "Production House", nav_get_in_touch: "Get In Touch",
+        hero_role: "Filmmaker & Content Creator",
+        hero_title: '<span class="accent">ABSOLUTE CINEMA</span>',
+        hero_sub: "I turn concepts into high-impact visuals designed to stand out across screens worldwide.",
+        hero_reel: "Watch Short Film", hero_prod: "Visit Production House",
+        about_tag: "About Me", about_title_1: "Behind The", about_title_2: "Lens",
+        about_desc: "Born in Tunisia on August 29, 2000. Movies are not just hobbies for me; they are my true passion! Whether it's watching movies, creating them, or writing scripts, I can't get enough of the magic of the silver screen.",
+        quote_text: '"If I give up now, I\'m going to regret it."',
+        about_call: "Join me on my journey through social media platforms and let's connect over cinematic passion!",
+        stat_community: "COMMUNITY", brand_matrix_title: "WE WENT WILD WITH THEM",
+        tag_press: "PRESS & MEDIA", tag_festival: "ART FESTIVAL", tag_fashion: "FASHION", tag_fitness: "FITNESS",
+        tag_cinema: "CINEMA FESTIVAL", tag_theatre: "THEATRE", brand_chourouk: "AL CHOUROUK", brand_jcc: "JCC",
+        brand_theatre: "THÉÂTRE NATIONAL", showcase_tag: "Portfolio", showcase_title_1: "Selected", showcase_title_2: "Works",
+        filter_all: "All Works", filter_shortfilm: "Short Films", filter_commercial: "Client & Commercials", filter_doc: "Documentaries",
+        hub_tag: "Exclusive Content", hub_title_1: "Reels &", hub_title_2: "Screenwriting Series",
+        hub_btn_reels: "Instagram Reels (Vertical)", hub_btn_series: "How To Write A Script Series",
+        badge_sf: "SHORT FILM", badge_cinematic: "CINEMATIC SHORT", badge_screenwriting: "SCREENWRITING SERIES",
+        badge_cinema: "CINEMA SERIES", badge_doc: "DOCUMENTARY", badge_comm: "COMMERCIAL", badge_press: "PRESS & NEWS",
+        contact_tag: "Contact", contact_title_1: "Let's", contact_title_2: "Work Together",
+        contact_heading: "Have a project in mind?", contact_sub: "Click below to open your email app or Gmail directly and send me a message.",
+        contact_btn: "Send Email (bounawara.farees@gmail.com)", footer_rights: "All rights reserved.",
+        
+        reel_1: "Movie within a Movie",
+        reel_2: "How did Max Factor change cinema history? 🎥",
+        reel_3: "Western Movies",
+        reel_4: "Why was music present before speech in cinema?",
+        reel_5: "Rocky: From Poverty to Oscar",
+        reel_6: "End of the World! 😱🎬",
+        reel_7: "Arabs in Hollywood",
+        reel_8: "Remakes in Cinema",
+        reel_9: "Scorsese & De Niro",
+        reel_10: "Mental Illness!",
+        reel_11: "The Oscars? 🎭📜",
+        reel_12: "Hitchcock's Secret of Suspense! 🎬",
+        reel_13: "What's our story with Animation? 🤔📺",
+        reel_14: "How colors changed the history of cinema? 🎬🎨",
+        reel_15: "Horror 🧛‍♂️",
+        reel_16: "72 season?",
+        reel_17: "Novels and Cinema? 📚🎬",
+        reel_18: "Comedy and Humor.. 🎭",
+        reel_19: "Sci-Fi is not a lie? 🤖🪐",
+        reel_20: "Superheroes",
+        reel_21: "Why were Tunisian series tied to Ramadan?"
+      },
+      fr: {
+        nav_about: "À Propos", nav_clients: "Collaborations", nav_showcase: "Projets", nav_hub: "Reels & Cours",
+        nav_contact: "Contact", nav_prod: "Maison de Production", nav_get_in_touch: "Contactez-moi",
+        hero_role: "Réalisateur & Créateur de Contenu",
+        hero_title: '<span class="accent">ABSOLUTE CINEMA</span>',
+        hero_sub: "Je transforme vos idées en visuels percutants conçus pour marquer les esprits.",
+        hero_reel: "Voir le Court-Métrage", hero_prod: "Maison de Production",
+        about_tag: "À Propos", about_title_1: "Derrière l'", about_title_2: "Objectif",
+        about_desc: "Né en Tunisie le 29 août 2000. Le cinéma n'est pas juste un passe-temps pour moi, c'est ma véritable passion !",
+        quote_text: '"Si j\'abandonne maintenant, je vais le regretter."',
+        about_call: "Rejoignez-moi sur les réseaux sociaux et partageons ensemble notre passion pour le cinéma !",
+        stat_community: "COMMUNAUTÉ", brand_matrix_title: "ON A FAIT DES MERVEILLES ENSEMBLE",
+        tag_press: "PRESSE & MÉDIA", tag_festival: "FESTIVAL D'ART", tag_fashion: "MODE", tag_fitness: "FITNESS",
+        tag_cinema: "FESTIVAL DE CINÉMA", tag_theatre: "THÉÂTRE", brand_chourouk: "AL CHOUROUK", brand_jcc: "JCC",
+        brand_theatre: "THÉÂTRE NATIONAL", showcase_tag: "Portfolio", showcase_title_1: "Projets", showcase_title_2: "Sélects",
+        filter_all: "Tous les Projets", filter_shortfilm: "Courts-Métrages", filter_commercial: "Publicités & Clients", filter_doc: "Documentaires",
+        hub_tag: "Contenu Exclusif", hub_title_1: "Reels &", hub_title_2: "Série Écriture de Scénario",
+        hub_btn_reels: "Instagram Reels (Vertical)", hub_btn_series: "Série : Écriture de Scénario",
+        badge_sf: "COURT-MÉTRAGE", badge_cinematic: "COURT CINÉMATIQUE", badge_screenwriting: "SÉRIE SCÉNARIO",
+        badge_cinema: "SÉRIE CINÉMA", badge_doc: "DOCUMENTAIRE", badge_comm: "PUBLICITÉ", badge_press: "PRESSE & MÉDIA",
+        contact_tag: "Contact", contact_title_1: "Travaillons", contact_title_2: "Ensemble",
+        contact_heading: "Vous avez un projet en tête ?", contact_sub: "Cliquez ci-dessous pour m'envoyer directement un e-mail.",
+        contact_btn: "Envoyer un e-mail (bounawara.farees@gmail.com)", footer_rights: "Tous droits réservés.",
+
+        reel_1: "Film dans un Film",
+        reel_2: "Comment Max Factor a changé l'histoire du cinéma ? 🎥",
+        reel_3: "Films Western",
+        reel_4: "Pourquoi la musique était présente avant la parole au cinéma ?",
+        reel_5: "Rocky : De la pauvreté à l'Oscar",
+        reel_6: "La Fin du Monde ! 😱🎬",
+        reel_7: "Les Arabes à Hollywood",
+        reel_8: "Les Remakes au Cinéma",
+        reel_9: "Scorsese & De Niro",
+        reel_10: "La Maladie Mentale !",
+        reel_11: "Les Oscars ? 🎭📜",
+        reel_12: "Le secret du suspense chez Hitchcock ! 🎬",
+        reel_13: "Quelle est notre histoire avec l'Animation ? 🤔📺",
+        reel_14: "Comment les couleurs ont changé l'histoire du cinéma ? 🎬🎨",
+        reel_15: "Horreur 🧛‍♂️",
+        reel_16: "Saison 72 ?",
+        reel_17: "Romans et Cinéma ? 📚🎬",
+        reel_18: "Comédie et Humour.. 🎭",
+        reel_19: "La Science-Fiction n'est pas un mensonge ? 🤖🪐",
+        reel_20: "Super-héros",
+        reel_21: "Pourquoi les séries tunisiennes sont-elles liées au Ramadan ?"
+      },
+      tn: {
+        nav_about: "شكون أنا", nav_clients: "خدمت معهم", nav_showcase: "أعمالي", nav_hub: "الريلز و دروس السيناريو",
+        nav_contact: "تواصل معايا", nav_prod: "شركة الإنتاج", nav_get_in_touch: "تكلم معايا",
+        hero_role: "صانع أفلام و محتوى",
+        hero_title: '<span class="accent">ABSOLUTE CINEMA</span>',
+        hero_sub: "نحول في الأفكار لفيديوهات قوية باش تخلي بصمة في كل بلاصة.",
+        hero_reel: "تفرج في الفيلم القصير", hero_prod: "شوف شركة الإنتاج",
+        about_tag: "على روحـي", about_title_1: "وراء", about_title_2: "الكاميرا",
+        about_desc: "مولود في تونس نهار 29 أوت 2000. الأفلام بالنسبة لييا مش مجرد غرام، هي شغفي الحقيقي!",
+        quote_text: '"كان نستسلم توة، نندم عليها طول عمري."',
+        about_call: "تبعني على مواقع التواصل وخلّينا نتواصلو ونشاركو غرامنا بالسينما!",
+        stat_community: "المتابعين", brand_matrix_title: "عملنا معاهم حاجات هابلة",
+        tag_press: "صحافة وإعلام", tag_festival: "مهرجان فنون", tag_fashion: "موضة", tag_fitness: "رياضة",
+        tag_cinema: "مهرجان سينما", tag_theatre: "مسرح", brand_chourouk: "الشروق", brand_jcc: "أيام قرطاج السينمائية",
+        brand_theatre: "المسرح الوطني التونسي", showcase_tag: "معرض الأعمال", showcase_title_1: "أحسن", showcase_title_2: "ما خدمت",
+        filter_all: "كل الأعمال", filter_shortfilm: "أفلام قصيرة", filter_commercial: "إشهارات للعملاء", filter_doc: "وثائقيات",
+        hub_tag: "محتوى خاص", hub_title_1: "الريلز و", hub_title_2: "سلسلة كتابة السيناريو",
+        hub_btn_reels: "ريلز إنستغرام (فيديوهات طولية)", hub_btn_series: "سلسلة كيف تكتب سيناريو",
+        badge_sf: "فيلم قصير", badge_cinematic: "فيديو سينمائي", badge_screenwriting: "سلسلة السيناريو",
+        badge_cinema: "سلسلة السينما", badge_doc: "وثائقي", badge_comm: "إشهار", badge_press: "تغطية إعلامية",
+        contact_tag: "اتصل بي", contact_title_1: "خلّينا", contact_title_2: "نخدمو مع بعضنا",
+        contact_heading: "عندك مشروع في مخك؟", contact_sub: "انقر لوطا باش تبعثلي ميل مباشرة من Gmail متاعك.",
+        contact_btn: "إبعث إيميل (bounawara.farees@gmail.com)", footer_rights: "جميع الحقوق محفوظة.",
+
+        reel_1: "فيلم في فيلم",
+        reel_2: "كيفاش بدل \"ماكس فاكتور\" تاريخ السينما؟ 🎥",
+        reel_3: "أفلام الويسترن",
+        reel_4: "علاش كانت الموسيقى موجودة قبل الكلام في السينما؟",
+        reel_5: "Rocky: من الفقر إلى الأوسكار",
+        reel_6: "نهاية العالم! 😱🎬",
+        reel_7: "العرب في هوليوود",
+        reel_8: "الـ Remakes في السينما",
+        reel_9: "Scorsese & De Niro",
+        reel_10: "المرض النفسي!",
+        reel_11: "الأوسكار؟ 🎭📜",
+        reel_12: "سر التشويق عند هيتشكوك! 🎬",
+        reel_13: "شنيا حكايتنا مع الرسوم المتحركة؟ 🤔📺",
+        reel_14: "كيفاش بدلت الألوان تاريخ السينما؟ 🎬🎨",
+        reel_15: "الرعب 🧛‍♂️",
+        reel_16: "72 season?",
+        reel_17: "الروايات والسينما؟ 📚🎬",
+        reel_18: "الكوميديا والضمار.. 🎭",
+        reel_19: "الخيال العلمي ماهوش كذبة؟ 🤖🪐",
+        reel_20: "Superheroes",
+        reel_21: "علاش تربطت المسلسلات التونسية بشهر رمضان؟"
+      }
+    };
+
+    const langBtn = document.getElementById('lang-btn');
+    const langDropdown = document.getElementById('lang-dropdown');
+    const currentLangSpan = document.getElementById('current-lang');
+
+    langBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      langDropdown.classList.toggle('show');
+    });
+
+    document.addEventListener('click', () => { langDropdown.classList.remove('show'); });
+
+    function setLanguage(lang) {
+      currentLangSpan.textContent = lang.toUpperCase();
+      langDropdown.classList.remove('show');
+
+      if (lang === 'tn') { document.body.classList.add('rtl'); }
+      else { document.body.classList.remove('rtl'); }
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+    }
+
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('loader').classList.add('hidden'), 500);
+    });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('site-header');
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+
+    // Cursor
+    const cursorDot = document.querySelector('[data-cursor-dot]');
+    const cursorOutline = document.querySelector('[data-cursor-outline]');
+    window.addEventListener('mousemove', (e) => {
+      const posX = e.clientX, posY = e.clientY;
+      cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+      cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxFrame = document.getElementById('lightbox-frame');
+    const lightboxDirectLink = document.getElementById('lightbox-direct-link');
+
+    function openLightbox(videoId) {
+      let embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      if (window.location.protocol.startsWith('http') && window.location.origin && window.location.origin !== 'null') {
+        embedUrl += `&origin=${encodeURIComponent(window.location.origin)}`;
+      }
+      lightboxFrame.src = embedUrl;
+      lightboxDirectLink.href = `https://www.youtube.com/watch?v=${videoId}`;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      lightboxFrame.src = '';
+    }
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const videoId = card.getAttribute('data-video');
+        const url = card.getAttribute('data-url');
+        if (videoId) openLightbox(videoId);
+        else if (url) window.open(url, '_blank');
+      });
+    });
+
+    // Filter
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('#showcase .project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        projectCards.forEach(card => {
+          const match = filter === 'all' || card.getAttribute('data-category') === filter;
+          card.classList.toggle('hide', !match);
+        });
+      });
+    });
+
+    // Hub Switcher
+    function toggleHub(view) {
+      const reelsContainer = document.getElementById('hub-reels-container');
+      const seriesContainer = document.getElementById('hub-series-container');
+      const btnReels = document.getElementById('btn-show-reels');
+      const btnSeries = document.getElementById('btn-show-series');
+
+      if (view === 'reels') {
+        reelsContainer.style.display = 'grid';
+        seriesContainer.style.display = 'none';
+        btnReels.classList.add('active');
+        btnSeries.classList.remove('active');
+      } else {
+        reelsContainer.style.display = 'none';
+        seriesContainer.style.display = 'grid';
+        btnSeries.classList.add('active');
+        btnReels.classList.remove('active');
+      }
+    }
+
+    // Particles
+    if (window.particlesJS) {
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 45 },
+          color: { value: '#00ff66' },
+          shape: { type: 'circle' },
+          opacity: { value: 0.25 },
+          size: { value: 2 },
+          line_linked: { enable: true, distance: 140, color: '#00ff66', opacity: 0.12, width: 1 },
+          move: { enable: true, speed: 1 }
+        }
+      });
+    }
+
+    // Reveal Animations
+    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.12 };
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const staggerObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const children = entry.target.querySelectorAll('.reveal-stagger');
+          children.forEach((child, index) => {
+            setTimeout(() => { child.classList.add('active'); }, index * 80);
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.counter-grid, .brand-matrix, .project-grid, .reels-grid').forEach(grid => {
+      staggerObserver.observe(grid);
+    });
+  </script>
+</body>
+
+</html>
