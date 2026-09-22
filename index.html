@@ -248,6 +248,17 @@
       font-weight: 800;
       font-size: 1.5rem;
       white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
     }
 
     .logo span {
@@ -1113,7 +1124,10 @@
   <header id="site-header">
     <div class="container">
       <nav>
-        <a href="#hero" class="logo">FAREES<span>.</span></a>
+        <a href="#hero" class="logo">
+          <img src="logo.png" alt="Logo" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=100&auto=format&fit=crop'" />
+          FAREES<span>.</span>
+        </a>
 
         <ul class="nav-links">
           <li><a href="#about" data-i18n="nav_about">About</a></li>
