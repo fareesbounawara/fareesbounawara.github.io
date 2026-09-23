@@ -14,4 +14,4 @@ User-agent: Bingbot
 Allow: /
 
 # Sitemap Location
-Sitemap: https://fareesbounawara.github.io/portfolio/sitemap.xml
+Sitemap: https://fareesbounawara.github.io/sitemap.xml
