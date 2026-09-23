@@ -927,31 +927,6 @@
       flex-grow: 1;
     }
 
-    .lightbox-fallback {
-      padding: 12px;
-      background: #0a0e0c;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-    }
-
-    .lightbox-fallback p {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .lightbox-fallback a {
-      padding: 6px 14px;
-      background: var(--neon);
-      color: #000;
-      font-weight: 700;
-      font-size: 0.8rem;
-      border-radius: 6px;
-      white-space: nowrap;
-    }
-
     .lightbox-close {
       position: absolute;
       top: 12px;
@@ -1129,9 +1104,9 @@
 
         <ul class="nav-links">
           <li><a href="#about" data-i18n="nav_about">About</a></li>
-          <li><a href="#clients" data-i18n="nav_clients">Collaborations</a></li>
+          <li><a href="#clients" data-i18n="nav_clients">Work with</a></li>
           <li><a href="#showcase" data-i18n="nav_showcase">Showcase</a></li>
-          <li><a href="#exclusive-hub" data-i18n="nav_hub">Reels & Masterclass</a></li>
+          <li><a href="#exclusive-hub" data-i18n="nav_hub">Reels & series</a></li>
           <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
         </ul>
 
@@ -1167,8 +1142,7 @@
       <span class="hero-badge"><i class="fa-solid fa-film"></i> <span data-i18n="hero_role">Filmmaker & Content
           Creator</span></span>
       <h1 class="hero-title" data-i18n="hero_title"><span class="accent">ABSOLUTE CINEMA</span></h1>
-      <p class="hero-sub" data-i18n="hero_sub">I turn concepts into high-impact visuals designed to stand out across
-        screens worldwide.</p>
+      <p class="hero-sub" data-i18n="hero_sub">If you don’t like the shot…CUUUTTT! & Do it again.</p>
       <div class="hero-ctas">
         <button class="btn btn-primary" onclick="openLightbox('MFRUaT09vu4')"><i class="fa-solid fa-play"></i> <span
             data-i18n="hero_reel">Watch Short Film</span></button>
@@ -1192,12 +1166,14 @@
         <div class="reveal">
           <span class="section-tag" data-i18n="about_tag">About Me</span>
           <h2 class="section-title"><span data-i18n="about_title_1">Behind The</span> <span class="glow-text"
-              data-i18n="about_title_2">Lens</span></h2>
+              data-i18n="about_title_2">Vision</span></h2>
 
           <p style="color: var(--text); font-size: 1.05rem; margin-bottom: 16px;" data-i18n="about_desc">
-            Born in Tunisia on August 29, 2000. Movies are not just hobbies for me; they are my true passion! Whether
-            it's watching movies, creating them, or writing scripts, I can't get enough of the magic of the silver
-            screen.
+            Farees Bounawara born in Tunisia on August 29, 2000. Movies or videos isn't just something I create; it's a passion that drives me. From directing and cinematography to storytelling, editing, and writing, I love every step of bringing an idea to life through visuals.
+          </p>
+
+          <p style="color: var(--text); font-size: 1.05rem; margin-bottom: 16px;" data-i18n="about_desc_2">
+            Whether it's a cinematic film, music video, social media content, or a simple idea turned into something memorable, I'm always looking for new ways to tell stories and create visuals that connect.
           </p>
 
           <div class="quote-box">
@@ -1206,7 +1182,7 @@
           </div>
 
           <p style="color: var(--muted); margin-bottom: 24px;" data-i18n="about_call">
-            Join me on my journey through social media platforms and let's connect over cinematic passion!
+            Follow my journey through social media and let's connect through the world of visual storytelling.
           </p>
 
           <div class="counter-grid">
@@ -1278,7 +1254,7 @@
     <div class="container">
       <div style="text-align: center;" class="reveal">
         <span class="section-tag" data-i18n="showcase_tag">Portfolio</span>
-        <h2 class="section-title"><span data-i18n="showcase_title_1">Selected</span> <span class="glow-text"
+        <h2 class="section-title"><span data-i18n="showcase_title_1">Featured</span> <span class="glow-text"
             data-i18n="showcase_title_2">Works</span></h2>
       </div>
 
@@ -1388,7 +1364,7 @@
       <div style="text-align: center;" class="reveal">
         <span class="section-tag" data-i18n="hub_tag">Exclusive Content</span>
         <h2 class="section-title"><span data-i18n="hub_title_1">Reels &</span> <span class="glow-text"
-            data-i18n="hub_title_2">Screenwriting Masterclass</span></h2>
+            data-i18n="hub_title_2">series</span></h2>
       </div>
 
       <div class="hub-toggle-wrapper reveal">
@@ -1405,7 +1381,7 @@
           class="reel-card reveal-stagger" data-reel-id="DZAzHc2te-6">
           <img src="thumbnail1.jpg" alt="Instagram Reel 1" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_1">فيلم في فيلم</h4>
+            <h4 data-i18n="reel_1">Movie within a Movie</h4>
           </div>
         </a>
 
@@ -1413,7 +1389,7 @@
           class="reel-card reveal-stagger" data-reel-id="DY5IFwvKiM9">
           <img src="thumbnail2.jpg" alt="Instagram Reel 2" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_2">كيفاش بدل "ماكس فاكتور" تاريخ السينما؟ 🎥</h4>
+            <h4 data-i18n="reel_2">How did Max Factor change cinema history? 🎥</h4>
           </div>
         </a>
 
@@ -1421,7 +1397,7 @@
           class="reel-card reveal-stagger" data-reel-id="DYScOiUNQD_">
           <img src="thumbnail3.jpg" alt="Instagram Reel 3" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_3">أفلام الويسترن</h4>
+            <h4 data-i18n="reel_3">Western Movies</h4>
           </div>
         </a>
 
@@ -1429,7 +1405,7 @@
           class="reel-card reveal-stagger" data-reel-id="DYP3Wg4twiZ">
           <img src="thumbnail4.jpg" alt="Instagram Reel 4" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_4">علاش كانت الموسيقى موجودة قبل الكلام في السينما؟</h4>
+            <h4 data-i18n="reel_4">Why was music present before speech in cinema?</h4>
           </div>
         </a>
 
@@ -1437,7 +1413,7 @@
           class="reel-card reveal-stagger" data-reel-id="DYNSlBUNBpP">
           <img src="thumbnail5.jpg" alt="Instagram Reel 5" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_5">Rocky: من الفقر إلى الأوسكار</h4>
+            <h4 data-i18n="reel_5">Rocky: From Poverty to Oscar</h4>
           </div>
         </a>
 
@@ -1445,7 +1421,7 @@
           class="reel-card reveal-stagger" data-reel-id="DXAMMVmCvxP">
           <img src="thumbnail6.jpg" alt="Instagram Reel 6" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_6">نهاية العالم! 😱🎬</h4>
+            <h4 data-i18n="reel_6">End of the World! 😱🎬</h4>
           </div>
         </a>
 
@@ -1453,7 +1429,7 @@
           class="reel-card reveal-stagger" data-reel-id="DVoXXDfCiLQ">
           <img src="thumbnail7.jpg" alt="Instagram Reel 7" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_7">العرب في هوليوود</h4>
+            <h4 data-i18n="reel_7">Arabs in Hollywood</h4>
           </div>
         </a>
 
@@ -1461,7 +1437,7 @@
           class="reel-card reveal-stagger" data-reel-id="DVgnJYsCqMS">
           <img src="thumbnail8.jpg" alt="Instagram Reel 8" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_8">الـ Remakes في السينما</h4>
+            <h4 data-i18n="reel_8">Remakes in Cinema</h4>
           </div>
         </a>
 
@@ -1477,7 +1453,7 @@
           class="reel-card reveal-stagger" data-reel-id="DVbZ9XeDRSI">
           <img src="thumbnail10.jpg" alt="Instagram Reel 10" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_10">المرض النفسي!</h4>
+            <h4 data-i18n="reel_10">Mental Illness!</h4>
           </div>
         </a>
 
@@ -1485,7 +1461,7 @@
           class="reel-card reveal-stagger" data-reel-id="DVY4thlilqz">
           <img src="thumbnail11.jpg" alt="Instagram Reel 11" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_11">الأوسكار؟ 🎭📜</h4>
+            <h4 data-i18n="reel_11">The Oscars? 🎭📜</h4>
           </div>
         </a>
 
@@ -1493,7 +1469,7 @@
           class="reel-card reveal-stagger" data-reel-id="DVWQcDoDczh">
           <img src="thumbnail12.jpg" alt="Instagram Reel 12" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_12">سر التشويق عند هيتشكوك! 🎬</h4>
+            <h4 data-i18n="reel_12">Hitchcock's Secret of Suspense! 🎬</h4>
           </div>
         </a>
 
@@ -1501,7 +1477,7 @@
           class="reel-card reveal-stagger" data-reel-id="DVTvYnrCoUk">
           <img src="thumbnail13.jpg" alt="Instagram Reel 13" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_13">شنيا حكايتنا مع الرسوم المتحركة؟ 🤔📺</h4>
+            <h4 data-i18n="reel_13">What's our story with Animation? 🤔📺</h4>
           </div>
         </a>
 
@@ -1509,7 +1485,7 @@
           class="reel-card reveal-stagger" data-reel-id="DVRKSCYChOF">
           <img src="thumbnail14.jpg" alt="Instagram Reel 14" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_14">كيفاش بدلت الألوان تاريخ السينما؟ 🎬🎨</h4>
+            <h4 data-i18n="reel_14">How colors changed the history of cinema? 🎬🎨</h4>
           </div>
         </a>
 
@@ -1517,7 +1493,7 @@
           class="reel-card reveal-stagger" data-reel-id="DVMaiF6ips5">
           <img src="thumbnail15.jpg" alt="Instagram Reel 15" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_15">الرعب 🧛‍♂️</h4>
+            <h4 data-i18n="reel_15">Horror 🧛‍♂️</h4>
           </div>
         </a>
 
@@ -1533,7 +1509,7 @@
           class="reel-card reveal-stagger" data-reel-id="DVGu-68iq5Z">
           <img src="thumbnail17.jpg" alt="Instagram Reel 17" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_17">الروايات والسينما؟ 📚🎬</h4>
+            <h4 data-i18n="reel_17">Novels and Cinema? 📚🎬</h4>
           </div>
         </a>
 
@@ -1541,7 +1517,7 @@
           class="reel-card reveal-stagger" data-reel-id="DVEQuqIituq">
           <img src="thumbnail18.jpg" alt="Instagram Reel 18" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_18">الكوميديا والضمار.. 🎭</h4>
+            <h4 data-i18n="reel_18">Comedy and Humor.. 🎭</h4>
           </div>
         </a>
 
@@ -1549,7 +1525,7 @@
           class="reel-card reveal-stagger" data-reel-id="DVBroGyCkKh">
           <img src="thumbnail19.jpg" alt="Instagram Reel 19" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_19">الخيال العلمي ماهوش كذبة؟ 🤖🪐</h4>
+            <h4 data-i18n="reel_19">Sci-Fi is not a lie? 🤖🪐</h4>
           </div>
         </a>
 
@@ -1565,7 +1541,7 @@
           class="reel-card reveal-stagger" data-reel-id="DU8gmybivrU">
           <img src="thumbnail21.jpg" alt="Instagram Reel 21" class="reel-thumb" />
           <div class="reel-overlay"><i class="fa-brands fa-instagram reel-play-icon"></i>
-            <h4 data-i18n="reel_21">علاش تربطت المسلسلات التونسية بشهر رمضان؟</h4>
+            <h4 data-i18n="reel_21">Why were Tunisian series tied to Ramadan?</h4>
           </div>
         </a>
       </div>
@@ -1575,7 +1551,7 @@
           <img src="https://img.youtube.com/vi/xvhQX6-3Xuo/hqdefault.jpg" alt="كيف تكتب سيناريو" />
           <div class="project-overlay">
             <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
-            <h4>كيف تكتب سيناريو؟ (الحلقة 1)</h4>
+            <h4 data-i18n="series_1">How to write a script? (Ep 1)</h4>
             <span class="project-badge" data-i18n="badge_screenwriting">SCREENWRITING SERIES</span>
           </div>
         </div>
@@ -1584,7 +1560,7 @@
           <img src="https://img.youtube.com/vi/80QS_REPhLo/hqdefault.jpg" alt="هيكل الفيلم" />
           <div class="project-overlay">
             <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
-            <h4>كيفاش تبني هيكل فيلم يشد المشاهد؟ (الحلقة 2)</h4>
+            <h4 data-i18n="series_2">How to build a compelling film structure? (Ep 2)</h4>
             <span class="project-badge" data-i18n="badge_screenwriting">SCREENWRITING SERIES</span>
           </div>
         </div>
@@ -1593,7 +1569,7 @@
           <img src="https://img.youtube.com/vi/D4FxuJR_IZk/hqdefault.jpg" alt="بناء الشخصية" />
           <div class="project-overlay">
             <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
-            <h4>كيفاش تبني شخصية سينمائية؟ (الحلقة 3)</h4>
+            <h4 data-i18n="series_3">How to build a cinematic character? (Ep 3)</h4>
             <span class="project-badge" data-i18n="badge_screenwriting">SCREENWRITING SERIES</span>
           </div>
         </div>
@@ -1602,7 +1578,7 @@
           <img src="https://img.youtube.com/vi/ZsPhRG-SnFo/hqdefault.jpg" alt="توظيف الحوار" />
           <div class="project-overlay">
             <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
-            <h4>كيفاش توظف الحوار فالسيناريو؟ (الحلقة 4)</h4>
+            <h4 data-i18n="series_4">How to utilize dialogue in the script? (Ep 4)</h4>
             <span class="project-badge" data-i18n="badge_screenwriting">SCREENWRITING SERIES</span>
           </div>
         </div>
@@ -1611,7 +1587,7 @@
           <img src="https://img.youtube.com/vi/545Lar-mdYo/hqdefault.jpg" alt="كواليس السينما" />
           <div class="project-overlay">
             <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
-            <h4>كيفاش تعمل سينما بإمكانيات شويا؟ (كواليس)</h4>
+            <h4 data-i18n="series_5">How to make cinema on a low budget? (Behind the scenes)</h4>
             <span class="project-badge" data-i18n="badge_cinema">CINEMA SERIES</span>
           </div>
         </div>
@@ -1620,7 +1596,7 @@
           <img src="https://img.youtube.com/vi/sPb4qyLc__w/hqdefault.jpg" alt="أكبر 5 أخطاء" />
           <div class="project-overlay">
             <i class="fa-solid fa-play" style="font-size: 2.2rem; color: var(--neon);"></i>
-            <h4>أكبر 5 أغلاط عملتهم في صناعة الأفلام</h4>
+            <h4 data-i18n="series_6">Top 5 filmmaking mistakes I've made</h4>
             <span class="project-badge" data-i18n="badge_cinema">CINEMA SERIES</span>
           </div>
         </div>
@@ -1634,10 +1610,6 @@
     <div class="lightbox-inner">
       <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
       <iframe id="lightbox-frame" src="" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      <div class="lightbox-fallback">
-        <p>Having trouble loading the video player? Watch it directly on YouTube.</p>
-        <a id="lightbox-direct-link" href="#" target="_blank"><i class="fa-brands fa-youtube"></i> Watch on YouTube</a>
-      </div>
     </div>
   </div>
 
@@ -1675,22 +1647,23 @@
   <script>
     const translations = {
       en: {
-        nav_about: "About", nav_clients: "Collaborations", nav_showcase: "Showcase", nav_hub: "Reels & Masterclass",
+        nav_about: "About", nav_clients: "Work with", nav_showcase: "Showcase", nav_hub: "Reels & series",
         nav_contact: "Contact", nav_prod: "Production House", nav_get_in_touch: "Get In Touch",
         hero_role: "Filmmaker & Content Creator",
         hero_title: '<span class="accent">ABSOLUTE CINEMA</span>',
-        hero_sub: "I turn concepts into high-impact visuals designed to stand out across screens worldwide.",
+        hero_sub: "If you don’t like the shot…CUUUTTT! & Do it again.",
         hero_reel: "Watch Short Film", hero_prod: "Visit Production House",
-        about_tag: "About Me", about_title_1: "Behind The", about_title_2: "Lens",
-        about_desc: "Born in Tunisia on August 29, 2000. Movies are not just hobbies for me; they are my true passion! Whether it's watching movies, creating them, or writing scripts, I can't get enough of the magic of the silver screen.",
+        about_tag: "About Me", about_title_1: "Behind The", about_title_2: "Vision",
+        about_desc: "Farees Bounawara born in Tunisia on August 29, 2000. Movies or videos isn't just something I create; it's a passion that drives me. From directing and cinematography to storytelling, editing, and writing, I love every step of bringing an idea to life through visuals.",
+        about_desc_2: "Whether it's a cinematic film, music video, social media content, or a simple idea turned into something memorable, I'm always looking for new ways to tell stories and create visuals that connect.",
         quote_text: '"If I give up now, I\'m going to regret it."',
-        about_call: "Join me on my journey through social media platforms and let's connect over cinematic passion!",
+        about_call: "Follow my journey through social media and let's connect through the world of visual storytelling.",
         stat_community: "COMMUNITY", brand_matrix_title: "WE WENT WILD WITH THEM",
         tag_press: "PRESS & MEDIA", tag_festival: "ART FESTIVAL", tag_fashion: "FASHION", tag_fitness: "FITNESS",
         tag_cinema: "CINEMA FESTIVAL", tag_theatre: "THEATRE", brand_chourouk: "AL CHOUROUK", brand_jcc: "JCC",
-        brand_theatre: "THÉÂTRE NATIONAL", showcase_tag: "Portfolio", showcase_title_1: "Selected", showcase_title_2: "Works",
+        brand_theatre: "THÉÂTRE NATIONAL", showcase_tag: "Portfolio", showcase_title_1: "Featured", showcase_title_2: "Works",
         filter_all: "All Works", filter_shortfilm: "Short Films", filter_commercial: "Client & Commercials", filter_doc: "Documentaries",
-        hub_tag: "Exclusive Content", hub_title_1: "Reels &", hub_title_2: "Screenwriting Series",
+        hub_tag: "Exclusive Content", hub_title_1: "Reels &", hub_title_2: "series",
         hub_btn_reels: "Instagram Reels (Vertical)", hub_btn_series: "How To Write A Script Series",
         badge_sf: "SHORT FILM", badge_cinematic: "CINEMATIC SHORT", badge_screenwriting: "SCREENWRITING SERIES",
         badge_cinema: "CINEMA SERIES", badge_doc: "DOCUMENTARY", badge_comm: "COMMERCIAL", badge_press: "PRESS & NEWS",
@@ -1718,25 +1691,33 @@
         reel_18: "Comedy and Humor.. 🎭",
         reel_19: "Sci-Fi is not a lie? 🤖🪐",
         reel_20: "Superheroes",
-        reel_21: "Why were Tunisian series tied to Ramadan?"
+        reel_21: "Why were Tunisian series tied to Ramadan?",
+
+        series_1: "How to write a script? (Ep 1)",
+        series_2: "How to build a compelling film structure? (Ep 2)",
+        series_3: "How to build a cinematic character? (Ep 3)",
+        series_4: "How to utilize dialogue in the script? (Ep 4)",
+        series_5: "How to make cinema on a low budget? (Behind the scenes)",
+        series_6: "Top 5 filmmaking mistakes I've made"
       },
       fr: {
-        nav_about: "À Propos", nav_clients: "Collaborations", nav_showcase: "Projets", nav_hub: "Reels & Cours",
+        nav_about: "À Propos", nav_clients: "Work with", nav_showcase: "Projets", nav_hub: "Reels & series",
         nav_contact: "Contact", nav_prod: "Maison de Production", nav_get_in_touch: "Contactez-moi",
         hero_role: "Réalisateur & Créateur de Contenu",
         hero_title: '<span class="accent">ABSOLUTE CINEMA</span>',
-        hero_sub: "Je transforme vos idées en visuels percutants conçus pour marquer les esprits.",
+        hero_sub: "Si tu n'aimes pas le plan... COOOOUPE ! Et recommence.",
         hero_reel: "Voir le Court-Métrage", hero_prod: "Maison de Production",
-        about_tag: "À Propos", about_title_1: "Derrière l'", about_title_2: "Objectif",
-        about_desc: "Né en Tunisie le 29 août 2000. Le cinéma n'est pas juste un passe-temps pour moi, c'est ma véritable passion !",
+        about_tag: "À Propos", about_title_1: "Derrière la", about_title_2: "Vision",
+        about_desc: "Farees Bounawara né en Tunisie le 29 août 2000. Les films ou vidéos ne sont pas juste quelque chose que je crée, c'est une passion qui m'anime.",
+        about_desc_2: "Que ce soit un film cinématique, un clip musical, du contenu pour les réseaux sociaux, ou une simple idée transformée en quelque chose de mémorable, je cherche toujours de nouvelles façons de raconter des histoires.",
         quote_text: '"Si j\'abandonne maintenant, je vais le regretter."',
-        about_call: "Rejoignez-moi sur les réseaux sociaux et partageons ensemble notre passion pour le cinéma !",
+        about_call: "Suivez mon parcours sur les réseaux sociaux et connectons-nous à travers le monde du storytelling visuel.",
         stat_community: "COMMUNAUTÉ", brand_matrix_title: "ON A FAIT DES MERVEILLES ENSEMBLE",
-        tag_press: "PRESSE & MÉDIA", tag_festival: "FESTIVAL D'ART", tag_fashion: "MODE", tag_fitness: "FITNESS",
+        tag_press: "PRESSE & MÉDIA", tag_festival: "FESTIVAL D'ART", tag_mode: "MODE", tag_fitness: "FITNESS",
         tag_cinema: "FESTIVAL DE CINÉMA", tag_theatre: "THÉÂTRE", brand_chourouk: "AL CHOUROUK", brand_jcc: "JCC",
-        brand_theatre: "THÉÂTRE NATIONAL", showcase_tag: "Portfolio", showcase_title_1: "Projets", showcase_title_2: "Sélects",
+        brand_theatre: "THÉÂTRE NATIONAL", showcase_tag: "Portfolio", showcase_title_1: "Featured", showcase_title_2: "Works",
         filter_all: "Tous les Projets", filter_shortfilm: "Courts-Métrages", filter_commercial: "Publicités & Clients", filter_doc: "Documentaires",
-        hub_tag: "Contenu Exclusif", hub_title_1: "Reels &", hub_title_2: "Série Écriture de Scénario",
+        hub_tag: "Contenu Exclusif", hub_title_1: "Reels &", hub_title_2: "series",
         hub_btn_reels: "Instagram Reels (Vertical)", hub_btn_series: "Série : Écriture de Scénario",
         badge_sf: "COURT-MÉTRAGE", badge_cinematic: "COURT CINÉMATIQUE", badge_screenwriting: "SÉRIE SCÉNARIO",
         badge_cinema: "SÉRIE CINÉMA", badge_doc: "DOCUMENTAIRE", badge_comm: "PUBLICITÉ", badge_press: "PRESSE & MÉDIA",
@@ -1764,30 +1745,38 @@
         reel_18: "Comédie et Humour.. 🎭",
         reel_19: "La Science-Fiction n'est pas un mensonge ? 🤖🪐",
         reel_20: "Super-héros",
-        reel_21: "Pourquoi les séries tunisiennes sont-elles liées au Ramadan ?"
+        reel_21: "Pourquoi les séries tunisiennes sont-elles liées au Ramadan ?",
+
+        series_1: "Comment écrire un scénario ? (Ep 1)",
+        series_2: "Comment structurer un film captivant ? (Ep 2)",
+        series_3: "Comment créer un personnage de cinéma ? (Ep 3)",
+        series_4: "Comment utiliser les dialogues dans le scénario ? (Ep 4)",
+        series_5: "Faire du cinéma avec un petit budget (Coulisses)",
+        series_6: "Le top 5 de mes erreurs en réalisation"
       },
       tn: {
-        nav_about: "شكون أنا", nav_clients: "خدمت معهم", nav_showcase: "أعمالي", nav_hub: "الريلز و دروس السيناريو",
-        nav_contact: "تواصل معايا", nav_prod: "شركة الإنتاج", nav_get_in_touch: "تكلم معايا",
+        nav_about: "شكون أنا", nav_clients: "خدمت مع", nav_showcase: "أعمالي", nav_hub: "الريلز و السلاسل",
+        nav_contact: "تواصل معايا", nav_prod: "شركة الإنتاج", nav_get_in_touch: "تواصل معايا",
         hero_role: "صانع أفلام و محتوى",
         hero_title: '<span class="accent">ABSOLUTE CINEMA</span>',
-        hero_sub: "نحول في الأفكار لفيديوهات قوية باش تخلي بصمة في كل بلاصة.",
+        hero_sub: "كان ما عجبتكش اللقطة... قص! وعاود من جديد.",
         hero_reel: "تفرج في الفيلم القصير", hero_prod: "شوف شركة الإنتاج",
-        about_tag: "على روحـي", about_title_1: "وراء", about_title_2: "الكاميرا",
-        about_desc: "مولود في تونس نهار 29 أوت 2000. الأفلام بالنسبة لييا مش مجرد غرام، هي شغفي الحقيقي!",
+        about_tag: "على روحـي", about_title_1: "وراء", about_title_2: "الرؤية",
+        about_desc: "فريس بونوارة مولود في تونس نهار 29 أوت 2000. الأفلام والفيديوهات مش مجرد حاجة نعملها، هو شغف كبير. من الإخراج والتصوير إلى كتابة السيناريو والمونتاج، نحب كل خطوة تخلي الفكرة تتحول لواقع نشوفوه.",
+        about_desc_2: "سواء كان فيلم، كليب موسيقي، محتوى لمواقع التواصل، و الا فكرة بسيطة تحولت لحاجة ما تتنساش، ديما نلوج على طرق جديدة باش نحكي قصص تخلق تواصل مع الناس.",
         quote_text: '"كان نستسلم توة، نندم عليها طول عمري."',
-        about_call: "تبعني على مواقع التواصل وخلّينا نتواصلو ونشاركو غرامنا بالسينما!",
+        about_call: "تبعني على مواقع التواصل الاجتماعي وخلّينا نتواصلو في عالم الفن.",
         stat_community: "المتابعين", brand_matrix_title: "عملنا معاهم حاجات هابلة",
         tag_press: "صحافة وإعلام", tag_festival: "مهرجان فنون", tag_fashion: "موضة", tag_fitness: "رياضة",
         tag_cinema: "مهرجان سينما", tag_theatre: "مسرح", brand_chourouk: "الشروق", brand_jcc: "أيام قرطاج السينمائية",
-        brand_theatre: "المسرح الوطني التونسي", showcase_tag: "معرض الأعمال", showcase_title_1: "أحسن", showcase_title_2: "ما خدمت",
+        brand_theatre: "المسرح الوطني التونسي", showcase_tag: "معرض الأعمال", showcase_title_1: "اهم", showcase_title_2: "الخدم",
         filter_all: "كل الأعمال", filter_shortfilm: "أفلام قصيرة", filter_commercial: "إشهارات للعملاء", filter_doc: "وثائقيات",
-        hub_tag: "محتوى خاص", hub_title_1: "الريلز و", hub_title_2: "سلسلة كتابة السيناريو",
+        hub_tag: "محتوى خاص", hub_title_1: "الريلز و", hub_title_2: "السلاسل",
         hub_btn_reels: "ريلز إنستغرام (فيديوهات طولية)", hub_btn_series: "سلسلة كيف تكتب سيناريو",
-        badge_sf: "فيلم قصير", badge_cinematic: "فيديو سينمائي", badge_screenwriting: "سلسلة السيناريو",
+        badge_sf: "ظلام (فيلم قصير)", badge_cinematic: "فيديو سينمائي", badge_screenwriting: "سلسلة السيناريو",
         badge_cinema: "سلسلة السينما", badge_doc: "وثائقي", badge_comm: "إشهار", badge_press: "تغطية إعلامية",
         contact_tag: "اتصل بي", contact_title_1: "خلّينا", contact_title_2: "نخدمو مع بعضنا",
-        contact_heading: "عندك مشروع في مخك؟", contact_sub: "انقر لوطا باش تبعثلي ميل مباشرة من Gmail متاعك.",
+        contact_heading: "عندك مشروع في مخك؟", contact_sub: "انزل باش تبعثلنا مايل",
         contact_btn: "إبعث إيميل (bounawara.farees@gmail.com)", footer_rights: "جميع الحقوق محفوظة.",
 
         reel_1: "فيلم في فيلم",
@@ -1810,7 +1799,14 @@
         reel_18: "الكوميديا والضمار.. 🎭",
         reel_19: "الخيال العلمي ماهوش كذبة؟ 🤖🪐",
         reel_20: "Superheroes",
-        reel_21: "علاش تربطت المسلسلات التونسية بشهر رمضان؟"
+        reel_21: "علاش تربطت المسلسلات التونسية بشهر رمضان؟",
+
+        series_1: "كيف تكتب سيناريو؟ (الحلقة 1)",
+        series_2: "كيفاش تبني هيكل فيلم يشد المشاهد؟ (الحلقة 2)",
+        series_3: "كيفاش تبني شخصية سينمائية؟ (الحلقة 3)",
+        series_4: "كيفاش توظف الحوار فالسيناريو؟ (الحلقة 4)",
+        series_5: "كيفاش تعمل سينما بإمكانيات شويا؟ (كواليس)",
+        series_6: "أكبر 5 أغلاط عملتهم في صناعة الأفلام"
       }
     };
 
@@ -1840,6 +1836,10 @@
       });
     }
 
+    window.addEventListener('DOMContentLoaded', () => {
+      setLanguage('en');
+    });
+
     window.addEventListener('load', () => {
       setTimeout(() => document.getElementById('loader').classList.add('hidden'), 500);
     });
@@ -1862,7 +1862,6 @@
 
     const lightbox = document.getElementById('lightbox');
     const lightboxFrame = document.getElementById('lightbox-frame');
-    const lightboxDirectLink = document.getElementById('lightbox-direct-link');
 
     function openLightbox(videoId) {
       let embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
@@ -1870,7 +1869,6 @@
         embedUrl += `&origin=${encodeURIComponent(window.location.origin)}`;
       }
       lightboxFrame.src = embedUrl;
-      lightboxDirectLink.href = `https://www.youtube.com/watch?v=${videoId}`;
       lightbox.classList.add('active');
     }
 
