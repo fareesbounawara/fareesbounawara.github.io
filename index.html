@@ -27,6 +27,9 @@
   <!-- Anime.js (cinematic UI animations) -->
   <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
 
+  <!-- EmailJS SDK -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <style>
     :root {
       --neon: #00ff66;
@@ -1130,53 +1133,258 @@
     #contact {
       background: var(--bg);
       padding: 120px 0;
+      position: relative;
     }
 
     .contact-wrap {
-      max-width: 640px;
+      max-width: 720px;
       margin: 0 auto;
-      text-align: center;
     }
 
-    .direct-email-card {
-      background: var(--card);
+    .contact-card {
+      background: linear-gradient(160deg, rgba(14, 20, 16, 0.95), rgba(7, 10, 8, 0.98));
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 40px 30px;
-      margin-top: 20px;
+      border-radius: 20px;
+      padding: 44px 36px;
+      margin-top: 24px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(0, 255, 102, 0.05);
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(12px);
     }
 
-    .direct-email-card i {
-      font-size: 2.5rem;
-      color: var(--neon);
-      margin-bottom: 16px;
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--neon), transparent);
+      opacity: 0.8;
     }
 
-    .direct-email-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 8px;
+    .contact-header {
+      text-align: center;
+      margin-bottom: 32px;
     }
 
-    .direct-email-card p {
-      color: var(--muted);
-      margin-bottom: 24px;
-    }
-
-    .email-link {
+    .contact-header-icon {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      padding: 14px 28px;
-      background: var(--neon);
-      color: #000;
-      font-weight: 700;
-      border-radius: 8px;
-      transition: all 0.3s;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(0, 255, 102, 0.08);
+      border: 1px solid rgba(0, 255, 102, 0.3);
+      color: var(--neon);
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.2);
     }
 
-    .email-link:hover {
-      box-shadow: 0 0 25px var(--neon);
+    .contact-header h3 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .contact-header p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: left;
+    }
+
+    body.rtl .contact-form {
+      text-align: right;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 640px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      .contact-card {
+        padding: 32px 20px;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .form-group label i {
+      color: var(--neon);
+      font-size: 0.85rem;
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 255, 102, 0.18);
+      border-radius: 10px;
+      padding: 14px 16px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: all 0.25s ease;
+      box-sizing: border-box;
+    }
+
+    body.rtl .form-input,
+    body.rtl .form-textarea {
+      text-align: right;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder {
+      color: rgba(143, 167, 156, 0.45);
+    }
+
+    .form-input:hover,
+    .form-textarea:hover {
+      border-color: rgba(0, 255, 102, 0.35);
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--neon);
+      background: rgba(0, 255, 102, 0.04);
+      box-shadow: 0 0 16px rgba(0, 255, 102, 0.22);
+    }
+
+    .form-textarea {
+      min-height: 135px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: var(--neon);
+      color: #000;
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 20px rgba(0, 255, 102, 0.25);
+      letter-spacing: 0.5px;
+      margin-top: 6px;
+      width: 100%;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+      box-shadow: 0 0 35px rgba(0, 255, 102, 0.5);
       transform: translateY(-2px);
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .form-status {
+      display: none;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      align-items: center;
+      gap: 12px;
+      margin-top: 4px;
+      animation: fadeInStatus 0.3s ease forwards;
+    }
+
+    @keyframes fadeInStatus {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .form-status.show {
+      display: flex;
+    }
+
+    .form-status.success {
+      background: rgba(0, 255, 102, 0.12);
+      border: 1px solid var(--neon);
+      color: #99ffbb;
+    }
+
+    .form-status.error {
+      background: rgba(255, 68, 68, 0.12);
+      border: 1px solid #ff4444;
+      color: #ffb3b3;
+    }
+
+    .form-status i {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-direct-alt {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .contact-direct-alt a {
+      color: var(--neon);
+      text-decoration: none;
+      font-weight: 600;
+      margin-left: 6px;
+      transition: all 0.2s;
+    }
+
+    body.rtl .contact-direct-alt a {
+      margin-left: 0;
+      margin-right: 6px;
+    }
+
+    .contact-direct-alt a:hover {
+      text-decoration: underline;
+      text-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
     }
 
     footer {
@@ -1913,15 +2121,74 @@
       </div>
 
       <div class="contact-wrap reveal">
-        <div class="direct-email-card">
-          <i class="fa-solid fa-envelope-open-text"></i>
-          <h3 data-i18n="contact_heading">Have a project in mind?</h3>
-          <p data-i18n="contact_sub">Click below to open your email app or Gmail directly and send me a message.</p>
-          <a href="mailto:bounawara.farees@gmail.com?subject=Project%20Inquiry%20-%20Farees%20Bounawara"
-            class="email-link">
-            <i class="fa-solid fa-paper-plane"></i> <span data-i18n="contact_btn">Send Email
-              (bounawara.farees@gmail.com)</span>
-          </a>
+        <div class="contact-card">
+          <div class="contact-header">
+            <div class="contact-header-icon">
+              <i class="fa-solid fa-paper-plane"></i>
+            </div>
+            <h3 data-i18n="contact_heading">Have a project in mind?</h3>
+            <p data-i18n="contact_sub">Send me a message directly using the form below, and I'll get back to you as soon as possible.</p>
+          </div>
+
+          <form id="contact-form" class="contact-form">
+            <!-- Hidden recipient field for template compatibility -->
+            <input type="hidden" name="to_name" value="Farees Bounawara">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">
+                  <i class="fa-solid fa-user"></i>
+                  <span data-i18n="contact_name_label">Your Name</span>
+                </label>
+                <input type="text" id="contact-name" name="from_name" class="form-input"
+                  data-i18n-placeholder="contact_name_placeholder" placeholder="e.g. John Doe" required>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email">
+                  <i class="fa-solid fa-envelope"></i>
+                  <span data-i18n="contact_email_label">Your Email</span>
+                </label>
+                <input type="email" id="contact-email" name="from_email" class="form-input"
+                  data-i18n-placeholder="contact_email_placeholder" placeholder="e.g. john@example.com" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-subject">
+                <i class="fa-solid fa-tag"></i>
+                <span data-i18n="contact_subject_label">Subject</span>
+              </label>
+              <input type="text" id="contact-subject" name="subject" class="form-input"
+                data-i18n-placeholder="contact_subject_placeholder" placeholder="e.g. Film Production / Commercial Inquiry" required>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-message">
+                <i class="fa-solid fa-message"></i>
+                <span data-i18n="contact_message_label">Your Message</span>
+              </label>
+              <textarea id="contact-message" name="message" class="form-textarea"
+                data-i18n-placeholder="contact_message_placeholder" placeholder="Tell me about your project, timeline, and vision..." required></textarea>
+            </div>
+
+            <button type="submit" id="btn-submit-contact" class="btn-submit">
+              <i class="fa-solid fa-paper-plane" id="btn-submit-icon"></i>
+              <span id="btn-submit-text" data-i18n="contact_btn_send">Send Message</span>
+            </button>
+
+            <div id="contact-status" class="form-status">
+              <i id="status-icon" class="fa-solid fa-circle-check"></i>
+              <span id="status-text"></span>
+            </div>
+          </form>
+
+          <div class="contact-direct-alt">
+            <span data-i18n="contact_direct_prefix">Or email directly:</span>
+            <a href="mailto:bounawara.farees@gmail.com?subject=Project%20Inquiry%20-%20Farees%20Bounawara">
+              <i class="fa-solid fa-envelope"></i> bounawara.farees@gmail.com
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -1969,8 +2236,17 @@
         badge_sf: "SHORT FILM", badge_cinematic: "CINEMATIC SHORT", badge_screenwriting: "SCREENWRITING SERIES",
         badge_cinema: "CINEMA SERIES", badge_doc: "DOCUMENTARY", badge_comm: "COMMERCIAL", badge_press: "PRESS & NEWS",
         contact_tag: "Contact", contact_title_1: "Let's", contact_title_2: "Work Together",
-        contact_heading: "Have a project in mind?", contact_sub: "Click below to open your email app or Gmail directly and send me a message.",
-        contact_btn: "Send Email (bounawara.farees@gmail.com)", footer_rights: "All rights reserved.",
+        contact_heading: "Have a project in mind?",
+        contact_sub: "Send me a message directly using the form below, and I'll get back to you as soon as possible.",
+        contact_name_label: "Your Name", contact_name_placeholder: "e.g. John Doe",
+        contact_email_label: "Your Email", contact_email_placeholder: "e.g. john@example.com",
+        contact_subject_label: "Subject", contact_subject_placeholder: "e.g. Film Production / Commercial Inquiry",
+        contact_message_label: "Your Message", contact_message_placeholder: "Tell me about your project, timeline, and vision...",
+        contact_btn_send: "Send Message", contact_btn_sending: "Sending...", contact_btn_sent: "Message Sent!",
+        contact_direct_prefix: "Or email directly:",
+        contact_success_msg: "Thank you! Your message has been sent successfully. I will get back to you soon.",
+        contact_error_msg: "Sorry, something went wrong while sending your message. Please try again or reach out directly via email.",
+        footer_rights: "All rights reserved.",
         
         reel_1: "Movie within a Movie",
         reel_2: "How did Max Factor change cinema history? 🎥",
@@ -2034,8 +2310,17 @@
         badge_sf: "COURT-MÉTRAGE", badge_cinematic: "COURT CINÉMATIQUE", badge_screenwriting: "SÉRIE SCÉNARIO",
         badge_cinema: "SÉRIE CINÉMA", badge_doc: "DOCUMENTAIRE", badge_comm: "PUBLICITÉ", badge_press: "PRESSE & MÉDIA",
         contact_tag: "Contact", contact_title_1: "Travaillons", contact_title_2: "Ensemble",
-        contact_heading: "Vous avez un projet en tête ?", contact_sub: "Cliquez ci-dessous pour m'envoyer directement un e-mail.",
-        contact_btn: "Envoyer un e-mail (bounawara.farees@gmail.com)", footer_rights: "Tous droits réservés.",
+        contact_heading: "Vous avez un projet en tête ?",
+        contact_sub: "Envoyez-moi un message directement via le formulaire ci-dessous et je vous répondrai dans les plus brefs délais.",
+        contact_name_label: "Votre Nom", contact_name_placeholder: "ex. Jean Dupont",
+        contact_email_label: "Votre E-mail", contact_email_placeholder: "ex. jean@example.com",
+        contact_subject_label: "Sujet", contact_subject_placeholder: "ex. Projet de film / Publicité",
+        contact_message_label: "Votre Message", contact_message_placeholder: "Parlez-moi de votre projet, délai et vision...",
+        contact_btn_send: "Envoyer le Message", contact_btn_sending: "Envoi en cours...", contact_btn_sent: "Message Envoyé !",
+        contact_direct_prefix: "Ou par e-mail direct :",
+        contact_success_msg: "Merci ! Votre message a été envoyé avec succès. Je vous répondrai rapidement.",
+        contact_error_msg: "Désolé, une erreur s'est produite lors de l'envoi. Veuillez réessayer ou m'écrire directement par e-mail.",
+        footer_rights: "Tous droits réservés.",
 
         reel_1: "Film dans un Film",
         reel_2: "Comment Max Factor a changé l'histoire du cinéma ? 🎥",
@@ -2100,8 +2385,17 @@
         badge_sf: "ظلام (فيلم قصير)", badge_cinematic: "فيديو سينمائي", badge_screenwriting: "سلسلة السيناريو",
         badge_cinema: "سلسلة السينما", badge_doc: "وثائقي", badge_comm: "إشهار", badge_press: "تغطية إعلامية",
         contact_tag: "اتصل بي", contact_title_1: "خلّينا", contact_title_2: "نخدمو مع بعضنا",
-        contact_heading: "عندك مشروع في مخك؟", contact_sub: "انزل باش تبعثلنا مايل",
-        contact_btn: "إبعث إيميل (bounawara.farees@gmail.com)", footer_rights: "جميع الحقوق محفوظة.",
+        contact_heading: "عندك بروجي في مخك؟",
+        contact_sub: "ابعثلي ميساج طول من السيت ونجاوبك في أقرب وقت.",
+        contact_name_label: "الاسم واللقب", contact_name_placeholder: "مثال: أحمد بن علي",
+        contact_email_label: "البريد الإلكتروني", contact_email_placeholder: "مثال: ahmed@example.com",
+        contact_subject_label: "الموضوع", contact_subject_placeholder: "مثال: إنتاج فيلم / إشهار",
+        contact_message_label: "الميساج متاعك", contact_message_placeholder: "احكيلي على البروجي، الوقت، والرؤية متاعك...",
+        contact_btn_send: "إبعث الميساج", contact_btn_sending: "قاعد يتبعث...", contact_btn_sent: "تبعث بنجاح!",
+        contact_direct_prefix: "وإلا إيميل مباشر:",
+        contact_success_msg: "يعطيك الصحة! تبعث الميساج بنجاح، توا نجاوبك في أقرب وقت.",
+        contact_error_msg: "سامحنا، صار مشكل في البعثان. عاود جرّب ولا ابعثلي إيميل طول.",
+        footer_rights: "جميع الحقوق محفوظة.",
 
         reel_1: "فيلم في فيلم",
         reel_2: "كيفاش بدل \"ماكس فاكتور\" تاريخ السينما؟ 🎥",
@@ -2145,7 +2439,10 @@
 
     document.addEventListener('click', () => { langDropdown.classList.remove('show'); });
 
+    let currentSiteLang = 'en';
+
     function setLanguage(lang) {
+      currentSiteLang = lang;
       currentLangSpan.textContent = lang.toUpperCase();
       langDropdown.classList.remove('show');
 
@@ -2158,7 +2455,112 @@
           el.innerHTML = translations[lang][key];
         }
       });
+
+      document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+        const key = el.getAttribute('data-i18n-placeholder');
+        if (translations[lang] && translations[lang][key]) {
+          el.setAttribute('placeholder', translations[lang][key]);
+        }
+      });
     }
+
+    // ===== EmailJS Integration & Contact Form Handler =====
+    (function initContactForm() {
+      const EMAILJS_PUBLIC_KEY = 'yA2T3qfrXr7XRztZX';
+      const EMAILJS_SERVICE_ID = 'service_oukfkkt';
+      const EMAILJS_TEMPLATE_ID = 'template_1p5y305';
+
+      // Initialize EmailJS with Public Key
+      if (window.emailjs) {
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+      }
+
+      const form = document.getElementById('contact-form');
+      const submitBtn = document.getElementById('btn-submit-contact');
+      const submitIcon = document.getElementById('btn-submit-icon');
+      const submitText = document.getElementById('btn-submit-text');
+      const statusBox = document.getElementById('contact-status');
+      const statusIcon = document.getElementById('status-icon');
+      const statusText = document.getElementById('status-text');
+
+      if (!form) return;
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const nameInput = document.getElementById('contact-name');
+        const emailInput = document.getElementById('contact-email');
+        const subjectInput = document.getElementById('contact-subject');
+        const messageInput = document.getElementById('contact-message');
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const subject = subjectInput.value.trim();
+        const message = messageInput.value.trim();
+
+        if (!name || !email || !subject || !message) return;
+
+        // UI Loading State
+        submitBtn.disabled = true;
+        submitIcon.className = 'fa-solid fa-spinner fa-spin';
+        const langDict = translations[currentSiteLang] || translations.en;
+        submitText.textContent = langDict.contact_btn_sending || 'Sending...';
+        statusBox.className = 'form-status';
+
+        // Comprehensive template parameters matching any EmailJS template configuration
+        const templateParams = {
+          name: name,
+          from_name: name,
+          user_name: name,
+          to_name: 'Farees Bounawara',
+          email: email,
+          from_email: email,
+          user_email: email,
+          reply_to: email,
+          subject: subject,
+          title: subject,
+          message: message
+        };
+
+        const sendPromise = window.emailjs
+          ? emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+          : Promise.reject(new Error('EmailJS SDK not loaded'));
+
+        sendPromise
+          .then(() => {
+            // Success State
+            submitBtn.disabled = false;
+            submitIcon.className = 'fa-solid fa-circle-check';
+            const curDict = translations[currentSiteLang] || translations.en;
+            submitText.textContent = curDict.contact_btn_sent || 'Message Sent!';
+
+            statusBox.className = 'form-status success show';
+            statusIcon.className = 'fa-solid fa-circle-check';
+            statusText.textContent = curDict.contact_success_msg || 'Thank you! Your message has been sent successfully.';
+
+            form.reset();
+
+            // Revert button text after 4.5 seconds
+            setTimeout(() => {
+              submitIcon.className = 'fa-solid fa-paper-plane';
+              const activeDict = translations[currentSiteLang] || translations.en;
+              submitText.textContent = activeDict.contact_btn_send || 'Send Message';
+            }, 4500);
+          })
+          .catch((err) => {
+            console.error('EmailJS Error:', err);
+            // Error State
+            submitBtn.disabled = false;
+            submitIcon.className = 'fa-solid fa-paper-plane';
+            const curDict = translations[currentSiteLang] || translations.en;
+            submitText.textContent = curDict.contact_btn_send || 'Send Message';
+
+            statusBox.className = 'form-status error show';
+            statusIcon.className = 'fa-solid fa-triangle-exclamation';
+            statusText.textContent = curDict.contact_error_msg || 'Sorry, something went wrong. Please try again or reach out directly.';
+          });
+      });
+    })();
 
     window.addEventListener('DOMContentLoaded', () => {
       setLanguage('en');
