@@ -1,0 +1,17 @@
+# Robots.txt for Farees Bounawara Portfolio
+# Allows all search engines (Googlebot, Bingbot, etc.) to index the entire website
+
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Sitemap Location (Search Console uses this to index all pages)
+Sitemap: sitemap.xml
