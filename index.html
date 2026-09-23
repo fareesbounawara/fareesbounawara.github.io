@@ -709,6 +709,174 @@
       text-shadow: 0 0 12px var(--neon-dim);
     }
 
+    /* PROCESS — FROM SCRIPT TO SCREEN (Windows-style editor) */
+    #process { padding: 120px 0; background: var(--bg); position: relative; overflow: hidden; }
+    .process-head { max-width: 700px; margin: 0 auto 30px; text-align: center; }
+    .process-head .section-tag { justify-content: center; }
+    .process-sub { color: var(--muted); font-size: 1rem; margin-top: 6px; }
+
+    .win-slot { margin-top: 56px; min-height: 48px; }
+    .win {
+      background: #0a0e0c;
+      border: 1px solid rgba(0, 255, 102, 0.28);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 50px rgba(0, 255, 102, 0.07);
+      transition: box-shadow .3s;
+    }
+    .win.is-max {
+      position: fixed; inset: 12px; z-index: 1100; margin: 0; overflow: auto;
+      border-radius: 10px; display: flex; flex-direction: column;
+    }
+    .win.is-closed { display: none; }
+    .win-reopen {
+      display: none; margin: 0 auto; padding: 12px 22px; border-radius: 8px;
+      background: rgba(0, 255, 102, 0.06); border: 1px solid var(--border);
+      color: var(--text); font-weight: 600; font-size: .9rem; align-items: center; gap: 10px;
+    }
+    .win-reopen.show { display: flex; }
+    .win-reopen:hover { border-color: var(--neon); color: var(--neon); }
+
+    /* Windows title bar: icon + title on the left, min / max / close on the right */
+    .win-titlebar {
+      direction: ltr; display: flex; align-items: stretch; justify-content: space-between;
+      height: 36px; background: #131a16; border-bottom: 1px solid rgba(255, 255, 255, .06);
+      user-select: none;
+    }
+    .win-title { display: flex; align-items: center; gap: 10px; padding: 0 14px; font-size: .78rem; color: #cfe0d6; font-weight: 500; font-family: 'Segoe UI', var(--font-body), sans-serif; min-width: 0; }
+    .win-title i { color: var(--neon); font-size: .8rem; }
+    .win-title span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .win-ctrls { display: flex; }
+    .win-ctrl {
+      width: 46px; border: 0; background: transparent; color: #dfeee5; font-size: .72rem;
+      display: flex; align-items: center; justify-content: center; transition: background .15s;
+    }
+    .win-ctrl:hover { background: rgba(255, 255, 255, .1); }
+    .win-ctrl.close:hover { background: #e81123; color: #fff; }
+    .win-ctrl:focus-visible { outline: 2px solid var(--neon); outline-offset: -2px; }
+
+    .win-menubar {
+      direction: ltr; display: flex; gap: 2px; padding: 4px 8px; background: #0e1411;
+      border-bottom: 1px solid rgba(255, 255, 255, .05); font-size: .74rem; color: var(--muted);
+      font-family: 'Segoe UI', var(--font-body), sans-serif; overflow-x: auto;
+    }
+    .win-menubar span { padding: 3px 10px; border-radius: 4px; white-space: nowrap; }
+    .win-menubar span:hover { background: rgba(255, 255, 255, .07); color: var(--text); }
+
+    .win-body { display: block; }
+    .win.is-min .win-body { display: none; }
+    .win.is-max .win-body { flex: 1; overflow: auto; }
+
+    /* Program monitor (current stage) */
+    .monitor { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 0; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+    .screen {
+      position: relative; aspect-ratio: 16 / 9; background: #000; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      border-right: 1px solid rgba(255, 255, 255, .06);
+    }
+    body.rtl .screen { border-right: 0; border-left: 1px solid rgba(255, 255, 255, .06); }
+    .screen::before, .screen::after { content: ''; position: absolute; left: 0; right: 0; height: 9%; background: #000; z-index: 3; }
+    .screen::before { top: 0; } .screen::after { bottom: 0; }
+    .screen-bg { position: absolute; inset: 0; background: radial-gradient(circle at 50% 55%, rgba(0, 255, 102, .2), transparent 62%); transition: opacity .4s; }
+    .screen-grid { position: absolute; inset: 9% 0; background:
+      linear-gradient(rgba(0, 255, 102, .07) 1px, transparent 1px) 0 0 / 100% 33.33%,
+      linear-gradient(90deg, rgba(0, 255, 102, .07) 1px, transparent 1px) 0 0 / 33.33% 100%; z-index: 1; }
+    .stage-visual { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(.94); transition: opacity .45s, transform .45s; pointer-events: none; }
+    .stage-visual.active { opacity: 1; transform: none; }
+    .stage-visual i { font-size: clamp(2.6rem, 7vw, 4.6rem); color: var(--neon); text-shadow: 0 0 30px var(--neon-dim); }
+    .rec {
+      position: absolute; top: 12%; left: 4%; z-index: 4; display: flex; align-items: center; gap: 7px;
+      font-family: 'Courier New', monospace; font-size: .7rem; color: #fff; direction: ltr;
+    }
+    .rec b { width: 8px; height: 8px; border-radius: 50%; background: #ff3b30; animation: blink 1.2s steps(2) infinite; }
+    .rec.paused b { animation: none; background: #666; }
+    @keyframes blink { 50% { opacity: .15; } }
+    .screen-tc { position: absolute; bottom: 12%; right: 4%; z-index: 4; font-family: 'Courier New', monospace; font-size: .78rem; color: var(--neon); direction: ltr; }
+
+    .stage-info { padding: 26px 30px; display: flex; flex-direction: column; justify-content: center; gap: 18px; min-width: 0; }
+    .stage-chips { display: flex; gap: 8px; }
+    .chip {
+      flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 10px 6px;
+      background: rgba(255, 255, 255, .03); border: 1px solid rgba(255, 255, 255, .08); border-radius: 8px;
+      color: var(--muted); font-size: .72rem; font-weight: 600; transition: all .25s;
+    }
+    .chip i { font-size: 1.05rem; }
+    .chip:hover { color: var(--text); border-color: var(--neon-dim); }
+    .chip.active { color: #04170d; background: var(--neon); border-color: var(--neon); box-shadow: 0 0 18px var(--neon-dim); }
+    .chip.done:not(.active) { color: var(--neon); border-color: var(--border); }
+    .chip:focus-visible, .tbtn:focus-visible, .stage-clip:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    .stage-text { min-height: 128px; position: relative; }
+    .stage-panel { display: none; }
+    .stage-panel.active { display: block; animation: swap .4s ease; }
+    @keyframes swap { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+    .stage-panel .step-num { display: block; font-family: var(--font-head); font-size: .75rem; font-weight: 700; color: var(--neon); margin-bottom: 6px; }
+    .stage-panel h3 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+    .stage-panel p { color: var(--muted); font-size: .95rem; line-height: 1.65; max-width: 46ch; }
+
+    /* Transport */
+    .transport { direction: ltr; display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: #0e1411; border-bottom: 1px solid rgba(255, 255, 255, .05); }
+    .tbtn { width: 34px; height: 34px; border-radius: 6px; border: 1px solid transparent; background: transparent; color: var(--text); font-size: .85rem; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+    .tbtn:hover { background: rgba(255, 255, 255, .08); }
+    .tbtn.play { background: var(--neon); color: #000; width: 40px; }
+    .tbtn.play:hover { box-shadow: 0 0 16px var(--neon-dim); }
+    .tl-timecode { margin-left: auto; font-family: 'Courier New', monospace; color: var(--neon); font-size: .9rem; letter-spacing: 1px; }
+    .tl-hint { font-size: .72rem; color: var(--muted); margin-left: 8px; font-family: 'Segoe UI', var(--font-body), sans-serif; }
+
+    /* Timeline */
+    .tl { direction: ltr; position: relative; padding: 0 0 6px; user-select: none; touch-action: none; }
+    .tl-row { display: grid; grid-template-columns: 78px 1fr; align-items: stretch; }
+    .tl-label { display: flex; align-items: center; padding: 0 10px; font-size: .64rem; font-weight: 700; letter-spacing: 1.2px; color: var(--muted); border-right: 1px solid rgba(255, 255, 255, .06); background: #0c110e; }
+    .tl-ruler { height: 26px; position: relative; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+    .tl-ruler span { position: absolute; top: 0; height: 100%; padding: 6px 0 0 5px; font-size: .6rem; color: var(--muted); font-family: 'Courier New', monospace; border-left: 1px solid rgba(255, 255, 255, .12); }
+    .lane { position: relative; height: 46px; border-bottom: 1px solid rgba(255, 255, 255, .04); background: repeating-linear-gradient(90deg, transparent 0 calc(12.5% - 1px), rgba(255, 255, 255, .035) calc(12.5% - 1px) 12.5%); }
+    .lane.tall { height: 52px; }
+
+    .stage-clip, .clip {
+      position: absolute; top: 5px; bottom: 5px; border-radius: 5px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center; padding: 0 6px;
+      font-size: .64rem; font-weight: 800; letter-spacing: .4px; text-align: center; white-space: nowrap;
+    }
+    .stage-clip { border: 1px solid rgba(255, 255, 255, .1); background: #141c17; color: var(--muted); gap: 6px; transition: all .25s; }
+    .stage-clip:hover { color: var(--text); border-color: var(--neon-dim); }
+    .stage-clip.active { background: var(--neon); color: #04170d; border-color: var(--neon); box-shadow: 0 0 14px var(--neon-dim); }
+    .stage-clip.done:not(.active) { color: var(--neon); background: rgba(0, 255, 102, .1); }
+
+    .clip { color: #04170d; opacity: .16; transform: scaleY(.7); filter: grayscale(1); transition: opacity .35s, transform .35s, filter .35s; }
+    .clip.on { opacity: 1; transform: none; filter: none; }
+    .c1 { background: linear-gradient(135deg, var(--neon), #00c750); }
+    .c2 { background: linear-gradient(135deg, #5ce8a6, #1c8f56); }
+    .c3 { background: linear-gradient(135deg, #9be8c4, #3a7a5c); }
+    .c-doc { background: #e7f3ec; }
+    .c-story { background: repeating-linear-gradient(90deg, #cfe9da 0 30px, #a9d3bc 30px 32px); }
+    .c-broll { background: repeating-linear-gradient(45deg, #133322 0 6px, #0c2419 6px 12px); color: var(--neon); border: 1px dashed var(--neon-dim); }
+    .c-audio { background: repeating-linear-gradient(90deg, rgba(0, 255, 102, .5) 0 2px, rgba(0, 255, 102, .1) 2px 6px); color: var(--neon); }
+    .c-final { background: linear-gradient(135deg, #fff, #b9f7d2); }
+
+    .tl-playhead { position: absolute; top: 0; bottom: 0; left: 78px; right: 0; pointer-events: none; }
+    .tl-playhead i { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 8px var(--neon), 0 0 18px var(--neon); }
+    .tl-playhead i::before { content: ''; position: absolute; top: 0; left: -6px; width: 14px; height: 12px; background: var(--neon); clip-path: polygon(0 0, 100% 0, 50% 100%); }
+    .tl-seek { position: absolute; top: 0; bottom: 0; left: 78px; right: 0; cursor: ew-resize; z-index: 5; }
+    .tl-stage-row .stage-clip { z-index: 6; }
+
+    .status-bar { direction: ltr; display: flex; justify-content: space-between; gap: 12px; padding: 5px 14px; background: #0e1411; border-top: 1px solid rgba(255, 255, 255, .05); font-size: .68rem; color: var(--muted); font-family: 'Segoe UI', var(--font-body), sans-serif; }
+
+    @media (max-width: 980px) {
+      .monitor { grid-template-columns: 1fr; }
+      .screen { border-right: 0; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+      body.rtl .screen { border-left: 0; }
+    }
+    @media (max-width: 600px) {
+      .tl-row, .tl-playhead, .tl-seek { grid-template-columns: 52px 1fr; }
+      .tl-playhead, .tl-seek { left: 52px; }
+      .tl-label { font-size: .5rem; padding: 0 5px; letter-spacing: .5px; }
+      .stage-clip i, .clip { font-size: .5rem; }
+      .stage-clip i { display: none; }
+      .stage-info { padding: 20px 18px; }
+      .tl-hint, .win-menubar { display: none; }
+      .chip span { font-size: .6rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { .rec b, .stage-panel.active { animation: none; } }
+
     /* SHOWCASE */
     #showcase {
       padding: 120px 0 60px;
@@ -1121,6 +1289,7 @@
 
         <ul class="nav-links">
           <li><a href="#about" data-i18n="nav_about">About</a></li>
+          <li><a href="#process" data-i18n="nav_process">Process</a></li>
           <li><a href="#clients" data-i18n="nav_clients">Work with</a></li>
           <li><a href="#showcase" data-i18n="nav_showcase">Showcase</a></li>
           <li><a href="#exclusive-hub" data-i18n="nav_hub">Reels & series</a></li>
@@ -1223,6 +1392,110 @@
           </div>
 
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS: FROM SCRIPT TO SCREEN -->
+  <section id="process">
+    <div class="container">
+      <div class="process-head reveal">
+        <span class="section-tag" data-i18n="process_tag"><i class="fa-solid fa-film"></i> My Process</span>
+        <h2 class="section-title"><span data-i18n="process_title_1">From Script</span> <span class="glow-text"
+            data-i18n="process_title_2">To Screen</span></h2>
+        <p class="process-sub" data-i18n="process_sub">Every project I make goes through the same four stages —
+          writing, prep, shooting and editing — before it reaches your screen.</p>
+      </div>
+
+      <div class="win-slot">
+        <div class="win" id="editorWin" role="group" aria-label="Editing timeline">
+          <div class="win-titlebar">
+            <div class="win-title"><i class="fa-solid fa-clapperboard"></i><span data-i18n="timeline_app_name">Farees Studio — Timeline</span></div>
+            <div class="win-ctrls">
+              <button class="win-ctrl" id="winMin" type="button" aria-label="Minimize"><i class="fa-solid fa-minus"></i></button>
+              <button class="win-ctrl" id="winMax" type="button" aria-label="Maximize"><i class="fa-regular fa-square"></i></button>
+              <button class="win-ctrl close" id="winClose" type="button" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+          </div>
+          <div class="win-menubar"><span>File</span><span>Edit</span><span>Clip</span><span>Sequence</span><span>Markers</span><span>View</span></div>
+
+          <div class="win-body">
+            <div class="monitor">
+              <div class="screen">
+                <div class="screen-bg"></div><div class="screen-grid"></div>
+                <div class="stage-visual active" data-stage="1"><i class="fa-solid fa-feather-pointed"></i></div>
+            <div class="stage-visual" data-stage="2"><i class="fa-solid fa-clapperboard"></i></div>
+            <div class="stage-visual" data-stage="3"><i class="fa-solid fa-video"></i></div>
+            <div class="stage-visual" data-stage="4"><i class="fa-solid fa-sliders"></i></div>
+                <div class="rec" id="recTag"><b></b>REC</div>
+                <div class="screen-tc" id="screenTc">00:00:00:00</div>
+              </div>
+              <div class="stage-info">
+                <div class="stage-chips">
+                  <button class="chip active" data-stage="1" type="button"><i class="fa-solid fa-feather-pointed"></i><span data-i18n="process_1_tag">TAG</span></button>
+              <button class="chip" data-stage="2" type="button"><i class="fa-solid fa-clapperboard"></i><span data-i18n="process_2_tag">TAG</span></button>
+              <button class="chip" data-stage="3" type="button"><i class="fa-solid fa-video"></i><span data-i18n="process_3_tag">TAG</span></button>
+              <button class="chip" data-stage="4" type="button"><i class="fa-solid fa-sliders"></i><span data-i18n="process_4_tag">TAG</span></button>
+                </div>
+                <div class="stage-text">
+                  <div class="stage-panel active" data-stage="1">
+                <span class="step-num">01 / <span data-i18n="process_1_tag">TAG</span></span>
+                <h3 data-i18n="process_1_title">Title</h3>
+                <p data-i18n="process_1_desc">Desc</p>
+              </div>
+              <div class="stage-panel" data-stage="2">
+                <span class="step-num">02 / <span data-i18n="process_2_tag">TAG</span></span>
+                <h3 data-i18n="process_2_title">Title</h3>
+                <p data-i18n="process_2_desc">Desc</p>
+              </div>
+              <div class="stage-panel" data-stage="3">
+                <span class="step-num">03 / <span data-i18n="process_3_tag">TAG</span></span>
+                <h3 data-i18n="process_3_title">Title</h3>
+                <p data-i18n="process_3_desc">Desc</p>
+              </div>
+              <div class="stage-panel" data-stage="4">
+                <span class="step-num">04 / <span data-i18n="process_4_tag">TAG</span></span>
+                <h3 data-i18n="process_4_title">Title</h3>
+                <p data-i18n="process_4_desc">Desc</p>
+              </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="transport">
+              <button class="tbtn" id="btnPrev" type="button" aria-label="Previous stage"><i class="fa-solid fa-backward-step"></i></button>
+              <button class="tbtn play" id="btnPlay" type="button" aria-label="Play or pause"><i class="fa-solid fa-pause"></i></button>
+              <button class="tbtn" id="btnNext" type="button" aria-label="Next stage"><i class="fa-solid fa-forward-step"></i></button>
+              <span class="tl-hint" data-i18n="timeline_hint">Drag the playhead or click a stage</span>
+              <span class="tl-timecode" id="tcMain">00:00:00:00</span>
+            </div>
+
+            <div class="tl" id="tl">
+              <div class="tl-row"><div class="tl-label"></div>
+                <div class="tl-ruler"><span style="left:0">0:00</span><span style="left:25%">0:10</span><span style="left:50%">0:20</span><span style="left:75%">0:30</span></div></div>
+              <div class="tl-row tl-stage-row"><div class="tl-label" data-i18n="timeline_stages">STAGES</div>
+                <div class="lane tall">
+            <button class="stage-clip" data-stage="1" type="button" style="left:0%;width:25%;"><i class="fa-solid fa-feather-pointed"></i><span data-i18n="process_1_tag">TAG</span></button>
+            <button class="stage-clip" data-stage="2" type="button" style="left:25%;width:25%;"><i class="fa-solid fa-clapperboard"></i><span data-i18n="process_2_tag">TAG</span></button>
+            <button class="stage-clip" data-stage="3" type="button" style="left:50%;width:25%;"><i class="fa-solid fa-video"></i><span data-i18n="process_3_tag">TAG</span></button>
+            <button class="stage-clip" data-stage="4" type="button" style="left:75%;width:25%;"><i class="fa-solid fa-sliders"></i><span data-i18n="process_4_tag">TAG</span></button>
+                </div></div>
+              <div class="tl-row"><div class="tl-label" data-i18n="timeline_plan">PLAN</div>
+                <div class="lane"><div class="clip c-doc" data-start="1" style="left:1%;width:23%;">SCRIPT</div><div class="clip c-story" data-start="26" style="left:26%;width:23%;">STORYBOARD</div></div></div>
+              <div class="tl-row"><div class="tl-label" data-i18n="timeline_video">VIDEO</div>
+                <div class="lane"><div class="clip c1" data-start="51" style="left:51%;width:9%;">SCENE 01</div><div class="clip c2" data-start="61" style="left:61%;width:9%;">SCENE 02</div><div class="clip c3" data-start="71" style="left:71%;width:8%;">SCENE 03</div><div class="clip c-final" data-start="81" style="left:81%;width:18%;">FINAL CUT</div></div></div>
+              <div class="tl-row"><div class="tl-label" data-i18n="timeline_broll">B-ROLL</div>
+                <div class="lane"><div class="clip c-broll" data-start="56" style="left:56%;width:10%;">B-ROLL</div><div class="clip c-broll" data-start="72" style="left:72%;width:10%;">INSERT</div><div class="clip c-broll" data-start="86" style="left:86%;width:11%;">CUTAWAY</div></div></div>
+              <div class="tl-row"><div class="tl-label" data-i18n="timeline_audio">AUDIO</div>
+                <div class="lane"><div class="clip c-audio" data-start="51" style="left:51%;width:23%;">ON-SET AUDIO</div><div class="clip c-audio" data-start="76" style="left:76%;width:23%;">MUSIC + SFX</div></div></div>
+              <div class="tl-playhead"><i id="playheadLine" style="left:0"></i></div>
+              <div class="tl-seek" id="tlSeek"></div>
+            </div>
+
+            <div class="status-bar"><span>24 fps · 1920×1080</span><span id="statusStage">Stage 1 / 4</span></div>
+          </div>
+        </div>
+        <button class="win-reopen" id="winReopen" type="button"><i class="fa-solid fa-window-restore"></i> <span data-i18n="timeline_reopen">Reopen the editor</span></button>
       </div>
     </div>
   </section>
@@ -1664,8 +1937,19 @@
   <script>
     const translations = {
       en: {
-        nav_about: "About", nav_clients: "Work with", nav_showcase: "Showcase", nav_hub: "Reels & series",
+        nav_about: "About", nav_process: "Process", nav_clients: "Work with", nav_showcase: "Showcase", nav_hub: "Reels & series",
         nav_contact: "Contact", nav_prod: "Production House", nav_get_in_touch: "Get In Touch",
+        process_tag: "My Process", process_title_1: "From Script", process_title_2: "To Screen",
+        process_sub: "Every project I make goes through the same four stages — writing, prep, shooting and editing — before it reaches your screen.",
+        process_1_tag: "SCENARIO", process_1_title: "Writing The Script",
+        process_1_desc: "Every film starts on paper — building the story, the characters and the scenario before a single frame is shot.",
+        process_2_tag: "PRE-PRODUCTION", process_2_title: "Storyboard & Clapboard",
+        process_2_desc: "Planning every shot with a storyboard, scouting locations and prepping the set — action!",
+        process_3_tag: "TOURNAGE", process_3_title: "Shooting Day",
+        process_3_desc: "On set, behind the camera — directing, framing and capturing every scene exactly as it was written.",
+        process_4_tag: "POST-PRODUCTION", process_4_title: "Editing The Timeline",
+        process_4_desc: "Cutting, grading and mixing every clip on the timeline until the story truly comes together.",
+        timeline_app_name: "Farees Studio — Timeline", timeline_video: "VIDEO", timeline_broll: "B-ROLL", timeline_audio: "AUDIO", timeline_stages: "STAGES", timeline_plan: "PLAN", timeline_hint: "Drag the playhead or click a stage", timeline_reopen: "Reopen the editor",
         hero_role: "Filmmaker & Content Creator",
         hero_title: '<span class="accent">ABSOLUTE CINEMA</span>',
         hero_sub: "If you don’t like the shot…CUUUTTT! & Do it again.",
@@ -1718,8 +2002,19 @@
         series_6: "Top 5 filmmaking mistakes I've made"
       },
       fr: {
-        nav_about: "À Propos", nav_clients: "travailler avec", nav_showcase: "Projets", nav_hub: "Reels & series",
+        nav_about: "À Propos", nav_process: "Processus", nav_clients: "travailler avec", nav_showcase: "Projets", nav_hub: "Reels & series",
         nav_contact: "Contact", nav_prod: "Maison de Production", nav_get_in_touch: "Contactez-moi",
+        process_tag: "Mon Processus", process_title_1: "Du Scénario", process_title_2: "À L'écran",
+        process_sub: "Chaque projet que je réalise passe par les mêmes quatre étapes — écriture, préparation, tournage et montage — avant d'arriver sur votre écran.",
+        process_1_tag: "SCÉNARIO", process_1_title: "Écriture Du Scénario",
+        process_1_desc: "Chaque film commence sur papier — construire l'histoire, les personnages et le scénario avant même de tourner une seule image.",
+        process_2_tag: "PRÉ-PRODUCTION", process_2_title: "Storyboard & Clap",
+        process_2_desc: "Planifier chaque plan avec un storyboard, repérer les lieux et préparer le plateau — moteur, ça tourne !",
+        process_3_tag: "TOURNAGE", process_3_title: "Jour De Tournage",
+        process_3_desc: "Sur le plateau, derrière la caméra — diriger, cadrer et capturer chaque scène exactement comme elle a été écrite.",
+        process_4_tag: "POST-PRODUCTION", process_4_title: "Montage Sur La Timeline",
+        process_4_desc: "Couper, étalonner et mixer chaque plan sur la timeline jusqu'à ce que l'histoire prenne vraiment forme.",
+        timeline_app_name: "Farees Studio — Timeline", timeline_video: "VIDÉO", timeline_broll: "B-ROLL", timeline_audio: "AUDIO", timeline_stages: "ÉTAPES", timeline_plan: "PRÉPA", timeline_hint: "Glissez la tête de lecture ou cliquez sur une étape", timeline_reopen: "Rouvrir l'éditeur",
         hero_role: "Réalisateur & Créateur de Contenu",
         hero_title: '<span class="accent">ABSOLUTE CINEMA</span>',
         hero_sub: "Si tu n'aimes pas le plan... COOOOUPE ! Et recommence.",
@@ -1774,6 +2069,18 @@
       tn: {
         nav_about: "شكون أنا", nav_clients: "خدمت مع", nav_showcase: "خدمتي", nav_hub: "الريلز و السلاسل",
         nav_contact: "تواصل معايا", nav_prod: "شركة الإنتاج", nav_get_in_touch: "تواصل معايا",
+        nav_process: "مراحل الخدمة",
+        process_tag: "مراحل خدمتي", process_title_1: "من السيناريو", process_title_2: "للشاشة",
+        process_sub: "كل بروجي نعمله يمشي على نفس الأربع مراحل — الكتابة، التحضير، التصوير، والمونتاج — قبل ما يوصل لعندك.",
+        process_1_tag: "سيناريو", process_1_title: "كتابة السيناريو",
+        process_1_desc: "كل فيلم يبدا بالكتابة — نبني القصة والشخصيات والسيناريو قبل ما نصور ولا صورة وحدة.",
+        process_2_tag: "التحضير", process_2_title: "ستوري بورد و كلاكيت",
+        process_2_desc: "نخطط لكل لقطة بستوري بورد، نشوف الأماكن ونحضر البلاتو — ستارت!",
+        process_3_tag: "تصوير", process_3_title: "نهار التصوير",
+        process_3_desc: "فوق البلاتو، وراء الكاميرا — نخرّج، نأطر، ونصور كل مشهد بالضبط كيفاش تكتب.",
+        process_4_tag: "المونتاج", process_4_title: "مونتاج التايملاين",
+        process_4_desc: "نقص، نلوّن، ونمكس كل لقطة فوق التايملاين حتى تولي القصة كاملة.",
+        timeline_app_name: "فارس ستوديو — Timeline", timeline_video: "فيديو", timeline_broll: "لقطات إضافية", timeline_audio: "صوت", timeline_stages: "المراحل", timeline_plan: "التحضير", timeline_hint: "جرّ المؤشر ولا اضغط على مرحلة", timeline_reopen: "افتح المونتاج من جديد",
         hero_role: "صانع أفلام و محتوى",
         hero_title: '<span class="accent">ABSOLUTE CINEMA</span>',
         hero_sub: "كان ما عجبتكش اللقطة... قص! وعاود من جديد.",
@@ -2048,6 +2355,96 @@
     document.querySelectorAll('.counter-grid, .brand-matrix, .project-grid, .reels-grid').forEach(grid => {
       staggerObserver.observe(grid);
     });
+
+    // ===== Interactive editor: Windows-style window + live timeline =====
+    (function () {
+      const win = document.getElementById('editorWin');
+      if (!win) return;
+      const $ = (s, r = win) => r.querySelector(s);
+      const $$ = (s, r = win) => Array.from(r.querySelectorAll(s));
+      const seek = $('#tlSeek'), line = $('#playheadLine'), playBtn = $('#btnPlay');
+      const DURATION = 40000; // ms for the full loop (10s per stage)
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let t = 0, playing = !reduce, last = performance.now(), stage = -1, visible = false, dragging = false;
+
+      const tc = p => {
+        const total = Math.floor(p * 40 * 24);
+        const f = total % 24, s = Math.floor(total / 24) % 60, m = Math.floor(total / 1440);
+        const z = n => String(n).padStart(2, '0');
+        return z(m) + ':' + z(s) + ':' + z(f);
+      };
+      const fullTc = p => '00:' + tc(p);
+
+      function setStage(i) {
+        if (i === stage) return;
+        stage = i;
+        $$('.chip').forEach((c, k) => { c.classList.toggle('active', k === i); c.classList.toggle('done', k < i); });
+        $$('.stage-clip').forEach((c, k) => { c.classList.toggle('active', k === i); c.classList.toggle('done', k < i); });
+        $$('.stage-panel').forEach((p, k) => p.classList.toggle('active', k === i));
+        $$('.stage-visual').forEach((v, k) => v.classList.toggle('active', k === i));
+        $('#statusStage').textContent = 'Stage ' + (i + 1) + ' / 4';
+      }
+
+      function render() {
+        const p = t / DURATION;
+        line.style.left = (p * 100) + '%';
+        $$('.clip').forEach(c => c.classList.toggle('on', p * 100 >= parseFloat(c.dataset.start)));
+        setStage(Math.min(3, Math.floor(p * 4)));
+        const code = fullTc(p);
+        $('#tcMain').textContent = code; $('#screenTc').textContent = code;
+      }
+
+      function setPlaying(v) {
+        playing = v;
+        playBtn.innerHTML = '<i class="fa-solid ' + (v ? 'fa-pause' : 'fa-play') + '"></i>';
+        $('#recTag').classList.toggle('paused', !v);
+        last = performance.now();
+      }
+
+      function goStage(i) { t = i * (DURATION / 4) + 1; render(); }
+
+      function frame(now) {
+        const dt = now - last; last = now;
+        if (playing && visible && !dragging) { t += dt; if (t >= DURATION) t = 0; render(); }
+        requestAnimationFrame(frame);
+      }
+
+      function scrub(e) {
+        const r = seek.getBoundingClientRect();
+        const x = Math.min(Math.max(e.clientX - r.left, 0), r.width);
+        t = (x / r.width) * DURATION * 0.9999; render();
+      }
+      seek.addEventListener('pointerdown', e => { dragging = true; seek.setPointerCapture(e.pointerId); scrub(e); });
+      seek.addEventListener('pointermove', e => { if (dragging) scrub(e); });
+      const endDrag = () => { dragging = false; last = performance.now(); };
+      seek.addEventListener('pointerup', endDrag); seek.addEventListener('pointercancel', endDrag);
+
+      $$('.chip, .stage-clip').forEach(el => el.addEventListener('click', () => goStage(+el.dataset.stage - 1)));
+      $('#btnPrev').addEventListener('click', () => goStage((Math.max(stage, 0) + 3) % 4));
+      $('#btnNext').addEventListener('click', () => goStage((stage + 1) % 4));
+      playBtn.addEventListener('click', () => setPlaying(!playing));
+
+      // Windows controls
+      const reopen = document.getElementById('winReopen');
+      $('#winMin').addEventListener('click', () => win.classList.toggle('is-min'));
+      $('#winMax').addEventListener('click', () => {
+        const on = win.classList.toggle('is-max');
+        win.classList.remove('is-min');
+        $('#winMax i').className = on ? 'fa-regular fa-window-restore' : 'fa-regular fa-square';
+        document.body.style.overflow = on ? 'hidden' : '';
+      });
+      $('#winClose').addEventListener('click', () => {
+        win.classList.remove('is-max'); document.body.style.overflow = '';
+        win.classList.add('is-closed'); reopen.classList.add('show'); setPlaying(false);
+      });
+      reopen.addEventListener('click', () => {
+        win.classList.remove('is-closed', 'is-min'); reopen.classList.remove('show'); setPlaying(true);
+      });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && win.classList.contains('is-max')) $('#winMax').click(); });
+
+      new IntersectionObserver(es => { visible = es[0].isIntersecting; last = performance.now(); }, { threshold: 0.25 }).observe(win);
+      setPlaying(playing); render(); requestAnimationFrame(frame);
+    })();
   </script>
 </body>
 
