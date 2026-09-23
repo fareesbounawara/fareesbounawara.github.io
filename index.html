@@ -24,6 +24,9 @@
   <!-- Particles.js -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
+  <!-- Anime.js (cinematic UI animations) -->
+  <script src="https://cdn.jsdelivr.net/npm/animejs/dist/bundles/anime.umd.min.js"></script>
+
   <style>
     :root {
       --neon: #00ff66;
@@ -459,6 +462,15 @@
       font-weight: 800;
       line-height: 1.1;
       margin-top: 225px;
+    }
+
+    /* Cinematic hero intro (animated by anime.js) */
+    .hero-badge,
+    .hero-title,
+    .hero-sub,
+    .hero-ctas .btn {
+      opacity: 0;
+      will-change: transform, opacity;
     }
 
     .hero-title .accent {
@@ -1013,7 +1025,7 @@
     .reveal {
       opacity: 0;
       transform: translateY(40px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform, opacity;
     }
 
     .reveal.active {
@@ -1024,12 +1036,17 @@
     .reveal-stagger {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      will-change: transform, opacity;
     }
 
     .reveal-stagger.active {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    /* Logo heartbeat + magnetic buttons (animated by anime.js) */
+    .logo span {
+      display: inline-block;
     }
 
     @media (max-width: 980px) {
@@ -1841,8 +1858,31 @@
     });
 
     window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('loader').classList.add('hidden'), 500);
+      setTimeout(() => {
+        document.getElementById('loader').classList.add('hidden');
+        playHeroIntro();
+      }, 500);
     });
+
+    // ===== Anime.js cinematic intro (hero) =====
+    function playHeroIntro() {
+      if (!window.anime) return;
+      const { animate, createTimeline, stagger } = anime;
+
+      createTimeline({ defaults: { ease: 'outExpo' } })
+        .add('.hero-badge', { opacity: [0, 1], translateY: [-16, 0], duration: 800 })
+        .add('.hero-title', { opacity: [0, 1], translateY: [30, 0], scale: [0.94, 1], duration: 1000 }, '-=550')
+        .add('.hero-sub', { opacity: [0, 1], translateY: [18, 0], duration: 800 }, '-=650')
+        .add('.hero-ctas .btn', { opacity: [0, 1], translateY: [18, 0], duration: 700, delay: stagger(120) }, '-=500');
+
+      // Subtle continuous heartbeat on the logo dot
+      animate('.logo span', {
+        scale: [1, 1.35, 1],
+        duration: 2200,
+        loop: true,
+        ease: 'inOutSine'
+      });
+    }
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1935,10 +1975,42 @@
     }
 
     const observerOptions = { root: null, rootMargin: '0px', threshold: 0.12 };
+    const { animate, stagger } = window.anime || {};
+
+    // Snapshot each stat's target number so it can be counted up from 0
+    document.querySelectorAll('.counter-num').forEach(el => {
+      const raw = el.textContent.trim();
+      el.dataset.target = raw.replace(/\D/g, '');
+      el.dataset.plus = raw.startsWith('+') ? '1' : '0';
+    });
+
+    function countUpStat(el) {
+      const target = parseInt(el.dataset.target, 10) || 0;
+      const prefix = el.dataset.plus === '1' ? '+' : '';
+      el.textContent = prefix + '0';
+      if (!animate) { el.textContent = prefix + target; return; }
+      const counter = { val: 0 };
+      animate(counter, {
+        val: target,
+        duration: 1600,
+        ease: 'outExpo',
+        onUpdate: () => { el.textContent = prefix + Math.round(counter.val); }
+      });
+    }
+
     const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+          if (animate) {
+            animate(entry.target, {
+              opacity: [0, 1],
+              translateY: [40, 0],
+              duration: 900,
+              ease: 'outExpo'
+            });
+          } else {
+            entry.target.classList.add('active');
+          }
           observer.unobserve(entry.target);
         }
       });
@@ -1950,9 +2022,24 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const children = entry.target.querySelectorAll('.reveal-stagger');
-          children.forEach((child, index) => {
-            setTimeout(() => { child.classList.add('active'); }, index * 80);
-          });
+          if (animate) {
+            animate(children, {
+              opacity: [0, 1],
+              translateY: [30, 0],
+              duration: 700,
+              delay: stagger(80),
+              ease: 'outQuad'
+            });
+          } else {
+            children.forEach((child, index) => {
+              setTimeout(() => { child.classList.add('active'); }, index * 80);
+            });
+          }
+          if (entry.target.classList.contains('counter-grid')) {
+            entry.target.querySelectorAll('.counter-num').forEach((el, i) => {
+              setTimeout(() => countUpStat(el), i * 80 + 200);
+            });
+          }
           observer.unobserve(entry.target);
         }
       });
