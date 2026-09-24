@@ -51,6 +51,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta property="og:description"
     content="Official portfolio of Farees Bounawara — Filmmaker, Director, and Visual Storyteller. Discover short films, commercials, and cinema tutorials." />
   <meta property="og:image" content="https://fareesbounawara.github.io/thumbnail.png" />
+  <meta property="og:image:secure_url" content="https://fareesbounawara.github.io/thumbnail.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Farees Bounawara — Filmmaker &amp; Content Creator. Absolute Cinema." />
   <meta property="og:locale" content="en_US" />
   <meta property="og:locale:alternate" content="fr_FR" />
   <meta property="og:locale:alternate" content="ar_TN" />
@@ -61,7 +66,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="twitter:title" content="Farees Bounawara | Filmmaker, Director & Content Creator" />
   <meta name="twitter:description"
     content="Official portfolio of Farees Bounawara — Filmmaker, Director, and Visual Storyteller." />
-  <meta name="twitter:image" content="https://fareesbounawara.github.io/thumbnail.png" />  
+  <meta name="twitter:image" content="https://fareesbounawara.github.io/thumbnail.png" />
+  <meta name="twitter:image:alt" content="Farees Bounawara — Filmmaker &amp; Content Creator. Absolute Cinema." />  
 
   <!-- Schema.org JSON-LD Structured Data for Google First Page Ranking -->
   <script type="application/ld+json">
@@ -144,7 +150,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </script>
 
   <!-- Favicon (أيقونة التبويب في المتصفح) -->
-  <link rel="icon" type="image/png" href="cornerlogo.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://fareesbounawara.github.io/cornerlogo.png">
+  <link rel="shortcut icon" href="https://fareesbounawara.github.io/cornerlogo.png">
+  <link rel="apple-touch-icon" href="https://fareesbounawara.github.io/cornerlogo.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1747,6 +1755,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .sound-ctl:focus-within .sound-vol-wrap { width: 84px; }
       .sound-ctl:hover:not(:focus-within) .sound-vol-wrap { width: 0; opacity: 0; margin: 0; }
     }
+  
+    /* ===== CINEMATIC LAYER: grain, vignette, spotlight, letterbox, shockwave ===== */
+    .film-grain {
+      position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+      z-index: 8000; pointer-events: none; opacity: 0.07;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      animation: grainShift 0.9s steps(6) infinite;
+    }
+    @keyframes grainShift {
+      0% { transform: translate(0, 0); } 20% { transform: translate(-4%, 3%); }
+      40% { transform: translate(3%, -5%); } 60% { transform: translate(-5%, -2%); }
+      80% { transform: translate(4%, 4%); } 100% { transform: translate(0, 0); }
+    }
+    .cine-vignette {
+      position: fixed; inset: 0; z-index: 7999; pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.55) 100%);
+    }
+    .cine-spot {
+      position: fixed; inset: 0; z-index: 7998; pointer-events: none;
+      background: radial-gradient(520px circle at var(--mx, 50%) var(--my, 50%), rgba(0, 255, 102, 0.07), transparent 65%);
+    }
+    .letterbox {
+      position: fixed; left: 0; right: 0; z-index: 8500; pointer-events: none;
+      height: 11vh; background: #000;
+      transition: transform 1.8s cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    .letterbox.top { top: 0; }
+    .letterbox.bottom { bottom: 0; }
+    body.cine-open .letterbox.top { transform: translateY(-101%); }
+    body.cine-open .letterbox.bottom { transform: translateY(101%); }
+    .hero-img-bg {
+      transform: scale(1.08) translate3d(var(--px, 0px), var(--py, 0px), 0);
+      transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+    .shock {
+      position: fixed; z-index: 9990; pointer-events: none; width: 20px; height: 20px;
+      margin: -10px 0 0 -10px; border-radius: 50%;
+      border: 2px solid var(--neon); box-shadow: 0 0 18px var(--neon);
+      animation: shockwave 0.8s cubic-bezier(0.1, 0.7, 0.2, 1) forwards;
+    }
+    @keyframes shockwave { from { transform: scale(0.3); opacity: 0.9; } to { transform: scale(7); opacity: 0; } }
+    @media (max-width: 700px) { .film-grain { opacity: 0.05; } .cine-spot { display: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      .film-grain { animation: none; }
+      .hero-img-bg { transform: none; transition: none; }
+      .letterbox { display: none; }
+      .shock { display: none; }
+    }
   </style>
 </head>
 
@@ -1806,7 +1862,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- HERO SECTION -->
   <section id="hero">
-    <img src="bg.jpg" alt="Absolute Cinema Background" class="hero-img-bg" />
+    <video class="hero-img-bg hero-video" autoplay muted loop playsinline preload="auto" poster="bg.jpg" aria-label="Absolute Cinema Background">
+      <source src="bg.mp4" type="video/mp4" />
+    </video>
     <div class="hero-overlay"></div>
     <div id="particles-js"></div>
 
@@ -2381,14 +2439,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
+  <!-- CINEMATIC LAYER -->
+  <div class="film-grain" aria-hidden="true"></div>
+  <div class="cine-vignette" aria-hidden="true"></div>
+  <div class="cine-spot" aria-hidden="true"></div>
+  <div class="letterbox top" aria-hidden="true"></div>
+  <div class="letterbox bottom" aria-hidden="true"></div>
+
   <!-- SOUND CONTROL -->
   <div class="sound-ctl idle" id="sound-ctl">
-    <button class="sound-btn" id="sound-toggle" type="button" aria-label="Turn sound on" aria-pressed="false" title="Sound on / off">
+    <button class="sound-btn" id="sound-toggle" type="button" aria-label="Turn ambient music on" aria-pressed="false" title="Ambient music on / off">
       <i class="fa-solid fa-volume-xmark" id="sound-icon"></i>
       <span class="sound-eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
     </button>
     <div class="sound-vol-wrap">
-      <input class="sound-vol" id="sound-vol" type="range" min="0" max="100" value="60" aria-label="Volume" />
+      <input class="sound-vol" id="sound-vol" type="range" min="0" max="100" value="60" aria-label="Music volume" title="Music volume" />
     </div>
   </div>
 
@@ -3150,7 +3215,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     })();
   </script>
   <script>
-    /* ===== Cinematic sound engine (Web Audio, no audio files needed) ===== */
+    /* ===== Cinematic sound engine (Web Audio, no audio files needed) =====
+       - The sound button + slider control ONLY the ambient music.
+       - Click / hover / mouse / scroll / typing effects are always on.        */
     (function () {
       const AC = window.AudioContext || window.webkitAudioContext;
       const ctl = document.getElementById('sound-ctl');
@@ -3159,7 +3226,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const vol = document.getElementById('sound-vol');
       if (!AC || !ctl) return;
 
-      // ---- saved preferences ----
+      // ---- saved preferences (music only) ----
       let muted = false, volume = 0.6;
       try {
         muted = localStorage.getItem('fb_sound_muted') === '1';
@@ -3170,11 +3237,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const paintVol = () => vol.style.setProperty('--v', vol.value + '%');
       paintVol();
 
-      let ctx, master, musicBus, sfxBus, ambGain, reverb, reverbSend, noiseBuf, scrollGain, scrollFilter;
-      let started = false, ducked = false, skipNextClick = false;
-      let musicTimer = null, chordTimer = null, grainTimer = null;
+      let ctx, master, musicBus, sfxBus, ambGain, reverbM, reverbS, noiseBuf, scrollGain, scrollFilter;
+      let started = false, ducked = false, introPlayed = false, skipNextClick = false;
+      let musicTimer = null, chordTimer = null, grainTimer = null, heartTimer = null;
       const voices = [];
-      const MUSIC_LEVEL = 0.55;
+      const MUSIC_LEVEL = 0.55;   // music bus = slider volume * this
+      const SFX_LEVEL = 0.7;      // sound effects: fixed level, never muted by the button
 
       const chords = [
         [73.42, 110.00, 146.83, 174.61, 220.00, 293.66],  // Dm9
@@ -3185,6 +3253,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const bellNotes = [587.33, 698.46, 880.00, 1046.50, 1174.66];
       let chordIdx = 0;
       const rnd = (a, b) => a + Math.random() * (b - a);
+      const clampPan = p => Math.max(-1, Math.min(1, p));
 
       // ------------------------------------------------------------------
       // Engine helpers
@@ -3199,14 +3268,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return buf;
       }
 
-      // route a node to a destination, with optional stereo pan and reverb send
+      // route a node to a bus with optional pan (number or {from,to,dur} sweep) and reverb send
       function route(node, dest, pan, wet) {
         let d = dest;
         if (pan != null && ctx.createStereoPanner) {
-          const p = ctx.createStereoPanner(); p.pan.value = Math.max(-1, Math.min(1, pan)); p.connect(dest); d = p;
+          const p = ctx.createStereoPanner();
+          if (typeof pan === 'object') {
+            const t0 = ctx.currentTime;
+            p.pan.setValueAtTime(clampPan(pan.from), t0);
+            p.pan.linearRampToValueAtTime(clampPan(pan.to), t0 + pan.dur);
+          } else p.pan.value = clampPan(pan);
+          p.connect(dest); d = p;
         }
         node.connect(d);
-        if (wet) { const w = ctx.createGain(); w.gain.value = wet; node.connect(w); w.connect(reverb); }
+        if (wet) {
+          const w = ctx.createGain(); w.gain.value = wet; node.connect(w);
+          w.connect(dest === musicBus ? reverbM : reverbS);
+        }
       }
 
       function tone(dest, o) {
@@ -3249,22 +3327,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       // ------------------------------------------------------------------
       function setup() {
         ctx = new AC();
-        master = ctx.createGain(); master.gain.value = 0;
+        master = ctx.createGain(); master.gain.value = 1;
         const comp = ctx.createDynamicsCompressor();
         master.connect(comp); comp.connect(ctx.destination);
 
-        musicBus = ctx.createGain(); musicBus.gain.value = MUSIC_LEVEL; musicBus.connect(master);
-        sfxBus = ctx.createGain(); sfxBus.gain.value = 1; sfxBus.connect(master);
+        musicBus = ctx.createGain(); musicBus.gain.value = 0; musicBus.connect(master);
+        sfxBus = ctx.createGain(); sfxBus.gain.value = SFX_LEVEL; sfxBus.connect(master);
 
-        reverb = ctx.createConvolver(); reverb.buffer = makeImpulse(5.5, 2.4);
-        reverbSend = ctx.createGain(); reverbSend.gain.value = 0.9;
-        reverb.connect(reverbSend); reverbSend.connect(musicBus);
+        // two separate big cinematic halls: one for music, one for effects
+        const ir = makeImpulse(6.5, 2.3);
+        reverbM = ctx.createConvolver(); reverbM.buffer = ir;
+        const rmG = ctx.createGain(); rmG.gain.value = 0.9; reverbM.connect(rmG); rmG.connect(musicBus);
+        reverbS = ctx.createConvolver(); reverbS.buffer = ir;
+        const rsG = ctx.createGain(); rsG.gain.value = 0.9; reverbS.connect(rsG); rsG.connect(sfxBus);
 
         noiseBuf = ctx.createBuffer(1, ctx.sampleRate, ctx.sampleRate);
         const nd = noiseBuf.getChannelData(0);
         for (let i = 0; i < nd.length; i++) nd[i] = Math.random() * 2 - 1;
 
-        // all ambient beds fade in through one gain
         ambGain = ctx.createGain(); ambGain.gain.value = 0; ambGain.connect(musicBus);
         buildPad(); buildWind(); buildScrollAir();
       }
@@ -3277,7 +3357,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         lfo.connect(lfoAmt); lfoAmt.connect(filter.frequency); lfo.start();
 
         const padGain = ctx.createGain(); padGain.gain.value = 0.9;
-        filter.connect(padGain); padGain.connect(ambGain); padGain.connect(reverb);
+        filter.connect(padGain); padGain.connect(ambGain); padGain.connect(reverbM);
 
         chords[0].forEach((f, i) => {
           [-7, 7].forEach((cents, k) => {
@@ -3299,7 +3379,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         voices.push({ o: sub, sub: true });
       }
 
-      // distant wind moving slowly across the stereo field
+      // distant wind drifting across the stereo field
       function buildWind() {
         const s = ctx.createBufferSource(); s.buffer = noiseBuf; s.loop = true;
         const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 0.7; bp.frequency.value = 420;
@@ -3314,11 +3394,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           const a3 = ctx.createGain(); a3.gain.value = 0.7; l3.connect(a3); a3.connect(pan.pan); l3.start();
         }
         s.connect(bp); bp.connect(g);
-        if (pan) { g.connect(pan); pan.connect(ambGain); pan.connect(reverb); } else { g.connect(ambGain); }
+        if (pan) { g.connect(pan); pan.connect(ambGain); pan.connect(reverbM); } else g.connect(ambGain);
         s.start();
       }
 
-      // air that rushes past while you scroll (volume follows scroll speed)
+      // air that rushes past while you scroll (volume follows scroll speed) - an effect, always on
       function buildScrollAir() {
         const s = ctx.createBufferSource(); s.buffer = noiseBuf; s.loop = true;
         scrollFilter = ctx.createBiquadFilter(); scrollFilter.type = 'bandpass'; scrollFilter.Q.value = 0.8; scrollFilter.frequency.value = 600;
@@ -3337,23 +3417,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       // Music events (random, keep the score alive)
       // ------------------------------------------------------------------
       function bell() {
-        const f = bellNotes[Math.floor(Math.random() * bellNotes.length)];
-        const pan = rnd(-0.6, 0.6);
+        const f = bellNotes[Math.floor(Math.random() * bellNotes.length)], pan = rnd(-0.6, 0.6);
         tone(musicBus, { f0: f, dur: 6, gain: 0.022, attack: 0.04, pan, wet: 1 });
         tone(musicBus, { f0: f * 2.01, dur: 5, gain: 0.008, attack: 0.04, pan, wet: 1 });
       }
-      function arp() {                                   // soft piano-ish arpeggio in the current chord
+      function arp() {
         const ch = chords[chordIdx], pan = rnd(-0.5, 0.5);
-        const pick = [ch[2], ch[3], ch[4], ch[5], ch[4], ch[3]];
-        pick.forEach((f, i) => tone(musicBus, { f0: f * 2, dur: 3.2, gain: 0.02, type: 'triangle', attack: 0.01, t: i * 0.42, pan, wet: 1 }));
+        [ch[2], ch[3], ch[4], ch[5], ch[4], ch[3]].forEach((f, i) =>
+          tone(musicBus, { f0: f * 2, dur: 3.2, gain: 0.02, type: 'triangle', attack: 0.01, t: i * 0.42, pan, wet: 1 }));
       }
-      function taiko() {                                 // distant war-drum
+      function taiko() {
         tone(musicBus, { f0: 95, f1: 42, dur: 0.9, gain: 0.32, wet: 0.8 });
         noiseBurst(musicBus, { dur: 0.25, f0: 900, f1: 200, q: 0.8, gain: 0.08, type: 'lowpass', wet: 0.9 });
       }
-      function swell() {
-        tone(musicBus, { f0: 49, f1: 41, dur: 6.5, gain: 0.22, attack: 2.2, wet: 0.8 });
-      }
+      function swell() { tone(musicBus, { f0: 49, f1: 41, dur: 6.5, gain: 0.22, attack: 2.2, wet: 0.8 }); }
       function riserHit() {                              // reverse build -> deep impact
         const d = 3.6;
         noiseBurst(musicBus, { dur: d, f0: 250, f1: 5500, q: 1.1, gain: 0.05, shape: 'rise', wet: 0.5 });
@@ -3361,13 +3438,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         tone(musicBus, { f0: 70, f1: 30, dur: 2.8, gain: 0.5, t: d + 0.02, wet: 0.7 });
         noiseBurst(musicBus, { dur: 1.4, f0: 3000, f1: 150, q: 0.7, gain: 0.12, type: 'lowpass', t: d + 0.02, wet: 0.9 });
       }
+      // slow epic string swell with vibrato
+      function strings() {
+        const ch = chords[chordIdx], now = ctx.currentTime, dur = 8;
+        const f = ctx.createBiquadFilter(); f.type = 'lowpass'; f.frequency.value = 1400; f.Q.value = 0.5;
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0, now);
+        g.gain.linearRampToValueAtTime(0.03, now + 3.2);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+        [ch[2], ch[3], ch[4], ch[5]].forEach((fr, i) => [-9, 9].forEach(dt => {
+          const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = fr * 2; o.detune.value = dt;
+          const v = ctx.createOscillator(); v.frequency.value = 5.2 + i * 0.3;
+          const va = ctx.createGain(); va.gain.value = 6; v.connect(va); va.connect(o.detune);
+          v.start(now); v.stop(now + dur + 0.1);
+          o.connect(f); o.start(now); o.stop(now + dur + 0.1);
+        }));
+        f.connect(g); route(g, musicBus, rnd(-0.4, 0.4), 0.9);
+      }
+      // distant choir-like "ahh" (formant filtered saws)
+      function choir() {
+        const ch = chords[chordIdx], now = ctx.currentTime, dur = 7.5;
+        const src = ctx.createGain(); src.gain.value = 1;
+        [ch[1], ch[2], ch[3]].forEach(fr => [-6, 6].forEach(dt => {
+          const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = fr * 2; o.detune.value = dt;
+          o.connect(src); o.start(now); o.stop(now + dur + 0.1);
+        }));
+        const g = ctx.createGain();
+        g.gain.setValueAtTime(0, now);
+        g.gain.linearRampToValueAtTime(0.28, now + 2.6);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + dur);
+        [[800, 1], [1150, 0.6], [2900, 0.25]].forEach(([fq, a]) => {
+          const b = ctx.createBiquadFilter(); b.type = 'bandpass'; b.frequency.value = fq; b.Q.value = 7;
+          const ga = ctx.createGain(); ga.gain.value = a;
+          src.connect(b); b.connect(ga); ga.connect(g);
+        });
+        route(g, musicBus, rnd(-0.3, 0.3), 1);
+      }
+      // slow, low heartbeat that comes and goes for tension
+      function heartPhase() {
+        if (muted || !ctx) return;
+        if (!ducked) {
+          const n = Math.floor(rnd(6, 12));
+          for (let i = 0; i < n; i++) {
+            const a = 0.12 + 0.10 * (i / n), t = i * 1.05;
+            tone(musicBus, { f0: 62, f1: 36, dur: 0.28, gain: a, t, wet: 0.3 });
+            tone(musicBus, { f0: 55, f1: 34, dur: 0.24, gain: a * 0.7, t: t + 0.3, wet: 0.3 });
+          }
+        }
+        heartTimer = setTimeout(heartPhase, rnd(20000, 38000));
+      }
+
       function musicEvent() {
         const r = Math.random();
-        if (r < 0.32) bell(); else if (r < 0.52) arp(); else if (r < 0.68) taiko();
-        else if (r < 0.84) swell(); else riserHit();
+        if (r < 0.22) bell(); else if (r < 0.38) arp(); else if (r < 0.50) taiko();
+        else if (r < 0.62) swell(); else if (r < 0.74) riserHit(); else if (r < 0.88) strings(); else choir();
+      }
+      function stopMusicTimers() {
+        clearTimeout(musicTimer); clearInterval(chordTimer); clearTimeout(grainTimer); clearTimeout(heartTimer);
       }
       function scheduleMusic() {
-        clearTimeout(musicTimer); clearInterval(chordTimer); clearTimeout(grainTimer);
+        stopMusicTimers();
         const tick = () => {
           if (muted) return;
           if (!ducked) musicEvent();
@@ -3375,6 +3505,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         };
         musicTimer = setTimeout(tick, 4500);
         chordTimer = setInterval(() => { if (!muted && !ducked) nextChord(); }, 20000);
+        heartTimer = setTimeout(heartPhase, 9000);
         grain();
       }
       // old-film crackle, very quiet
@@ -3387,33 +3518,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       // ------------------------------------------------------------------
-      // Levels + UI
+      // Levels + UI  (music only)
       // ------------------------------------------------------------------
       function applyLevels() {
         if (!ctx) return;
-        const now = ctx.currentTime;
-        master.gain.cancelScheduledValues(now);
-        master.gain.setTargetAtTime(muted ? 0 : volume, now, 0.25);
-        musicBus.gain.setTargetAtTime(ducked ? 0 : MUSIC_LEVEL, now, 0.5);
+        const target = (muted || ducked) ? 0 : volume * MUSIC_LEVEL;
+        musicBus.gain.setTargetAtTime(target, ctx.currentTime, 0.4);
       }
       function updateUI() {
         const on = started && !muted && volume > 0;
         ctl.classList.toggle('on', on);
-        ctl.classList.toggle('idle', !started);
+        ctl.classList.toggle('idle', !started && !muted);
         icon.className = 'fa-solid ' + (on ? (volume < 0.35 ? 'fa-volume-low' : 'fa-volume-high') : 'fa-volume-xmark');
         btn.setAttribute('aria-pressed', String(on));
-        btn.setAttribute('aria-label', on ? 'Mute sound' : 'Turn sound on');
+        btn.setAttribute('aria-label', on ? 'Mute ambient music' : 'Turn ambient music on');
       }
       function save() {
         try { localStorage.setItem('fb_sound_muted', muted ? '1' : '0'); localStorage.setItem('fb_sound_vol', String(volume)); } catch (e) {}
       }
 
       // ------------------------------------------------------------------
-      // Sound effects
+      // Sound effects (always available)
       // ------------------------------------------------------------------
-      const live = force => ctx && started && !muted && ctx.state === 'running' && (force || !ducked);
+      const live = () => ctx && started && ctx.state === 'running';
 
-      // the opening trailer "BRAAAM"
+      // the opening trailer "BRAAAM" (part of the music, so the button mutes it)
       function braaam() {
         const now = ctx.currentTime;
         const f = ctx.createBiquadFilter(); f.type = 'lowpass';
@@ -3422,32 +3551,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         f.frequency.exponentialRampToValueAtTime(230, now + 5);
         const g = ctx.createGain();
         g.gain.setValueAtTime(0, now);
-        g.gain.linearRampToValueAtTime(0.42, now + 0.1);
+        g.gain.linearRampToValueAtTime(0.67, now + 0.1);
         g.gain.exponentialRampToValueAtTime(0.0001, now + 5.5);
         [[36.71, -10], [73.42, 12], [73.42, -12], [110.0, 8], [146.83, -8], [55.0, 0]].forEach(([fr, dt]) => {
           const o = ctx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = fr; o.detune.value = dt;
           o.connect(f); o.start(now); o.stop(now + 5.7);
         });
-        f.connect(g); route(g, sfxBus, 0, 0.7);
-        tone(sfxBus, { f0: 62, f1: 28, dur: 3, gain: 0.6, wet: 0.5 });                         // sub drop
-        noiseBurst(sfxBus, { dur: 1.6, f0: 4500, f1: 150, q: 0.7, gain: 0.18, type: 'lowpass', wet: 0.9 }); // impact crash
+        f.connect(g); route(g, musicBus, 0, 0.7);
+        tone(musicBus, { f0: 62, f1: 28, dur: 3, gain: 0.9, wet: 0.5 });
+        noiseBurst(musicBus, { dur: 1.6, f0: 4500, f1: 150, q: 0.7, gain: 0.28, type: 'lowpass', wet: 0.9 });
       }
+      function intro() { if (introPlayed || !live()) return; introPlayed = true; braaam(); }
 
       function sfxThud(pan) {
         tone(sfxBus, { f0: 150, f1: 42, dur: 0.38, gain: 0.5, pan });
         tone(sfxBus, { f0: 1500, f1: 700, dur: 0.07, gain: 0.07, type: 'triangle', pan });
         noiseBurst(sfxBus, { dur: 0.05, f0: 3200, f1: 1800, q: 1.2, gain: 0.05, pan });
-        tone(sfxBus, { f0: 660, dur: 1.2, gain: 0.05, wet: 0.5, pan });
+        noiseBurst(sfxBus, { dur: 0.6, f0: 700, f1: 80, q: 0.7, gain: 0.12, type: 'lowpass', wet: 0.7, pan });
+        tone(sfxBus, { f0: 660, dur: 1.4, gain: 0.05, wet: 0.6, pan });
+        tone(sfxBus, { f0: 990, dur: 1.6, gain: 0.02, wet: 0.8, pan, t: 0.02 });
       }
-      function sfxTap(pan) { tone(sfxBus, { f0: 110, f1: 55, dur: 0.18, gain: 0.22, pan }); }
-
+      function sfxTap(pan) {
+        tone(sfxBus, { f0: 110, f1: 55, dur: 0.18, gain: 0.22, pan });
+        noiseBurst(sfxBus, { dur: 0.3, f0: 500, f1: 90, q: 0.7, gain: 0.05, type: 'lowpass', wet: 0.5, pan });
+      }
       // clapperboard: sharp wooden clack + body knock + tail
       function sfxClap(pan) {
         noiseBurst(sfxBus, { dur: 0.07, f0: 2200, f1: 1500, q: 1.4, gain: 0.4, pan });
         tone(sfxBus, { f0: 900, f1: 300, dur: 0.06, gain: 0.25, type: 'square', pan });
         tone(sfxBus, { f0: 260, f1: 110, dur: 0.14, gain: 0.4, pan });
         noiseBurst(sfxBus, { dur: 0.35, f0: 2500, f1: 900, q: 0.6, gain: 0.06, wet: 0.8, t: 0.01, pan });
-        tone(sfxBus, { f0: 55, f1: 38, dur: 0.6, gain: 0.35, t: 0.03 });
+        tone(sfxBus, { f0: 55, f1: 38, dur: 0.7, gain: 0.4, t: 0.03, wet: 0.4 });
       }
       // vintage camera shutter (two clicks)
       function sfxShutter(pan) {
@@ -3455,22 +3589,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         tone(sfxBus, { f0: 320, f1: 180, dur: 0.05, gain: 0.2, type: 'square', pan });
         noiseBurst(sfxBus, { dur: 0.04, f0: 4200, f1: 2500, q: 2, gain: 0.18, type: 'highpass', t: 0.07, pan });
         tone(sfxBus, { f0: 240, f1: 130, dur: 0.06, gain: 0.16, type: 'square', t: 0.07, pan });
+        noiseBurst(sfxBus, { dur: 0.4, f0: 3000, f1: 800, q: 0.6, gain: 0.03, wet: 0.7, t: 0.1, pan });
       }
-      // section / nav transition: whoosh + soft sub hit
+      // transition: whoosh + sub hit (+ shimmer when big)
       function sfxSweep(pan, big) {
-        noiseBurst(sfxBus, { dur: big ? 0.7 : 0.45, f0: 250, f1: 3200, q: 0.9, gain: big ? 0.07 : 0.05, wet: 0.5, pan });
-        tone(sfxBus, { f0: 80, f1: 44, dur: 0.7, gain: big ? 0.28 : 0.2, t: 0.12, wet: 0.4 });
+        noiseBurst(sfxBus, { dur: big ? 0.8 : 0.45, f0: 250, f1: 3200, q: 0.9, gain: big ? 0.08 : 0.05, wet: 0.6, pan });
+        tone(sfxBus, { f0: 80, f1: 44, dur: 0.8, gain: big ? 0.3 : 0.2, t: 0.12, wet: 0.5 });
+        if (big) tone(sfxBus, { f0: 1174.66, dur: 2.2, gain: 0.025, attack: 0.02, t: 0.15, wet: 1, type: 'triangle' });
       }
       function sfxHover(pan) {
         tone(sfxBus, { f0: 1320, f1: 1980, dur: 0.09, gain: 0.03, type: 'triangle', pan });
         noiseBurst(sfxBus, { dur: 0.12, f0: 2500, f1: 5000, q: 2, gain: 0.02, pan });
       }
       function sfxCardHover(pan) {
-        noiseBurst(sfxBus, { dur: 0.35, f0: 500, f1: 2600, q: 0.8, gain: 0.03, wet: 0.4, pan });
-        tone(sfxBus, { f0: 196, f1: 262, dur: 0.4, gain: 0.03, type: 'triangle', attack: 0.08, wet: 0.7, pan });
+        noiseBurst(sfxBus, { dur: 0.4, f0: 500, f1: 2600, q: 0.8, gain: 0.035, wet: 0.5, pan });
+        tone(sfxBus, { f0: 196, f1: 262, dur: 0.5, gain: 0.03, type: 'triangle', attack: 0.08, wet: 0.8, pan });
+        tone(sfxBus, { f0: 784, dur: 1.4, gain: 0.012, attack: 0.05, wet: 1, pan });
       }
       function sfxWhoosh(power, pan) {
-        noiseBurst(sfxBus, { dur: 0.32, f0: 400, f1: 1800, q: 0.9, gain: 0.018 + 0.022 * power, pan });
+        noiseBurst(sfxBus, { dur: 0.34, f0: 400, f1: 1900, q: 0.9, gain: 0.02 + 0.024 * power, pan, wet: 0.2 });
       }
       function sfxKey() {
         const pan = rnd(-0.2, 0.2);
@@ -3479,8 +3616,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
       function sfxSuccess() {
         [587.33, 698.46, 880, 1174.66].forEach((f, i) =>
-          tone(sfxBus, { f0: f, dur: 2.4, gain: 0.05, attack: 0.01, t: i * 0.11, wet: 0.9, type: 'triangle' }));
-        tone(sfxBus, { f0: 73.42, f1: 55, dur: 1.4, gain: 0.3 });
+          tone(sfxBus, { f0: f, dur: 2.6, gain: 0.05, attack: 0.01, t: i * 0.11, wet: 1, type: 'triangle' }));
+        tone(sfxBus, { f0: 73.42, f1: 55, dur: 1.6, gain: 0.32, wet: 0.4 });
       }
       function sfxError() {
         tone(sfxBus, { f0: 110, f1: 60, dur: 0.6, gain: 0.35, type: 'sawtooth', wet: 0.4 });
@@ -3488,8 +3625,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
       function sfxLightboxOpen() {                                   // riser into a deep boom
         noiseBurst(sfxBus, { dur: 0.8, f0: 200, f1: 6000, q: 1, gain: 0.14, shape: 'rise', wet: 0.4 });
-        tone(sfxBus, { f0: 60, f1: 30, dur: 2.2, gain: 0.6, t: 0.82, wet: 0.6 });
-        noiseBurst(sfxBus, { dur: 1.2, f0: 3500, f1: 140, q: 0.7, gain: 0.14, type: 'lowpass', t: 0.82, wet: 0.8 });
+        tone(sfxBus, { f0: 60, f1: 30, dur: 2.4, gain: 0.7, t: 0.82, wet: 0.6 });
+        noiseBurst(sfxBus, { dur: 1.2, f0: 3500, f1: 140, q: 0.7, gain: 0.16, type: 'lowpass', t: 0.82, wet: 0.8 });
       }
       function sfxLightboxClose() {
         noiseBurst(sfxBus, { dur: 0.6, f0: 4000, f1: 180, q: 0.9, gain: 0.08, wet: 0.5 });
@@ -3497,29 +3634,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
 
       // ------------------------------------------------------------------
-      // Start / mute
+      // Start / mute (mute affects music only)
       // ------------------------------------------------------------------
       function start() {
         if (started) return false;
         started = true;
         setup();
         if (ctx.state === 'suspended') ctx.resume();
-        const now = ctx.currentTime;
-        master.gain.setTargetAtTime(muted ? 0 : volume, now, 0.05);
-        ambGain.gain.setTargetAtTime(1, now + 0.5, 1.8);          // cinematic slow fade-in of the ambience
-        braaam();
-        scheduleMusic();
+        applyLevels();
+        ambGain.gain.setTargetAtTime(1, ctx.currentTime + 0.5, 1.8);  // slow cinematic fade-in of the ambience
+        if (!muted) { intro(); scheduleMusic(); }
         updateUI();
         return true;
       }
       function setMuted(m) {
         muted = m; save();
-        if (!started) { if (!m) start(); updateUI(); return; }
-        if (!m && ctx.state === 'suspended') ctx.resume();
+        if (!started) { start(); updateUI(); return; }
         applyLevels();
-        if (!m) scheduleMusic();
+        if (m) stopMusicTimers();
+        else { scheduleMusic(); intro(); }
         updateUI();
-        if (m) setTimeout(() => { if (muted && ctx && ctx.state === 'running') ctx.suspend(); }, 900);
       }
 
       // ------------------------------------------------------------------
@@ -3528,7 +3662,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const INTERACTIVE = 'a, button, .btn, .chip, .project-card, .reel-card, .stage-clip, .lang-option, .nav-cta, .win-ctrl, input, textarea, select, label, [onclick]';
       const CARDS = '.project-card, .reel-card';
       const inWidget = t => t && t.closest && t.closest('#sound-ctl');
-      const panOf = e => (e.clientX / window.innerWidth * 2 - 1) * 0.7;
+      const panFromX = x => (x / window.innerWidth * 2 - 1) * 0.7;
+      const panOf = e => panFromX(e.clientX);
 
       function classify(target) {
         const el = target.closest ? target.closest(INTERACTIVE) : null;
@@ -3540,18 +3675,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         return 'thud';
       }
 
-      // unlock audio on the first real gesture (browser autoplay policy)
+      // Browsers require a user gesture before audio can start: the first click/tap/key unlocks everything
       const unlock = e => {
         if (inWidget(e.target)) return;
-        if (!started && !muted) { if (start()) skipNextClick = true; }
-        else if (started && ctx.state === 'suspended' && !muted) ctx.resume();
+        if (!started) { start(); if (!muted) skipNextClick = true; }
+        else if (ctx.state === 'suspended') ctx.resume();
       };
       ['pointerdown', 'keydown', 'touchstart'].forEach(ev =>
         window.addEventListener(ev, unlock, { capture: true, passive: true }));
 
       window.addEventListener('pointerdown', e => {
         if (inWidget(e.target)) return;
-        if (skipNextClick) { skipNextClick = false; return; }
+        if (skipNextClick) { skipNextClick = false; return; }   // the intro hit already covers the first click
         if (!live()) return;
         const pan = panOf(e);
         switch (classify(e.target)) {
@@ -3573,13 +3708,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         lastHover = el;
       }, { passive: true });
 
+      // mouse movement: a whoosh that sweeps across the speakers in the direction you move
       let lx = 0, ly = 0, lt = 0, lastWhoosh = 0;
       window.addEventListener('mousemove', e => {
         const now = performance.now(), dt = now - lt;
         if (dt > 0 && lt) {
           const speed = Math.hypot(e.clientX - lx, e.clientY - ly) / dt;
           if (speed > 1.4 && now - lastWhoosh > 260 && live()) {
-            lastWhoosh = now; sfxWhoosh(Math.min(speed / 4, 1), panOf(e));
+            lastWhoosh = now;
+            sfxWhoosh(Math.min(speed / 4, 1), { from: panFromX(lx), to: panFromX(e.clientX), dur: 0.3 });
           }
         }
         lx = e.clientX; ly = e.clientY; lt = now;
@@ -3624,39 +3761,91 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         if (fs.classList.contains('success')) sfxSuccess(); else if (fs.classList.contains('error')) sfxError();
       }).observe(fs, { attributes: true, attributeFilter: ['class'] });
 
-      // sound button + volume
+      // music button + volume (ambient music only)
       btn.addEventListener('click', () => {
         if (!started) { muted = false; save(); start(); return; }
         setMuted(!muted);
-        if (!muted) setTimeout(() => { if (live()) sfxThud(0); }, 60);
+        if (live()) sfxThud(-0.6);
       });
       vol.addEventListener('input', () => {
         volume = vol.value / 100; paintVol(); save();
-        if (volume > 0 && muted) { muted = false; if (started && ctx.state === 'suspended') ctx.resume(); scheduleMusic(); }
-        if (!started && volume > 0) { muted = false; start(); }
-        applyLevels(); updateUI();
+        if (volume > 0 && muted) setMuted(false);
+        else if (volume > 0 && !started) { muted = false; start(); }
+        else applyLevels();
+        updateUI();
       });
 
-      // film lightbox: dramatic riser + boom on open, music ducks while the video plays
+      // film lightbox: dramatic riser + boom on open; the MUSIC ducks while the film plays
       const lb = document.getElementById('lightbox');
       let lbWasOpen = false;
       if (lb) new MutationObserver(() => {
         const open = lb.classList.contains('active');
         if (open === lbWasOpen) return;
         lbWasOpen = open;
-        if (open && live()) sfxLightboxOpen();
         ducked = open;
-        if (!open && live()) sfxLightboxClose();
         applyLevels();
+        if (live()) open ? sfxLightboxOpen() : sfxLightboxClose();
       }).observe(lb, { attributes: true, attributeFilter: ['class'] });
 
-      // pause when the tab is hidden
+      // pause everything when the tab is hidden
       document.addEventListener('visibilitychange', () => {
         if (!ctx || !started) return;
-        if (document.hidden) ctx.suspend(); else if (!muted) ctx.resume();
+        if (document.hidden) ctx.suspend(); else ctx.resume();
       });
 
       updateUI();
+    })();
+  </script>
+  <script>
+    /* ===== Cinematic visuals: letterbox reveal, cursor spotlight, hero parallax, click shockwave ===== */
+    (function () {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+      // widescreen bars slide away once the loader has finished
+      const loader = document.getElementById('loader');
+      const open = () => setTimeout(() => document.body.classList.add('cine-open'), 250);
+      if (!loader || loader.classList.contains('hidden')) open();
+      else new MutationObserver((m, o) => { if (loader.classList.contains('hidden')) { o.disconnect(); open(); } })
+        .observe(loader, { attributes: true, attributeFilter: ['class'] });
+
+      const root = document.documentElement, hero = document.getElementById('hero');
+      let raf = 0, mx = 0, my = 0;
+      if (fine && !reduce) {
+        window.addEventListener('mousemove', e => {
+          mx = e.clientX; my = e.clientY;
+          if (raf) return;
+          raf = requestAnimationFrame(() => {
+            raf = 0;
+            root.style.setProperty('--mx', mx + 'px'); root.style.setProperty('--my', my + 'px');
+            if (hero) {   // subtle parallax: the photo drifts against the cursor
+              hero.style.setProperty('--px', ((0.5 - mx / innerWidth) * 26).toFixed(1) + 'px');
+              hero.style.setProperty('--py', ((0.5 - my / innerHeight) * 16).toFixed(1) + 'px');
+            }
+          });
+        }, { passive: true });
+      }
+
+      // shockwave ring at every click (matches the sound)
+      if (!reduce) window.addEventListener('pointerdown', e => {
+        if (e.target.closest && e.target.closest('#sound-ctl')) return;
+        const s = document.createElement('div');
+        s.className = 'shock'; s.style.left = e.clientX + 'px'; s.style.top = e.clientY + 'px';
+        document.body.appendChild(s);
+        setTimeout(() => s.remove(), 850);
+      }, { passive: true });
+    })();
+  </script>
+  <script>
+    /* Hero background video: keep it light for reduced-motion / data-saver visitors */
+    (function () {
+      const v = document.querySelector('.hero-video'); if (!v) return;
+      v.muted = true;
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const save = navigator.connection && navigator.connection.saveData;
+      if (reduce || save) { v.removeAttribute('autoplay'); v.pause(); return; }
+      const go = () => { const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+      go(); document.addEventListener('visibilitychange', () => { if (!document.hidden) go(); });
     })();
   </script>
 </body>
