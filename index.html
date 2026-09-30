@@ -43,13 +43,6 @@ img,video{display:block;max-width:100%}
 /* film texture — kept subtle on purpose */
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9900;opacity:.05;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
 .vignette{position:fixed;inset:0;pointer-events:none;z-index:900;background:radial-gradient(ellipse at center,transparent 58%,rgba(0,0,0,.45) 100%)}
-/* ══ clapperboard cut ══ */
-.clapcut{position:fixed;inset:0;z-index:1300;pointer-events:none;display:none}
-.clapcut.run{display:block}
-.clap-board{position:absolute;inset:0;background:#050505;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:11px}
-.clap-cut-k{font-family:var(--mono);font-size:.66rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase}
-.clap-phase{font-family:var(--serif);font-style:italic;font-size:clamp(1.6rem,4.4vw,3rem);color:var(--ink);text-align:center;padding:0 20px}
-.clap-stick{position:absolute;top:0;left:-4%;right:-4%;height:11vh;min-height:60px;transform-origin:left bottom;background:repeating-linear-gradient(45deg,#000 0 22px,#ddd6c4 22px 44px);border-bottom:3px solid #000;box-shadow:0 10px 30px rgba(0,0,0,.6)}
 /* loader */
 .loader{position:fixed;inset:0;z-index:1400;background:#000;display:grid;place-items:center;align-content:center;gap:15px;transition:opacity .4s ease,visibility .4s}
 .loader.done{opacity:0;visibility:hidden;pointer-events:none}
@@ -119,9 +112,13 @@ img,video{display:block;max-width:100%}
 /* hero */
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:40px;align-items:center}
 .hero-copy{padding-left:clamp(0px,2.5vw,38px)}
-.scriptpage{max-width:46ch;margin-bottom:18px;padding:12px 18px;border-left:2px solid var(--line-2);background:rgba(10,10,10,.55);font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;line-height:1.9;color:var(--ink-dim);text-transform:uppercase;direction:ltr;text-align:left;transform:rotate(-.35deg)} /* tilted like a real pinned page */
+.script-wrap{position:relative;max-width:46ch;margin-bottom:18px}
+.scriptpage{max-width:none;margin-bottom:0;padding:12px 18px;border-left:2px solid var(--line-2);background:rgba(10,10,10,.55);font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;line-height:1.9;color:var(--ink-dim);text-transform:uppercase;direction:ltr;text-align:left;transform:rotate(-.35deg)} /* tilted like a real pinned page */
 .scriptpage .sc-fade{color:var(--gold)}
 .scriptpage .sc-name{color:var(--ink);font-weight:700}
+.type-char{display:inline-block;white-space:pre;opacity:0;animation:type-in .12s ease-out both}
+@keyframes type-in{to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.type-char{opacity:1;animation:none}}
 .hero-copy h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.7rem,8vw,6.8rem);line-height:.9;letter-spacing:-.02em;margin:0 0 16px}
 .hero-copy h1 .l1{display:block}
 .hero-copy h1 .l2{display:block;font-style:italic;color:var(--gold-2)}
@@ -359,15 +356,26 @@ img,video{display:block;max-width:100%}
 .foot-bar{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;padding-top:8px}
 .foot-bar p{font-size:.71rem;color:var(--ink-faint)}
 /* dialog */
-.vdialog{width:min(1080px,calc(100% - 28px));padding:0;border:1px solid var(--line-2);border-radius:16px;background:#0b0b0d;color:var(--ink);overflow:hidden}
+.vdialog{position:fixed;inset:0;margin:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;padding:0;border:0;border-radius:0;background:#000;color:var(--ink);overflow:hidden}
+.vdialog[open]{z-index:12000}
+.vdialog.is-local[open]{transform:translateX(100%);transition:transform .36s cubic-bezier(.2,.7,.2,1)}
+.vdialog.is-local[open].is-visible{transform:translateX(0)}
 .vdialog::backdrop{background:rgba(0,0,0,.88)}
-.vd-shell{padding:14px 16px 16px}
-.vd-bar{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:4px 4px 14px}
+.vd-shell{position:relative;width:100%;height:100%;display:grid;place-items:center;padding:0}
+.vd-bar{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:14px 18px;background:linear-gradient(180deg,rgba(0,0,0,.75),transparent);pointer-events:none}
 .vd-bar h2{font-family:var(--serif);font-weight:400;font-size:1.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.vd-close{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex-shrink:0;transition:.2s}
+.vd-close{width:38px;height:38px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;flex-shrink:0;transition:.2s;pointer-events:auto;background:rgba(0,0,0,.55)}
 .vd-close:hover{border-color:var(--gold);color:var(--gold);transform:rotate(90deg)}
-.vd-frame{aspect-ratio:16/9;border-radius:11px;overflow:hidden;background:#000}
-.vd-frame iframe{width:100%;height:100%;border:0;display:block}
+.vd-frame{position:relative;width:100%;height:100%;overflow:hidden;background:#000}
+.vd-frame iframe,.vd-frame video{width:100%;height:100%;border:0;display:block}
+.vd-frame video{object-fit:contain}
+.vd-frame [hidden]{display:none}
+@media(min-width:961px){
+  body.video-open main{margin-right:min(42vw,700px)}
+  body.video-open .bar-top,body.video-open .bar-bot{right:min(42vw,700px)}
+  body.video-open .rail{display:none}
+  .vdialog.is-local[open]{inset:0 0 0 auto;width:min(42vw,700px);height:100vh;height:100dvh;border-left:1px solid var(--line-2)}
+}
 /* reveal */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
 .reveal.in{opacity:1;transform:none}
@@ -391,6 +399,7 @@ img,video{display:block;max-width:100%}
   .bar-bot{gap:8px;padding-left:12px;padding-right:12px}
   .phase-controls{gap:3px}
   .phase-control{width:31px;height:31px}
+  #phase-toggle{display:none}
   .pl-track{min-width:40px}
   .bar-bot .lang-btn{padding:4px 8px}
   .series-grid{grid-template-columns:repeat(3,1fr)}
@@ -491,15 +500,6 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
 <div class="grain" aria-hidden="true"></div>
 <div class="vignette" aria-hidden="true"></div>
 
-<!-- clapperboard cut -->
-<div class="clapcut" id="clapcut" aria-hidden="true">
-  <div class="clap-stick"></div>
-  <div class="clap-board">
-    <span class="clap-cut-k" id="clap-k">CUT TO:</span>
-    <span class="clap-phase" id="clap-phase"></span>
-  </div>
-</div>
-
 <!-- loader -->
 <div class="loader" id="loader" aria-hidden="true">
   <div class="loader-mark">F<i>.</i></div>
@@ -553,9 +553,11 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
     <div class="shell hero-grid">
       <div class="hero-copy">
         <p class="eyebrow" data-i18n="p1a">Phase 01 · Welcome</p>
-        <div class="scriptpage" data-i18n="sp_t">
-          <span class="sc-fade">INT. PORTFOLIO</span><br><br>
-          <span class="sc-name">FAREES</span> —<br>A FILMMAKER & CONTENT CREATOR.
+        <div class="script-wrap">
+          <div class="scriptpage" data-i18n="sp_t">
+            <span class="sc-fade">INT. PORTFOLIO</span><br><br>
+            <span class="sc-name">FAREES</span> —<br>A FILMMAKER & CONTENT CREATOR.
+          </div>
         </div>
         <h1><span class="l1">Farees</span><em class="l2">Bounawara.</em></h1>
         <p class="hero-lead" data-i18n="lead">If you don't like the shoot… <strong style="color:var(--gold-2)">CUUTTT!</strong> &amp; do it again.</p>
@@ -649,6 +651,7 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
         <button class="chip" data-f="film" data-i18n="f_film">Short films</button>
         <button class="chip" data-f="client" data-i18n="f_client">Client &amp; commercials</button>
         <button class="chip" data-f="doc" data-i18n="f_doc">Documentaries</button>
+        <button class="chip" data-f="other" data-i18n="f_other">Other</button>
       </div>
       <div class="grid" id="grid">
         <a class="card js-video" data-cat="film" href="https://www.youtube.com/watch?v=MFRUaT09vu4" data-video="MFRUaT09vu4" data-title="Painting of Hope">
@@ -753,7 +756,7 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
           </section>
           <section class="work-monitor" aria-label="Video playback">
             <div class="work-stage" id="work-stage">
-              <video class="work-video" id="work-video" controls muted playsinline preload="metadata"></video>
+              <video class="work-video" id="work-video" controls autoplay muted loop playsinline preload="metadata"></video>
               <div class="work-placeholder" id="work-placeholder" aria-live="polite">
                 <strong data-i18n="work_missing">Add the selected video file to this folder</strong>
                 <span id="work-filename">example.mp4</span>
@@ -903,7 +906,7 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
 <dialog class="vdialog" id="vdialog" aria-label="Video player">
   <div class="vd-shell">
     <div class="vd-bar"><h2 id="vd-title">Painting of Hope</h2><button class="vd-close" id="vd-close" type="button" aria-label="Close"><svg class="ic"><use href="#i-x"/></svg></button></div>
-    <div class="vd-frame"><iframe id="vd-frame" title="Video" allow="autoplay; fullscreen; encrypted-media" allowfullscreen src="about:blank"></iframe></div>
+    <div class="vd-frame"><iframe id="vd-frame" title="Video" allow="autoplay; fullscreen; encrypted-media" allowfullscreen src="about:blank"></iframe><video id="vd-video" controls playsinline hidden></video></div>
   </div>
 </dialog>
 
@@ -932,11 +935,11 @@ o_p2:"Whether it's a cinematic film, music video, social media content, or a sim
 quote_p:"\u201CIf I give up now, I'm going to regret it.\u201D",quote_c:"— Monkey D. Luffy (One Piece)",
 stat1_l:"Best work",stat2_l:"Videos shipped",stat3_l:"Clients signed",
 sl3a:"PHASE 03",sl3b:"WORK",h2_work:"BEST <em>WORK</em>",sub_work:"INT. CINEMA",
-f_all:"All work",f_film:"Short films",f_client:"Client &amp; commercials",f_doc:"Documentaries",
-tag_film:"Short film",tag_client:"Client",tag_doc:"Documentary",
+f_all:"All work",f_film:"Short films",f_client:"Client &amp; commercials",f_doc:"Documentaries",f_other:"Other",
+tag_film:"Short film",tag_client:"Client",tag_doc:"Documentary",tag_other:"Other reel",
 poh_p:"A story about hope, told with paint, light and silence.",
 work2_d:"A short film from my narrative work.",work3_d:"A client film created for Al Jalsa.",work4_d:"An earth documentary from my client work.",work5_d:"Documentary reportage from the field.",
-work_reel_label:"Selected work — highlights",work_missing:"Add the selected video file to this folder",timeline_hint:"Select a clip to load its video",where_title:"Where I worked",where_subtitle:"Selected brands, festivals, and creative teams",
+work_reel_label:"Behind the scenes — loop",work_missing:"Add the BTS video to this folder",timeline_hint:"Staggered edit sequence — V1 picture, A1 sound",work_bts_title:"Behind the scenes",work_bts_description:"Behind-the-scenes footage from the shoot.",work_bts_category:"Behind the scenes",where_title:"Where I worked",where_subtitle:"Selected brands, festivals, and creative teams",
 work_play:"Play highlights",work_pause:"Pause highlights",work_prev:"Previous highlight",work_next:"Next highlight",work_select:"Select highlight",
 where_campaign:"Campaign",where_press:"Press &amp; media",where_festival:"Art festival",where_fashion:"Fashion",where_fitness:"Fitness",where_cinema:"Cinema festival",where_ethnographic:"Ethnographic film",where_theatre:"Theatre",
 g_tag:"Next shoot",g_h:"Could be yours.",g_p:"Bring a story, a brand or a wild idea — and we greenlight it together.",g_cta:"Pitch it \u2197",
@@ -978,11 +981,11 @@ o_p2:"De mes courts-m\u00E9trages aux projets clients, la r\u00E8gle ne change j
 quote_p:"\u00ABJe ne cherche pas la perfection. Je cherche le moment o\u00F9 une sc\u00E8ne devient juste.\u00BB",quote_c:"— Moi, 2 h du matin, au montage",
 stat1_l:"Meilleur travail",stat2_l:"Vid\u00E9os livr\u00E9es",stat3_l:"Clients sign\u00E9s",
 sl3a:"PHASE 03",sl3b:"TRAVAIL",h2_work:"MEILLEUR <em>TRAVAIL</em>",sub_work:"INT. CIN\u00C9MA — CHAQUE IMAGE QUI A PASS\u00C9 LE MONTAGE",
-f_all:"Tout",f_film:"Courts-m\u00E9trages",f_client:"Clients &amp; pubs",f_doc:"Documentaires",
-tag_film:"Court-m\u00E9trage",tag_client:"Film client",tag_doc:"Documentaire",
+f_all:"Tout",f_film:"Courts-m\u00E9trages",f_client:"Clients &amp; pubs",f_doc:"Documentaires",f_other:"Autres",
+tag_film:"Court-m\u00E9trage",tag_client:"Film client",tag_doc:"Documentaire",tag_other:"Autre reel",
 poh_p:"Une histoire d\u2019espoir, racont\u00E9e avec de la peinture, de la lumi\u00E8re et du silence.",
 work2_d:"Un court métrage issu de mon travail de fiction.",work3_d:"Un film client réalisé pour Al Jalsa.",work4_d:"Un documentaire sur la Terre réalisé pour un client.",work5_d:"Un reportage documentaire sur le terrain.",
-work_reel_label:"Sélection de films — extraits",work_missing:"Ajoutez le fichier vidéo sélectionné dans ce dossier",timeline_hint:"Sélectionnez un plan pour charger sa vidéo",where_title:"Où j’ai travaillé",where_subtitle:"Quelques marques, festivals et équipes créatives",
+work_reel_label:"Coulisses — lecture en boucle",work_missing:"Ajoutez la vidéo des coulisses dans ce dossier",timeline_hint:"Montage décalé — image V1, son A1",work_bts_title:"Dans les coulisses",work_bts_description:"Images des coulisses du tournage.",work_bts_category:"Dans les coulisses",where_title:"Où j’ai travaillé",where_subtitle:"Quelques marques, festivals et équipes créatives",
 work_play:"Lire les extraits",work_pause:"Mettre les extraits en pause",work_prev:"Extrait précédent",work_next:"Extrait suivant",work_select:"Choisir un extrait",
 where_campaign:"Campagne",where_press:"Presse &amp; médias",where_festival:"Festival d’art",where_fashion:"Mode",where_fitness:"Fitness",where_cinema:"Festival de cinéma",where_ethnographic:"Film ethnographique",where_theatre:"Théâtre",
 g_tag:"Prochain tournage",g_h:"\u00C7a pourrait \u00EAtre le v\u00F4tre.",g_p:"Apportez une histoire, une marque ou une id\u00E9e folle — et on la tourne ensemble.",g_cta:"Proposez \u2197",
@@ -1024,11 +1027,11 @@ o_p2:"من أفلامي القصيرة لخدمة الزبائن، القاعد�
 quote_p:"«ماشي ندور على الكمال. ندور على اللحظة اللي المشهد يجي فيها صحيح.»",quote_c:"— أنا، الثانية متاع الليل، في المونتاج",
 stat1_l:"أحسن أعمال",stat2_l:"فيديو خرجت",stat3_l:"زبائن خدمني",
 sl3a:"المرحلة 03",sl3b:"الأعمال",h2_work:"أحسن <em>أعمال</em>",sub_work:"مشهد داخلي سينما — كل صورة عديت القص",
-f_all:"الكل",f_film:"أفلام قصيرة",f_client:"خدمة الزبائن",f_doc:"وثائقيات",
-tag_film:"فيلم قصير",tag_client:"فيلم لزبون",tag_doc:"وثائقي",
+f_all:"الكل",f_film:"أفلام قصيرة",f_client:"خدمة الزبائن",f_doc:"وثائقيات",f_other:"أخرى",
+tag_film:"فيلم قصير",tag_client:"فيلم لزبون",tag_doc:"وثائقي",tag_other:"ريل آخر",
 poh_p:"قصة أمل، مصوّرة بالألوان والضوء والصمت.",
 work2_d:"فيلم قصير من أعمالي الروائية.",work3_d:"فيلم إعلاني صُوّر لصالح الجلسة.",work4_d:"وثائقي حول الأرض ضمن أعمالي مع الحرفاء.",work5_d:"ريبورتاج وثائقي من الميدان.",
-work_reel_label:"مختارات من أعمالي",work_missing:"حط ملف الفيديو المختار في نفس المجلد",timeline_hint:"اختار مقطع باش تشغّل الفيديو متاعو",where_title:"وين خدمت",where_subtitle:"مختارات من العلامات والمهرجانات والفرق اللي خدمت معاهم",
+work_reel_label:"من كواليس التصوير — يتعاود",work_missing:"حط فيديو الكواليس في نفس المجلد",timeline_hint:"مونتاج متداخل — صورة V1 وصوت A1",work_bts_title:"من كواليس التصوير",work_bts_description:"لقطات من وراء الكواليس وقت التصوير.",work_bts_category:"من كواليس التصوير",where_title:"وين خدمت",where_subtitle:"مختارات من العلامات والمهرجانات والفرق اللي خدمت معاهم",
 work_play:"شغّل المختارات",work_pause:"أوقف المختارات",work_prev:"المقطع السابق",work_next:"المقطع التالي",work_select:"اختار مقطع",
 where_campaign:"حملة إعلانية",where_press:"صحافة وإعلام",where_festival:"مهرجان فنون",where_fashion:"موضة",where_fitness:"رياضة",where_cinema:"مهرجان سينما",where_ethnographic:"فيلم إثنوغرافي",where_theatre:"مسرح",
 g_tag:"التصوير الجاي",g_h:"قد يكون متاعك.",g_p:"جيب قصة، براند ولا فكرة مجنونة — وناخدوها مع بعضنا.",g_cta:"اقترح ↗",
@@ -1062,6 +1065,52 @@ var LANG="en";
 try{LANG=localStorage.getItem("fs_lang")||"en";}catch(e){}
 if(!I18N[LANG])LANG="en";
 function t(k){var v=(I18N[LANG]&&I18N[LANG][k]);if(v==null)v=I18N.en[k];return v==null?k:v;}
+
+var typeAudioContext=null;
+function unlockTypeAudio(){
+  if(!typeAudioContext){
+    var AudioContextClass=window.AudioContext||window.webkitAudioContext;
+    if(!AudioContextClass)return;
+    try{typeAudioContext=new AudioContextClass();}catch(e){return;}
+  }
+  if(typeAudioContext.state!=="running"){
+    var result=typeAudioContext.resume();
+    if(result&&typeof result.catch==="function")result.catch(function(){});
+  }
+}
+function playTypeTick(){
+  if(!typeAudioContext||typeAudioContext.state!=="running")return;
+  var length=Math.floor(typeAudioContext.sampleRate*.018);
+  var buffer=typeAudioContext.createBuffer(1,length,typeAudioContext.sampleRate);
+  var samples=buffer.getChannelData(0);
+  for(var i=0;i<length;i++)samples[i]=(Math.random()*2-1)*Math.exp(-i/(length*.18));
+  var source=typeAudioContext.createBufferSource(),filter=typeAudioContext.createBiquadFilter(),gain=typeAudioContext.createGain();
+  source.buffer=buffer;filter.type="highpass";filter.frequency.value=1100;gain.gain.value=.018;
+  source.connect(filter);filter.connect(gain);gain.connect(typeAudioContext.destination);source.start();
+}
+function animateScriptPage(){
+  var page=$(".scriptpage");
+  if(!page)return;
+  page.querySelectorAll(".type-char").forEach(function(char){char.replaceWith(document.createTextNode(char.textContent));});
+  if(REDUCED)return;
+  var walker=document.createTreeWalker(page,NodeFilter.SHOW_TEXT),textNodes=[],textNode;
+  while((textNode=walker.nextNode()))textNodes.push(textNode);
+  var charIndex=0,soundCount=0,step=30;
+  textNodes.forEach(function(node){
+    var fragment=document.createDocumentFragment();
+    Array.from(node.nodeValue).forEach(function(character){
+      var span=document.createElement("span");
+      span.className="type-char";span.textContent=character;span.style.animationDelay=(charIndex*step)+"ms";
+      fragment.appendChild(span);
+      if(!/\s/.test(character)&&soundCount++%3===0)setTimeout(playTypeTick,charIndex*step);
+      charIndex++;
+    });
+    node.replaceWith(fragment);
+  });
+}
+unlockTypeAudio();
+document.addEventListener("pointerdown",unlockTypeAudio,{once:true,passive:true});
+document.addEventListener("keydown",unlockTypeAudio,{once:true});
 
 var themeToggle=$("#theme-toggle"),themeIcon=$("#theme-icon");
 function syncThemeToggle(){
@@ -1098,27 +1147,6 @@ setInterval(function(){
   recEl.textContent=(s>=3600?Math.floor(s/3600)+":":"")+pad(Math.floor(s/60)%60)+":"+pad(s%60);
 },1000);
 
-/* ═══ clapperboard cut ═══ */
-var clap=$("#clapcut"),clapPhase=$("#clap-phase"),clapK=$("#clap-k"),clapBusy=false;
-function fireClap(name){
-  if(!canAnim||clapBusy||REDUCED)return;
-  clapBusy=true;
-  clapK.textContent=t("cutto")||"CUT TO:";
-  clapPhase.textContent=name;
-  clap.classList.add("run");
-  var stick=$(".clap-stick"),board=$(".clap-board");
-  stick.animate([{transform:"rotate(-34deg)"},{transform:"rotate(2deg)"},{transform:"rotate(0deg)"}],{duration:230,easing:"cubic-bezier(.3,0,.4,1)"});
-  board.animate([{transform:"translateY(7px)"},{transform:"translateY(0)"}],{duration:230,easing:"ease-out"});
-  setTimeout(function(){
-    var lift=clap.animate([{transform:"translateY(0)"},{transform:"translateY(-103%)"}],{duration:420,easing:"cubic-bezier(.6,0,.3,1)"});
-    lift.onfinish=function(){
-      clap.classList.remove("run");
-      clap.getAnimations({subtree:true}).forEach(function(a){a.cancel();});
-      clapBusy=false;
-    };
-  },520);
-}
-
 /* ═══ pipeline + current phase ═══ */
 var stops=$$(".phase");
 var ROMAN=["I","II","III","IV","V","VI","VII","VIII"];
@@ -1141,32 +1169,42 @@ stops.forEach(function(sec){
   plTrack.appendChild(b);
 });
 var nodes=$$(".pl-node",plTrack);
-var tops=[],curStop=0,lastStop=-1;
+var tops=[],curStop=0;
 var phasePrev=$("#phase-prev"),phaseToggle=$("#phase-toggle"),phaseNext=$("#phase-next"),phaseToggleIcon=$("#phase-toggle-icon");
 var playFeedback=$("#play-feedback"),playFeedbackIcon=$("#play-feedback-icon"),playFeedbackTimer=null;
-var autoAdvanceTimer=null,autoPlaying=true,phaseScrollFrame=null;
-function measure(){tops=stops.map(function(s){return s.getBoundingClientRect().top+window.scrollY-90;});}
-function currentStop(){var i=0;stops.forEach(function(s,k){if(window.scrollY>=tops[k]-40)i=k;});return i;}
+var autoAdvanceTimer=null,autoAdvanceEnabled=!matchMedia("(max-width:960px)").matches,autoPlaying=autoAdvanceEnabled,phaseScrollFrame=null,phaseScrollBehavior=null;
+function phaseScrollOffset(){return (parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--bar"))||0)+8;}
+function measure(){tops=stops.map(function(s){return s.getBoundingClientRect().top+window.scrollY-phaseScrollOffset();});}
+function currentStop(){var i=0;stops.forEach(function(s,k){if(window.scrollY>=tops[k]-8)i=k;});return i;}
 function stopPhaseScroll(){
   if(phaseScrollFrame!==null){cancelAnimationFrame(phaseScrollFrame);phaseScrollFrame=null;}
+  if(phaseScrollBehavior!==null){document.documentElement.style.scrollBehavior=phaseScrollBehavior;phaseScrollBehavior=null;}
 }
 function scrollToPhase(section,onComplete){
   stopPhaseScroll();
+  phaseScrollBehavior=document.documentElement.style.scrollBehavior;
+  document.documentElement.style.scrollBehavior="auto";
   var scrollElement=document.scrollingElement||document.documentElement;
   var start=scrollElement.scrollTop;
-  var offset=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--bar"))||0;
-  var maxScroll=Math.max(0,scrollElement.scrollHeight-window.innerHeight);
-  var end=clamp(section.getBoundingClientRect().top+start-offset,0,maxScroll);
+  var offset=phaseScrollOffset();
+  function targetScroll(){
+    var maxScroll=Math.max(0,scrollElement.scrollHeight-window.innerHeight);
+    return clamp(section.getBoundingClientRect().top+scrollElement.scrollTop-offset,0,maxScroll);
+  }
+  var end=targetScroll();
   var distance=end-start,startedAt=null,duration=1900;
   function animate(timestamp){
     if(startedAt===null)startedAt=timestamp;
     var progress=Math.min((timestamp-startedAt)/duration,1);
     var eased=progress<.5?4*progress*progress*progress:1-Math.pow(-2*progress+2,3)/2;
-    scrollElement.scrollTop=start+distance*eased;
+    scrollElement.scrollTop=start+(targetScroll()-start)*eased;
     if(progress<1)phaseScrollFrame=requestAnimationFrame(animate);
     else{
+      scrollElement.scrollTop=targetScroll();
       phaseScrollFrame=null;
       paint();
+      document.documentElement.style.scrollBehavior=phaseScrollBehavior;
+      phaseScrollBehavior=null;
       if(onComplete)onComplete();
     }
   }
@@ -1203,7 +1241,7 @@ function showPlayFeedback(playing,inEditor){
   playFeedbackTimer=setTimeout(function(){playFeedback.classList.remove("visible");},280);
 }
 function setAutoPlaying(playing,showFeedback){
-  autoPlaying=playing;
+  autoPlaying=autoAdvanceEnabled&&playing;
   if(autoAdvanceTimer)clearTimeout(autoAdvanceTimer);
   autoAdvanceTimer=null;
   if(!autoPlaying)stopPhaseScroll();
@@ -1213,12 +1251,13 @@ function setAutoPlaying(playing,showFeedback){
 }
 function scheduleAutoAdvance(){
   if(autoAdvanceTimer)clearTimeout(autoAdvanceTimer);
-  if(!autoPlaying)return;
+  if(!autoAdvanceEnabled||!autoPlaying)return;
   var dwell=curStop===0?5000:10000;
   autoAdvanceTimer=setTimeout(function(){
     if(!autoPlaying)return;
-    if(curStop>=stops.length-1){setAutoPlaying(false);return;}
-    scrollToPhase(stops[curStop+1],function(){if(autoPlaying)scheduleAutoAdvance();});
+    var lastAutoStop=stops.length-2;
+    if(curStop>=lastAutoStop){setAutoPlaying(false);return;}
+    scrollToPhase(stops[Math.min(curStop+1,lastAutoStop)],function(){if(autoPlaying)scheduleAutoAdvance();});
   },dwell);
 }
 function navigateToPhase(index){
@@ -1228,10 +1267,6 @@ function navigateToPhase(index){
 function paint(){
   measure();
   curStop=currentStop();
-  if(curStop!==lastStop){
-    if(lastStop!==-1)fireClap(stops[curStop].dataset.phase);
-    lastStop=curStop;
-  }
   nodes.forEach(function(n,i){n.classList.toggle("on",i<=curStop);});
   plFill.style.width=(curStop/(stops.length-1)*100)+"%";
   railMarks.forEach(function(m,i){m.classList.toggle("on",i===curStop);});
@@ -1295,6 +1330,7 @@ function applyLang(){
     if(I18N[LANG].phases&&I18N[LANG].phases[n.dataset.sec])n.title=I18N[LANG].phases[n.dataset.sec];
   });
   railMarks.forEach(function(m,i){if(stops[i])m.title=stops[i].dataset.phase;});
+  animateScriptPage();
   renderFeat();renderWorkInfo();syncWorkControls();syncPhaseControls();
   measure();paint();
 }
@@ -1426,15 +1462,55 @@ function featGo(i){featI=i;var c=$("#feat-card");c.classList.add("swap");setTime
 featTimer=setInterval(function(){featGo((featI+1)%FEAT.length);},5000);
 
 /* ═══ video dialog ═══ */
-var vd=$("#vdialog"),vdF=$("#vd-frame");
-function openV(id,title){$("#vd-title").textContent=title||"Farees Bounawara";vdF.src="https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";vd.showModal();}
-function closeV(){if(vd.open){vdF.src="about:blank";vd.close();}}
+var vd=$("#vdialog"),vdF=$("#vd-frame"),vdVideo=$("#vd-video");
+function showLocalVideoPanel(){
+  vd.classList.add("is-local");
+  document.body.classList.add("video-open");
+  vd.show();
+  requestAnimationFrame(function(){vd.classList.add("is-visible");});
+}
+function openV(id,title){if(vd.open)closeV();vd.classList.remove("is-local","is-visible");document.body.classList.remove("video-open");vdVideo.pause();vdVideo.hidden=true;vdF.hidden=false;$("#vd-title").textContent=title||"Farees Bounawara";vdF.src="https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";vd.showModal();}
+function openLocalV(src,title){if(vd.open)closeV();vdF.src="about:blank";vdF.hidden=true;vdVideo.hidden=false;vdVideo.src=src;$("#vd-title").textContent=title||"Farees Bounawara";showLocalVideoPanel();vdVideo.play().catch(function(){});}
+function closeV(){if(vd.open){document.body.classList.remove("video-open");vd.classList.remove("is-visible","is-local");vdF.src="about:blank";vdVideo.pause();vdVideo.removeAttribute("src");vdVideo.load();vdVideo.hidden=true;vdF.hidden=false;vd.close();}}
+vd.addEventListener("close",function(){if(vd.open)return;document.body.classList.remove("video-open");vd.classList.remove("is-visible","is-local");vdF.src="about:blank";vdVideo.pause();vdVideo.removeAttribute("src");vdVideo.load();vdVideo.hidden=true;vdF.hidden=false;});
 document.addEventListener("click",function(e){
   var a=e.target.closest(".js-video");
-  if(a){if(a.getAttribute("data-video")){e.preventDefault();openV(a.getAttribute("data-video"),a.getAttribute("data-title")); }return;}
+  if(a){if(a.getAttribute("data-video")){e.preventDefault();openV(a.getAttribute("data-video"),a.getAttribute("data-title"));}else if(a.getAttribute("data-local-video")){e.preventDefault();openLocalV(a.getAttribute("data-local-video"),a.getAttribute("data-title"));}return;}
   if(e.target===vd)closeV();
 });
  $("#vd-close").addEventListener("click",closeV);
+var reelLinks=$$(".reels-rail .reel");
+var clientVideoFiles={"Canadian Pro Gym":"gym.mp4","Fashion Week Coverage":"fashion.mp4","Al Chourouk Press Video":"chourouk.mp4","Sushi Chef Cinematic Reel":"sushi.mp4"};
+$$('a[href*="instagram.com"],a[href*="youtube.com/@"],a[href*="tiktok.com/@"]').forEach(function(link){
+  var card=link.closest(".card"),title=link.querySelector("h3")||(card&&card.querySelector("h3"));
+  var reel=link.closest(".reel"),reelIndex=reel?reelLinks.indexOf(reel):-1;
+  var videoFile=reelIndex>=0?"reel"+pad(reelIndex+1)+".mp4":clientVideoFiles[title?title.textContent.trim():""]||"showreel.mp4";
+  link.classList.add("js-video");
+  link.dataset.localVideo=videoFile;
+  link.dataset.title=title?title.textContent.trim():"Farees Bounawara";
+  link.href=videoFile;
+  link.removeAttribute("target");
+  link.removeAttribute("rel");
+});
+$$('.reels-rail .reel').forEach(function(reel,index){
+  var sourceImage=reel.querySelector("img"),sourceTitle=reel.querySelector("h3");
+  var title=sourceTitle?sourceTitle.textContent.trim():"Other reel";
+  var card=document.createElement("a");
+  card.className="card js-video";
+  card.dataset.cat="other";
+  card.dataset.localVideo=reel.dataset.localVideo||("reel"+pad(index+1)+".mp4");
+  card.dataset.title=title;
+  card.href=card.dataset.localVideo;
+  if(sourceImage){var image=sourceImage.cloneNode();image.alt=title;card.appendChild(image);}
+  var veil=document.createElement("div");veil.className="card-veil";card.appendChild(veil);
+  var open=document.createElement("span");open.className="card-open";open.innerHTML='<svg class="ic"><use href="#i-play"></use></svg>';card.appendChild(open);
+  var body=document.createElement("div");body.className="card-body";
+  var tag=document.createElement("span");tag.className="card-tag";tag.dataset.i18n="tag_other";tag.textContent=t("tag_other");body.appendChild(tag);
+  var heading=document.createElement("h3");heading.dataset.i18n="reel"+(index+1);heading.textContent=title;body.appendChild(heading);
+  card.appendChild(body);
+  var grid=$("#grid");
+  grid.insertBefore(card,grid.querySelector(".card.ghost"));
+});
 
 /* ═══ filters ═══ */
  $$(".chip").forEach(function(ch){ch.addEventListener("click",function(){
@@ -1445,12 +1521,12 @@ document.addEventListener("click",function(e){
 
 /* ═══ work highlights ═══ */
 var WORK_HIGHLIGHTS=[
-  {title:"Painting of Hope",file:"example.mp4",category:"tag_film",description:"poh_p"},
-  {title:"We're Stuck In Here, Send Help!",file:"example2.mp4",category:"tag_film",description:"work2_d"},
-  {title:"Al Jalsa — الجلسة",file:"example3.mp4",category:"tag_client",description:"work3_d"},
-  {title:"EDEN — Earth Documentary",file:"example4.mp4",category:"tag_doc",description:"work4_d"},
-  {title:"Documentary Reportage",file:"example5.mp4",category:"tag_doc",description:"work5_d"}
+  {title:"work_bts_title",file:"bts.mp4",category:"work_bts_category",description:"work_bts_description"}
 ];
+var TIMELINE_CLIPS={
+  video:[{start:.03,end:.22,label:"BTS_01"},{start:.27,end:.43,label:"BTS_02"},{start:.48,end:.7,label:"BTS_03"},{start:.75,end:.97,label:"BTS_04"}],
+  audio:[{start:.01,end:.29,label:"ROOM TONE"},{start:.33,end:.52,label:"CAM AUDIO"},{start:.57,end:.78,label:"WILD TRACK"},{start:.82,end:.99,label:"AMBIENCE"}]
+};
 var workEditor=$("#work-editor"),workStage=$("#work-stage"),workVideo=$("#work-video"),workPlaceholder=$("#work-placeholder");
 var workFilename=$("#work-filename"),workCategory=$("#work-category"),workTitle=$("#work-title"),workDescription=$("#work-description");
 var workCount=$("#work-count"),workTime=$("#work-time"),workToggle=$("#work-toggle"),workToggleIcon=$("#work-toggle-icon");
@@ -1468,7 +1544,7 @@ function renderWorkInfo(){
   var item=WORK_HIGHLIGHTS[workIndex];
   if(!item)return;
   workCategory.textContent=t(item.category);
-  workTitle.textContent=item.title;
+  workTitle.textContent=t(item.title);
   workDescription.textContent=t(item.description);
   workCount.textContent=pad(workIndex+1)+" / "+pad(WORK_HIGHLIGHTS.length);
   workFilename.textContent=item.file;
@@ -1500,28 +1576,31 @@ function updateWorkTimeline(){
   workTime.textContent=formatWorkTime(workVideo.currentTime)+" / "+formatWorkTime(duration);
 }
 function buildTimeline(){
-  for(var marker=0;marker<WORK_HIGHLIGHTS.length;marker++){
+  for(var marker=0;marker<5;marker++){
     var tick=document.createElement("span");
     tick.textContent=pad(marker+1);
     timelineRuler.appendChild(tick);
-    [videoLane,audioLane].forEach(function(lane,laneIndex){
-      var item=WORK_HIGHLIGHTS[marker];
+  }
+  [{lane:videoLane,clips:TIMELINE_CLIPS.video,audio:false},{lane:audioLane,clips:TIMELINE_CLIPS.audio,audio:true}].forEach(function(track){
+    track.clips.forEach(function(segment,index){
       var clip=document.createElement("button");
       clip.type="button";
-      clip.className="timeline-clip"+(laneIndex?" audio":"");
-      clip.dataset.workIndex=marker;
-      clip.style.left=(marker*100/WORK_HIGHLIGHTS.length)+"%";
-      clip.style.width="calc("+(100/WORK_HIGHLIGHTS.length)+"% - 4px)";
-      clip.setAttribute("aria-current",marker===workIndex?"true":"false");
+      clip.className="timeline-clip"+(track.audio?" audio":"");
+      clip.dataset.workIndex="0";
+      clip.dataset.startRatio=segment.start;
+      clip.dataset.endRatio=segment.end;
+      clip.style.left=(segment.start*100)+"%";
+      clip.style.width="calc("+((segment.end-segment.start)*100)+"% - 4px)";
+      clip.setAttribute("aria-current","true");
       var name=document.createElement("strong");
-      name.textContent=item.title;
+      name.textContent=segment.label;
       var filename=document.createElement("small");
-      filename.textContent=item.file;
+      filename.textContent=WORK_HIGHLIGHTS[0].file;
       clip.appendChild(name);
       clip.appendChild(filename);
-      lane.appendChild(clip);
+      track.lane.appendChild(clip);
     });
-  }
+  });
 }
 function selectWork(index,seekRatio,shouldPlay,muted){
   workIndex=(index+WORK_HIGHLIGHTS.length)%WORK_HIGHLIGHTS.length;
@@ -1529,6 +1608,7 @@ function selectWork(index,seekRatio,shouldPlay,muted){
   pendingWorkSeek=Number.isFinite(seekRatio)?clamp(seekRatio,0,1):null;
   workStage.classList.remove("has-video");
   workVideo.pause();
+  workVideo.loop=true;
   workVideo.src=WORK_HIGHLIGHTS[workIndex].file;
   workVideo.load();
   if(muted!==undefined)workVideo.muted=muted;
@@ -1561,14 +1641,14 @@ timelineTracks.addEventListener("click",function(event){
   if(!lane)return;
   var clip=event.target.closest(".timeline-clip"),index,progress;
   if(clip){
-    index=Number(clip.dataset.workIndex);
+    index=0;
     var clipRect=clip.getBoundingClientRect();
-    progress=clamp((event.clientX-clipRect.left)/clipRect.width,0,1);
+    var clipProgress=clamp((event.clientX-clipRect.left)/clipRect.width,0,1);
+    progress=Number(clip.dataset.startRatio)+(Number(clip.dataset.endRatio)-Number(clip.dataset.startRatio))*clipProgress;
   }else{
     var laneRect=lane.getBoundingClientRect();
-    var sequencePosition=clamp((event.clientX-laneRect.left)/laneRect.width,0,.9999)*WORK_HIGHLIGHTS.length;
-    index=Math.floor(sequencePosition);
-    progress=sequencePosition-index;
+    index=0;
+    progress=clamp((event.clientX-laneRect.left)/laneRect.width,0,1);
   }
   selectWork(index,progress,workPlaying,workVideo.muted);
 });
@@ -1590,7 +1670,6 @@ workVideo.addEventListener("loadeddata",function(){workStage.classList.add("has-
 workVideo.addEventListener("timeupdate",updateWorkTimeline);
 workVideo.addEventListener("play",function(){workPlaying=true;workResumeAfterLoad=false;syncWorkControls();});
 workVideo.addEventListener("pause",function(){if(!workResumeAfterLoad){workPlaying=false;syncWorkControls();}});
-workVideo.addEventListener("ended",function(){selectWork(workIndex+1,0,true,true);});
 workVideo.addEventListener("error",function(){
   workStage.classList.remove("has-video");
   workPlaying=false;
@@ -1601,15 +1680,15 @@ var workObserver=new IntersectionObserver(function(entries){
   entries.forEach(function(entry){
     workVisible=entry.isIntersecting;
     if(workVisible){
-      if(autoPlaying)setAutoPlaying(false);
       if(!workVideo.getAttribute("src"))selectWork(workIndex,0,true,true);
-      else if(workPlaying)setWorkPlaying(true);
-    }else if(!workKeyboardMode&&!workVideo.paused){setWorkPlaying(false);}
+      else if(workVideo.paused)setWorkPlaying(true);
+    }
   });
 },{threshold:.25});
 workObserver.observe(workStage);
 renderWorkInfo();
 syncWorkControls();
+selectWork(0,0,true,true);
 
 /* ═══ submission counter (public, free Abacus API — fallback: per-browser) ═══ */
 var AB_NS="farees-portfolio",AB_KEY="submissions";
