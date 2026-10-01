@@ -108,7 +108,8 @@ img,video{display:block;max-width:100%}
 .phase{position:relative;display:flex;flex-direction:column;min-height:100svh;padding:calc(var(--bar) + 44px) 0 calc(var(--bar) + 34px);overflow:hidden;background:#000}
 .phase::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;z-index:3;background-image:radial-gradient(circle at 11px 5px,rgba(242,237,227,.18) 2.4px,transparent 3px);background-size:24px 10px;opacity:.5;pointer-events:none}
 .phase>.shell{position:relative;z-index:2;margin:auto;width:min(100% - 44px,1340px)}
-#credits{min-height:0;padding-top:calc(var(--bar) + 52px);padding-bottom:48px}
+#contact{min-height:0;padding-bottom:48px}
+#credits{min-height:0;padding-top:calc(var(--bar) + 16px);padding-bottom:32px}
 /* hero */
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:40px;align-items:center}
 .hero-copy{padding-left:clamp(0px,2.5vw,38px)}
@@ -131,7 +132,7 @@ img,video{display:block;max-width:100%}
 .btn-out:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
 .btn .ic{width:12px;height:12px}
 .hero-bgwrap{position:absolute;inset:0;overflow:hidden;z-index:0;isolation:isolate;background:radial-gradient(circle at 30% 20%,rgba(212,163,95,.09),transparent 40%),linear-gradient(180deg,#101013,#0a0a0c)}
-.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;filter:brightness(.5) saturate(.9);will-change:opacity,filter,transform}
+.hero-slide{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;filter:brightness(.5) saturate(.9);will-change:opacity,filter,transform}.hero-bgwrap video.hero-slide{opacity:1;filter:brightness(.5) saturate(.9)}
 .hero-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.3),rgba(0,0,0,.45) 45%,#000 96%),linear-gradient(90deg,rgba(0,0,0,.85),rgba(0,0,0,.12) 55%,rgba(0,0,0,.55))}
 .hero-side{display:grid;gap:10px}
 .side-card{padding:15px;border:1px solid var(--line-2);border-radius:13px;background:rgba(0,0,0,.55);backdrop-filter:blur(14px)}
@@ -198,6 +199,8 @@ img,video{display:block;max-width:100%}
 .card:first-child{min-height:265px}
 .card:hover{transform:translateY(-4px);border-color:var(--line-2)}
 .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.04);transition:transform .8s var(--ease),filter .5s;z-index:1}
+.grid .card.is-short-video{grid-column:span 3;aspect-ratio:9/16;min-height:0}
+.grid .card.is-short-video img{object-fit:cover;background:#08080a}
 .card:hover img{transform:scale(1.05);filter:saturate(1) brightness(.72)}
 .card .ph{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:clamp(2.6rem,5vw,4rem);color:rgba(212,163,95,.22);background:radial-gradient(circle at 32% 24%,rgba(212,163,95,.15),transparent 30%),linear-gradient(150deg,#16161c,#0c0c10 60%,#08080b)}
 .card-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.03) 30%,rgba(0,0,0,.25) 55%,rgba(0,0,0,.92) 100%);z-index:2}
@@ -286,6 +289,7 @@ img,video{display:block;max-width:100%}
 @media(max-width:1050px){.work-layout{grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr)}.work-layout .where-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.work-layout .where-tile:nth-child(4n){border-right:1px solid var(--line)}.work-layout .where-tile:nth-child(2n){border-right:0}.work-layout .where-tile:nth-child(n+5){border-bottom:1px solid var(--line)}.work-layout .where-tile:nth-child(n+7){border-bottom:0}}
 @media(max-width:760px){.work-layout{grid-template-columns:1fr}.work-monitor{order:1}.work-layout .where-worked{order:2}.work-layout .where-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.work-layout .where-tile:nth-child(2n){border-right:1px solid var(--line)}.work-layout .where-tile:nth-child(4n){border-right:0}.work-layout .where-tile:nth-child(n+7){border-bottom:0}.work-stage{min-height:240px}.timeline-panel{margin:0 10px 10px}}
 @media(max-width:480px){.work-stage{min-height:210px}.work-transport{gap:7px;padding:9px}.work-layout .where-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.work-layout .where-tile:nth-child(4n){border-right:1px solid var(--line)}.work-layout .where-tile:nth-child(2n){border-right:0}.work-layout .where-tile:nth-child(n+7){border-bottom:0}.where-heading{display:block}.where-heading p{text-align:left;margin-top:6px}.where-tile{min-height:82px}}
+@media(max-width:640px){.timeline-panel{display:none}}
 /* release */
 .v-sub{display:flex;align-items:center;gap:12px;margin:16px 0 12px}
 .v-sub::after{content:"";flex:1;height:1px;background:var(--line)}
@@ -305,18 +309,25 @@ img,video{display:block;max-width:100%}
 .reel-body{position:absolute;left:13px;right:13px;bottom:13px;z-index:2}
 .reel-body span{display:block;font-family:var(--mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
 .reel-body h3{font-family:var(--serif);font-weight:400;font-size:.93rem;line-height:1.2}
-.series-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
-.series{display:block;cursor:pointer}
+.series-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),300px));gap:12px;align-items:start}
+.series-collection{min-width:0}
+.series-summary{display:block;list-style:none;cursor:pointer}
+.series-summary::-webkit-details-marker{display:none}
 .series-thumb{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:#0d0d10;display:block}
 .series-thumb img{width:100%;height:100%;object-fit:cover;filter:saturate(.9);transition:transform .5s var(--ease),filter .3s}
-.series:hover .series-thumb img{transform:scale(1.05);filter:brightness(.7)}
+.series-summary:hover .series-thumb img,.series-collection[open] .series-thumb img{transform:scale(1.04);filter:brightness(.75)}
 .series-let{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:1.8rem;color:rgba(212,163,95,.15)}
-.series-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);width:38px;height:38px;border-radius:50%;background:var(--gold);color:#141210;display:grid;place-items:center;opacity:0;transition:.25s;z-index:2}
-.series:hover .series-play{opacity:1;transform:translate(-50%,-50%) scale(1)}
-.series-play .ic{width:12px;height:12px}
+.series-count{position:absolute;right:9px;bottom:9px;display:inline-flex;align-items:center;gap:5px;padding:5px 8px;border:1px solid rgba(255,255,255,.2);border-radius:4px;background:rgba(0,0,0,.82);color:#fff;font-family:var(--mono);font-size:.57rem;letter-spacing:.02em}
+.series-count .ic{width:12px;height:12px}
 .series-meta{display:block;padding-top:9px}
 .series-meta .ep{display:block;font-family:var(--mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:3px}
 .series-meta h3{font-family:var(--serif);font-weight:400;font-size:.88rem;line-height:1.25}
+.series-episodes{display:grid;gap:6px;padding-top:10px;margin-top:10px;border-top:1px solid var(--line)}
+.series-episode{display:grid;grid-template-columns:42px minmax(0,1fr) 14px;align-items:center;gap:9px;padding:9px 10px;border:1px solid var(--line);border-radius:6px;color:var(--ink-dim);background:rgba(255,255,255,.02);transition:border-color .2s,color .2s,background .2s}
+.series-episode:hover{border-color:var(--gold);color:var(--ink);background:rgba(212,163,95,.06)}
+.series-episode-num{font-family:var(--mono);font-size:.52rem;color:var(--gold-2);direction:ltr}
+.series-episode-title{font-size:.75rem;line-height:1.25}
+.series-episode .ic{width:12px;height:12px;color:var(--gold)}
 /* services */
 .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
 .svc{display:flex;align-items:center;gap:12px;padding:11px 14px;border:1px solid var(--line);border-radius:11px;background:rgba(13,13,16,.6)}
@@ -357,11 +368,12 @@ img,video{display:block;max-width:100%}
 .foot-bar{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap;padding-top:8px}
 .foot-bar p{font-size:.71rem;color:var(--ink-faint)}
 /* dialog */
-.vdialog{position:fixed;inset:0;margin:0;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;padding:0;border:0;border-radius:0;background:#000;color:var(--ink);overflow:hidden}
+.vdialog{position:fixed;inset:5vh 4vw;margin:0;width:92vw;height:90vh;height:90dvh;max-width:none;max-height:none;padding:0;border:1px solid var(--line-2);border-radius:8px;background:#000;color:var(--ink);overflow:hidden}
 .vdialog[open]{z-index:12000}
-.vdialog.is-local[open]{transform:translateX(100%);transition:transform .36s cubic-bezier(.2,.7,.2,1)}
-.vdialog.is-local[open].is-visible{transform:translateX(0)}
-.vdialog::backdrop{background:rgba(0,0,0,.88)}
+.vdialog.is-local[open],.vdialog.is-short[open]{inset:0;margin:0;width:100vw;height:100vh;height:100dvh;border:0;border-radius:0}
+.vdialog.is-local[open],.vdialog.is-short[open]{transform:translateX(100%);transition:transform .36s cubic-bezier(.2,.7,.2,1)}
+.vdialog.is-local[open].is-visible,.vdialog.is-short[open].is-visible{transform:translateX(0)}
+.vdialog::backdrop{background:rgba(0,0,0,.4)}
 .vd-shell{position:relative;width:100%;height:100%;display:grid;place-items:center;padding:0}
 .vd-bar{position:absolute;top:0;left:0;right:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:14px 18px;background:linear-gradient(180deg,rgba(0,0,0,.75),transparent);pointer-events:none}
 .vd-bar h2{font-family:var(--serif);font-weight:400;font-size:1.2rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -370,12 +382,14 @@ img,video{display:block;max-width:100%}
 .vd-frame{position:relative;width:100%;height:100%;overflow:hidden;background:#000}
 .vd-frame iframe,.vd-frame video{width:100%;height:100%;border:0;display:block}
 .vd-frame video{object-fit:contain}
+.vdialog.is-short .vd-frame{display:grid;place-items:center}
 .vd-frame [hidden]{display:none}
 @media(min-width:961px){
   body.video-open main{margin-right:min(42vw,700px)}
   body.video-open .bar-top,body.video-open .bar-bot{right:min(42vw,700px)}
   body.video-open .rail{display:none}
-  .vdialog.is-local[open]{inset:0 0 0 auto;width:min(42vw,700px);height:100vh;height:100dvh;border-left:1px solid var(--line-2)}
+  .vdialog.is-local[open],.vdialog.is-short[open]{inset:0 0 0 auto;width:min(42vw,700px);height:100vh;height:100dvh;border-left:1px solid var(--line-2)}
+  .vdialog.is-short .vd-frame iframe{width:min(100%,56.25vh);height:100%;}
 }
 /* reveal */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
@@ -390,6 +404,7 @@ img,video{display:block;max-width:100%}
 @media(max-width:960px){
   .origin-grid{grid-template-columns:1fr;gap:30px}
   .card,.card:nth-child(3n+1),.card:nth-child(3n+2){grid-column:span 6}
+  .grid .card.is-short-video{grid-column:span 4}
   .card.ghost{grid-column:span 12}
   .t-strip{grid-template-columns:1fr}
   :root{--bar:56px}
@@ -410,6 +425,7 @@ img,video{display:block;max-width:100%}
 }
 @media(max-width:640px){
   .card,.card:nth-child(3n+1),.card:nth-child(3n+2){grid-column:span 12;min-height:235px}
+  .grid .card.is-short-video{grid-column:span 6;min-height:0}
   .card:first-child{min-height:245px}
   .card.ghost{min-height:0}
   .card.ghost .card-body p{display:block;margin:4px 0 0}
@@ -543,12 +559,8 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
   <section class="phase" id="hero" data-phase="PHASE 01 · WELCOME" data-node="Welcome" aria-label="Welcome">
     <div class="hero-bgwrap" aria-hidden="true">
       <video class="hero-slide" autoplay muted loop playsinline preload="auto" aria-hidden="true">
-  <source src="" type="video/mp4">
-</video>
-      <img class="hero-slide" src="bts1.jpg" alt="">
-      <img class="hero-slide" src="" alt="">
-      <img class="hero-slide" src="" alt="">
-      <img class="hero-slide" src="" alt="">
+        <source src="hero.mp4" type="video/mp4">
+      </video>
     </div>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="shell hero-grid">
@@ -708,6 +720,36 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-ext"/></svg></span>
           <div class="card-body"><span class="card-tag" data-i18n="tag_client">Client</span><h3>Sushi Chef Cinematic Reel</h3></div>
         </a>
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/xKnN9D2xyxU" data-video="xKnN9D2xyxU" data-title="Dentist">
+          <img src="https://img.youtube.com/vi/xKnN9D2xyxU/hqdefault.jpg" alt="Dentist" loading="lazy">
+          <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
+          <div class="card-body"><span class="card-tag">Other</span><h3>Dentist</h3></div>
+        </a>
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/x3fPw0Hqc4o" data-video="x3fPw0Hqc4o" data-title="Guest House">
+          <img src="https://img.youtube.com/vi/x3fPw0Hqc4o/hqdefault.jpg" alt="Guest House" loading="lazy">
+          <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
+          <div class="card-body"><span class="card-tag">Other</span><h3>Guest House</h3></div>
+        </a>
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/3ce90zpooUQ" data-video="3ce90zpooUQ" data-title="Banquet Hall 1">
+          <img src="https://img.youtube.com/vi/3ce90zpooUQ/hqdefault.jpg" alt="Banquet Hall" loading="lazy">
+          <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
+          <div class="card-body"><span class="card-tag">Banquet Hall</span><h3>Banquet Hall 1</h3></div>
+        </a>
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/HmqFo2wXqyI" data-video="HmqFo2wXqyI" data-title="Banquet Hall 2">
+          <img src="https://img.youtube.com/vi/HmqFo2wXqyI/hqdefault.jpg" alt="Banquet Hall" loading="lazy">
+          <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
+          <div class="card-body"><span class="card-tag">Banquet Hall</span><h3>Banquet Hall 2</h3></div>
+        </a>
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/6m6FfGDFfxc" data-video="6m6FfGDFfxc" data-title="Banquet Hall 3">
+          <img src="https://img.youtube.com/vi/6m6FfGDFfxc/hqdefault.jpg" alt="Banquet Hall" loading="lazy">
+          <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
+          <div class="card-body"><span class="card-tag">Banquet Hall</span><h3>Banquet Hall 3</h3></div>
+        </a>
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/vQF6eqnsmVI" data-video="vQF6eqnsmVI" data-title="Banquet Hall 4">
+          <img src="https://img.youtube.com/vi/vQF6eqnsmVI/hqdefault.jpg" alt="Banquet Hall" loading="lazy">
+          <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
+          <div class="card-body"><span class="card-tag">Banquet Hall</span><h3>Banquet Hall 4</h3></div>
+        </a>
         <a class="card ghost" data-cat="next" href="#contact">
           <span class="ghost-q" aria-hidden="true">?</span>
           <div class="card-body">
@@ -757,7 +799,7 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
           </section>
           <section class="work-monitor" aria-label="Video playback">
             <div class="work-stage" id="work-stage">
-              <video class="work-video" id="work-video" controls autoplay muted loop playsinline preload="metadata"></video>
+              <video class="work-video" id="work-video" autoplay muted loop playsinline preload="metadata"></video>
               <div class="work-placeholder" id="work-placeholder" aria-live="polite">
                 <strong data-i18n="work_missing">Add the selected video file to this folder</strong>
                 <span id="work-filename">example.mp4</span>
@@ -831,14 +873,20 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
         <a class="reel" href="https://www.instagram.com/fareesbounawara/reel/DU_Fkj1ikyT/" target="_blank" rel="noopener"><img src="thumbnail20.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="reel-let" aria-hidden="true">20</span><span class="reel-num">R·20</span><span class="reel-ico"><svg class="ic"><use href="#i-ext"/></svg></span><div class="reel-body"><span>Instagram</span><h3 data-i18n="reel20">Superheroes</h3></div></a>
         <a class="reel" href="https://www.instagram.com/fareesbounawara/reel/DU8gmybivrU/" target="_blank" rel="noopener"><img src="thumbnail21.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="reel-let" aria-hidden="true">21</span><span class="reel-num">R·21</span><span class="reel-ico"><svg class="ic"><use href="#i-ext"/></svg></span><div class="reel-body"><span>Instagram</span><h3 data-i18n="reel21">Why were Tunisian series tied to Ramadan?</h3></div></a>
       </div>
-      <div class="v-sub"><span class="mono" data-i18n="series_h">How to write a script — the series</span></div>
+      <div class="v-sub"><span class="mono" data-i18n="series_h">The series</span></div>
       <div class="series-grid reveal">
-        <a class="series js-video" href="https://www.youtube.com/watch?v=xvhQX6-3Xuo" data-video="xvhQX6-3Xuo" data-title="How to write a script? (Ep 1)"><span class="series-thumb"><img src="https://img.youtube.com/vi/xvhQX6-3Xuo/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="series-let" aria-hidden="true">EP1</span><span class="series-play"><svg class="ic"><use href="#i-play"/></svg></span></span><span class="series-meta"><span class="ep">EP · 01</span><h3 data-i18n="ep1">How to write a script?</h3></span></a>
-        <a class="series js-video" href="https://www.youtube.com/watch?v=80QS_REPhLo" data-video="80QS_REPhLo" data-title="How to build a compelling film structure? (Ep 2)"><span class="series-thumb"><img src="https://img.youtube.com/vi/80QS_REPhLo/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="series-let" aria-hidden="true">EP2</span><span class="series-play"><svg class="ic"><use href="#i-play"/></svg></span></span><span class="series-meta"><span class="ep">EP · 02</span><h3 data-i18n="ep2">How to build a compelling film structure?</h3></span></a>
-        <a class="series js-video" href="https://www.youtube.com/watch?v=D4FxuJR_IZk" data-video="D4FxuJR_IZk" data-title="How to build a cinematic character? (Ep 3)"><span class="series-thumb"><img src="https://img.youtube.com/vi/D4FxuJR_IZk/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="series-let" aria-hidden="true">EP3</span><span class="series-play"><svg class="ic"><use href="#i-play"/></svg></span></span><span class="series-meta"><span class="ep">EP · 03</span><h3 data-i18n="ep3">How to build a cinematic character?</h3></span></a>
-        <a class="series js-video" href="https://www.youtube.com/watch?v=ZsPhRG-SnFo" data-video="ZsPhRG-SnFo" data-title="How to utilize dialogue in the script? (Ep 4)"><span class="series-thumb"><img src="https://img.youtube.com/vi/ZsPhRG-SnFo/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="series-let" aria-hidden="true">EP4</span><span class="series-play"><svg class="ic"><use href="#i-play"/></svg></span></span><span class="series-meta"><span class="ep">EP · 04</span><h3 data-i18n="ep4">How to utilize dialogue in the script?</h3></span></a>
-        <a class="series js-video" href="https://www.youtube.com/watch?v=545Lar-mdYo" data-video="545Lar-mdYo" data-title="How to make cinema on a low budget? (BTS)"><span class="series-thumb"><img src="https://img.youtube.com/vi/545Lar-mdYo/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="series-let" aria-hidden="true">EP5</span><span class="series-play"><svg class="ic"><use href="#i-play"/></svg></span></span><span class="series-meta"><span class="ep">EP · 05</span><h3 data-i18n="ep5">How to make cinema on a low budget?</h3></span></a>
-        <a class="series js-video" href="https://www.youtube.com/watch?v=sPb4qyLc__w" data-video="sPb4qyLc__w" data-title="Top 5 filmmaking mistakes I've made"><span class="series-thumb"><img src="https://img.youtube.com/vi/sPb4qyLc__w/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="series-let" aria-hidden="true">EP6</span><span class="series-play"><svg class="ic"><use href="#i-play"/></svg></span></span><span class="series-meta"><span class="ep">EP · 06</span><h3 data-i18n="ep6">Top 5 filmmaking mistakes I've made</h3></span></a>
+        <details class="series-collection">
+          <summary class="series-summary">
+            <span class="series-thumb"><img src="https://img.youtube.com/vi/xvhQX6-3Xuo/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="series-count"><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg><span data-i18n="series_count">4 videos</span></span></span>
+            <span class="series-meta"><h3 data-i18n="ep1">How to write a script?</h3></span>
+          </summary>
+          <div class="series-episodes">
+            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=xvhQX6-3Xuo" data-video="xvhQX6-3Xuo" data-title="How to write a script? (Ep 1)"><span class="series-episode-num">EP 01</span><span class="series-episode-title" data-i18n="ep1">How to write a script?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
+            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=80QS_REPhLo" data-video="80QS_REPhLo" data-title="How to build a compelling film structure? (Ep 2)"><span class="series-episode-num">EP 02</span><span class="series-episode-title" data-i18n="ep2">How to build a compelling film structure?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
+            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=D4FxuJR_IZk" data-video="D4FxuJR_IZk" data-title="How to build a cinematic character? (Ep 3)"><span class="series-episode-num">EP 03</span><span class="series-episode-title" data-i18n="ep3">How to build a cinematic character?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
+            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=ZsPhRG-SnFo" data-video="ZsPhRG-SnFo" data-title="How to utilize dialogue in the script? (Ep 4)"><span class="series-episode-num">EP 04</span><span class="series-episode-title" data-i18n="ep4">How to utilize dialogue in the script?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
+          </div>
+        </details>
       </div>
     </div>
   </section>
@@ -956,7 +1004,7 @@ step4_t:"The Edit",step4_p:"Where the film is truly made. Rhythm, structure, pac
 step5_t:"Color",step5_p:"Grading the image until it carries the emotion of the scene.",
 step6_t:"Sound",step6_p:"Design, mix and music — the half of the picture you hear.",
 sl5a:"PHASE 05",sl5b:"THE RELEASE",h2_release:"THE <em>RELEASE</em>",sub_release:"INT. &amp; EXT. — EVERY TIME, EVERYWHERE",
-reels_h:"Instagram Reels — weekly drops",series_h:"How to write a script — the series",
+reels_h:"Instagram Reels — weekly drops",series_h:"The series",series_count:"4 videos",
 reel1:"Movie within a Movie",reel2:"How did Max Factor change cinema history?",reel3:"Western Movies",reel4:"Why was music present before speech in cinema?",reel5:"Rocky: From Poverty to Oscar",reel6:"End of the World!",reel7:"Arabs in Hollywood",reel8:"Remakes in Cinema",reel9:"Scorsese &amp; De Niro",reel10:"Mental Illness!",reel11:"The Oscars?",reel12:"Hitchcock's Secret of Suspense!",reel13:"What's our story with Animation?",reel14:"How colors changed the history of cinema?",reel15:"Horror",reel16:"72 seasons?",reel17:"Novels and Cinema?",reel18:"Comedy and Humor",reel19:"Sci-Fi is not a lie?",reel20:"Superheroes",reel21:"Why were Tunisian series tied to Ramadan?",
 ep1:"How to write a script?",ep2:"How to build a compelling film structure?",ep3:"How to build a cinematic character?",ep4:"How to utilize dialogue in the script?",ep5:"How to make cinema on a low budget?",ep6:"Top 5 filmmaking mistakes I've made",
 sl6a:"PHASE 06",sl6b:"CONTACT",h2_contact:"Have a project <em>in mind?</em>",
@@ -1002,7 +1050,7 @@ step4_t:"Le Montage",step4_p:"L\u00E0 o\u00F9 le film se fait vraiment. Rythme, 
 step5_t:"\u00C9talonnage",step5_p:"Je pousse l\u2019image jusqu\u2019\u00E0 ce qu\u2019elle porte l\u2019\u00E9motion de la sc\u00E8ne.",
 step6_t:"Le Son",step6_p:"Design, mixage et musique \u2014 la moiti\u00E9 de l\u2019image qu\u2019on entend.",
 sl5a:"PHASE 05",sl5b:"DIFFUSION",h2_release:"LA <em>DIFFUSION</em>",sub_release:"INT. &amp; EXT. — PARTOUT, TOUT LE TEMPS",
-reels_h:"Reels Instagram — chaque semaine",series_h:"Comment \u00E9crire un sc\u00E9nario — la s\u00E9rie",
+reels_h:"Reels Instagram — chaque semaine",series_h:"La série",series_count:"4 vidéos",
 reel1:"Un film dans le film",reel2:"Comment Max Factor a chang\u00E9 l'histoire du cin\u00E9ma ?",reel3:"Les westerns",reel4:"Pourquoi la musique avant la parole au cin\u00E9ma ?",reel5:"Rocky : de la pauvret\u00E9 \u00E0 l'Oscar",reel6:"La fin du monde !",reel7:"Les Arabes \u00E0 Hollywood",reel8:"Les remakes au cin\u00E9ma",reel9:"Scorsese &amp; De Niro",reel10:"La maladie mentale !",reel11:"Les Oscars ?",reel12:"Le secret du suspense selon Hitchcock !",reel13:"Quelle histoire avec l'animation ?",reel14:"Quand les couleurs ont chang\u00E9 le cin\u00E9ma",reel15:"L'horreur",reel16:"72 saisons ?",reel17:"Romans et cin\u00E9ma ?",reel18:"Com\u00E9die et humour",reel19:"La science-fiction, un mensonge ?",reel20:"Super-h\u00E9ros",reel21:"Pourquoi les s\u00E9ries tunisiennes sont li\u00E9es au Ramadan ?",
 ep1:"Comment \u00E9crire un sc\u00E9nario ?",ep2:"Comment construire une structure de film solide ?",ep3:"Comment cr\u00E9er un personnage de cin\u00E9ma ?",ep4:"Comment utiliser le dialogue ?",ep5:"Faire du cin\u00E9ma avec un petit budget ?",ep6:"Mes 5 plus grandes erreurs de cin\u00E9ma",
 sl6a:"PHASE 06",sl6b:"CONTACT",h2_contact:"Un projet <em>en t\u00EAte ?</em>",
@@ -1048,7 +1096,7 @@ step4_t:"المونتاج",step4_p:"هنا يصنع الفيلم بالصح. إ�
 step5_t:"التلوين",step5_p:"نعالج الصورة حتى تحسّ بروح المشهد.",
 step6_t:"الصوت",step6_p:"تصميم ومزج وموسيقى — النص الثاني من الصورة اللي تسمعو.",
 sl5a:"المرحلة 05",sl5b:"النشرات",h2_release:"<em>النشرات</em>",sub_release:"مشهد داخلي وخارجي — في كل وقت وكل بلاصة",
-reels_h:"ريلز إنستغرام — كل أسبوع",series_h:"كيفاش تكتب سيناريو — السلسلة",
+reels_h:"ريلز إنستغرام — كل أسبوع",series_h:"السلسلة",series_count:"4 فيديوهات",
 reel1:"فيلم جوّا فيلم",reel2:"كيفاش ماكس فاكتور بدّل تاريخ السينما؟",reel3:"أفلام الغرب",reel4:"علاش الموسيقى جات قبل الكلام في السينما؟",reel5:"روكي: من الفقر للأوسكار",reel6:"نهاية العالم!",reel7:"العرب في هوليوود",reel8:"الريمايك في السينما",reel9:"سكورسيزي ودي نيرو",reel10:"المرض النفسي!",reel11:"الأوسكار؟",reel12:"سر التشويق عند هيتشكوك!",reel13:"شنية حكايتنا مع الأنيميشن؟",reel14:"كيفاش الألوان بدّلوا تاريخ السينما؟",reel15:"الرعب",reel16:"72 موسم؟",reel17:"الروايات والسينما؟",reel18:"الكوميديا والهزار",reel19:"الخيال العلمي مش كذبة؟",reel20:"الأبطال الخارقين",reel21:"علاش المسلسلات التونسية مربوطين برمضان؟",
 ep1:"كيفاش تكتب سيناريو؟",ep2:"كيفاش تبني هيكل فيلم قوي؟",ep3:"كيفاش تبني شخصية سينمائية؟",ep4:"كيفاش تستعمل الحوار في السيناريو؟",ep5:"كيفاش تعمل سينما بميزانية صغيرة؟",ep6:"أخطر 5 أخطاء عملتهم في التصوير",
 sl6a:"المرحلة 06",sl6b:"تواصل",h2_contact:"عندك مشروع <em>في بالك؟</em>",
@@ -1360,50 +1408,21 @@ document.addEventListener("keydown",function(e){
   if(e.key === "Escape")closeLangMenu();
 });
 
-/* ═══ BTS slideshow — WAAPI, always plays ═══ */
+/* ═══ Hero video — muted and looping ═══ */
 window.addEventListener("load",function(){
-  var wrap=$(".hero-bgwrap");if(!wrap)return;
-  var HOLD=6500,IN=2600;
+  var video=$(".hero-bgwrap video.hero-slide");if(!video)return;
+  var IN=2600;
   var KBA=[{transform:"scale(1.05) translateX(0)"},{transform:"scale(1.16) translateX(-1.4%)"}];
-  var KBB=[{transform:"scale(1.16) translateX(1.4%)"},{transform:"scale(1.05)"}];
   var F_IN=[{opacity:0,filter:"brightness(.3) saturate(.92) blur(10px)"},{opacity:1,filter:"brightness(.5) saturate(.92) blur(0px)"}];
-  var live=[],current=null,kbAlt=0,zTop=3;
-  function drift(s){if(!canAnim)return;s.animate((kbAlt++%2)?KBB:KBA,{duration:14000,iterations:Infinity,direction:"alternate",easing:"ease-in-out"});}
-  function fadeIn(s){if(!canAnim){s.style.opacity=1;return;}if(s._fx)s._fx.cancel();s._fx=s.animate(F_IN,{duration:IN,easing:"cubic-bezier(.45,0,.25,1)",fill:"forwards"});}
-  function firstShow(s){if(current)return;current=s;drift(s);fadeIn(s);}
-  var slides=$$(".hero-slide");
-slides.forEach(function(s){
-  var isVideo=s instanceof HTMLVideoElement;
-  var done=function(ok){
-    if(ok){live.push(s);firstShow(s);}
-    else{console.warn("[BTS] failed to load:",s.currentSrc||s.getAttribute("src"));s.remove();}
-  };
-
-  if(isVideo){
-    var ready=function(){s.play().catch(function(){});done(true);};
-    if(s.readyState>=2)ready();
-    else{
-      s.addEventListener("loadeddata",ready,{once:true});
-      s.addEventListener("error",function(){done(false);},{once:true});
-    }
-  }else if(s.complete)done(s.naturalWidth>0);
-  else{
-    s.addEventListener("load",function(){done(true);},{once:true});
-    s.addEventListener("error",function(){done(false);},{once:true});
+  if(canAnim){
+    video.animate(KBA,{duration:14000,iterations:Infinity,direction:"alternate",easing:"ease-in-out"});
+    video.animate(F_IN,{duration:IN,easing:"cubic-bezier(.45,0,.25,1)",fill:"forwards"});
+  }else{
+    video.style.opacity=1;
   }
-});
-  if(!live.length){var im=new Image();im.onload=function(){im.className="hero-slide";wrap.appendChild(im);drift(im);firstShow(im);};im.src="me.jpg";}
-  if(live.length>1)setInterval(function(){
-    if(!current)return;
-    var oldS=current,ni=(live.indexOf(oldS)+1)%live.length,nxt=live[ni];
-    if(nxt===oldS)return;current=nxt;
-    nxt.style.zIndex=++zTop;fadeIn(nxt);
-    setTimeout(function(){
-      if(oldS._fx)oldS._fx.cancel();
-      var out=oldS.animate([{opacity:1},{opacity:0}],{duration:1400,easing:"ease-in-out",fill:"forwards"});
-      out.onfinish=function(){out.cancel();oldS.style.zIndex="";};
-    },Math.round(IN*0.6));
-  },HOLD);
+  video.muted=true;
+  video.loop=true;
+  video.play().catch(function(){});
 });
 
 /* ═══ reveal ═══ */
@@ -1462,46 +1481,162 @@ function featGo(i){featI=i;var c=$("#feat-card");c.classList.add("swap");setTime
 featTimer=setInterval(function(){featGo((featI+1)%FEAT.length);},5000);
 
 /* ═══ video dialog ═══ */
-var vd=$("#vdialog"),vdF=$("#vd-frame"),vdVideo=$("#vd-video");
-function showLocalVideoPanel(){
-  vd.classList.add("is-local");
+var vd=$("#vdialog"),vdF=$("#vd-frame"),vdVideo=$("#vd-video"),vdShell=$(".vd-shell"),vdOpenAnimation=null;
+function showLocalVideoPanel(panelClass){
+  vd.classList.add(panelClass||"is-local");
   document.body.classList.add("video-open");
   vd.show();
   requestAnimationFrame(function(){vd.classList.add("is-visible");});
 }
-function openV(id,title){if(vd.open)closeV();vd.classList.remove("is-local","is-visible");document.body.classList.remove("video-open");vdVideo.pause();vdVideo.hidden=true;vdF.hidden=false;$("#vd-title").textContent=title||"Farees Bounawara";vdF.src="https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0";vd.showModal();}
-function openLocalV(src,title){if(vd.open)closeV();vdF.src="about:blank";vdF.hidden=true;vdVideo.hidden=false;vdVideo.src=src;$("#vd-title").textContent=title||"Farees Bounawara";showLocalVideoPanel();vdVideo.play().catch(function(){});}
-function closeV(){if(vd.open){document.body.classList.remove("video-open");vd.classList.remove("is-visible","is-local");vdF.src="about:blank";vdVideo.pause();vdVideo.removeAttribute("src");vdVideo.load();vdVideo.hidden=true;vdF.hidden=false;vd.close();}}
-vd.addEventListener("close",function(){if(vd.open)return;document.body.classList.remove("video-open");vd.classList.remove("is-visible","is-local");vdF.src="about:blank";vdVideo.pause();vdVideo.removeAttribute("src");vdVideo.load();vdVideo.hidden=true;vdF.hidden=false;});
+function playVideoOpenSound(){
+  var AudioContextClass=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContextClass)return;
+  try{
+    var context=new AudioContextClass(),now=context.currentTime;
+    var buffer=context.createBuffer(1,Math.floor(context.sampleRate*.55),context.sampleRate);
+    var samples=buffer.getChannelData(0);
+    for(var i=0;i<samples.length;i++)samples[i]=(Math.random()*2-1)*(1-i/samples.length);
+    var noise=context.createBufferSource(),filter=context.createBiquadFilter(),whooshGain=context.createGain();
+    noise.buffer=buffer;filter.type="bandpass";filter.Q.value=.55;
+    filter.frequency.setValueAtTime(1500,now);filter.frequency.exponentialRampToValueAtTime(260,now+.52);
+    whooshGain.gain.setValueAtTime(.0001,now);whooshGain.gain.exponentialRampToValueAtTime(.065,now+.12);whooshGain.gain.exponentialRampToValueAtTime(.0001,now+.55);
+    noise.connect(filter);filter.connect(whooshGain);whooshGain.connect(context.destination);noise.start(now);noise.stop(now+.56);
+    var boom=context.createOscillator(),boomGain=context.createGain();
+    boom.type="sine";boom.frequency.setValueAtTime(92,now+.06);boom.frequency.exponentialRampToValueAtTime(38,now+.55);
+    boomGain.gain.setValueAtTime(.0001,now);boomGain.gain.exponentialRampToValueAtTime(.09,now+.1);boomGain.gain.exponentialRampToValueAtTime(.0001,now+.62);
+    boom.connect(boomGain);boomGain.connect(context.destination);boom.start(now+.05);boom.stop(now+.63);
+    context.resume().catch(function(){});
+    setTimeout(function(){context.close().catch(function(){});},900);
+  }catch(e){}
+}
+function playFullscreenVideoOpenSound(){
+  var AudioContextClass=window.AudioContext||window.webkitAudioContext;
+  if(!AudioContextClass)return;
+  try{
+    var context=new AudioContextClass(),now=context.currentTime;
+    var noiseBuf=context.createBuffer(1,context.sampleRate,context.sampleRate);
+    var noiseSamples=noiseBuf.getChannelData(0);
+    for(var i=0;i<noiseSamples.length;i++)noiseSamples[i]=Math.random()*2-1;
+    var sfxBus=context.createGain();sfxBus.gain.value=.7;sfxBus.connect(context.destination);
+    var impulseLength=Math.floor(context.sampleRate*4.2),impulse=context.createBuffer(2,impulseLength,context.sampleRate);
+    for(var channel=0;channel<2;channel++){
+      var impulseSamples=impulse.getChannelData(channel);
+      for(var sample=0;sample<impulseLength;sample++)impulseSamples[sample]=(Math.random()*2-1)*Math.pow(1-sample/impulseLength,2.6);
+    }
+    var reverb=context.createConvolver();reverb.buffer=impulse;
+    var reverbReturn=context.createGain();reverbReturn.gain.value=.9;reverb.connect(reverbReturn);reverbReturn.connect(sfxBus);
+    function routeSfx(node,wet){
+      node.connect(sfxBus);
+      if(wet){var send=context.createGain();send.gain.value=wet;node.connect(send);send.connect(reverb);}
+    }
+    function noiseBurst(options){
+      var source=context.createBufferSource(),filter=context.createBiquadFilter(),gain=context.createGain();
+      source.buffer=noiseBuf;source.loop=true;filter.type=options.type||"bandpass";filter.Q.value=options.q;
+      filter.frequency.setValueAtTime(options.f0,now+options.t);filter.frequency.exponentialRampToValueAtTime(options.f1,now+options.t+options.dur);
+      if(options.shape==="rise"){
+        gain.gain.setValueAtTime(.0001,now+options.t);gain.gain.exponentialRampToValueAtTime(options.gain,now+options.t+options.dur);gain.gain.linearRampToValueAtTime(0,now+options.t+options.dur+.05);
+      }else{
+        gain.gain.setValueAtTime(.0001,now+options.t);gain.gain.linearRampToValueAtTime(options.gain,now+options.t+options.dur*.35);gain.gain.exponentialRampToValueAtTime(.0001,now+options.t+options.dur);
+      }
+      source.connect(filter);filter.connect(gain);routeSfx(gain,options.wet);source.start(now+options.t);source.stop(now+options.t+options.dur+.1);
+    }
+    noiseBurst({dur:.8,f0:200,f1:6000,q:1,gain:.14,shape:"rise",wet:.4,t:0});
+    var boom=context.createOscillator(),boomGain=context.createGain();
+    boom.type="sine";boom.frequency.setValueAtTime(60,now+.82);boom.frequency.exponentialRampToValueAtTime(30,now+3.22);
+    boomGain.gain.setValueAtTime(0,now+.82);boomGain.gain.linearRampToValueAtTime(.7,now+.824);boomGain.gain.exponentialRampToValueAtTime(.0001,now+3.22);
+    boom.connect(boomGain);routeSfx(boomGain,.6);boom.start(now+.82);boom.stop(now+3.27);
+    noiseBurst({dur:1.2,f0:3500,f1:140,q:.7,gain:.16,type:"lowpass",wet:.8,t:.82});
+    context.resume().catch(function(){});
+    setTimeout(function(){context.close().catch(function(){});},7600);
+  }catch(e){}
+}
+function animateVideoOpen(origin,isPanel){
+  if(!canAnim)return;
+  if(vdOpenAnimation){vdOpenAnimation.cancel();vdOpenAnimation=null;}
+  var keyframes;
+  if(isPanel){
+    keyframes=[{transform:"scale(.94)",opacity:.55},{transform:"scale(1)",opacity:1}];
+  }else{
+    var image=origin&&origin.querySelector("img");
+    var source=image&&image.getClientRects().length?image.getBoundingClientRect():origin&&origin.getBoundingClientRect();
+    var target=vdShell.getBoundingClientRect();
+    if(!source||!source.width||!source.height||!target.width||!target.height)return;
+    var dx=source.left+source.width/2-target.left-target.width/2;
+    var dy=source.top+source.height/2-target.top-target.height/2;
+    keyframes=[
+      {transform:"translate("+dx+"px,"+dy+"px) scale("+(source.width/target.width)+","+(source.height/target.height)+")",opacity:.72,transformOrigin:"center center"},
+      {transform:"translate(0,0) scale(1,1)",opacity:1,transformOrigin:"center center"}
+    ];
+  }
+  var animation=vdShell.animate(keyframes,{duration:REDUCED?360:620,easing:"cubic-bezier(.18,.72,.22,1)",fill:"both"});
+  vdOpenAnimation=animation;
+  animation.onfinish=function(){animation.cancel();if(vdOpenAnimation===animation)vdOpenAnimation=null;};
+}
+function openV(id,title,isShort,origin){if(vd.open)closeV();vd.classList.remove("is-local","is-short","is-visible");document.body.classList.remove("video-open");vdVideo.pause();vdVideo.hidden=true;vdF.hidden=false;$("#vd-title").textContent=title||"Farees Bounawara";vdF.src="https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1&rel=0&playsinline=1";if(isShort)playVideoOpenSound();else playFullscreenVideoOpenSound();if(isShort){showLocalVideoPanel("is-short");animateVideoOpen(origin,true);}else{vd.showModal();animateVideoOpen(origin,false);}}
+function openLocalV(src,title,origin){if(vd.open)closeV();vdF.src="about:blank";vdF.hidden=true;vdVideo.hidden=false;vdVideo.src=src;$("#vd-title").textContent=title||"Farees Bounawara";playVideoOpenSound();showLocalVideoPanel();animateVideoOpen(origin,true);vdVideo.play().catch(function(){});}
+function closeV(){if(vd.open){document.body.classList.remove("video-open");vd.classList.remove("is-visible","is-local","is-short");vdF.src="about:blank";vdVideo.pause();vdVideo.removeAttribute("src");vdVideo.load();vdVideo.hidden=true;vdF.hidden=false;vd.close();}}
+vd.addEventListener("close",function(){if(vd.open)return;document.body.classList.remove("video-open");vd.classList.remove("is-visible","is-local","is-short");vdF.src="about:blank";vdVideo.pause();vdVideo.removeAttribute("src");vdVideo.load();vdVideo.hidden=true;vdF.hidden=false;});
 document.addEventListener("click",function(e){
   var a=e.target.closest(".js-video");
-  if(a){if(a.getAttribute("data-video")){e.preventDefault();openV(a.getAttribute("data-video"),a.getAttribute("data-title"));}else if(a.getAttribute("data-local-video")){e.preventDefault();openLocalV(a.getAttribute("data-local-video"),a.getAttribute("data-title"));}return;}
+  if(a){if(a.getAttribute("data-video")){e.preventDefault();openV(a.getAttribute("data-video"),a.getAttribute("data-title"),a.classList.contains("is-short-video"),a);}else if(a.getAttribute("data-local-video")){e.preventDefault();openLocalV(a.getAttribute("data-local-video"),a.getAttribute("data-title"),a);}return;}
   if(e.target===vd)closeV();
 });
  $("#vd-close").addEventListener("click",closeV);
-var clientVideoFiles={"Canadian Pro Gym":"gym.mp4","Fashion Week Coverage":"fashion.mp4","Al Chourouk Press Video":"chourouk.mp4","Sushi Chef Cinematic Reel":"sushi.mp4"};
+var clientVideos={"Canadian Pro Gym":"F6l1LyQVGQc","Fashion Week Coverage":"mJpZgSL14sw","Al Chourouk Press Video":"PKcPcJHW1ac","Sushi Chef Cinematic Reel":"9FywcoDuuqU"};
 $$('.card[href*="instagram.com"]').forEach(function(link){
   var card=link.closest(".card"),title=link.querySelector("h3")||(card&&card.querySelector("h3"));
-  var videoFile=clientVideoFiles[title?title.textContent.trim():""]||"showreel.mp4";
+  var videoId=clientVideos[title?title.textContent.trim():""];
+  if(!videoId)return;
+  var videoTitle=title.textContent.trim();
   link.classList.add("js-video");
-  link.dataset.localVideo=videoFile;
-  link.dataset.title=title?title.textContent.trim():"Farees Bounawara";
-  link.href=videoFile;
+  if(videoTitle==="Al Chourouk Press Video")link.classList.add("is-short-video");
+  link.dataset.video=videoId;
+  link.dataset.title=videoTitle;
+  link.href="https://www.youtube.com/watch?v="+videoId;
+  var thumbnail=link.querySelector("img");
+  if(thumbnail){thumbnail.src="https://img.youtube.com/vi/"+videoId+"/hqdefault.jpg";thumbnail.alt=videoTitle;}
   link.removeAttribute("target");
   link.removeAttribute("rel");
 });
-$$('.reels-rail .reel').forEach(function(reel,index){
-  var title=reel.querySelector("h3").textContent.trim();
-  var videoFile="insta"+(index+1)+".mp4";
+var youtubeShorts=[
+  {id:"H3lta7lqwsI",title:"Movie within a movie"},
+  {id:"2h4K5v8kWUE",title:"How did Max Factor change cinema history?"},
+  {id:"AgjGQ9FC2fg",title:"Western movies"},
+  {id:"bQBkCXuq6XE",title:"Why was music present before speech in cinema?"},
+  {id:"NSNLK4Hn92U",title:"Rocky: From poverty to Oscar"},
+  {id:"pMfNLNFO0Hg",title:"End of the world!"},
+  {id:"0W5ceCFWm9Q",title:"Arabs in Hollywood"},
+  {id:"pYesCJSW5Ig",title:"Remakes in cinema"},
+  {id:"IDUwSTbGzQY",title:"Scorsese & De Niro"},
+  {id:"JbtlCwxIdyg",title:"Mental illness"},
+  {id:"6_ILVPj9Kds",title:"The Oscars?"},
+  {id:"CnqQwbINF5Y",title:"Hitchcock's secret of suspense!"},
+  {id:"7Fim_q04644",title:"What's our story with animation?"},
+  {id:"7_WrfqjTz40",title:"How colors changed the history of cinema?"},
+  {id:"iXEfzRrvcO8",title:"Horror"},
+  {id:"2lfxmRkl984",title:"72 seasons?"},
+  {id:"qEpw84dHUWc",title:"Novels and cinema"},
+  {id:"4X2DELnU1qE",title:"Comedy and humor"},
+  {id:"G08HKMW_-xs",title:"Sci-fi is not a lie?"},
+  {id:"umEnq0fHi0w",title:"Superheroes"},
+  {id:"_A0UCTYYKZY",title:"Why were Tunisian series tied to Ramadan?"}
+];
+var reelNodes=$$('.reels-rail .reel');
+youtubeShorts.forEach(function(short,index){
+  var reel=reelNodes[index];if(!reel)return;
+  var title=reel.querySelector("h3");
+  title.removeAttribute("data-i18n");
+  title.textContent=short.title;
   reel.classList.add("js-video");
-  reel.dataset.localVideo=videoFile;
-  reel.dataset.title=title;
-  reel.href=videoFile;
+  reel.classList.add("is-short-video");
+  reel.dataset.video=short.id;
+  reel.dataset.title=short.title;
+  reel.href="https://www.youtube.com/shorts/"+short.id;
   reel.removeAttribute("target");
   reel.removeAttribute("rel");
-  reel.setAttribute("aria-label","Open video: "+title);
+  reel.setAttribute("aria-label","Play YouTube Short: "+short.title);
   var platformLabel=reel.querySelector(".reel-body > span");
-  if(platformLabel)platformLabel.textContent="Video";
+  if(platformLabel)platformLabel.textContent="YouTube Short";
 });
 
 /* ═══ filters ═══ */
