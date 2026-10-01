@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#000000" id="theme-color-meta">
 <meta name="color-scheme" content="light dark" id="color-scheme-meta">
 <title>Farees Bounawara — filmmaker</title>
-<meta name="description" content="Farees Bounawara films things in Tunisia. Short films, client work, and a scriptwriting series in Tunisian.">
+<meta name="description" content="Farees Bounawara films things in Tunisia. Short films, client work, and a scriptwriting series in Tunisian." data-i18n-content="meta_description">
 <link rel="icon" type="image/png" sizes="192x192" href="logoo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -236,7 +236,7 @@ img,video{display:block;max-width:100%}
 .work-layout{display:grid;grid-template-columns:minmax(360px,.9fr) minmax(0,1.15fr);gap:12px;padding:14px;align-items:stretch}
 .work-layout .where-worked{padding:14px;border:1px solid var(--line);border-radius:6px;align-self:stretch}
 .work-layout .where-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-.work-monitor{min-width:0;display:flex;flex-direction:column;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#08090a}
+.work-monitor{min-width:0;display:flex;flex-direction:column;align-self:start;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#08090a}
 .work-stage{position:relative;aspect-ratio:16/9;min-height:260px;overflow:hidden;background:#08090a;isolation:isolate}
 .work-video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#08090a}
 .work-placeholder{position:absolute;inset:0;z-index:1;display:grid;place-content:center;justify-items:center;gap:9px;padding:20px;color:rgba(242,237,227,.72);text-align:center;background:radial-gradient(circle at 50% 35%,rgba(212,163,95,.12),transparent 42%),#08090a}
@@ -457,7 +457,7 @@ html[lang=ar] .hero-copy h1{font-weight:700;line-height:1.05}
 [dir=rtl] .portrait{transform:rotate(1deg)}
 [dir=rtl] .cast-sheet{transform:rotate(-.6deg)}
 [dir=rtl] .scriptpage{transform:rotate(.35deg)}
-html[data-theme="light"]{color-scheme:light;--ink:#252b27;--ink-dim:#56605a;--ink-faint:#727b75;--gold:#9a6c32;--gold-2:#805726;--line:rgba(35,45,38,.13);--line-2:rgba(35,45,38,.25)}
+html[data-theme="light"]{color-scheme:light;--ink:#252b27;--ink-dim:#4b554e;--ink-faint:#59635c;--gold:#80541f;--gold-2:#694619;--line:rgba(35,45,38,.16);--line-2:rgba(35,45,38,.3)}
 html[data-theme="light"],html[data-theme="light"] body,html[data-theme="light"] .phase{background:#f1f4f1;color:var(--ink)}
 html[data-theme="light"] ::-webkit-scrollbar-track{background:#e5eae6}
 html[data-theme="light"] ::-webkit-scrollbar-thumb{background:#b8c2ba}
@@ -484,10 +484,16 @@ html[data-theme="light"] .card .ph{color:rgba(120,91,48,.35);background:radial-g
 html[data-theme="light"] .card-tag{color:#69491f;background:rgba(255,255,255,.9);border-color:rgba(105,73,31,.28)}
 html[data-theme="light"] .card-veil{background:linear-gradient(180deg,rgba(0,0,0,.02) 30%,rgba(0,0,0,.22) 55%,rgba(0,0,0,.86) 100%)}
 html[data-theme="light"] .form input,html[data-theme="light"] .form textarea{background:rgba(255,255,255,.8);border-color:var(--line-2);color:var(--ink)}
-html[data-theme="light"] #hero .hero-copy,html[data-theme="light"] #hero .hero-copy h1{color:#f2ede3}
-html[data-theme="light"] #hero .hero-copy h1 .l2{color:#e8c893}
-html[data-theme="light"] #hero .hero-lead{color:#ddd9d0}
+html[data-theme="light"] #hero .hero-copy,html[data-theme="light"] #hero .hero-copy h1{color:#252b27}
+html[data-theme="light"] #hero .hero-copy h1 .l2{color:#694619}
+html[data-theme="light"] #hero .hero-lead{color:#3f4942}
 html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1c7}
+html[data-theme="light"] .gold{color:#694619}
+html[data-theme="light"] .hero-bgwrap{background:#f1f4f1}
+html[data-theme="light"] .hero-bgwrap video.hero-slide{-webkit-mask-image:radial-gradient(ellipse at 48% 44%,#000 48%,rgba(0,0,0,.8) 68%,transparent 100%);mask-image:radial-gradient(ellipse at 48% 44%,#000 48%,rgba(0,0,0,.8) 68%,transparent 100%);filter:brightness(.78) saturate(.9)}
+html[data-theme="light"] .hero-veil{background:linear-gradient(90deg,rgba(241,244,241,.86),rgba(241,244,241,.5) 48%,rgba(241,244,241,.86)),linear-gradient(180deg,rgba(241,244,241,.12),rgba(241,244,241,.18) 58%,#f1f4f1)}
+html[data-theme="light"] .vd-bar h2{color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.9)}
+html[data-theme="light"] .vd-close{color:#fff;background:rgba(0,0,0,.7);border-color:rgba(255,255,255,.4)}
 </style>
 </head>
 <body>
@@ -529,7 +535,7 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
 </div>
 
 <div class="bar-top">
-  <a class="brand" href="#hero" aria-label="FAREES — home">FAREES<i>.</i></a>
+  <a class="brand" href="#hero" aria-label="FAREES — home" data-i18n-aria="home_label"><span data-i18n="site_mark">FAREES</span><i>.</i></a>
   <span class="rec"><b aria-hidden="true"></b><span data-i18n="rec_lbl">REC</span>&nbsp;· <span class="gold" id="rec-timer">00:00</span></span>
   <span class="phase-now" id="phase-now">PHASE 01 · WELCOME</span>
 </div>
@@ -573,7 +579,7 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
             <span class="sc-name">FAREES</span> —<br>A FILMMAKER & CONTENT CREATOR.
           </div>
         </div>
-        <h1><span class="l1">Farees</span><em class="l2">Bounawara.</em></h1>
+        <h1><span class="l1" data-i18n="name_first">Farees</span><em class="l2" data-i18n="name_last">Bounawara.</em></h1>
         <p class="hero-lead" data-i18n="lead">If you don't like the shoot… <strong style="color:var(--gold-2)">CUUTTT!</strong> &amp; do it again.</p>
         <div class="hero-actions">
           <a class="btn btn-gold" href="#contact"><svg class="ic"><use href="#i-down"/></svg><span data-i18n="contact_me">Contact me</span></a>
@@ -583,9 +589,9 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
       <aside class="hero-side">
         <div class="side-card" id="feat-card">
           <span class="mono" data-i18n="last_work">Last work</span>
-          <strong class="fswap" id="feat-title">Painting of Hope</strong>
+          <strong class="fswap" id="feat-title" data-i18n="video_painting">Painting of Hope</strong>
           <span class="fswap" id="feat-tag">Short film</span>
-          <a class="text-link fswap js-video" id="feat-link" href="https://www.youtube.com/watch?v=MFRUaT09vu4" data-video="MFRUaT09vu4" data-title="Painting of Hope"><span id="feat-link-txt">Watch now</span><svg class="ic"><use href="#i-ext"/></svg></a>
+          <a class="text-link fswap js-video" id="feat-link" href="https://www.youtube.com/watch?v=MFRUaT09vu4" data-video="MFRUaT09vu4" data-title="Painting of Hope" data-title-i18n="video_painting"><span id="feat-link-txt">Watch now</span><svg class="ic"><use href="#i-ext"/></svg></a>
           <div class="feat-dots" id="feat-dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
         </div>
         <div class="side-card">
@@ -637,11 +643,11 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
           <div class="stats-grid" aria-label="Impact stats">
             <div class="stat-card">
               <div class="stat-number" data-target="3500" data-prefix="+">0</div>
-              <span class="stat-label">Community</span>
+              <span class="stat-label" data-i18n="stat1_l">Community</span>
             </div>
             <div class="stat-card">
               <div class="stat-number" data-target="50" data-prefix="+">0</div>
-              <span class="stat-label">Projects</span>
+              <span class="stat-label" data-i18n="stat2_l">Projects</span>
             </div>
           </div>
         </div>
@@ -668,88 +674,88 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
         <button class="chip" data-f="other" data-i18n="f_other">Other</button>
       </div>
       <div class="grid" id="grid">
-        <a class="card js-video" data-cat="film" href="https://www.youtube.com/watch?v=MFRUaT09vu4" data-video="MFRUaT09vu4" data-title="Painting of Hope">
-          <img src="https://img.youtube.com/vi/MFRUaT09vu4/hqdefault.jpg" alt="Painting of Hope" loading="lazy">
+        <a class="card js-video" data-cat="film" href="https://www.youtube.com/watch?v=MFRUaT09vu4" data-video="MFRUaT09vu4" data-title="Painting of Hope" data-title-i18n="video_painting">
+          <img src="https://img.youtube.com/vi/MFRUaT09vu4/hqdefault.jpg" alt="Painting of Hope" data-i18n-alt="video_painting" loading="lazy">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
-          <div class="card-body"><span class="card-tag" data-i18n="tag_film">Short film</span><h3>Painting of Hope</h3><p data-i18n="poh_p">A story about hope, told with paint, light and silence.</p></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_film">Short film</span><h3 data-i18n="video_painting">Painting of Hope</h3><p data-i18n="poh_p">A story about hope, told with paint, light and silence.</p></div>
         </a>
-        <a class="card js-video" data-cat="film" href="https://www.youtube.com/watch?v=PieT_6wz7Po" data-video="PieT_6wz7Po" data-title="We're Stuck In Here, Send Help!">
-          <img src="https://img.youtube.com/vi/PieT_6wz7Po/hqdefault.jpg" alt="We're Stuck In Here, Send Help!" loading="lazy">
+        <a class="card js-video" data-cat="film" href="https://www.youtube.com/watch?v=PieT_6wz7Po" data-video="PieT_6wz7Po" data-title="We're Stuck In Here, Send Help!" data-title-i18n="video_stuck">
+          <img src="https://img.youtube.com/vi/PieT_6wz7Po/hqdefault.jpg" alt="We're Stuck In Here, Send Help!" data-i18n-alt="video_stuck" loading="lazy">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
-          <div class="card-body"><span class="card-tag" data-i18n="tag_film">Short film</span><h3>We're Stuck In Here, Send Help!</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_film">Short film</span><h3 data-i18n="video_stuck">We're Stuck In Here, Send Help!</h3></div>
         </a>
-        <a class="card js-video" data-cat="client" href="https://www.youtube.com/watch?v=bTM0uXiXq6s" data-video="bTM0uXiXq6s" data-title="الجلسة — Al Jalsa">
-          <img src="https://img.youtube.com/vi/bTM0uXiXq6s/hqdefault.jpg" alt="الجلسة — Al Jalsa" loading="lazy">
+        <a class="card js-video" data-cat="client" href="https://www.youtube.com/watch?v=bTM0uXiXq6s" data-video="bTM0uXiXq6s" data-title="الجلسة — Al Jalsa" data-title-i18n="video_jalsa">
+          <img src="https://img.youtube.com/vi/bTM0uXiXq6s/hqdefault.jpg" alt="الجلسة — Al Jalsa" data-i18n-alt="video_jalsa" loading="lazy">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
-          <div class="card-body"><span class="card-tag" data-i18n="tag_client">Client</span><h3>الجلسة — Al Jalsa</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_client">Client</span><h3 data-i18n="video_jalsa">الجلسة — Al Jalsa</h3></div>
         </a>
-        <a class="card js-video" data-cat="doc" href="https://www.youtube.com/watch?v=6UFxxsSb3X0" data-video="6UFxxsSb3X0" data-title="EDEN — Earth Documentary">
-          <img src="https://img.youtube.com/vi/6UFxxsSb3X0/hqdefault.jpg" alt="EDEN" loading="lazy">
+        <a class="card js-video" data-cat="doc" href="https://www.youtube.com/watch?v=6UFxxsSb3X0" data-video="6UFxxsSb3X0" data-title="EDEN — Earth Documentary" data-title-i18n="video_eden">
+          <img src="https://img.youtube.com/vi/6UFxxsSb3X0/hqdefault.jpg" alt="EDEN — Earth Documentary" data-i18n-alt="video_eden" loading="lazy">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
-          <div class="card-body"><span class="card-tag" data-i18n="tag_doc">Documentary</span><h3>EDEN — Earth Documentary</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_doc">Documentary</span><h3 data-i18n="video_eden">EDEN — Earth Documentary</h3></div>
         </a>
-        <a class="card js-video" data-cat="doc" href="https://www.youtube.com/watch?v=1K42KREV1SY" data-video="1K42KREV1SY" data-title="Documentary Reportage">
-          <img src="https://img.youtube.com/vi/1K42KREV1SY/hqdefault.jpg" alt="Documentary Reportage" loading="lazy">
+        <a class="card js-video" data-cat="doc" href="https://www.youtube.com/watch?v=1K42KREV1SY" data-video="1K42KREV1SY" data-title="Documentary Reportage" data-title-i18n="video_reportage">
+          <img src="https://img.youtube.com/vi/1K42KREV1SY/hqdefault.jpg" alt="Documentary Reportage" data-i18n-alt="video_reportage" loading="lazy">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
-          <div class="card-body"><span class="card-tag" data-i18n="tag_doc">Documentary</span><h3>Documentary Reportage</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_doc">Documentary</span><h3 data-i18n="video_reportage">Documentary Reportage</h3></div>
         </a>
         <!-- TODO: real frame as gym.jpg -->
-        <a class="card" data-cat="client" href="https://www.instagram.com/canadianprogym/reel/CzKIiKJPS1m/" target="_blank" rel="noopener">
+        <a class="card" data-cat="client" href="https://www.instagram.com/canadianprogym/reel/CzKIiKJPS1m/" target="_blank" rel="noopener" data-title-i18n="video_gym">
           <div class="ph" aria-hidden="true">G</div>
-          <img src="gym.jpg" alt="Canadian Pro Gym" loading="lazy" onerror="this.remove()">
+          <img src="gym.jpg" alt="Canadian Pro Gym" data-i18n-alt="video_gym" loading="lazy" onerror="this.remove()">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-ext"/></svg></span>
-          <div class="card-body"><span class="card-tag" data-i18n="tag_client">Client</span><h3>Canadian Pro Gym</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_client">Client</span><h3 data-i18n="video_gym">Canadian Pro Gym</h3></div>
         </a>
         <!-- TODO: real frame as fashion.jpg -->
-        <a class="card" data-cat="client" href="https://www.instagram.com/p/Ck9JqNQq8o1/" target="_blank" rel="noopener">
+        <a class="card" data-cat="client" href="https://www.instagram.com/p/Ck9JqNQq8o1/" target="_blank" rel="noopener" data-title-i18n="video_fashion">
           <div class="ph" aria-hidden="true">F</div>
-          <img src="fashion.jpg" alt="Fashion Week" loading="lazy" onerror="this.remove()">
+          <img src="fashion.jpg" alt="Fashion Week" data-i18n-alt="video_fashion" loading="lazy" onerror="this.remove()">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-ext"/></svg></span>
-          <div class="card-body"><span class="card-tag" data-i18n="tag_client">Client</span><h3>Fashion Week Coverage</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_client">Client</span><h3 data-i18n="video_fashion">Fashion Week Coverage</h3></div>
         </a>
         <!-- TODO: real frame as chourouk.jpg -->
-        <a class="card" data-cat="client" href="https://www.instagram.com/reels/DTAxZHtFK5z/" target="_blank" rel="noopener">
+        <a class="card" data-cat="client" href="https://www.instagram.com/reels/DTAxZHtFK5z/" target="_blank" rel="noopener" data-title-i18n="video_chourouk">
           <div class="ph" aria-hidden="true">C</div>
-          <img src="chourouk.jpg" alt="Al Chourouk" loading="lazy" onerror="this.remove()">
+          <img src="chourouk.jpg" alt="Al Chourouk" data-i18n-alt="video_chourouk" loading="lazy" onerror="this.remove()">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-ext"/></svg></span>
-          <div class="card-body"><span class="card-tag" data-i18n="tag_client">Client</span><h3>Al Chourouk Press Video</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_client">Client</span><h3 data-i18n="video_chourouk">Al Chourouk Press Video</h3></div>
         </a>
         <!-- TODO: real frame as sushi.jpg -->
-        <a class="card" data-cat="client" href="https://www.instagram.com/seif_oueslati_photography/reel/Csi19QvIZKq/" target="_blank" rel="noopener">
+        <a class="card" data-cat="client" href="https://www.instagram.com/seif_oueslati_photography/reel/Csi19QvIZKq/" target="_blank" rel="noopener" data-title-i18n="video_sushi">
           <div class="ph" aria-hidden="true">S</div>
-          <img src="sushi.jpg" alt="Sushi Chef" loading="lazy" onerror="this.remove()">
+          <img src="sushi.jpg" alt="Sushi Chef" data-i18n-alt="video_sushi" loading="lazy" onerror="this.remove()">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-ext"/></svg></span>
-          <div class="card-body"><span class="card-tag" data-i18n="tag_client">Client</span><h3>Sushi Chef Cinematic Reel</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_client">Client</span><h3 data-i18n="video_sushi">Sushi Chef Cinematic Reel</h3></div>
         </a>
-        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/xKnN9D2xyxU" data-video="xKnN9D2xyxU" data-title="Dentist">
-          <img src="https://img.youtube.com/vi/xKnN9D2xyxU/hqdefault.jpg" alt="Dentist" loading="lazy">
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/xKnN9D2xyxU" data-video="xKnN9D2xyxU" data-title="Dentist" data-title-i18n="video_dentist">
+          <img src="https://img.youtube.com/vi/xKnN9D2xyxU/hqdefault.jpg" alt="Dentist" data-i18n-alt="video_dentist" loading="lazy">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
-          <div class="card-body"><span class="card-tag">Other</span><h3>Dentist</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_other">Other</span><h3 data-i18n="video_dentist">Dentist</h3></div>
         </a>
-        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/x3fPw0Hqc4o" data-video="x3fPw0Hqc4o" data-title="Guest House">
-          <img src="https://img.youtube.com/vi/x3fPw0Hqc4o/hqdefault.jpg" alt="Guest House" loading="lazy">
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/x3fPw0Hqc4o" data-video="x3fPw0Hqc4o" data-title="Guest House" data-title-i18n="video_guesthouse">
+          <img src="https://img.youtube.com/vi/x3fPw0Hqc4o/hqdefault.jpg" alt="Guest House" data-i18n-alt="video_guesthouse" loading="lazy">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
-          <div class="card-body"><span class="card-tag">Other</span><h3>Guest House</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_other">Other</span><h3 data-i18n="video_guesthouse">Guest House</h3></div>
         </a>
-        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/3ce90zpooUQ" data-video="3ce90zpooUQ" data-title="Banquet Hall 1">
-          <img src="https://img.youtube.com/vi/3ce90zpooUQ/hqdefault.jpg" alt="Banquet Hall" loading="lazy">
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/3ce90zpooUQ" data-video="3ce90zpooUQ" data-title="Banquet Hall 1" data-title-i18n="video_banquet1">
+          <img src="https://img.youtube.com/vi/3ce90zpooUQ/hqdefault.jpg" alt="Banquet Hall 1" data-i18n-alt="video_banquet1" loading="lazy">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
-          <div class="card-body"><span class="card-tag">Banquet Hall</span><h3>Banquet Hall 1</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_banquet">Banquet Hall</span><h3 data-i18n="video_banquet1">Banquet Hall 1</h3></div>
         </a>
-        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/HmqFo2wXqyI" data-video="HmqFo2wXqyI" data-title="Banquet Hall 2">
-          <img src="https://img.youtube.com/vi/HmqFo2wXqyI/hqdefault.jpg" alt="Banquet Hall" loading="lazy">
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/HmqFo2wXqyI" data-video="HmqFo2wXqyI" data-title="Banquet Hall 2" data-title-i18n="video_banquet2">
+          <img src="https://img.youtube.com/vi/HmqFo2wXqyI/hqdefault.jpg" alt="Banquet Hall 2" data-i18n-alt="video_banquet2" loading="lazy">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
-          <div class="card-body"><span class="card-tag">Banquet Hall</span><h3>Banquet Hall 2</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_banquet">Banquet Hall</span><h3 data-i18n="video_banquet2">Banquet Hall 2</h3></div>
         </a>
-        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/6m6FfGDFfxc" data-video="6m6FfGDFfxc" data-title="Banquet Hall 3">
-          <img src="https://img.youtube.com/vi/6m6FfGDFfxc/hqdefault.jpg" alt="Banquet Hall" loading="lazy">
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/6m6FfGDFfxc" data-video="6m6FfGDFfxc" data-title="Banquet Hall 3" data-title-i18n="video_banquet3">
+          <img src="https://img.youtube.com/vi/6m6FfGDFfxc/hqdefault.jpg" alt="Banquet Hall 3" data-i18n-alt="video_banquet3" loading="lazy">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
-          <div class="card-body"><span class="card-tag">Banquet Hall</span><h3>Banquet Hall 3</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_banquet">Banquet Hall</span><h3 data-i18n="video_banquet3">Banquet Hall 3</h3></div>
         </a>
-        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/vQF6eqnsmVI" data-video="vQF6eqnsmVI" data-title="Banquet Hall 4">
-          <img src="https://img.youtube.com/vi/vQF6eqnsmVI/hqdefault.jpg" alt="Banquet Hall" loading="lazy">
+        <a class="card js-video is-short-video" data-cat="other" href="https://www.youtube.com/shorts/vQF6eqnsmVI" data-video="vQF6eqnsmVI" data-title="Banquet Hall 4" data-title-i18n="video_banquet4">
+          <img src="https://img.youtube.com/vi/vQF6eqnsmVI/hqdefault.jpg" alt="Banquet Hall 4" data-i18n-alt="video_banquet4" loading="lazy">
           <div class="card-veil"></div><span class="card-open"><svg class="ic"><use href="#i-play"/></svg></span>
-          <div class="card-body"><span class="card-tag">Banquet Hall</span><h3>Banquet Hall 4</h3></div>
+          <div class="card-body"><span class="card-tag" data-i18n="tag_banquet">Banquet Hall</span><h3 data-i18n="video_banquet4">Banquet Hall 4</h3></div>
         </a>
         <a class="card ghost" data-cat="next" href="#contact">
           <span class="ghost-q" aria-hidden="true">?</span>
@@ -882,10 +888,10 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
             <span class="series-meta"><h3 data-i18n="ep1">How to write a script?</h3></span>
           </summary>
           <div class="series-episodes">
-            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=xvhQX6-3Xuo" data-video="xvhQX6-3Xuo" data-title="How to write a script? (Ep 1)"><span class="series-episode-num">EP 01</span><span class="series-episode-title" data-i18n="ep1">How to write a script?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
-            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=80QS_REPhLo" data-video="80QS_REPhLo" data-title="How to build a compelling film structure? (Ep 2)"><span class="series-episode-num">EP 02</span><span class="series-episode-title" data-i18n="ep2">How to build a compelling film structure?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
-            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=D4FxuJR_IZk" data-video="D4FxuJR_IZk" data-title="How to build a cinematic character? (Ep 3)"><span class="series-episode-num">EP 03</span><span class="series-episode-title" data-i18n="ep3">How to build a cinematic character?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
-            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=ZsPhRG-SnFo" data-video="ZsPhRG-SnFo" data-title="How to utilize dialogue in the script? (Ep 4)"><span class="series-episode-num">EP 04</span><span class="series-episode-title" data-i18n="ep4">How to utilize dialogue in the script?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
+            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=xvhQX6-3Xuo" data-video="xvhQX6-3Xuo" data-title="How to write a script? (Ep 1)" data-title-i18n="ep1"><span class="series-episode-num">EP 01</span><span class="series-episode-title" data-i18n="ep1">How to write a script?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
+            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=80QS_REPhLo" data-video="80QS_REPhLo" data-title="How to build a compelling film structure? (Ep 2)" data-title-i18n="ep2"><span class="series-episode-num">EP 02</span><span class="series-episode-title" data-i18n="ep2">How to build a compelling film structure?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
+            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=D4FxuJR_IZk" data-video="D4FxuJR_IZk" data-title="How to build a cinematic character? (Ep 3)" data-title-i18n="ep3"><span class="series-episode-num">EP 03</span><span class="series-episode-title" data-i18n="ep3">How to build a cinematic character?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
+            <a class="series-episode js-video" href="https://www.youtube.com/watch?v=ZsPhRG-SnFo" data-video="ZsPhRG-SnFo" data-title="How to utilize dialogue in the script? (Ep 4)" data-title-i18n="ep4"><span class="series-episode-num">EP 04</span><span class="series-episode-title" data-i18n="ep4">How to utilize dialogue in the script?</span><svg class="ic" aria-hidden="true"><use href="#i-play"/></svg></a>
           </div>
         </details>
       </div>
@@ -941,10 +947,10 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
   <!-- ═══ SEE YOU ON SET ═══ -->
   <section class="phase" id="credits" data-phase="SEE YOU ON SET" data-node="See you on set" aria-label="See you on set">
     <div class="credits-roll">
-      <div class="c-role"><span class="mono" data-i18n="cr_dir">Directed by</span><b>Farees Bounawara</b></div>
+      <div class="c-role"><span class="mono" data-i18n="cr_dir">Directed by</span><b data-i18n="full_name">Farees Bounawara</b></div>
       <p class="c-fin" data-i18n="cr_fin">SEE YOU ON SET.</p>
       <div class="foot-bar">
-        <p>© <span id="year">2025</span> Farees Bounawara</p>
+        <p>© <span id="year">2025</span> <span data-i18n="full_name">Farees Bounawara</span></p>
         <p class="mono">FAREES<span class="gold">.</span></p>
       </div>
     </div>
@@ -952,10 +958,10 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
 
 </main>
 
-<dialog class="vdialog" id="vdialog" aria-label="Video player">
+<dialog class="vdialog" id="vdialog" aria-label="Video player" data-i18n-aria="video_player">
   <div class="vd-shell">
-    <div class="vd-bar"><h2 id="vd-title">Painting of Hope</h2><button class="vd-close" id="vd-close" type="button" aria-label="Close"><svg class="ic"><use href="#i-x"/></svg></button></div>
-    <div class="vd-frame"><iframe id="vd-frame" title="Video" allow="autoplay; fullscreen; encrypted-media" allowfullscreen src="about:blank"></iframe><video id="vd-video" controls playsinline hidden></video></div>
+    <div class="vd-bar"><h2 id="vd-title" data-i18n="video_painting">Painting of Hope</h2><button class="vd-close" id="vd-close" type="button" aria-label="Close" data-i18n-aria="close"><svg class="ic"><use href="#i-x"/></svg></button></div>
+    <div class="vd-frame"><iframe id="vd-frame" title="Video player" data-i18n-title="video_player" allow="autoplay; fullscreen; encrypted-media" allowfullscreen src="about:blank"></iframe><video id="vd-video" controls playsinline hidden></video></div>
   </div>
 </dialog>
 
@@ -971,7 +977,8 @@ var canAnim=typeof Element!=="undefined"&&Element.prototype.animate;
 
 /* ═══ I18N — en / fr / Tunisian derja ═══ */
 var I18N={
-en:{rec_lbl:"REC",p1a:"Phase 01 · Welcome",
+en:{page_title:"Farees Bounawara — filmmaker",meta_description:"Farees Bounawara is a Tunisian filmmaker creating short films, client work, documentaries, and a scriptwriting series.",site_mark:"FAREES",home_label:"FAREES — home",name_first:"Farees",name_last:"Bounawara.",full_name:"Farees Bounawara",video_player:"Video player",close:"Close",play_short_video:"Play YouTube Short",tag_youtube_short:"YouTube Short",
+rec_lbl:"REC",p1a:"Phase 01 · Welcome",
 sp_t:'<span class="sc-fade">INT. PORTFOLIO</span><br><br><span class="sc-name">FAREES</span> —<br>A FILMMAKER & CONTENT CREATOR.',
 lead:'If you don\u2019t like the shoot\u2026 <strong style="color:var(--gold-2)">CUUTTT!</strong> &amp; do it again.',
 phase_prev:"Previous phase",phase_play:"Play automatic phase navigation",phase_pause:"Pause automatic phase navigation",phase_next:"Next phase",theme_light:"Switch to light mode",theme_dark:"Switch to dark mode",
@@ -982,10 +989,11 @@ display:"I\u2019m Farees — I make <em>films & videos</em> people remember.",
 o_p1:"Making movies and videos isn't just something I do; it's a passion that drives me. From directing and cinematography to storytelling, editing, and writing, I love every step of bringing an idea to life through visuals.",
 o_p2:"Whether it's a cinematic film, music video, social media content, or a simple idea turned into something memorable, I'm always looking for new ways to tell stories and create visuals that connect.",
 quote_p:"\u201CIf I give up now, I'm going to regret it.\u201D",quote_c:"— Monkey D. Luffy (One Piece)",
-stat1_l:"Best work",stat2_l:"Videos shipped",stat3_l:"Clients signed",
+stat1_l:"Community",stat2_l:"Projects",stat3_l:"Clients signed",
 sl3a:"PHASE 03",sl3b:"WORK",h2_work:"BEST <em>WORK</em>",sub_work:"INT. CINEMA",
 f_all:"All work",f_film:"Short films",f_client:"Client &amp; commercials",f_doc:"Documentaries",f_other:"Other",
-tag_film:"Short film",tag_client:"Client",tag_doc:"Documentary",tag_other:"Other reel",
+tag_film:"Short film",tag_client:"Client",tag_doc:"Documentary",tag_other:"Other reel",tag_banquet:"Banquet Hall",
+video_painting:"Painting of Hope",video_stuck:"We're Stuck In Here, Send Help!",video_jalsa:"Al Jalsa",video_eden:"EDEN — Earth Documentary",video_reportage:"Documentary Reportage",video_gym:"Canadian Pro Gym",video_fashion:"Fashion Week Coverage",video_chourouk:"Al Chourouk Press Video",video_sushi:"Sushi Chef Cinematic Reel",video_dentist:"Dentist",video_guesthouse:"Guest House",video_banquet1:"Banquet Hall 1",video_banquet2:"Banquet Hall 2",video_banquet3:"Banquet Hall 3",video_banquet4:"Banquet Hall 4",
 poh_p:"A story about hope, told with paint, light and silence.",
 work2_d:"A short film from my narrative work.",work3_d:"A client film created for Al Jalsa.",work4_d:"An earth documentary from my client work.",work5_d:"Documentary reportage from the field.",
 work_reel_label:"Behind the scenes — loop",work_missing:"Add the BTS video to this folder",timeline_hint:"Staggered edit sequence — V1 picture, A1 sound",work_bts_title:"Behind the scenes",work_bts_description:"Behind-the-scenes footage from the shoot.",work_bts_category:"Behind the scenes",where_title:"Where I worked",where_subtitle:"Selected brands, festivals, and creative teams",
@@ -1017,31 +1025,33 @@ form_sending:"Sending\u2026",form_ok:"Message sent — I\u2019ll get back to you
 cr_co:"A Farees Bounawara Production",cr_dir:"Directed by",cr_fin:"SEE YOU ON SET.",
 phases:{hero:"PHASE 01 · WELCOME",about:"PHASE 02 · Who am I?",showcase:"PHASE 03 · WORK",process:"PHASE 04 · PROCESS",reels:"PHASE 05 · THE RELEASE",contact:"PHASE 06 · CONTACT",credits:"SEE YOU ON SET"},
 nodes:{hero:"Welcome",about:"Who am I?",showcase:"Work",process:"Process",reels:"The release",contact:"Contact",credits:"See you on set"}},
-fr:{rec_lbl:"ENREGISTREMENT",p1a:"Phase 01 · Bienvenue",
+fr:{page_title:"Farees Bounawara — réalisateur",meta_description:"Farees Bounawara est réalisateur en Tunisie. Découvrez ses courts métrages, films de marque, documentaires et séries sur le cinéma.",site_mark:"FAREES",home_label:"FAREES — accueil",name_first:"Farees",name_last:"Bounawara.",full_name:"Farees Bounawara",video_player:"Lecteur vidéo",close:"Fermer",play_short_video:"Lire le Short YouTube",tag_youtube_short:"Short YouTube",
+rec_lbl:"ENREGISTREMENT",p1a:"Phase 01 · Bienvenue",
 sp_t:'<span class="sc-fade">INT. PORTFOLIO</span><br><br><span class="sc-name">FAREES</span> —<br>R\u00C9ALISATEUR &amp;<br>CR\u00C9ATEUR DE CONTENU.',
 lead:'Si le plan ne te pla\u00EEt pas\u2026 <strong style="color:var(--gold-2)">COUPE !</strong> Et on le refait.',
 phase_prev:"Phase précédente",phase_play:"Lancer le défilement automatique",phase_pause:"Mettre en pause le défilement automatique",phase_next:"Phase suivante",theme_light:"Passer en mode clair",theme_dark:"Passer en mode sombre",
 contact_me:"Me contacter",btn_who:"Qui je suis ?",last_work:"Dernier travail",watch_now:"Voir maintenant",stay_upd:"Suivez-moi",
-sl2a:"PHASE 02",sl2b:"QUI JE SUIS",h2_about:"QUI JE <em>SUIS ?</em>",sub_about:"INT. QUI JE SUIS — UN ACTEUR. TOUS LES R\u00D4LES.",
+sl2a:"ÉTAPE 02",sl2b:"QUI JE SUIS",h2_about:"QUI JE <em>SUIS ?</em>",sub_about:"INT. QUI SUIS-JE ? UN ACTEUR, TOUS LES R\u00D4LES.",
 cs_t:"Fiche de casting — R\u00F4le principal",cs_l1:"Nom",cs_v1:"Farees Bounawara",cs_l2:"R\u00F4le",cs_v2:"R\u00E9alisateur &amp; Cr\u00E9ateur",cs_l3:"Comp\u00E9tences",cs_v3:"\u00C9crire \u00B7 Filmer \u00B7 Monter",
-display:"Je suis Farees — je fais des <em>films</em> dont on se souvient.",
+display:"Je suis Farees — je crée des <em>films et des vidéos</em> dont on se souvient.",
 o_p1:"J\u2019ai attrap\u00E9 ma premi\u00E8re cam\u00E9ra en Tunisie et je ne l\u2019ai jamais vraiment repos\u00E9e. J\u2019\u00E9cris, je r\u00E9alise, je filme et je monte — une seule paire de mains, une seule obsession : des images honn\u00EAtes.",
 o_p2:"De mes courts-m\u00E9trages aux projets clients, la r\u00E8gle ne change jamais — si une image ne sert pas l\u2019histoire, elle ne passe pas au montage.",
 quote_p:"\u00ABJe ne cherche pas la perfection. Je cherche le moment o\u00F9 une sc\u00E8ne devient juste.\u00BB",quote_c:"— Moi, 2 h du matin, au montage",
-stat1_l:"Meilleur travail",stat2_l:"Vid\u00E9os livr\u00E9es",stat3_l:"Clients sign\u00E9s",
-sl3a:"PHASE 03",sl3b:"TRAVAIL",h2_work:"MEILLEUR <em>TRAVAIL</em>",sub_work:"INT. CIN\u00C9MA — CHAQUE IMAGE QUI A PASS\u00C9 LE MONTAGE",
+stat1_l:"Communaut\u00E9",stat2_l:"Projets",stat3_l:"Clients sign\u00E9s",
+sl3a:"ÉTAPE 03",sl3b:"TRAVAIL",h2_work:"MEILLEUR <em>TRAVAIL</em>",sub_work:"INT. CIN\u00C9MA — CHAQUE PLAN À SA PLACE AU MONTAGE",
 f_all:"Tout",f_film:"Courts-m\u00E9trages",f_client:"Clients &amp; pubs",f_doc:"Documentaires",f_other:"Autres",
-tag_film:"Court-m\u00E9trage",tag_client:"Film client",tag_doc:"Documentaire",tag_other:"Autre reel",
+tag_film:"Court-m\u00E9trage",tag_client:"Film client",tag_doc:"Documentaire",tag_other:"Autre vidéo",tag_banquet:"Salle de réception",
+video_painting:"La peinture de l’espoir",video_stuck:"On est coincés ici, au secours !",video_jalsa:"Al Jalsa",video_eden:"EDEN — documentaire sur la Terre",video_reportage:"Reportage documentaire",video_gym:"Canadian Pro Gym",video_fashion:"Couverture de la Fashion Week",video_chourouk:"Vidéo de presse Al Chourouk",video_sushi:"Portrait cinématographique d’un chef sushi",video_dentist:"Dentiste",video_guesthouse:"Maison d’hôtes",video_banquet1:"Salle de réception 1",video_banquet2:"Salle de réception 2",video_banquet3:"Salle de réception 3",video_banquet4:"Salle de réception 4",
 poh_p:"Une histoire d\u2019espoir, racont\u00E9e avec de la peinture, de la lumi\u00E8re et du silence.",
 work2_d:"Un court métrage issu de mon travail de fiction.",work3_d:"Un film client réalisé pour Al Jalsa.",work4_d:"Un documentaire sur la Terre réalisé pour un client.",work5_d:"Un reportage documentaire sur le terrain.",
 work_reel_label:"Coulisses — lecture en boucle",work_missing:"Ajoutez la vidéo des coulisses dans ce dossier",timeline_hint:"Montage décalé — image V1, son A1",work_bts_title:"Dans les coulisses",work_bts_description:"Images des coulisses du tournage.",work_bts_category:"Dans les coulisses",where_title:"Où j’ai travaillé",where_subtitle:"Quelques marques, festivals et équipes créatives",
 work_play:"Lire les extraits",work_pause:"Mettre les extraits en pause",work_prev:"Extrait précédent",work_next:"Extrait suivant",work_select:"Choisir un extrait",
-where_campaign:"Campagne",where_press:"Presse &amp; médias",where_festival:"Festival d’art",where_fashion:"Mode",where_fitness:"Fitness",where_cinema:"Festival de cinéma",where_ethnographic:"Film ethnographique",where_theatre:"Théâtre",
-g_tag:"Prochain tournage",g_h:"\u00C7a pourrait \u00EAtre le v\u00F4tre.",g_p:"Apportez une histoire, une marque ou une id\u00E9e folle — et on la tourne ensemble.",g_cta:"Proposez \u2197",
+where_campaign:"Campagne",where_press:"Presse &amp; médias",where_festival:"Festival d’art",where_fashion:"Mode",where_fitness:"Sport",where_cinema:"Festival de cinéma",where_ethnographic:"Film ethnographique",where_theatre:"Théâtre",
+g_tag:"Prochain tournage",g_h:"\u00C7a pourrait \u00EAtre le v\u00F4tre.",g_p:"Apportez une histoire, une marque ou une id\u00E9e folle — et on la tourne ensemble.",g_cta:"Parlons de votre projet \u2197",
 tq1:"\u00ABFarees a compris le brief mieux que des agences trois fois plus ch\u00E8res — et a livr\u00E9 en dix jours.\u00BB",tq1c:"— TODO : Nom du client, Entreprise",
 tq2:"\u00ABIl a film\u00E9 notre \u00E9v\u00E9nement comme un film, pas comme une vid\u00E9o de mariage.\u00BB",tq2c:"— TODO : Nom du client, Entreprise",
 tq3:"\u00ABUne seule personne, toute la cha\u00EEne. Sans courir apr\u00E8s cinq freelances.\u00BB",tq3c:"— TODO : Nom du client, Entreprise",
-sl4a:"PHASE 04",sl4b:"EXPÉRIENCE",h2_process:"OÙ J’AI <em>TRAVAILLÉ</em>",sub_process:"SÉLECTION DE CLIENTS, FESTIVALS ET PROJETS DE FILM",
+sl4a:"ÉTAPE 04",sl4b:"MON PARCOURS",h2_process:"OÙ J’AI <em>TRAVAILLÉ</em>",sub_process:"SÉLECTION DE CLIENTS, FESTIVALS ET PROJETS DE FILM",
 nle_hint:"\u25B8 Faites glisser la t\u00EAte de lecture — ou cliquez sur un clip",
 meta_seq:"M\u00E9ta s\u00E9quence",meta_track:"Piste",meta_len:"Dur\u00E9e",meta_clip:"Clip",
 step1_t:"Le Script",step1_p:"Chaque film commence sur le papier. J\u2019\u00E9cris et je r\u00E9\u00E9cris jusqu\u2019\u00E0 ce que l\u2019histoire tienne, avant la premi\u00E8re image.",
@@ -1049,41 +1059,43 @@ step2_t:"Storyboard",step2_p:"D\u00E9coupage et plans \u2014 l\u2019image est pe
 step3_t:"Le Tournage",step3_p:"R\u00E9aliser sur le plateau \u2014 cam\u00E9ra, lumi\u00E8re et jeu, capt\u00E9s avec intention, jamais par hasard.",
 step4_t:"Le Montage",step4_p:"L\u00E0 o\u00F9 le film se fait vraiment. Rythme, structure \u2014 chaque coupe gagne sa place.",
 step5_t:"\u00C9talonnage",step5_p:"Je pousse l\u2019image jusqu\u2019\u00E0 ce qu\u2019elle porte l\u2019\u00E9motion de la sc\u00E8ne.",
-step6_t:"Le Son",step6_p:"Design, mixage et musique \u2014 la moiti\u00E9 de l\u2019image qu\u2019on entend.",
-sl5a:"PHASE 05",sl5b:"DIFFUSION",h2_release:"LA <em>DIFFUSION</em>",sub_release:"INT. &amp; EXT. — PARTOUT, TOUT LE TEMPS",
+step6_t:"Le Son",step6_p:"Le son repr\u00E9sente la moiti\u00E9 de l’image.",
+sl5a:"ÉTAPE 05",sl5b:"DIFFUSION",h2_release:"LA <em>DIFFUSION</em>",sub_release:"INT. &amp; EXT. — PARTOUT, TOUT LE TEMPS",
 reels_h:"Reels Instagram — chaque semaine",series_h:"La série",series_count:"4 vidéos",
 reel1:"Un film dans le film",reel2:"Comment Max Factor a chang\u00E9 l'histoire du cin\u00E9ma ?",reel3:"Les westerns",reel4:"Pourquoi la musique avant la parole au cin\u00E9ma ?",reel5:"Rocky : de la pauvret\u00E9 \u00E0 l'Oscar",reel6:"La fin du monde !",reel7:"Les Arabes \u00E0 Hollywood",reel8:"Les remakes au cin\u00E9ma",reel9:"Scorsese &amp; De Niro",reel10:"La maladie mentale !",reel11:"Les Oscars ?",reel12:"Le secret du suspense selon Hitchcock !",reel13:"Quelle histoire avec l'animation ?",reel14:"Quand les couleurs ont chang\u00E9 le cin\u00E9ma",reel15:"L'horreur",reel16:"72 saisons ?",reel17:"Romans et cin\u00E9ma ?",reel18:"Com\u00E9die et humour",reel19:"La science-fiction, un mensonge ?",reel20:"Super-h\u00E9ros",reel21:"Pourquoi les s\u00E9ries tunisiennes sont li\u00E9es au Ramadan ?",
 ep1:"Comment \u00E9crire un sc\u00E9nario ?",ep2:"Comment construire une structure de film solide ?",ep3:"Comment cr\u00E9er un personnage de cin\u00E9ma ?",ep4:"Comment utiliser le dialogue ?",ep5:"Faire du cin\u00E9ma avec un petit budget ?",ep6:"Mes 5 plus grandes erreurs de cin\u00E9ma",
-sl6a:"PHASE 06",sl6b:"CONTACT",h2_contact:"Un projet <em>en t\u00EAte ?</em>",
+sl6a:"ÉTAPE 06",sl6b:"CONTACT",h2_contact:"Un projet <em>en t\u00EAte ?</em>",
 contact_p:"Envoyez-moi un message via le formulaire, et je vous r\u00E9ponds au plus vite.",
 svc1_t:"Films de marque",svc1_s:"L\u2019histoire de qui vous \u00EAtes",svc2_t:"Publicit\u00E9s",svc2_s:"Courtes, percutantes, faites pour vendre",svc3_t:"Clips musicaux",svc3_s:"Des images qui suivent le son",svc4_t:"\u00C9v\u00E9nements &amp; documentaires",svc4_s:"Une couverture avec un point de vue",
 price_hint:"Chaque projet est chiffr\u00E9 individuellement — <b>envoyez l\u2019id\u00E9e, recevez un prix clair sous 48 h.</b> Sans surprises.",
 pd_t:"Document de pitch",pd_status:"Statut : ouvert",f_name:"Nom",f_email:"Email",f_pitch:"Le pitch",f_ph:"Une histoire, une marque, une id\u00E9e folle\u2026",f_send:"Envoyer",
 form_sending:"Envoi\u2026",form_ok:"Message envoy\u00E9 — je vous r\u00E9ponds au plus vite.",
 cr_co:"Une production Farees Bounawara",cr_dir:"R\u00E9alis\u00E9 par",cr_fin:"\u00C0 BIENT\u00D4T SUR LE TOURNAGE.",
-phases:{hero:"PHASE 01 · BIENVENUE",about:"PHASE 02 · QUI JE SUIS",showcase:"PHASE 03 · TRAVAIL",process:"PHASE 04 · PROCESSUS",reels:"PHASE 05 · DIFFUSION",contact:"PHASE 06 · CONTACT",credits:"\u00C0 BIENT\u00D4T SUR LE TOURNAGE"},
+phases:{hero:"ÉTAPE 01 · BIENVENUE",about:"ÉTAPE 02 · QUI JE SUIS",showcase:"ÉTAPE 03 · TRAVAIL",process:"ÉTAPE 04 · PROCESSUS",reels:"ÉTAPE 05 · DIFFUSION",contact:"ÉTAPE 06 · CONTACT",credits:"\u00C0 BIENT\u00D4T SUR LE TOURNAGE"},
 nodes:{hero:"Bienvenue",about:"Qui je suis",showcase:"Travail",process:"Processus",reels:"Diffusion",contact:"Contact",credits:"\u00C0 bient\u00F4t"}},
-ar:{rec_lbl:"تسجيل",p1a:"المرحلة 01 · مرحبا بيك",
+ar:{page_title:"فارس بونوارة — صانع أفلام",meta_description:"فارس بونوارة صانع أفلام تونسي. اكتشفوا أفلامه القصيرة وأعماله ووثائقياته وسلاسله حول السينما.",site_mark:"فارس",home_label:"فارس — الصفحة الرئيسية",name_first:"فارس",name_last:"بونوارة.",full_name:"فارس بونوارة",video_player:"مشغّل الفيديو",close:"سكر",play_short_video:"شغّل فيديو يوتيوب القصير",tag_youtube_short:"يوتيوب شورت",
+rec_lbl:"تسجيل",p1a:"المرحلة 01 · مرحبا بيك",
 sp_t:'<span class="sc-fade">مشهد داخلي — البورتفوليو</span><br><br><span class="sc-name">فارس</span> —<br>صانع أفلام و<br>صانع محتوى.',
-lead:'كان التصوير ما عجبكش… <strong style="color:var(--gold-2)">قصّ!</strong> ونعاودوه مرة أخرى.',
+lead:'كان اللقطة ما عجبتكش… <strong style="color:var(--gold-2)">قصّ!</strong> ونعاودوها!',
 phase_prev:"المرحلة السابقة",phase_play:"ابدأ التنقل التلقائي بين المراحل",phase_pause:"أوقف التنقل التلقائي بين المراحل",phase_next:"المرحلة التالية",theme_light:"التبديل إلى الوضع الفاتح",theme_dark:"التبديل إلى الوضع الداكن",
 contact_me:"اتصل بي",btn_who:"أنا شكون؟",last_work:"آخر عمل",watch_now:"شوف توا",stay_upd:"تابعني على",
 sl2a:"المرحلة 02",sl2b:"أنا شكون",h2_about:"أنا <em>شكون؟</em>",sub_about:"مشهد داخلي — ممثل واحد. كل الأدوار.",
 cs_t:"بطاقة الكاستينغ — الدور الرئيسي",cs_l1:"الاسم",cs_v1:"فارس بونوارة",cs_l2:"الدور",cs_v2:"صانع أفلام وصانع محتوى",cs_l3:"المهارات",cs_v3:"كتابة · تصوير · مونتاج",
-display:"أنا فارس — ندير <em>أفلام</em> الناس ما تنساها.",
+display:"أنا فارس — نعمل <em>أفلام وفيديوهات</em> ما تتنساش.",
 o_p1:"أول كاميرا شريتها في تونس عمرها ما رجعت نحطها. نكتب، نوجه، نصوّر ونجمّع — يد وحدة، وهوس واحد: صور صادقة.",
 o_p2:"من أفلامي القصيرة لخدمة الزبائن، القاعدة ما تتبدلش — الصورة كان ما تخدمش القصة، ما تعدّيش للقص.",
-quote_p:"«ماشي ندور على الكمال. ندور على اللحظة اللي المشهد يجي فيها صحيح.»",quote_c:"— أنا، الثانية متاع الليل، في المونتاج",
-stat1_l:"أحسن أعمال",stat2_l:"فيديو خرجت",stat3_l:"زبائن خدمني",
-sl3a:"المرحلة 03",sl3b:"الأعمال",h2_work:"أحسن <em>أعمال</em>",sub_work:"مشهد داخلي سينما — كل صورة عديت القص",
+quote_p:"«ما نلوّجش على الكمال. نلوّج على اللحظة اللي المشهد يولي فيها صحيح.»",quote_c:"— أنا، الثانية متاع الليل، في المونتاج",
+stat1_l:"المجتمع",stat2_l:"المشاريع",stat3_l:"الحرفاء",
+sl3a:"المرحلة 03",sl3b:"الأعمال",h2_work:"أحسن <em>أعمال</em>",sub_work:"مشهد داخلي — السينما. كل لقطة تستحق بلاصتها في المونتاج.",
 f_all:"الكل",f_film:"أفلام قصيرة",f_client:"خدمة الزبائن",f_doc:"وثائقيات",f_other:"أخرى",
-tag_film:"فيلم قصير",tag_client:"فيلم لزبون",tag_doc:"وثائقي",tag_other:"ريل آخر",
+tag_film:"فيلم قصير",tag_client:"فيلم للحرفاء",tag_doc:"وثائقي",tag_other:"فيديو آخر",tag_banquet:"قاعة أفراح",
+video_painting:"لوحة الأمل",video_stuck:"عالقين هنا، عاونونا!",video_jalsa:"الجلسة",video_eden:"EDEN — وثائقي على الأرض",video_reportage:"ريبورتاج وثائقي",video_gym:"Canadian Pro Gym",video_fashion:"تغطية أسبوع الموضة",video_chourouk:"فيديو صحفي للشروق",video_sushi:"فيديو سينمائي على طباخ سوشي",video_dentist:"طبيب أسنان",video_guesthouse:"دار ضيافة",video_banquet1:"قاعة أفراح 1",video_banquet2:"قاعة أفراح 2",video_banquet3:"قاعة أفراح 3",video_banquet4:"قاعة أفراح 4",
 poh_p:"قصة أمل، مصوّرة بالألوان والضوء والصمت.",
 work2_d:"فيلم قصير من أعمالي الروائية.",work3_d:"فيلم إعلاني صُوّر لصالح الجلسة.",work4_d:"وثائقي حول الأرض ضمن أعمالي مع الحرفاء.",work5_d:"ريبورتاج وثائقي من الميدان.",
 work_reel_label:"من كواليس التصوير — يتعاود",work_missing:"حط فيديو الكواليس في نفس المجلد",timeline_hint:"مونتاج متداخل — صورة V1 وصوت A1",work_bts_title:"من كواليس التصوير",work_bts_description:"لقطات من وراء الكواليس وقت التصوير.",work_bts_category:"من كواليس التصوير",where_title:"وين خدمت",where_subtitle:"مختارات من العلامات والمهرجانات والفرق اللي خدمت معاهم",
 work_play:"شغّل المختارات",work_pause:"أوقف المختارات",work_prev:"المقطع السابق",work_next:"المقطع التالي",work_select:"اختار مقطع",
 where_campaign:"حملة إعلانية",where_press:"صحافة وإعلام",where_festival:"مهرجان فنون",where_fashion:"موضة",where_fitness:"رياضة",where_cinema:"مهرجان سينما",where_ethnographic:"فيلم إثنوغرافي",where_theatre:"مسرح",
-g_tag:"التصوير الجاي",g_h:"قد يكون متاعك.",g_p:"جيب قصة، براند ولا فكرة مجنونة — وناخدوها مع بعضنا.",g_cta:"اقترح ↗",
+g_tag:"التصوير الجاي",g_h:"قد يكون متاعك.",g_p:"جيب قصة، براند ولا فكرة مجنونة — وناخدوها مع بعضنا.",g_cta:"احكيلي على مشروعك ↗",
 tq1:"«فارس فهم المشروع أحسن من وكالات تخلّص ثلاث مرات — وسلم في عشرة أيام.»",tq1c:"— TODO: اسم الزبون، الشركة",
 tq2:"«صوّر الحدث متاعنا كيما فيلم، ماشي كيما فيديو عرس.»",tq2c:"— TODO: اسم الزبون، الشركة",
 tq3:"«شخص واحد، الخدمة الكاملة. بلا ما تجري ورا خمسة أشخاص.»",tq3c:"— TODO: اسم الزبون، الشركة",
@@ -1095,16 +1107,16 @@ step2_t:"الستوري بورد",step2_p:"تقسيم المشاهد والتخ�
 step3_t:"التصوير",step3_p:"إخراج في الديكور — كاميرا وضوء وأداء، بلحظة مقصودة ماشي بالصدفة.",
 step4_t:"المونتاج",step4_p:"هنا يصنع الفيلم بالصح. إيقاع وبنية — كل قصّة تستحق بلاصتها.",
 step5_t:"التلوين",step5_p:"نعالج الصورة حتى تحسّ بروح المشهد.",
-step6_t:"الصوت",step6_p:"تصميم ومزج وموسيقى — النص الثاني من الصورة اللي تسمعو.",
-sl5a:"المرحلة 05",sl5b:"النشرات",h2_release:"<em>النشرات</em>",sub_release:"مشهد داخلي وخارجي — في كل وقت وكل بلاصة",
+step6_t:"الصوت",step6_p:"الصوت نصّ الصورة اللي نسمعوه.",
+sl5a:"المرحلة 05",sl5b:"الإطلاق",h2_release:"<em>الإطلاق</em>",sub_release:"مشهد داخلي وخارجي — في كل وقت وكل بلاصة",
 reels_h:"ريلز إنستغرام — كل أسبوع",series_h:"السلسلة",series_count:"4 فيديوهات",
 reel1:"فيلم جوّا فيلم",reel2:"كيفاش ماكس فاكتور بدّل تاريخ السينما؟",reel3:"أفلام الغرب",reel4:"علاش الموسيقى جات قبل الكلام في السينما؟",reel5:"روكي: من الفقر للأوسكار",reel6:"نهاية العالم!",reel7:"العرب في هوليوود",reel8:"الريمايك في السينما",reel9:"سكورسيزي ودي نيرو",reel10:"المرض النفسي!",reel11:"الأوسكار؟",reel12:"سر التشويق عند هيتشكوك!",reel13:"شنية حكايتنا مع الأنيميشن؟",reel14:"كيفاش الألوان بدّلوا تاريخ السينما؟",reel15:"الرعب",reel16:"72 موسم؟",reel17:"الروايات والسينما؟",reel18:"الكوميديا والهزار",reel19:"الخيال العلمي مش كذبة؟",reel20:"الأبطال الخارقين",reel21:"علاش المسلسلات التونسية مربوطين برمضان؟",
 ep1:"كيفاش تكتب سيناريو؟",ep2:"كيفاش تبني هيكل فيلم قوي؟",ep3:"كيفاش تبني شخصية سينمائية؟",ep4:"كيفاش تستعمل الحوار في السيناريو؟",ep5:"كيفاش تعمل سينما بميزانية صغيرة؟",ep6:"أخطر 5 أخطاء عملتهم في التصوير",
 sl6a:"المرحلة 06",sl6b:"تواصل",h2_contact:"عندك مشروع <em>في بالك؟</em>",
-contact_p:"ابعثلي رسالة مباشرة بالفورمولير، ونجاوبك في أقرب وقت ممكن.",
+contact_p:"ابعثلي رسالة مباشرة من الفورم، ونجاوبك في أقرب وقت.",
 svc1_t:"أفلام براند",svc1_s:"قصة هويتك",svc2_t:"إعلانات",svc2_s:"قصيرة، مؤثرة، مصممة تبيع",svc3_t:"كليبات",svc3_s:"صور تمشي مع الصوت",svc4_t:"حفلات ووثائقيات",svc4_s:"تغطية بوجهة نظر",
 price_hint:"كل مشروع يتسوّر على حسابو — <b>ابعث الفكرة وتاخد رقم واضح في 48 ساعة.</b> بلا مفاجآت.",
-pd_t:"وثيقة الاقتراح",pd_status:"الحالة: مفتوح",f_name:"الاسم",f_email:"الإيميل",f_pitch:"الاقتراح",f_ph:"قصة، براند، ولا فكرة مجنونة…",f_send:"ابعث",
+pd_t:"وثيقة المشروع",pd_status:"الحالة: مفتوح",f_name:"الاسم",f_email:"الإيميل",f_pitch:"فكرة المشروع",f_ph:"قصة، براند، ولا فكرة مجنونة…",f_send:"ابعث",
 form_sending:"جارٍ الإرسال…",form_ok:"الرسالة وصلت — نجاوبك في أقرب وقت.",
 cr_co:"إنتاج فارس بونوارة",cr_dir:"إخراج",cr_fin:"نلتقاو في التصوير.",
 phases:{hero:"المرحلة 01 · مرحبا بيك",about:"المرحلة 02 · أنا شكون",showcase:"المرحلة 03 · الأعمال",process:"المرحلة 04 · طريقة الخدمة",reels:"المرحلة 05 · النشرات",contact:"المرحلة 06 · تواصل",credits:"نلتقاو في التصوير"},
@@ -1364,11 +1376,18 @@ function renderLanguageOptions(){
 function applyLang(){
   document.documentElement.lang=LANG==="ar"?"ar":LANG;
   document.documentElement.dir=LANG==="ar"?"rtl":"ltr";
+  document.title=t("page_title");
   langBtn.textContent=LBL[LANG];
   syncThemeToggle();
   renderLanguageOptions();
   $$("[data-i18n]").forEach(function(el){var v=t(el.dataset.i18n);if(v!=null)el.innerHTML=v;});
   $$("[data-i18n-ph]").forEach(function(el){var v=t(el.dataset.i18nPh);if(v!=null)el.placeholder=v;});
+  $$('[data-i18n-content]').forEach(function(el){el.setAttribute("content",t(el.dataset.i18nContent));});
+  $$('[data-i18n-aria]').forEach(function(el){el.setAttribute("aria-label",t(el.dataset.i18nAria));});
+  $$('[data-i18n-title]').forEach(function(el){el.setAttribute("title",t(el.dataset.i18nTitle));});
+  $$('[data-i18n-alt]').forEach(function(el){el.alt=t(el.dataset.i18nAlt);});
+  $$('[data-title-i18n]').forEach(function(el){el.dataset.title=t(el.dataset.titleI18n);});
+  $$('.reel.is-short-video').forEach(function(reel){reel.setAttribute("aria-label",t("play_short_video")+": "+reel.dataset.title);});
   stops.forEach(function(s){
     if(I18N[LANG].phases&&I18N[LANG].phases[s.id])s.dataset.phase=I18N[LANG].phases[s.id];
     if(I18N[LANG].nodes&&I18N[LANG].nodes[s.id])s.dataset.node=I18N[LANG].nodes[s.id];
@@ -1414,7 +1433,7 @@ window.addEventListener("load",function(){
   var video=$(".hero-bgwrap video.hero-slide");if(!video)return;
   var IN=2600;
   var KBA=[{transform:"scale(1.05) translateX(0)"},{transform:"scale(1.16) translateX(-1.4%)"}];
-  var F_IN=[{opacity:0,filter:"brightness(.3) saturate(.92) blur(10px)"},{opacity:1,filter:"brightness(.5) saturate(.92) blur(0px)"}];
+  var F_IN=[{opacity:0},{opacity:1}];
   if(canAnim){
     video.animate(KBA,{duration:14000,iterations:Infinity,direction:"alternate",easing:"ease-in-out"});
     video.animate(F_IN,{duration:IN,easing:"cubic-bezier(.45,0,.25,1)",fill:"forwards"});
@@ -1465,15 +1484,16 @@ initAnimatedCounters();
 
 /* ═══ last work rotation ═══ */
 var FEAT=[
-  {name:"Painting of Hope",tagKey:"tag_film",v:"MFRUaT09vu4"},
-  {name:"We're Stuck In Here, Send Help!",tagKey:"tag_film",v:"PieT_6wz7Po"},
-  {name:"EDEN — Earth Documentary",tagKey:"tag_doc",v:"6UFxxsSb3X0"}
+  {titleKey:"video_painting",tagKey:"tag_film",v:"MFRUaT09vu4"},
+  {titleKey:"video_stuck",tagKey:"tag_film",v:"PieT_6wz7Po"},
+  {titleKey:"video_eden",tagKey:"tag_doc",v:"6UFxxsSb3X0"}
 ];
 var featI=0,featTimer=null;
 function renderFeat(){
   var f=FEAT[featI],A=$("#feat-link");if(!A)return;
-  $("#feat-title").textContent=f.name;$("#feat-tag").textContent=t(f.tagKey);
-  A.href="https://www.youtube.com/watch?v="+f.v;A.setAttribute("data-video",f.v);A.setAttribute("data-title",f.name);
+  var title=t(f.titleKey);
+  $("#feat-title").textContent=title;$("#feat-tag").textContent=t(f.tagKey);
+  A.href="https://www.youtube.com/watch?v="+f.v;A.setAttribute("data-video",f.v);A.dataset.titleI18n=f.titleKey;A.dataset.title=title;
   $("#feat-link-txt").textContent=t("watch_now");
   $$("#feat-dots i").forEach(function(d,i){d.classList.toggle("on",i===featI);});
 }
@@ -1600,44 +1620,45 @@ $$('.card[href*="instagram.com"]').forEach(function(link){
   link.removeAttribute("rel");
 });
 var youtubeShorts=[
-  {id:"H3lta7lqwsI",title:"Movie within a movie"},
-  {id:"2h4K5v8kWUE",title:"How did Max Factor change cinema history?"},
-  {id:"AgjGQ9FC2fg",title:"Western movies"},
-  {id:"bQBkCXuq6XE",title:"Why was music present before speech in cinema?"},
-  {id:"NSNLK4Hn92U",title:"Rocky: From poverty to Oscar"},
-  {id:"pMfNLNFO0Hg",title:"End of the world!"},
-  {id:"0W5ceCFWm9Q",title:"Arabs in Hollywood"},
-  {id:"pYesCJSW5Ig",title:"Remakes in cinema"},
-  {id:"IDUwSTbGzQY",title:"Scorsese & De Niro"},
-  {id:"JbtlCwxIdyg",title:"Mental illness"},
-  {id:"6_ILVPj9Kds",title:"The Oscars?"},
-  {id:"CnqQwbINF5Y",title:"Hitchcock's secret of suspense!"},
-  {id:"7Fim_q04644",title:"What's our story with animation?"},
-  {id:"7_WrfqjTz40",title:"How colors changed the history of cinema?"},
-  {id:"iXEfzRrvcO8",title:"Horror"},
-  {id:"2lfxmRkl984",title:"72 seasons?"},
-  {id:"qEpw84dHUWc",title:"Novels and cinema"},
-  {id:"4X2DELnU1qE",title:"Comedy and humor"},
-  {id:"G08HKMW_-xs",title:"Sci-fi is not a lie?"},
-  {id:"umEnq0fHi0w",title:"Superheroes"},
-  {id:"_A0UCTYYKZY",title:"Why were Tunisian series tied to Ramadan?"}
+  {id:"H3lta7lqwsI",titleKey:"reel1"},
+  {id:"2h4K5v8kWUE",titleKey:"reel2"},
+  {id:"AgjGQ9FC2fg",titleKey:"reel3"},
+  {id:"bQBkCXuq6XE",titleKey:"reel4"},
+  {id:"NSNLK4Hn92U",titleKey:"reel5"},
+  {id:"pMfNLNFO0Hg",titleKey:"reel6"},
+  {id:"0W5ceCFWm9Q",titleKey:"reel7"},
+  {id:"pYesCJSW5Ig",titleKey:"reel8"},
+  {id:"IDUwSTbGzQY",titleKey:"reel9"},
+  {id:"JbtlCwxIdyg",titleKey:"reel10"},
+  {id:"6_ILVPj9Kds",titleKey:"reel11"},
+  {id:"CnqQwbINF5Y",titleKey:"reel12"},
+  {id:"7Fim_q04644",titleKey:"reel13"},
+  {id:"7_WrfqjTz40",titleKey:"reel14"},
+  {id:"iXEfzRrvcO8",titleKey:"reel15"},
+  {id:"2lfxmRkl984",titleKey:"reel16"},
+  {id:"qEpw84dHUWc",titleKey:"reel17"},
+  {id:"4X2DELnU1qE",titleKey:"reel18"},
+  {id:"G08HKMW_-xs",titleKey:"reel19"},
+  {id:"umEnq0fHi0w",titleKey:"reel20"},
+  {id:"_A0UCTYYKZY",titleKey:"reel21"}
 ];
 var reelNodes=$$('.reels-rail .reel');
 youtubeShorts.forEach(function(short,index){
   var reel=reelNodes[index];if(!reel)return;
   var title=reel.querySelector("h3");
-  title.removeAttribute("data-i18n");
-  title.textContent=short.title;
+  title.dataset.i18n=short.titleKey;
+  title.textContent=t(short.titleKey);
   reel.classList.add("js-video");
   reel.classList.add("is-short-video");
   reel.dataset.video=short.id;
-  reel.dataset.title=short.title;
+  reel.dataset.titleI18n=short.titleKey;
+  reel.dataset.title=t(short.titleKey);
   reel.href="https://www.youtube.com/shorts/"+short.id;
   reel.removeAttribute("target");
   reel.removeAttribute("rel");
-  reel.setAttribute("aria-label","Play YouTube Short: "+short.title);
+  reel.setAttribute("aria-label",t("play_short_video")+": "+t(short.titleKey));
   var platformLabel=reel.querySelector(".reel-body > span");
-  if(platformLabel)platformLabel.textContent="YouTube Short";
+  if(platformLabel){platformLabel.dataset.i18n="tag_youtube_short";platformLabel.textContent=t("tag_youtube_short");}
 });
 
 /* ═══ filters ═══ */
