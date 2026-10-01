@@ -300,7 +300,8 @@ img,video{display:block;max-width:100%}
 .reel-let{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:3rem;color:rgba(212,163,95,.15)}
 .reel-num{position:absolute;top:11px;left:11px;z-index:2;font-family:var(--mono);font-size:.54rem;color:rgba(242,237,227,.7)}
 .reel-ico{position:absolute;top:11px;right:11px;z-index:2;width:26px;height:26px;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;color:var(--gold);background:rgba(0,0,0,.3)}
-.reel-ico .ic{width:9px;height:9px}
+.reel-ico .ic{display:none}
+.reel-ico::before{content:"";width:0;height:0;margin-left:2px;border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:7px solid currentColor}
 .reel-body{position:absolute;left:13px;right:13px;bottom:13px;z-index:2}
 .reel-body span{display:block;font-family:var(--mono);font-size:.5rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:5px}
 .reel-body h3{font-family:var(--serif);font-weight:400;font-size:.93rem;line-height:1.2}
@@ -611,7 +612,7 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
           </div>
         </figure>
         <div class="reveal">
-          <p class="display" data-i18n="display">I'm Farees — I make <em>films</em> people remember.</p>
+          <p class="display" data-i18n="display">I'm Farees — I make <em>films & videos</em> people remember.</p>
           <div class="origin-cols">
             <p data-i18n="o_p1">Making movies and videos isn't just something I do; it's a passion that drives me. From directing and cinematography to storytelling, editing, and writing, I love every step of bringing an idea to life through visuals.</p>
             <p data-i18n="o_p2">Whether it's a cinematic film, music video, social media content, or a simple idea turned into something memorable, I'm always looking for new ways to tell stories and create visuals that connect.</p>
@@ -860,7 +861,6 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
           <div class="svc"><svg class="ic"><use href="#i-wave"/></svg><div><b data-i18n="svc3_t">Music videos</b><span data-i18n="svc3_s">Visuals that match the sound</span></div></div>
           <div class="svc"><svg class="ic"><use href="#i-board"/></svg><div><b data-i18n="svc4_t">Event &amp; documentary</b><span data-i18n="svc4_s">Coverage with a point of view</span></div></div>
         </div>
-        <p class="price-hint" data-i18n="price_hint">Every project is quoted individually — <b>send the idea, get a clear number within 48h.</b> No surprises, no agency markup.</p>
         <a class="contact-mail" href="mailto:bounawara.farees@gmail.com">bounawara.farees@gmail.com</a>
         <div class="contact-socials">
           <a href="https://www.instagram.com/fareesbounawara/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ic"><use href="#i-ig"/></svg></a>
@@ -876,10 +876,11 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
         </div>
         <form class="form" id="cform" novalidate>
           <div class="form-row">
-            <label><span data-i18n="f_name">Name</span><input type="text" name="name" required autocomplete="name" placeholder="—"></label>
-            <label><span data-i18n="f_email">Email</span><input type="email" name="email" required autocomplete="email" placeholder="—"></label>
+            <label><span data-i18n="f_name">Name</span><input type="text" name="from_name" required autocomplete="name" placeholder="—"></label>
+            <label><span data-i18n="f_email">Email</span><input type="email" name="from_email" required autocomplete="email" placeholder="—"></label>
           </div>
           <label><span data-i18n="f_pitch">The pitch</span><textarea name="message" required data-i18n-ph="f_ph" placeholder="A story, a brand, a wild idea…"></textarea></label>
+          <input type="hidden" name="title" value="Project inquiry">
           <input class="hp" type="text" name="_hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <button class="btn btn-gold" type="submit"><svg class="ic"><use href="#i-check"/></svg><span data-i18n="f_send">Send</span></button>
           <p class="form-note" id="form-note" role="status" aria-live="polite"></p>
@@ -891,7 +892,6 @@ html[data-theme="light"] #hero .scriptpage{background:rgba(0,0,0,.5);color:#d5d1
   <!-- ═══ SEE YOU ON SET ═══ -->
   <section class="phase" id="credits" data-phase="SEE YOU ON SET" data-node="See you on set" aria-label="See you on set">
     <div class="credits-roll">
-      <p class="c-company" data-i18n="cr_co">A Farees Bounawara Production</p>
       <div class="c-role"><span class="mono" data-i18n="cr_dir">Directed by</span><b>Farees Bounawara</b></div>
       <p class="c-fin" data-i18n="cr_fin">SEE YOU ON SET.</p>
       <div class="foot-bar">
@@ -929,7 +929,7 @@ phase_prev:"Previous phase",phase_play:"Play automatic phase navigation",phase_p
 contact_me:"Contact me",btn_who:"Who am I?",last_work:"Last work",watch_now:"Watch now",stay_upd:"Stay updated",
 sl2a:"PHASE 02",sl2b:"Who am I?",h2_about:"Who am<em> I?</em>",sub_about:"INT. Who am I?",
 cs_t:"",cs_l1:"Name",cs_v1:"Farees Bounawara",cs_l2:"Role",cs_v2:"Filmmaker & Content Creator",cs_l3:"Skills",cs_v3:"Write \u00B7 Shoot \u00B7 Cut",
-display:"I\u2019m Farees — I make <em>films</em> people remember.",
+display:"I\u2019m Farees — I make <em>films & videos</em> people remember.",
 o_p1:"Making movies and videos isn't just something I do; it's a passion that drives me. From directing and cinematography to storytelling, editing, and writing, I love every step of bringing an idea to life through visuals.",
 o_p2:"Whether it's a cinematic film, music video, social media content, or a simple idea turned into something memorable, I'm always looking for new ways to tell stories and create visuals that connect.",
 quote_p:"\u201CIf I give up now, I'm going to regret it.\u201D",quote_c:"— Monkey D. Luffy (One Piece)",
@@ -1479,12 +1479,10 @@ document.addEventListener("click",function(e){
   if(e.target===vd)closeV();
 });
  $("#vd-close").addEventListener("click",closeV);
-var reelLinks=$$(".reels-rail .reel");
 var clientVideoFiles={"Canadian Pro Gym":"gym.mp4","Fashion Week Coverage":"fashion.mp4","Al Chourouk Press Video":"chourouk.mp4","Sushi Chef Cinematic Reel":"sushi.mp4"};
-$$('a[href*="instagram.com"],a[href*="youtube.com/@"],a[href*="tiktok.com/@"]').forEach(function(link){
+$$('.card[href*="instagram.com"]').forEach(function(link){
   var card=link.closest(".card"),title=link.querySelector("h3")||(card&&card.querySelector("h3"));
-  var reel=link.closest(".reel"),reelIndex=reel?reelLinks.indexOf(reel):-1;
-  var videoFile=reelIndex>=0?"reel"+pad(reelIndex+1)+".mp4":clientVideoFiles[title?title.textContent.trim():""]||"showreel.mp4";
+  var videoFile=clientVideoFiles[title?title.textContent.trim():""]||"showreel.mp4";
   link.classList.add("js-video");
   link.dataset.localVideo=videoFile;
   link.dataset.title=title?title.textContent.trim():"Farees Bounawara";
@@ -1493,28 +1491,22 @@ $$('a[href*="instagram.com"],a[href*="youtube.com/@"],a[href*="tiktok.com/@"]').
   link.removeAttribute("rel");
 });
 $$('.reels-rail .reel').forEach(function(reel,index){
-  var sourceImage=reel.querySelector("img"),sourceTitle=reel.querySelector("h3");
-  var title=sourceTitle?sourceTitle.textContent.trim():"Other reel";
-  var card=document.createElement("a");
-  card.className="card js-video";
-  card.dataset.cat="other";
-  card.dataset.localVideo=reel.dataset.localVideo||("reel"+pad(index+1)+".mp4");
-  card.dataset.title=title;
-  card.href=card.dataset.localVideo;
-  if(sourceImage){var image=sourceImage.cloneNode();image.alt=title;card.appendChild(image);}
-  var veil=document.createElement("div");veil.className="card-veil";card.appendChild(veil);
-  var open=document.createElement("span");open.className="card-open";open.innerHTML='<svg class="ic"><use href="#i-play"></use></svg>';card.appendChild(open);
-  var body=document.createElement("div");body.className="card-body";
-  var tag=document.createElement("span");tag.className="card-tag";tag.dataset.i18n="tag_other";tag.textContent=t("tag_other");body.appendChild(tag);
-  var heading=document.createElement("h3");heading.dataset.i18n="reel"+(index+1);heading.textContent=title;body.appendChild(heading);
-  card.appendChild(body);
-  var grid=$("#grid");
-  grid.insertBefore(card,grid.querySelector(".card.ghost"));
+  var title=reel.querySelector("h3").textContent.trim();
+  var videoFile="insta"+(index+1)+".mp4";
+  reel.classList.add("js-video");
+  reel.dataset.localVideo=videoFile;
+  reel.dataset.title=title;
+  reel.href=videoFile;
+  reel.removeAttribute("target");
+  reel.removeAttribute("rel");
+  reel.setAttribute("aria-label","Open video: "+title);
+  var platformLabel=reel.querySelector(".reel-body > span");
+  if(platformLabel)platformLabel.textContent="Video";
 });
 
 /* ═══ filters ═══ */
- $$(".chip").forEach(function(ch){ch.addEventListener("click",function(){
-  $$(".chip").forEach(function(c){c.classList.remove("on");});ch.classList.add("on");
+ $$(".chip[data-f]").forEach(function(ch){ch.addEventListener("click",function(){
+  $$(".chip[data-f]").forEach(function(c){c.classList.remove("on");});ch.classList.add("on");
   var f=ch.dataset.f;
   $$("#grid .card").forEach(function(c){c.classList.toggle("hide",f!=="all"&&c.dataset.cat!==f);});
 });});
@@ -1710,19 +1702,27 @@ function bumpSub(){
 }
 
 /* ═══ contact form ═══ */
-/* TODO: EmailJS keys — until then the form opens the visitor's mail app */
-var PK="YOUR_EMAILJS_PUBLIC_KEY",SID="YOUR_SERVICE_ID",TID="YOUR_TEMPLATE_ID";
+var PK="yA2T3qfrXr7XRztZX",SID="service_oukfkkt",TID="template_1p5y305";
+if(window.emailjs){emailjs.init({publicKey:PK});}
 var form=$("#cform"),note=$("#form-note");
 form.addEventListener("submit",function(e){
   e.preventDefault();
   note.className="form-note";note.textContent=t("form_sending");
-  if(window.emailjs&&PK.indexOf("YOUR_")!==0){
+  if(window.emailjs&&PK && PK.indexOf("YOUR_")!==0){
     emailjs.sendForm(SID,TID,form,{publicKey:PK}).then(function(){
       note.textContent=t("form_ok");note.classList.add("good");form.reset();bumpSub();
-    }).catch(function(){mailFallback();});
+    }).catch(function(err){
+      console.error("EmailJS send failed", err);
+      note.className="form-note";
+      note.textContent="EmailJS failed. Check the Email service, template variables, and Gmail connection in the EmailJS dashboard.";
+      mailFallback();
+    });
   }else{mailFallback();}
   function mailFallback(){
-    var m=new URLSearchParams({subject:"Project inquiry \u2014 "+form.name.value,body:form.message.value+"\n\n\u2014 "+form.name.value+" ("+form.email.value+")"});
+    var senderName=(form.from_name&&form.from_name.value)||"";
+    var senderEmail=(form.from_email&&form.from_email.value)||"";
+    var senderMessage=(form.message&&form.message.value)||"";
+    var m=new URLSearchParams({subject:"Project inquiry \u2014 "+senderName,body:senderMessage+"\n\n\u2014 "+senderName+" ("+senderEmail+")"});
     window.location.href="mailto:bounawara.farees@gmail.com?"+m.toString();
     note.textContent=t("form_ok");note.classList.add("good");form.reset();bumpSub();
   }
