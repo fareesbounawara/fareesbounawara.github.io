@@ -105,12 +105,13 @@ img,video{display:block;max-width:100%}
 .rail a:hover{color:var(--ink)}
 .rail a.on{color:var(--gold)}
 /* ══ sections — normal scroll, deliberately uneven padding ══ */
-.phase{position:relative;display:flex;flex-direction:column;min-height:100svh;padding:calc(var(--bar) + 44px) 0 calc(var(--bar) + 34px);overflow:hidden;background:#000}
+.phase{position:relative;display:flex;flex-direction:column;min-height:calc(100svh - 40px);padding:calc(var(--bar) + 44px) 0 calc(var(--bar) + 34px);overflow:hidden;background:#000}
 .phase::before{content:"";position:absolute;top:0;left:0;right:0;height:14px;z-index:3;background-image:radial-gradient(circle at 11px 5px,rgba(242,237,227,.18) 2.4px,transparent 3px);background-size:24px 10px;opacity:.5;pointer-events:none}
 .phase>.shell{position:relative;z-index:2;margin:auto;width:min(100% - 44px,1340px)}
 #contact{min-height:0;padding-bottom:48px}
 #credits{min-height:0;padding-top:calc(var(--bar) + 16px);padding-bottom:32px}
 /* hero */
+#hero{min-height:100svh}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:40px;align-items:center}
 .hero-copy{padding-left:clamp(0px,2.5vw,38px)}
 .script-wrap{position:relative;max-width:46ch;margin-bottom:18px}
@@ -385,11 +386,11 @@ img,video{display:block;max-width:100%}
 .vdialog.is-short .vd-frame{display:grid;place-items:center}
 .vd-frame [hidden]{display:none}
 @media(min-width:961px){
-  body.video-open main{margin-right:min(42vw,700px)}
-  body.video-open .bar-top,body.video-open .bar-bot{right:min(42vw,700px)}
+  body.video-open main{margin-right:56.25dvh}
+  body.video-open .bar-top,body.video-open .bar-bot{right:56.25dvh}
   body.video-open .rail{display:none}
-  .vdialog.is-local[open],.vdialog.is-short[open]{inset:0 0 0 auto;width:min(42vw,700px);height:100vh;height:100dvh;border-left:1px solid var(--line-2)}
-  .vdialog.is-short .vd-frame iframe{width:min(100%,56.25vh);height:100%;}
+  .vdialog.is-local[open],.vdialog.is-short[open]{inset:0 0 0 auto;width:56.25dvh;height:100vh;height:100dvh;border-left:1px solid var(--line-2)}
+  .vdialog.is-short .vd-frame iframe{width:100%;height:100%;}
 }
 /* reveal */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s var(--ease-out),transform .8s var(--ease-out)}
