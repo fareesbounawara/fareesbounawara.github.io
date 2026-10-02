@@ -116,18 +116,6 @@ img,video{display:block;max-width:100%}
 #contact{min-height:0;padding-bottom:24px}
 #reels{padding-bottom:72px}
 #credits{min-height:0;padding-top:0;padding-bottom:32px}
-/* services */
-#services{padding-bottom:40px}
-.svc-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
-.svc{display:flex;flex-direction:column;gap:10px;padding:20px 18px;border:1px solid var(--line);border-top:2px solid var(--gold);border-radius:0 0 12px 12px;background:rgba(212,163,95,.04);transition:transform .25s,border-color .25s,background .25s}
-.svc:hover{transform:translateY(-4px);border-color:var(--line-2);background:rgba(212,163,95,.08)}
-.svc h3{font-family:var(--serif);font-weight:400;font-size:1.3rem;line-height:1.15}
-.svc p{color:var(--ink-dim);font-size:.9rem;line-height:1.55}
-.svc-cta{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
-.svc-cta p{color:var(--ink-dim);max-width:46ch}
-@media(max-width:960px){.svc-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:560px){.svc-grid{grid-template-columns:1fr}}
-html[data-theme="light"] .svc{background:rgba(154,108,50,.055)}
 /* hero */
 #hero{min-height:100svh}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:40px;align-items:center}
@@ -989,45 +977,14 @@ canvas.c-fin-atoms{position:relative;inset:auto;grid-row:3;align-self:center;jus
   </section>
 
   <!-- ═══ 06 · CONTACT ═══ -->
-  <!-- ═══ 06 · SERVICES ═══ -->
-  <section class="phase" id="services" data-phase="PHASE 06 · SERVICES" data-node="Services" aria-label="Services">
-    <div class="shell">
-      <header class="slate reveal">
-        <div class="slate-clap" aria-hidden="true"></div>
-        <div class="slate-board">
-          <div class="slate-top"><span class="mono" data-i18n="sv_a">PHASE 06</span><span class="mono" data-i18n="sv_b">SERVICES</span></div>
-          <h2><span data-i18n="h2_svc">How I can <em>help your brand</em></span></h2>
-          <p class="mono slate-sub" data-i18n="sub_svc">INT. YOUR BRAND — YOUR STORY, ON SCREEN</p>
-        </div>
-      </header>
-      <div class="svc-grid reveal">
-        <article class="svc"><span class="mono gold">01</span><h3 data-i18n="svc1_t">Brand &amp; commercial films</h3><p data-i18n="svc1_p">Cinematic ads and brand films that show what you do and give people a reason to choose you.</p></article>
-        <article class="svc"><span class="mono gold">02</span><h3 data-i18n="svc2_t">Social media content</h3><p data-i18n="svc2_p">Reels, TikToks and Shorts made to hold attention and grow your audience.</p></article>
-        <article class="svc"><span class="mono gold">03</span><h3 data-i18n="svc3_t">Documentary &amp; storytelling</h3><p data-i18n="svc3_p">Real stories about your team, product or mission, written and shot to feel human.</p></article>
-        <article class="svc"><span class="mono gold">04</span><h3 data-i18n="svc4_t">Full production</h3><p data-i18n="svc4_p">Script, shoot and edit with one person: a single point of contact from idea to final video.</p></article>
-      </div>
-      <!-- TESTIMONIALS: add real client quotes here (only real ones), then remove the comment markers.
-      <div class="t-strip reveal">
-        <blockquote class="tq big"><p>"Client quote here."</p><cite>Client name — Company</cite></blockquote>
-        <blockquote class="tq"><p>"Second quote."</p><cite>Name — Company</cite></blockquote>
-        <blockquote class="tq"><p>"Third quote."</p><cite>Name — Company</cite></blockquote>
-      </div>
-      -->
-      <div class="svc-cta reveal">
-        <a class="btn btn-gold" href="#contact"><svg class="ic"><use href="#i-down"/></svg><span data-i18n="svc_cta">Request a quote</span></a>
-        <p data-i18n="svc_cta_p">Tell me about your brand and what you want to achieve.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══ 07 · CONTACT ═══ -->
-  <section class="phase" id="contact" data-phase="PHASE 07 · CONTACT" data-node="Contact" aria-label="Contact">
+  <!-- ═══ 06 · CONTACT ═══ -->
+  <section class="phase" id="contact" data-phase="PHASE 06 · CONTACT" data-node="Contact" aria-label="Contact">
     <div class="shell contact-grid">
       <div class="reveal">
         <header class="slate" style="margin-bottom:18px">
           <div class="slate-clap" aria-hidden="true"></div>
           <div class="slate-board">
-            <div class="slate-top"><span class="mono" data-i18n="sl6a">PHASE 07</span><span class="mono" data-i18n="sl6b">CONTACT</span></div>
+            <div class="slate-top"><span class="mono" data-i18n="sl6a">PHASE 06</span><span class="mono" data-i18n="sl6b">CONTACT</span></div>
             <h2 class="contact-title" style="margin:0"><span data-i18n="h2_contact">Have a project <em>in mind?</em></span></h2>
           </div>
         </header>
@@ -1093,7 +1050,7 @@ var canAnim=typeof Element!=="undefined"&&Element.prototype.animate;
 
 /* ═══ I18N — en / fr / Tunisian derja ═══ */
 var I18N={
-en:{sv_a:"PHASE 06",sv_b:"SERVICES",h2_svc:"How I can <em>help your brand</em>",sub_svc:"INT. YOUR BRAND — YOUR STORY, ON SCREEN",svc1_t:"Brand & commercial films",svc1_p:"Cinematic ads and brand films that show what you do and give people a reason to choose you.",svc2_t:"Social media content",svc2_p:"Reels, TikToks and Shorts made to hold attention and grow your audience.",svc3_t:"Documentary & storytelling",svc3_p:"Real stories about your team, product or mission, written and shot to feel human.",svc4_t:"Full production",svc4_p:"Script, shoot and edit with one person: a single point of contact from idea to final video.",svc_cta:"Request a quote",svc_cta_p:"Tell me about your brand and what you want to achieve.",page_title:"Farees Bounawara — filmmaker",meta_description:"Farees Bounawara is a Tunisian filmmaker creating short films, client work, documentaries, and a scriptwriting series.",site_mark:"FAREES",home_label:"FAREES — home",name_first:"Farees",name_last:"Bounawara.",full_name:"Farees Bounawara",video_player:"Video player",close:"Close",play_short_video:"Play YouTube Short",tag_youtube_short:"YouTube Short",
+en:{page_title:"Farees Bounawara — filmmaker",meta_description:"Farees Bounawara is a Tunisian filmmaker creating short films, client work, documentaries, and a scriptwriting series.",site_mark:"FAREES",home_label:"FAREES — home",name_first:"Farees",name_last:"Bounawara.",full_name:"Farees Bounawara",video_player:"Video player",close:"Close",play_short_video:"Play YouTube Short",tag_youtube_short:"YouTube Short",
 rec_lbl:"REC",p1a:"Phase 01 · Welcome",
 sp_t:'<span class="sc-fade">INT. PORTFOLIO</span><br><br><span class="sc-name">FAREES</span> —<br>A FILMMAKER & CONTENT CREATOR.',
 phase_prev:"Previous phase",phase_play:"Play automatic phase navigation",phase_pause:"Pause automatic phase navigation",phase_next:"Next phase",theme_light:"Switch to light mode",theme_dark:"Switch to dark mode",
@@ -1130,16 +1087,16 @@ sl5a:"PHASE 05",sl5b:"THE RELEASE",h2_release:"THE <em>RELEASE</em>",sub_release
 reels_h:"Instagram Reels — weekly drops",series_h:"The series",series_count:"4 videos",
 reel1:"Movie within a Movie",reel2:"How did Max Factor change cinema history?",reel3:"Western Movies",reel4:"Why was music present before speech in cinema?",reel5:"Rocky: From Poverty to Oscar",reel6:"End of the World!",reel7:"Arabs in Hollywood",reel8:"Remakes in Cinema",reel9:"Scorsese &amp; De Niro",reel10:"Mental Illness!",reel11:"The Oscars?",reel12:"Hitchcock's Secret of Suspense!",reel13:"What's our story with Animation?",reel14:"How colors changed the history of cinema?",reel15:"Horror",reel16:"72 seasons?",reel17:"Novels and Cinema?",reel18:"Comedy and Humor",reel19:"Sci-Fi is not a lie?",reel20:"Superheroes",reel21:"Why were Tunisian series tied to Ramadan?",
 ep1:"How to write a script?",ep2:"How to build a compelling film structure?",ep3:"How to build a cinematic character?",ep4:"How to utilize dialogue in the script?",ep5:"How to make cinema on a low budget?",ep6:"Top 5 filmmaking mistakes I've made",
-sl6a:"PHASE 07",sl6b:"CONTACT",h2_contact:"Have a project <em>in mind?</em>",
+sl6a:"PHASE 06",sl6b:"CONTACT",h2_contact:"Have a project <em>in mind?</em>",
 contact_p:"Send me a message directly using the form, and I\u2019ll get back to you as soon as possible.",
 svc1_t:"Brand films",svc1_s:"The story of who you are",svc2_t:"Commercials &amp; ads",svc2_s:"Short, sharp, made to sell",svc3_t:"Music videos",svc3_s:"Visuals that match the sound",svc4_t:"Event &amp; documentary",svc4_s:"Coverage with a point of view",
 price_hint:"Every project is quoted individually — <b>send the idea, get a clear number within 48h.</b> No surprises, no agency markup.",
 pd_t:"Pitch document",pd_status:"Status: open",f_name:"Name",f_email:"Email",f_pitch:"The pitch",f_ph:"A story, a brand, a wild idea\u2026",f_send:"Send",
 form_sending:"Sending\u2026",form_ok:"Message sent — I\u2019ll get back to you as soon as possible.",
 cr_co:"A Farees Bounawara Production",cr_dir:"Directed by",cr_fin:"SEE YOU ON SET.",
-phases:{hero:"PHASE 01 · WELCOME",about:"PHASE 02 · Who am I?",showcase:"PHASE 03 · WORK",process:"PHASE 04 · PROCESS",reels:"PHASE 05 · THE RELEASE",services:"PHASE 06 · SERVICES",contact:"PHASE 07 · CONTACT",credits:"SEE YOU ON SET"},
+phases:{hero:"PHASE 01 · WELCOME",about:"PHASE 02 · Who am I?",showcase:"PHASE 03 · WORK",process:"PHASE 04 · PROCESS",reels:"PHASE 05 · THE RELEASE",contact:"PHASE 06 · CONTACT",credits:"SEE YOU ON SET"},
 nodes:{hero:"Welcome",about:"Who am I?",showcase:"Work",process:"Process",reels:"The release",contact:"Contact",credits:"See you on set"}},
-fr:{sv_a:"ÉTAPE 06",sv_b:"SERVICES",h2_svc:"Comment je peux <em>aider votre marque</em>",sub_svc:"INT. VOTRE MARQUE — VOTRE HISTOIRE, À L'ÉCRAN",svc1_t:"Films de marque & publicités",svc1_p:"Des publicités et films de marque cinématographiques qui montrent ce que vous faites et donnent envie de vous choisir.",svc2_t:"Contenu réseaux sociaux",svc2_p:"Reels, TikToks et Shorts pensés pour captiver l'audience et la faire grandir.",svc3_t:"Documentaire & storytelling",svc3_p:"De vraies histoires sur votre équipe, votre produit ou votre mission, écrites et filmées avec humanité.",svc4_t:"Production complète",svc4_p:"Écriture, tournage et montage avec une seule personne : un seul interlocuteur de l'idée à la vidéo finale.",svc_cta:"Demander un devis",svc_cta_p:"Parlez-moi de votre marque et de vos objectifs.",page_title:"Farees Bounawara — réalisateur",meta_description:"Farees Bounawara est réalisateur en Tunisie. Découvrez ses courts métrages, films de marque, documentaires et séries sur le cinéma.",site_mark:"FAREES",home_label:"FAREES — accueil",name_first:"Farees",name_last:"Bounawara.",full_name:"Farees Bounawara",video_player:"Lecteur vidéo",close:"Fermer",play_short_video:"Lire le Short YouTube",tag_youtube_short:"Short YouTube",
+fr:{page_title:"Farees Bounawara — réalisateur",meta_description:"Farees Bounawara est réalisateur en Tunisie. Découvrez ses courts métrages, films de marque, documentaires et séries sur le cinéma.",site_mark:"FAREES",home_label:"FAREES — accueil",name_first:"Farees",name_last:"Bounawara.",full_name:"Farees Bounawara",video_player:"Lecteur vidéo",close:"Fermer",play_short_video:"Lire le Short YouTube",tag_youtube_short:"Short YouTube",
 rec_lbl:"ENREGISTREMENT",p1a:"Phase 01 · Bienvenue",
 sp_t:'<span class="sc-fade">INT. PORTFOLIO</span><br><br><span class="sc-name">FAREES</span> —<br>R\u00C9ALISATEUR &amp;<br>CR\u00C9ATEUR DE CONTENU.',
 phase_prev:"Phase précédente",phase_play:"Lancer le défilement automatique",phase_pause:"Mettre en pause le défilement automatique",phase_next:"Phase suivante",theme_light:"Passer en mode clair",theme_dark:"Passer en mode sombre",
@@ -1176,16 +1133,16 @@ sl5a:"ÉTAPE 05",sl5b:"DIFFUSION",h2_release:"LA <em>DIFFUSION</em>",sub_release
 reels_h:"Reels Instagram — chaque semaine",series_h:"La série",series_count:"4 vidéos",
 reel1:"Un film dans le film",reel2:"Comment Max Factor a chang\u00E9 l'histoire du cin\u00E9ma ?",reel3:"Les westerns",reel4:"Pourquoi la musique avant la parole au cin\u00E9ma ?",reel5:"Rocky : de la pauvret\u00E9 \u00E0 l'Oscar",reel6:"La fin du monde !",reel7:"Les Arabes \u00E0 Hollywood",reel8:"Les remakes au cin\u00E9ma",reel9:"Scorsese &amp; De Niro",reel10:"La maladie mentale !",reel11:"Les Oscars ?",reel12:"Le secret du suspense selon Hitchcock !",reel13:"Quelle histoire avec l'animation ?",reel14:"Quand les couleurs ont chang\u00E9 le cin\u00E9ma",reel15:"L'horreur",reel16:"72 saisons ?",reel17:"Romans et cin\u00E9ma ?",reel18:"Com\u00E9die et humour",reel19:"La science-fiction, un mensonge ?",reel20:"Super-h\u00E9ros",reel21:"Pourquoi les s\u00E9ries tunisiennes sont li\u00E9es au Ramadan ?",
 ep1:"Comment \u00E9crire un sc\u00E9nario ?",ep2:"Comment construire une structure de film solide ?",ep3:"Comment cr\u00E9er un personnage de cin\u00E9ma ?",ep4:"Comment utiliser le dialogue ?",ep5:"Faire du cin\u00E9ma avec un petit budget ?",ep6:"Mes 5 plus grandes erreurs de cin\u00E9ma",
-sl6a:"ÉTAPE 07",sl6b:"CONTACT",h2_contact:"Un projet <em>en t\u00EAte ?</em>",
+sl6a:"ÉTAPE 06",sl6b:"CONTACT",h2_contact:"Un projet <em>en t\u00EAte ?</em>",
 contact_p:"Envoyez-moi un message via le formulaire, et je vous r\u00E9ponds au plus vite.",
 svc1_t:"Films de marque",svc1_s:"L\u2019histoire de qui vous \u00EAtes",svc2_t:"Publicit\u00E9s",svc2_s:"Courtes, percutantes, faites pour vendre",svc3_t:"Clips musicaux",svc3_s:"Des images qui suivent le son",svc4_t:"\u00C9v\u00E9nements &amp; documentaires",svc4_s:"Une couverture avec un point de vue",
 price_hint:"Chaque projet est chiffr\u00E9 individuellement — <b>envoyez l\u2019id\u00E9e, recevez un prix clair sous 48 h.</b> Sans surprises.",
 pd_t:"Document de pitch",pd_status:"Statut : ouvert",f_name:"Nom",f_email:"Email",f_pitch:"Le pitch",f_ph:"Une histoire, une marque, une id\u00E9e folle\u2026",f_send:"Envoyer",
 form_sending:"Envoi\u2026",form_ok:"Message envoy\u00E9 — je vous r\u00E9ponds au plus vite.",
 cr_co:"Une production Farees Bounawara",cr_dir:"R\u00E9alis\u00E9 par",cr_fin:"\u00C0 BIENT\u00D4T SUR LE TOURNAGE.",
-phases:{hero:"ÉTAPE 01 · BIENVENUE",about:"ÉTAPE 02 · QUI JE SUIS",showcase:"ÉTAPE 03 · TRAVAIL",process:"ÉTAPE 04 · PROCESSUS",reels:"ÉTAPE 05 · DIFFUSION",services:"ÉTAPE 06 · SERVICES",contact:"ÉTAPE 07 · CONTACT",credits:"\u00C0 BIENT\u00D4T SUR LE TOURNAGE"},
+phases:{hero:"ÉTAPE 01 · BIENVENUE",about:"ÉTAPE 02 · QUI JE SUIS",showcase:"ÉTAPE 03 · TRAVAIL",process:"ÉTAPE 04 · PROCESSUS",reels:"ÉTAPE 05 · DIFFUSION",contact:"ÉTAPE 06 · CONTACT",credits:"\u00C0 BIENT\u00D4T SUR LE TOURNAGE"},
 nodes:{hero:"Bienvenue",about:"Qui je suis",showcase:"Travail",process:"Processus",reels:"Diffusion",contact:"Contact",credits:"\u00C0 bient\u00F4t"}},
-ar:{sv_a:"المرحلة 06",sv_b:"الخدمات",h2_svc:"كيفاش نعاون <em>البراند متاعك</em>",sub_svc:"داخلي. البراند متاعك — حكايتك على الشاشة",svc1_t:"أفلام للبراند والإعلانات",svc1_p:"إعلانات وأفلام سينمائية للبراند تفرّج الناس شنوّا تعمل وتعطيهم سبب يختاروك.",svc2_t:"محتوى السوشيال ميديا",svc2_p:"ريلز وتيك توك وشورتس مصنوعة باش تشدّ الانتباه وتكبّر الجمهور متاعك.",svc3_t:"وثائقي وسرد القصص",svc3_p:"حكايات حقيقية على فريقك، المنتوج متاعك أو رسالتك، مكتوبة ومصوّرة بإحساس إنساني.",svc4_t:"إنتاج كامل",svc4_p:"سيناريو وتصوير ومونتاج عند شخص واحد: طرف واحد تحكي معاه من الفكرة للفيديو النهائي.",svc_cta:"اطلب عرض سعر",svc_cta_p:"احكيلي على البراند متاعك وشنوّا تحب توصل.",page_title:"فارس بونوارة — صانع أفلام",meta_description:"فارس بونوارة صانع أفلام تونسي. اكتشفوا أفلامه القصيرة وأعماله ووثائقياته وسلاسله حول السينما.",site_mark:"فارس",home_label:"فارس — الصفحة الرئيسية",name_first:"فارس",name_last:"بونوارة.",full_name:"فارس بونوارة",video_player:"مشغّل الفيديو",close:"سكر",play_short_video:"شغّل فيديو يوتيوب القصير",tag_youtube_short:"يوتيوب شورت",
+ar:{page_title:"فارس بونوارة — صانع أفلام",meta_description:"فارس بونوارة صانع أفلام تونسي. اكتشفوا أفلامه القصيرة وأعماله ووثائقياته وسلاسله حول السينما.",site_mark:"فارس",home_label:"فارس — الصفحة الرئيسية",name_first:"فارس",name_last:"بونوارة.",full_name:"فارس بونوارة",video_player:"مشغّل الفيديو",close:"سكر",play_short_video:"شغّل فيديو يوتيوب القصير",tag_youtube_short:"يوتيوب شورت",
 rec_lbl:"تسجيل",p1a:"المرحلة 01 · مرحبا بيك",
 sp_t:'<span class="sc-fade">مشهد داخلي — البورتفوليو</span><br><br><span class="sc-name">فارس</span> —<br>صانع أفلام و<br>صانع محتوى.',
 phase_prev:"المرحلة السابقة",phase_play:"ابدأ التنقل التلقائي بين المراحل",phase_pause:"أوقف التنقل التلقائي بين المراحل",phase_next:"المرحلة التالية",theme_light:"التبديل إلى الوضع الفاتح",theme_dark:"التبديل إلى الوضع الداكن",
@@ -1222,14 +1179,14 @@ sl5a:"المرحلة 05",sl5b:"الإطلاق",h2_release:"<em>الإطلاق</e
 reels_h:"ريلز إنستغرام — كل أسبوع",series_h:"السلسلة",series_count:"4 فيديوهات",
 reel1:"فيلم جوّا فيلم",reel2:"كيفاش ماكس فاكتور بدّل تاريخ السينما؟",reel3:"أفلام الغرب",reel4:"علاش الموسيقى جات قبل الكلام في السينما؟",reel5:"روكي: من الفقر للأوسكار",reel6:"نهاية العالم!",reel7:"العرب في هوليوود",reel8:"الريمايك في السينما",reel9:"سكورسيزي ودي نيرو",reel10:"المرض النفسي!",reel11:"الأوسكار؟",reel12:"سر التشويق عند هيتشكوك!",reel13:"شنية حكايتنا مع الأنيميشن؟",reel14:"كيفاش الألوان بدّلوا تاريخ السينما؟",reel15:"الرعب",reel16:"72 موسم؟",reel17:"الروايات والسينما؟",reel18:"الكوميديا والهزار",reel19:"الخيال العلمي مش كذبة؟",reel20:"الأبطال الخارقين",reel21:"علاش المسلسلات التونسية مربوطين برمضان؟",
 ep1:"كيفاش تكتب سيناريو؟",ep2:"كيفاش تبني هيكل فيلم قوي؟",ep3:"كيفاش تبني شخصية سينمائية؟",ep4:"كيفاش تستعمل الحوار في السيناريو؟",ep5:"كيفاش تعمل سينما بميزانية صغيرة؟",ep6:"أخطر 5 أخطاء عملتهم في التصوير",
-sl6a:"المرحلة 07",sl6b:"تواصل",h2_contact:"عندك مشروع <em>في بالك؟</em>",
+sl6a:"المرحلة 06",sl6b:"تواصل",h2_contact:"عندك مشروع <em>في بالك؟</em>",
 contact_p:"ابعثلي رسالة مباشرة من الفورم، ونجاوبك في أقرب وقت.",
 svc1_t:"أفلام براند",svc1_s:"قصة هويتك",svc2_t:"إعلانات",svc2_s:"قصيرة، مؤثرة، مصممة تبيع",svc3_t:"كليبات",svc3_s:"صور تمشي مع الصوت",svc4_t:"حفلات ووثائقيات",svc4_s:"تغطية بوجهة نظر",
 price_hint:"كل مشروع يتسوّر على حسابو — <b>ابعث الفكرة وتاخد رقم واضح في 48 ساعة.</b> بلا مفاجآت.",
 pd_t:"وثيقة المشروع",pd_status:"الحالة: مفتوح",f_name:"الاسم",f_email:"الإيميل",f_pitch:"فكرة المشروع",f_ph:"قصة، براند، ولا فكرة مجنونة…",f_send:"ابعث",
 form_sending:"جارٍ الإرسال…",form_ok:"الرسالة وصلت — نجاوبك في أقرب وقت.",
 cr_co:"إنتاج فارس بونوارة",cr_dir:"إخراج",cr_fin:"نلتقاو في التصوير.",
-phases:{hero:"المرحلة 01 · مرحبا بيك",about:"المرحلة 02 · أنا شكون",showcase:"المرحلة 03 · الأعمال",process:"المرحلة 04 · طريقة الخدمة",reels:"المرحلة 05 · النشرات",services:"المرحلة 06 · الخدمات",contact:"المرحلة 07 · تواصل",credits:"نلتقاو في التصوير"},
+phases:{hero:"المرحلة 01 · مرحبا بيك",about:"المرحلة 02 · أنا شكون",showcase:"المرحلة 03 · الأعمال",process:"المرحلة 04 · طريقة الخدمة",reels:"المرحلة 05 · النشرات",contact:"المرحلة 06 · تواصل",credits:"نلتقاو في التصوير"},
 nodes:{hero:"مرحبا بيك",about:"أنا شكون",showcase:"الأعمال",process:"طريقة الخدمة",reels:"النشرات",contact:"تواصل",credits:"نلتقاو في التصوير"}}
 };
 var LANG="en";
