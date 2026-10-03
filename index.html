@@ -602,6 +602,66 @@ html[dir=rtl] .timeline-clip strong{unicode-bidi:plaintext}
 /* "Directed by Farees Bounawara" a bit higher */
 #credits .c-role{position:relative;top:clamp(-190px,-20svh,-90px)}
 </style>
+<style id="phase-menu-css">
+#phase-menu{position:fixed;z-index:13000;min-width:230px;max-width:min(320px,92vw);padding:6px;margin:0;list-style:none;background:#0e0e11;border:1px solid var(--line-2);border-radius:10px;box-shadow:0 18px 50px rgba(0,0,0,.55);font-family:var(--mono);opacity:0;transform:scale(.96);transform-origin:top left;transition:opacity .12s ease,transform .12s ease;pointer-events:none}
+#phase-menu.show{opacity:1;transform:scale(1);pointer-events:auto}
+#phase-menu .pm-title{padding:7px 10px 6px;font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-faint)}
+#phase-menu button{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;padding:9px 10px;border-radius:6px;font-size:.62rem;letter-spacing:.08em;color:var(--ink);cursor:pointer}
+#phase-menu button:hover,#phase-menu button:focus-visible{background:rgba(212,163,95,.16);color:var(--gold-2)}
+#phase-menu button .pm-n{flex:0 0 26px;text-align:center;font-size:.55rem;color:var(--gold)}
+#phase-menu button.cur{color:var(--gold-2)}
+#phase-menu button.cur::after{content:"";margin-inline-start:auto;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+html[dir=rtl] #phase-menu{direction:rtl;text-align:right}
+html[lang=ar] #phase-menu button{letter-spacing:0;font-family:'Cairo',sans-serif;font-size:.78rem}
+html[data-theme="light"] #phase-menu{background:#fbfcfb;box-shadow:0 18px 40px rgba(35,45,38,.18)}
+</style>
+<style id="vd-flash-fix">
+/* fullscreen (horizontal) player: the dialog box itself is invisible; only the inner shell is drawn,
+   so the card zooms out of its thumbnail with no black rectangle appearing first */
+.vdialog:not(.is-short):not(.is-local){background:transparent!important;border:0!important;box-shadow:none!important;overflow:visible!important}
+.vdialog:not(.is-short):not(.is-local) .vd-shell{background:#000;border:1px solid var(--line-2);border-radius:8px;overflow:hidden}
+.vdialog:not(.is-short):not(.is-local)[open]::backdrop{animation:vdBackdropIn .5s ease both}
+@keyframes vdBackdropIn{from{background:rgba(0,0,0,0)}to{background:rgba(0,0,0,.4)}}
+html[data-theme="light"] .vdialog:not(.is-short):not(.is-local) .vd-shell{background:#fbfcfb}
+</style>
+<style id="fx-css">
+
+/* ---- right-click phase menu animation ---- */
+@property --pm-ang{syntax:"<angle>";inherits:false;initial-value:0deg}
+#phase-menu{overflow:visible}
+#phase-menu.show{animation:pmPop .5s cubic-bezier(.2,1.15,.3,1) both}
+@keyframes pmPop{0%{opacity:0;transform:scale(.6) rotate(-3deg);filter:blur(8px)}55%{opacity:1;transform:scale(1.04) rotate(.4deg);filter:blur(0)}100%{opacity:1;transform:scale(1) rotate(0);filter:none}}
+/* a gold light that runs around the menu border */
+#phase-menu::before{content:"";position:absolute;inset:-1px;border-radius:11px;padding:1.5px;pointer-events:none;
+  background:conic-gradient(from var(--pm-ang),transparent 0 62%,var(--gold) 82%,var(--gold-2) 90%,transparent 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+  opacity:0}
+#phase-menu.show::before{opacity:1;animation:pmSpin 2.8s linear infinite}
+@keyframes pmSpin{to{--pm-ang:360deg}}
+/* soft glow behind it */
+#phase-menu::after{content:"";position:absolute;inset:-18px;z-index:-1;border-radius:26px;pointer-events:none;background:radial-gradient(closest-side,rgba(212,163,95,.22),transparent);opacity:0;transition:opacity .4s}
+#phase-menu.show::after{opacity:1}
+/* title: letters close in */
+#phase-menu .pm-title{animation:none}
+#phase-menu.show .pm-title{animation:pmTitle .7s cubic-bezier(.2,.8,.2,1) both}
+@keyframes pmTitle{from{opacity:0;letter-spacing:.7em}to{opacity:1;letter-spacing:.2em}}
+/* items cascade in one after another */
+#phase-menu{--pm-dx:-22px}
+html[dir=rtl] #phase-menu{--pm-dx:22px}
+#phase-menu.show button{animation:pmItem .55s cubic-bezier(.2,.9,.25,1.1) both;animation-delay:calc(var(--i,0)*60ms + 90ms)}
+@keyframes pmItem{0%{opacity:0;transform:translateX(var(--pm-dx)) scale(.94)}100%{opacity:1;transform:none}}
+/* hover: item slides, number pops, gold bar grows */
+#phase-menu button{position:relative;transition:background .2s,color .2s,padding .25s cubic-bezier(.2,.8,.2,1)}
+#phase-menu button:hover,#phase-menu button:focus-visible{padding-inline-start:16px}
+#phase-menu button .pm-n{transition:transform .3s cubic-bezier(.3,1.6,.4,1),color .2s}
+#phase-menu button:hover .pm-n,#phase-menu button:focus-visible .pm-n{transform:scale(1.35);color:var(--gold-2)}
+#phase-menu button::before{content:"";position:absolute;inset-block:8px;inset-inline-start:0;width:2px;border-radius:2px;background:var(--gold);transform:scaleY(0);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+#phase-menu button:hover::before,#phase-menu button:focus-visible::before,#phase-menu button.cur::before{transform:scaleY(1)}
+/* the "you are here" dot pulses */
+#phase-menu button.cur::after{animation:pmDot 1.6s ease-in-out infinite}
+@keyframes pmDot{0%,100%{box-shadow:0 0 0 0 rgba(212,163,95,.6)}50%{box-shadow:0 0 0 6px rgba(212,163,95,0)}}
+@media(prefers-reduced-motion:reduce){#phase-menu.show,#phase-menu.show button,#phase-menu.show .pm-title,#phase-menu.show::before,#phase-menu button.cur::after{animation:none}}
+</style>
 </head>
 <body>
 
@@ -1217,8 +1277,8 @@ price_hint:"كل مشروع يتسوّر على حسابو — <b>ابعث ال�
 pd_t:"وثيقة المشروع",pd_status:"الحالة: مفتوح",f_name:"الاسم",f_email:"الإيميل",f_pitch:"فكرة المشروع",f_ph:"قصة، براند، ولا فكرة مجنونة…",f_send:"ابعث",
 form_sending:"جارٍ الإرسال…",form_ok:"الرسالة وصلت — نجاوبك في أقرب وقت.",
 cr_co:"إنتاج فارس بونوارة",cr_dir:"إخراج",cr_fin:"نلتقاو في التصوير.",
-phases:{hero:"المرحلة 01 · مرحبا بيك",about:"المرحلة 02 · أنا شكون",showcase:"المرحلة 03 · ا",process:"المرحلة 04 · طريقة الخدمة",reels:"المرحلة 05 · النشرات",contact:"المرحلة 06 · تواصل",credits:"نلتقاو في التصوير"},
-nodes:{hero:"مرحبا بيك",about:"أنا شكون",showcase:"الخدم",process:"طريقة الخدمة",reels:"النشرات",contact:"تواصل",credits:"نلتقاو في التصوير"}}
+phases:{hero:"المرحلة 01 · مرحبا بيك",about:"المرحلة 02 · أنا شكون",showcase:"المرحلة 03 · الخدمة",process:"المرحلة 04 · طريقة الخدمة",reels:"المرحلة 05 · النشرات",contact:"المرحلة 06 · تواصل",credits:"نلتقاو في التصوير"},
+nodes:{hero:"مرحبا بيك",about:"أنا شكون",showcase:"الخدمة",process:"طريقة الخدمة",reels:"النشرات",contact:"تواصل",credits:"نلتقاو في التصوير"}}
 };
 var LANG="en";
 try{LANG=localStorage.getItem("fs_lang")||"en";}catch(e){}
@@ -1749,6 +1809,49 @@ window.addEventListener("message",function(e){
     closeV();
   }
 });
+
+/* ═══ right-click → list of all phases, click to jump ═══ */
+var phaseMenu=document.createElement("ul");
+phaseMenu.id="phase-menu";phaseMenu.setAttribute("role","menu");
+document.body.appendChild(phaseMenu);
+function hidePhaseMenu(){phaseMenu.classList.remove("show");}
+function showPhaseMenu(x,y){
+  if(autoPlaying)setAutoPlaying(false); /* the site must not scroll away while you choose */
+  phaseMenu.innerHTML="";
+  var head=document.createElement("li");head.className="pm-title";head.textContent=LANG==="ar"?"المراحل":(LANG==="fr"?"Étapes":"Phases");
+  phaseMenu.appendChild(head);
+  var cur=currentStop();
+  stops.forEach(function(sec,i){
+    var li=document.createElement("li");li.setAttribute("role","none");li.style.setProperty("--i",i);
+    var b=document.createElement("button");b.type="button";b.setAttribute("role","menuitem");
+    if(i===cur)b.className="cur";
+    var n=document.createElement("span");n.className="pm-n";n.textContent=ROMAN[i]||String(i+1);
+    var l=document.createElement("span");l.textContent=sec.dataset.phase||sec.dataset.node||sec.id;
+    b.appendChild(n);b.appendChild(l);
+    b.addEventListener("click",function(ev){ev.stopPropagation();hidePhaseMenu();navigateToPhase(i);});
+    li.appendChild(b);phaseMenu.appendChild(li);
+  });
+  phaseMenu.style.left="0px";phaseMenu.style.top="0px";
+  var w=phaseMenu.offsetWidth,h=phaseMenu.offsetHeight;
+  var px=Math.min(x,window.innerWidth-w-8),py=Math.min(y,window.innerHeight-h-8);
+  phaseMenu.style.left=Math.max(8,px)+"px";phaseMenu.style.top=Math.max(8,py)+"px";
+  phaseMenu.style.transformOrigin=(x>px?"top right":"top left");
+  phaseMenu.classList.remove("show");void phaseMenu.offsetWidth;
+  phaseMenu.classList.add("show");
+  var first=phaseMenu.querySelector("button");if(first)first.focus({preventScroll:true});
+}
+document.addEventListener("contextmenu",function(e){
+  if(e.target.closest&&e.target.closest("input,textarea,#phase-menu")){if(e.target.closest("#phase-menu"))e.preventDefault();return;}
+  if(vd&&vd.open&&e.target.closest&&e.target.closest("#vdialog"))return;
+  e.preventDefault();
+  showPhaseMenu(e.clientX,e.clientY);
+});
+document.addEventListener("click",function(e){if(!phaseMenu.contains(e.target))hidePhaseMenu();});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")hidePhaseMenu();});
+window.addEventListener("wheel",hidePhaseMenu,{passive:true});
+window.addEventListener("touchmove",hidePhaseMenu,{passive:true});
+window.addEventListener("resize",hidePhaseMenu);
+window.addEventListener("blur",hidePhaseMenu);
 var clientVideos={video_gym:"F6l1LyQVGQc",video_fashion:"mJpZgSL14sw",video_chourouk:"PKcPcJHW1ac",video_sushi:"9FywcoDuuqU"};
 $$('.card[href*="instagram.com"]').forEach(function(link){
   var key=link.getAttribute("data-title-i18n"),videoId=clientVideos[key];
@@ -2117,6 +2220,7 @@ if(window.emailjs){emailjs.init({publicKey:PK});}
 var form=$("#cform"),note=$("#form-note");
 form.addEventListener("submit",function(e){
   e.preventDefault();
+  if(form._hp&&form._hp.value){return;} /* spam trap filled in by a bot: ignore silently */
   note.className="form-note";note.textContent=t("form_sending");
   if(window.emailjs&&PK && PK.indexOf("YOUR_")!==0){
     emailjs.sendForm(SID,TID,form,{publicKey:PK}).then(function(){
