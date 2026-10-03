@@ -662,6 +662,19 @@ html[dir=rtl] #phase-menu{--pm-dx:22px}
 @keyframes pmDot{0%,100%{box-shadow:0 0 0 0 rgba(212,163,95,.6)}50%{box-shadow:0 0 0 6px rgba(212,163,95,0)}}
 @media(prefers-reduced-motion:reduce){#phase-menu.show,#phase-menu.show button,#phase-menu.show .pm-title,#phase-menu.show::before,#phase-menu button.cur::after{animation:none}}
 </style>
+<style id="lang-flags">
+/* language switcher uses flags */
+.flag{display:inline-block;width:22px;height:15px;border-radius:2px;background-size:cover;background-position:center;background-repeat:no-repeat;box-shadow:0 0 0 1px rgba(255,255,255,.18);flex-shrink:0}
+.flag-en{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3CclipPath id='s'%3E%3Cpath d='M0,0 v30 h60 v-30 z'/%3E%3C/clipPath%3E%3CclipPath id='t'%3E%3Cpath d='M30,15 h30 v15 z v15 h-30 z h-30 v-15 z v-15 h30 z'/%3E%3C/clipPath%3E%3Cg clip-path='url%28%23s%29'%3E%3Cpath d='M0,0 v30 h60 v-30 z' fill='%23012169'/%3E%3Cpath d='M0,0 L60,30 M60,0 L0,30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M0,0 L60,30 M60,0 L0,30' clip-path='url%28%23t%29' stroke='%23C8102E' stroke-width='4'/%3E%3Cpath d='M30,0 v30 M0,15 h60' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M30,0 v30 M0,15 h60' stroke='%23C8102E' stroke-width='6'/%3E%3C/g%3E%3C/svg%3E")}
+.flag-fr{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='1' height='2' fill='%230055A4'/%3E%3Crect x='1' width='1' height='2' fill='%23fff'/%3E%3Crect x='2' width='1' height='2' fill='%23EF4135'/%3E%3C/svg%3E")}
+.flag-ar{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 900 600'%3E%3Crect width='900' height='600' fill='%23E70013'/%3E%3Ccircle cx='450' cy='300' r='150' fill='%23fff'/%3E%3Ccircle cx='450' cy='300' r='120' fill='%23E70013'/%3E%3Ccircle cx='472' cy='300' r='96' fill='%23fff'/%3E%3Cpolygon points='474.0,238.0 488.1,280.6 533.0,280.8 496.8,307.4 510.4,350.2 474.0,324.0 437.6,350.2 451.2,307.4 415.0,280.8 459.9,280.6' fill='%23E70013'/%3E%3C/svg%3E")}
+.lang-btn{display:inline-flex;align-items:center;justify-content:center;padding:7px 11px;line-height:0}
+.lang-btn .flag{width:24px;height:16px}
+.lang-option{display:flex;align-items:center;gap:9px}
+html[data-theme="light"] .flag{box-shadow:0 0 0 1px rgba(35,45,38,.28)}
+/* Tunisian (RTL): the phase label goes to the far left, away from the name */
+html[dir=rtl] .phase-now{margin-left:0;margin-right:auto}
+</style>
 </head>
 <body>
 
@@ -714,11 +727,11 @@ html[dir=rtl] #phase-menu{--pm-dx:22px}
   </div>
   <div class="pl-track" id="pl-track"><div class="pl-fill" id="pl-fill"></div></div>
   <div class="lang-wrap" id="lang-wrap">
-    <button class="lang-btn" id="lang-btn" type="button" aria-label="Language" aria-haspopup="listbox" aria-expanded="false">EN</button>
+    <button class="lang-btn" id="lang-btn" type="button" aria-label="Language" aria-haspopup="listbox" aria-expanded="false"><span class="flag flag-en" aria-hidden="true"></span></button>
     <div class="lang-menu" id="lang-menu" role="listbox" aria-label="Language selector">
-      <button class="lang-option is-active" type="button" data-lang="en" role="option" aria-selected="true">English</button>
-      <button class="lang-option" type="button" data-lang="fr" role="option" aria-selected="false">Français</button>
-      <button class="lang-option" type="button" data-lang="ar" role="option" aria-selected="false">التونسية</button>
+      <button class="lang-option is-active" type="button" data-lang="en" role="option" aria-selected="true"><span class="flag flag-en" aria-hidden="true"></span><span>English</span></button>
+      <button class="lang-option" type="button" data-lang="fr" role="option" aria-selected="false"><span class="flag flag-fr" aria-hidden="true"></span><span>Français</span></button>
+      <button class="lang-option" type="button" data-lang="ar" role="option" aria-selected="false"><span class="flag flag-ar" aria-hidden="true"></span><span>التونسية</span></button>
     </div>
   </div>
   <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode"><svg class="ic" aria-hidden="true"><use id="theme-icon" href="#i-sun"/></svg></button>
@@ -1233,7 +1246,7 @@ form_sending:"Envoi\u2026",form_ok:"Message envoy\u00E9 — je vous r\u00E9ponds
 cr_co:"Une production Farees Bounawara",cr_dir:"R\u00E9alis\u00E9 par",cr_fin:"\u00C0 BIENT\u00D4T SUR LE TOURNAGE.",
 phases:{hero:"ÉTAPE 01 · BIENVENUE",about:"ÉTAPE 02 · QUI JE SUIS",showcase:"ÉTAPE 03 · TRAVAIL",process:"ÉTAPE 04 · PROCESSUS",reels:"ÉTAPE 05 · DIFFUSION",contact:"ÉTAPE 06 · CONTACT",credits:"\u00C0 BIENT\u00D4T SUR LE TOURNAGE"},
 nodes:{hero:"Bienvenue",about:"Qui je suis",showcase:"Travail",process:"Processus",reels:"Diffusion",contact:"Contact",credits:"\u00C0 bient\u00F4t"}},
-ar:{tag_first_film:"أول فيلم قصير ليا",tag_director:"مخرج",tag_editor:"مونتير",page_title:"فارس بونوارة — صانع أفلام و محتوى",meta_description:"فارس بونوارة صانع أفلام تونسي. اكتشفوا أفلامه القصيرة وأعماله ووثائقياته وسلاسله حول السينما.",site_mark:"فارس",home_label:"فارس — الصفحة الرئيسية",name_first:"فارس",name_last:"بونوارة.",full_name:"فارس بونوارة",video_player:"مشغّل الفيديو",close:"سكر",play_short_video:"شغّل فيديو يوتيوب القصير",tag_youtube_short:"يوتيوب شورت",
+ar:{tag_first_film:"أول فيلم قصير ليا",tag_director:"مخرج",tag_editor:"مونتير",page_title:"فارس بونوارة — صانع أفلام",meta_description:"فارس بونوارة صانع أفلام تونسي. اكتشفوا أفلامه القصيرة وأعماله ووثائقياته وسلاسله حول السينما.",site_mark:"فارس",home_label:"فارس — الصفحة الرئيسية",name_first:"فارس",name_last:"بونوارة.",full_name:"فارس بونوارة",video_player:"مشغّل الفيديو",close:"سكر",play_short_video:"شغّل فيديو يوتيوب القصير",tag_youtube_short:"يوتيوب شورت",
 rec_lbl:"تسجيل",p1a:"المرحلة 01 · مرحبا بيك",
 sp_t:'<span class="sc-fade">داخلي — البورتفوليو</span><br><br><span class="sc-name">فارس</span> —<br>صانع أفلام و محتوى.',
 phase_prev:"المرحلة السابقة",phase_play:"ابدأ التنقل التلقائي بين المراحل",phase_pause:"أوقف التنقل التلقائي بين المراحل",phase_next:"المرحلة التالية",theme_light:"التبديل إلى الوضع الفاتح",theme_dark:"التبديل إلى الوضع الداكن",
@@ -1554,7 +1567,7 @@ function applyLang(){
   document.documentElement.lang=LANG==="ar"?"ar":LANG;
   document.documentElement.dir=LANG==="ar"?"rtl":"ltr";
   document.title=t("page_title");
-  langBtn.textContent=LBL[LANG];
+  langBtn.innerHTML='<span class="flag flag-'+LANG+'" aria-hidden="true"></span>';
   syncThemeToggle();
   renderLanguageOptions();
   $$("[data-i18n]").forEach(function(el){var v=t(el.dataset.i18n);if(v!=null)el.innerHTML=v;});
