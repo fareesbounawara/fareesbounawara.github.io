@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#000000" id="theme-color-meta">
+<meta name="theme-color" content="#04090f" id="theme-color-meta">
 <meta name="color-scheme" content="light dark" id="color-scheme-meta">
 <title>Farees Bounawara — Filmmaker & Content Creator</title>
 <meta name="description" content="Farees Bounawara films things in Tunisia. Short films, client work, and a scriptwriting series in Tunisian." data-i18n-content="meta_description">
@@ -675,6 +675,32 @@ html[dir=rtl] #phase-menu{--pm-dx:22px}
 html[data-theme="light"] .flag{box-shadow:0 0 0 1px rgba(35,45,38,.28)}
 /* Tunisian (RTL): the phase label goes to the far left, away from the name */
 html[dir=rtl] .phase-now{margin-left:0;margin-right:auto}
+</style>
+<style id="pirates-theme">
+/* PIRATES TN theme layer — colours only (deep-sea navy, aged gold, teal glow, parchment ink). Content/layout untouched.
+   Delete this block to get the original look back. */
+html[data-theme="dark"]{--void:#04090f;--ink:#efe6d2;--ink-dim:#9aa7ad;--ink-faint:#5f6e76;--gold:#d6a84e;--gold-2:#ecc980;--teal:#37e6e0;
+  --line:rgba(239,230,210,.1);--line-2:rgba(55,230,224,.22)}
+html[data-theme="dark"],html[data-theme="dark"] body,html[data-theme="dark"] .phase,html[data-theme="dark"] .loader,
+html[data-theme="dark"] .bar-top,html[data-theme="dark"] .bar-bot,html[data-theme="dark"] .rail a,
+html[data-theme="dark"] .vdialog,html[data-theme="dark"] .vd-frame,html[data-theme="dark"] .vdialog:not(.is-short):not(.is-local) .vd-shell{background-color:#04090f}
+html[data-theme="dark"] body{background-image:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(55,230,224,.07),transparent 70%),linear-gradient(180deg,#06101a 0%,#04090f 40%,#03070c 100%);background-attachment:fixed}
+html[data-theme="dark"] .bar-top{border-bottom-color:rgba(214,168,78,.18)}
+html[data-theme="dark"] .bar-bot{border-top-color:rgba(214,168,78,.18)}
+html[data-theme="dark"] .hero-veil{background:linear-gradient(180deg,rgba(3,10,18,.3),rgba(3,10,18,.45) 45%,#04090f 96%),linear-gradient(90deg,rgba(3,10,18,.85),rgba(3,10,18,.12) 55%,rgba(3,10,18,.55))}
+html[data-theme="dark"] .hero-bgwrap{background:radial-gradient(circle at 30% 20%,rgba(55,230,224,.1),transparent 40%),linear-gradient(180deg,#0a1620,#04090f)}
+html[data-theme="dark"] .reels-window::before{background:linear-gradient(90deg,#04090f,transparent)}
+html[data-theme="dark"] .reels-window::after{background:linear-gradient(270deg,#04090f,transparent)}
+html[data-theme="dark"] .vignette{background:radial-gradient(ellipse at center,transparent 55%,rgba(2,8,14,.55) 100%)}
+html[data-theme="dark"] ::selection{background:var(--gold);color:#04090f}
+html[data-theme="dark"] ::-webkit-scrollbar-track{background:#04090f}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb{background:#1c2b36}
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover{background:var(--gold)}
+html[data-theme="dark"] :focus-visible{outline-color:var(--teal)}
+html[data-theme="dark"] .loader-line i{background:linear-gradient(90deg,var(--gold),var(--teal))}
+html[data-theme="dark"] .phase-now{color:var(--teal)}
+html[data-theme="dark"] .lang-btn:hover,html[data-theme="dark"] .lang-btn:focus-visible{border-color:var(--teal);color:var(--teal)}
+html[data-theme="dark"] .brand i,html[data-theme="dark"] .loader-mark i{text-shadow:0 0 18px rgba(214,168,78,.35)}
 </style>
 </head>
 <body>
@@ -1383,7 +1409,7 @@ function applyTheme(theme){
   if(theme!=="dark")theme="light";
   document.documentElement.dataset.theme=theme;
   document.documentElement.style.colorScheme=theme;
-  $("#theme-color-meta").content=theme==="light"?"#f1f4f1":"#000000";
+  $("#theme-color-meta").content=theme==="light"?"#f1f4f1":"#04090f";
   $("#color-scheme-meta").content=theme;
   try{localStorage.setItem("fs_theme",theme);}catch(e){}
   syncThemeToggle();
