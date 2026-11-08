@@ -8,6 +8,10 @@
 <title>Farees Bounawara — Filmmaker & Content Creator</title>
 <meta name="description" content="Farees Bounawara films things in Tunisia. Short films, client work, and a scriptwriting series in Tunisian." data-i18n-content="meta_description">
 <meta property="og:type" content="website">
+<meta property="og:image" content="https://img.youtube.com/vi/MFRUaT09vu4/maxresdefault.jpg">
+<meta name="twitter:image" content="https://img.youtube.com/vi/MFRUaT09vu4/maxresdefault.jpg">
+<meta name="author" content="Farees Bounawara">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Farees Bounawara","jobTitle":"Filmmaker & Video Editor","address":{"@type":"PostalAddress","addressLocality":"Tunis","addressCountry":"TN"},"email":"bounawara.farees@gmail.com","sameAs":["https://www.instagram.com/fareesbounawara/","https://www.youtube.com/@fareesbounawara","https://www.tiktok.com/@farees.bounawara"]}</script>
 <meta property="og:title" content="Farees Bounawara — filmmaker for brands">
 <meta property="og:description" content="Brand films, commercials, social media content and documentaries from Tunisia. Tell me about your project.">
 <meta name="twitter:card" content="summary_large_image">
@@ -21,6 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;600;700;800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://img.youtube.com">
 <script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <style>
@@ -488,6 +493,7 @@ html[lang=ar] .hero-copy h1{font-weight:700;line-height:1.05}
 [dir=rtl] .tq{border-left:0;border-right:2px solid var(--gold);border-radius:10px 0 0 10px}
 [dir=rtl] .cs-row b{text-align:left}
 [dir=rtl] .card-open{right:auto;left:12px}
+[dir=rtl] .card-year{left:auto;right:12px}
 [dir=rtl] .card-body,[dir=rtl] .slate-board,[dir=rtl] .reel-body,[dir=rtl] .svc{text-align:right}
 [dir=rtl] .reel-num{left:auto;right:11px}
 [dir=rtl] .reel-ico{right:auto;left:11px}
@@ -702,6 +708,89 @@ html[data-theme="dark"] .phase-now{color:var(--teal)}
 html[data-theme="dark"] .lang-btn:hover,html[data-theme="dark"] .lang-btn:focus-visible{border-color:var(--teal);color:var(--teal)}
 html[data-theme="dark"] .brand i,html[data-theme="dark"] .loader-mark i{text-shadow:0 0 18px rgba(214,168,78,.35)}
 </style>
+<style id="v2-css">
+/* v2 — island hero, title card, showreel, hover */
+#isle{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:0}
+.hero-slide{position:relative;z-index:1;mix-blend-mode:screen;opacity:.55}
+.hero-veil{z-index:2}
+.hero-grid{position:relative;z-index:3}
+.lbx{position:absolute;left:0;right:0;height:9vh;background:#000;z-index:4;pointer-events:none;animation:lbx 1.6s .3s cubic-bezier(.7,0,.2,1) forwards}
+.lbx.t{top:0}.lbx.b{bottom:0}
+@keyframes lbx{to{height:0}}
+.hero-copy h1 .l1,.hero-copy h1 .l2{display:inline-block;animation:tc 2.2s .5s cubic-bezier(.2,.7,.2,1) both}
+.hero-copy h1 .l2{animation-delay:.9s}
+@keyframes tc{from{opacity:0;letter-spacing:.35em;filter:blur(8px);transform:translateY(12px)}to{opacity:1;letter-spacing:normal;filter:none;transform:none}}
+[dir=rtl] .hero-copy h1 .l1,[dir=rtl] .hero-copy h1 .l2{animation-name:tc2}
+@keyframes tc2{from{opacity:0;filter:blur(8px);transform:translateY(12px)}to{opacity:1;filter:none;transform:none}}
+/* showreel */
+.reel-hero{position:relative;display:block;width:100%;aspect-ratio:21/8;border-radius:16px;overflow:hidden;border:1px solid var(--line);margin:0 0 18px;background:#000;cursor:pointer}
+.reel-hero img,.reel-hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.7;transition:.5s}
+.reel-hero:hover img,.reel-hero:hover video{opacity:.95;transform:scale(1.03)}
+.reel-hero .rh-in{position:absolute;inset:0;display:flex;align-items:center;gap:16px;padding:0 clamp(18px,4vw,44px);background:linear-gradient(90deg,rgba(0,0,0,.75),transparent 65%)}
+[dir=rtl] .reel-hero .rh-in{background:linear-gradient(270deg,rgba(0,0,0,.75),transparent 65%)}
+.rh-play{width:58px;height:58px;border-radius:50%;background:var(--gold);color:#141210;display:grid;place-items:center;flex:none;transition:.3s}
+.reel-hero:hover .rh-play{transform:scale(1.12)}
+.rh-play .ic{width:24px;height:24px;fill:currentColor}
+.rh-in b{font-family:var(--serif);font-size:clamp(1.3rem,3vw,2.2rem);font-weight:400;display:block}
+.rh-in span.mono{font-size:.7rem;color:var(--ink-dim)}
+@media(max-width:640px){.reel-hero{aspect-ratio:16/9}}
+/* cards */
+#grid .card{transition:transform .35s,opacity .3s,box-shadow .35s}
+#grid .card:hover,#grid .card:focus-visible{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+#grid .card img{transition:transform .6s}
+#grid .card:hover img{transform:scale(1.06)}
+.chip[data-n]::after{content:attr(data-n);font-size:.68rem;opacity:.6;margin-inline-start:6px}
+/* contact extras */
+.cx{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 4px}
+.cx .btn{font-size:.8rem}
+@media(prefers-reduced-motion:reduce){.lbx{display:none}.hero-copy h1 .l1,.hero-copy h1 .l2{animation:none}}
+/* ═══ v3 — CINEMATIC LAYER ═══ */
+:root{--teal-grade:14,58,68;--amber-grade:212,163,95}
+/* film grain + vignette + projector light (dark theme only) */
+.cine-grain,.cine-vig,.cine-spot{position:fixed;inset:0;pointer-events:none}
+.cine-grain{z-index:9998;opacity:.075;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");animation:grain .9s steps(6) infinite}
+@keyframes grain{0%{transform:translate(0,0)}20%{transform:translate(-3%,2%)}40%{transform:translate(2%,-3%)}60%{transform:translate(-2%,-1%)}80%{transform:translate(3%,3%)}100%{transform:translate(0,0)}}
+.cine-vig{z-index:9997;background:radial-gradient(ellipse at 50% 48%,transparent 56%,rgba(0,0,0,.5) 100%)}
+.cine-spot{z-index:9996;mix-blend-mode:screen;background:radial-gradient(520px circle at var(--mx,50%) var(--my,40%),rgba(232,200,147,.10),transparent 62%);transition:opacity .6s}
+html[data-theme="light"] .cine-grain,html[data-theme="light"] .cine-vig,html[data-theme="light"] .cine-spot{display:none}
+/* hero: slow push-in + anamorphic flare + viewfinder HUD */
+.hero-slide{animation:kb 26s ease-in-out infinite alternate}
+@keyframes kb{from{scale:1.02;translate:0 0}to{scale:1.13;translate:-1.2% -1%}}
+.hero-bgwrap::after{content:"";position:absolute;left:-15%;right:-15%;top:31%;height:2px;z-index:2;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(90deg,transparent,rgba(232,200,147,.0) 20%,rgba(255,226,170,.75) 50%,rgba(232,200,147,0) 80%,transparent);box-shadow:0 0 46px 7px rgba(232,200,147,.2);animation:flare 11s ease-in-out infinite}
+@keyframes flare{0%,100%{transform:translateX(-14%);opacity:.0}35%{opacity:.9}50%{transform:translateX(10%);opacity:.65}80%{opacity:.1}}
+.cine-hud{position:absolute;inset:calc(var(--bar,64px) + 14px) clamp(14px,3vw,34px) 140px clamp(14px,3vw,34px);z-index:5;pointer-events:none;font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;color:rgba(242,237,227,.72);direction:ltr}
+.cine-hud i{position:absolute;width:26px;height:26px;border:0 solid rgba(242,237,227,.55)}
+.cine-hud i:nth-child(1){left:0;top:0;border-width:1.5px 0 0 1.5px}.cine-hud i:nth-child(2){right:0;top:0;border-width:1.5px 1.5px 0 0}
+.cine-hud i:nth-child(3){left:0;bottom:0;border-width:0 0 1.5px 1.5px}.cine-hud i:nth-child(4){right:0;bottom:0;border-width:0 1.5px 1.5px 0}
+.cine-hud .rec{position:absolute;left:14px;top:12px;display:flex;align-items:center;gap:8px}
+.cine-hud .rec b{width:9px;height:9px;border-radius:50%;background:#e53935;animation:recb 1.2s steps(2) infinite}
+@keyframes recb{50%{opacity:.15}}
+.cine-hud .tc{position:absolute;right:14px;top:12px;font-variant-numeric:tabular-nums}
+.cine-hud .meta{position:absolute;left:14px;bottom:12px;opacity:.7}
+.cine-hud .meta2{position:absolute;right:14px;bottom:12px;opacity:.7}
+@media(max-width:640px){.cine-hud .meta,.cine-hud .meta2{display:none}.cine-hud{font-size:.54rem}}
+/* colour grade: teal shadows / amber highlights on all footage */
+.card img,.reel img,.reel-hero img,.reel-hero video{filter:saturate(.9) contrast(1.08) brightness(.96)}
+.card::after,.reel::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:soft-light;background:linear-gradient(135deg,rgba(var(--teal-grade),.34),rgba(var(--amber-grade),.2))}
+.reel::after{display:block!important}
+html[data-theme="light"] .card::after,html[data-theme="light"] .reel::after{display:none!important}
+/* cards: lift + gold edge light */
+#grid .card{transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s,border-color .4s}
+#grid .card:hover,#grid .card:focus-visible{transform:translateY(-8px) scale(1.012);border-color:rgba(232,200,147,.55);box-shadow:0 26px 60px rgba(0,0,0,.65),0 0 0 1px rgba(232,200,147,.18),0 0 38px rgba(212,163,95,.12)}
+/* reveal: slower, with focus-pull blur */
+.reveal{opacity:0;filter:blur(6px);transform:translate3d(0,34px,0);transition:opacity 1.2s cubic-bezier(.16,.8,.2,1),transform 1.2s cubic-bezier(.16,.8,.2,1),filter 1.2s cubic-bezier(.16,.8,.2,1)}
+.reveal.in{opacity:1;filter:none;transform:none}
+/* film-strip perforations between phases */
+.phase+.phase::before{content:"";position:absolute;left:0;right:0;top:0;height:14px;z-index:3;pointer-events:none;opacity:.55;background:linear-gradient(90deg,rgba(242,237,227,.16) 0 12px,transparent 12px) 0 3px/26px 8px repeat-x,linear-gradient(180deg,rgba(0,0,0,.6),transparent)}
+/* titles: soft cinematic glow */
+.slate-board h2,.hero-copy h1{text-shadow:0 2px 40px rgba(0,0,0,.65)}
+.hero-copy h1 .l2{text-shadow:0 0 36px rgba(212,163,95,.28)}
+/* RTL fix: date pill and open/play button never overlap */
+[dir=rtl] .card-open{right:auto;left:12px}
+[dir=rtl] .card-year{left:auto;right:12px}
+.card-year{max-width:calc(100% - 62px)}
+@media(prefers-reduced-motion:reduce){.cine-grain,.hero-slide,.hero-bgwrap::after,.cine-hud .rec b{animation:none}.reveal{filter:none;transition-duration:.01s}}
+</style>
 </head>
 <body>
 
@@ -771,7 +860,8 @@ html[data-theme="dark"] .brand i,html[data-theme="dark"] .loader-mark i{text-sha
   <!-- ═══ 01 · WELCOME ═══ -->
   <section class="phase" id="hero" data-phase="PHASE 01 · WELCOME" data-node="Welcome" aria-label="Welcome">
     <div class="hero-bgwrap" aria-hidden="true">
-      <video class="hero-slide" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <canvas id="isle"></canvas><i class="lbx t"></i><i class="lbx b"></i>
+      <video class="hero-slide" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
         <source src="hero.mp4" type="video/mp4">
       </video>
     </div>
@@ -870,6 +960,11 @@ html[data-theme="dark"] .brand i,html[data-theme="dark"] .loader-mark i{text-sha
           <p class="mono slate-sub" data-i18n="sub_work">INT. CINEMA — EVERY FRAME THAT MADE THE CUT</p>
         </div>
       </header>
+      <a class="reel-hero js-video reveal" id="showreel" href="https://www.youtube.com/watch?v=MFRUaT09vu4" data-video="MFRUaT09vu4" data-title="Showreel" data-title-i18n="sr_t" aria-label="Showreel">
+        <img src="https://img.youtube.com/vi/MFRUaT09vu4/maxresdefault.jpg" alt="" loading="lazy">
+        <video muted loop playsinline preload="none" id="sr-video" hidden></video>
+        <div class="rh-in"><span class="rh-play"><svg class="ic"><use href="#i-play"/></svg></span><div><b data-i18n="sr_t">Showreel</b><span class="mono" data-i18n="sr_s">Watch the best moments</span></div></div>
+      </a>
       <div class="filters reveal" style="margin-bottom:14px">
         <button class="chip on" data-f="all" data-i18n="f_all">All work</button>
         <button class="chip" data-f="film" data-i18n="f_film">Short films</button>
@@ -1121,6 +1216,9 @@ html[data-theme="dark"] .brand i,html[data-theme="dark"] .loader-mark i{text-sha
         </header>
         <p style="color:var(--ink-dim);max-width:44ch" data-i18n="contact_p">Send me a message directly using the form, and I'll get back to you as soon as possible.</p>
         <a class="contact-mail" href="mailto:bounawara.farees@gmail.com">bounawara.farees@gmail.com</a>
+        <div class="cx">
+          <button class="btn btn-gold" type="button" id="ask-packs"><svg class="ic"><use href="#i-check"/></svg><span data-i18n="cx_packs">Ask for the packs</span></button>
+        </div>
         <div class="contact-socials">
           <a href="https://www.instagram.com/fareesbounawara/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="ic"><use href="#i-ig"/></svg></a>
           <a href="https://www.youtube.com/@fareesbounawara" target="_blank" rel="noopener" aria-label="YouTube"><svg class="ic"><use href="#i-yt"/></svg></a>
@@ -1320,6 +1418,10 @@ cr_co:"إنتاج فارس بونوارة",cr_dir:"إخراج",cr_fin:"نلتق�
 phases:{hero:"المرحلة 01 · مرحبا بيك",about:"المرحلة 02 · أنا شكون",showcase:"المرحلة 03 · الخدمة",process:"المرحلة 04 · طريقة الخدمة",reels:"المرحلة 05 · النشرات",contact:"المرحلة 06 · تواصل",credits:"نلتقاو في التصوير"},
 nodes:{hero:"مرحبا بيك",about:"أنا شكون",showcase:"الخدمة",process:"طريقة الخدمة",reels:"النشرات",contact:"تواصل",credits:"نلتقاو في التصوير"}}
 };
+
+I18N.en.sr_t="Showreel";I18N.en.sr_s="Watch the best moments";I18N.en.cx_packs="Ask for the packs";I18N.en.packs_msg="Hi Farees, I'd like to see your Basic / Medium / Pro packs. My project: ";
+I18N.fr.sr_t="Showreel";I18N.fr.sr_s="Les meilleurs moments";I18N.fr.cx_packs="Demander les packs";I18N.fr.packs_msg="Salut Farees, je voudrais voir tes packs Basic / Medium / Pro. Mon projet : ";
+I18N.ar.sr_t="Showreel";I18N.ar.sr_s="شوف أحسن اللحظات";I18N.ar.cx_packs="نجم نطلب الباكات";I18N.ar.packs_msg="مرحبا فارس، نحب نشوف الباكات متاعك أساسي / متوسط / احترافي. مشروعي: ";
 var LANG="en";
 try{LANG=localStorage.getItem("fs_lang")||"en";}catch(e){}
 if(!I18N[LANG])LANG="en";
@@ -2282,6 +2384,43 @@ form.addEventListener("submit",function(e){
   }
 });
 
+
+/* ═══ v2: island hero ═══ */
+(function(){
+var cv=document.getElementById("isle");if(!cv)return;var c=cv.getContext("2d");
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+function rng(a){return function(){a|=0;a=a+0x6D2B79F5|0;var x=Math.imul(a^a>>>15,1|a);x=x+Math.imul(x^x>>>7,61|x)^x;return((x^x>>>14)>>>0)/4294967296;};}
+var R=rng(7),pts=[],W,H,DPR;
+function ridge(n,amp,seed){var r=rng(seed),a=[],v=.5;for(var i=0;i<=n;i++){v+= (r()-.5)*amp;v=Math.max(.1,Math.min(.9,v));a.push(v);}return a;}
+var layers=[{a:ridge(40,.5,3),y:.58,col:"#13222c",sp:.004},{a:ridge(30,.6,11),y:.66,col:"#0c1a22",sp:.008},{a:ridge(22,.7,29),y:.74,col:"#070f15",sp:.014}];
+function size(){DPR=Math.min(devicePixelRatio||1,1.5);W=cv.clientWidth;H=cv.clientHeight;cv.width=W*DPR;cv.height=H*DPR;c.setTransform(DPR,0,0,DPR,0,0);}
+function draw(t){
+  var g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,"#04090f");g.addColorStop(.55,"#0d2230");g.addColorStop(1,"#1a3a44");c.fillStyle=g;c.fillRect(0,0,W,H);
+  /* aurora */
+  c.save();c.globalCompositeOperation="screen";
+  for(var k=0;k<3;k++){var gx=c.createLinearGradient(0,H*.1,0,H*.5);var col=k==1?"60,200,150":"40,160,200";gx.addColorStop(0,"rgba("+col+",0)");gx.addColorStop(.5,"rgba("+col+",.22)");gx.addColorStop(1,"rgba("+col+",0)");c.fillStyle=gx;c.beginPath();c.moveTo(0,H*.5);
+    for(var x=0;x<=W;x+=24){c.lineTo(x,H*(.2+.05*k)+Math.sin(x*.004+t*.0003*(k+1)+k*2)*H*.07);}c.lineTo(W,H*.5);c.closePath();c.fill();}
+  c.restore();
+  /* ridges / island */
+  layers.forEach(function(L,i){c.fillStyle=L.col;c.beginPath();c.moveTo(0,H);var n=L.a.length-1,off=(t*L.sp*.02)%1;
+    for(var x=0;x<=W+20;x+=20){var u=(x/W*(n-1)+off*0)/1,idx=Math.min(n-1,Math.floor(u)),f=u-idx;var h=L.a[idx]*(1-f)+L.a[idx+1]*f;c.lineTo(x,H*L.y-h*H*.2*(1.2-i*.25));}
+    c.lineTo(W,H);c.closePath();c.fill();});
+  /* sea shimmer */
+  c.fillStyle="rgba(120,200,220,.05)";for(var y=H*.82;y<H;y+=9){c.fillRect(0,y+Math.sin(t*.001+y)*2,W,1.2);}
+}
+size();addEventListener("resize",size);
+var vis=true;if("IntersectionObserver" in window)new IntersectionObserver(function(e){vis=e[0].isIntersecting;}).observe(cv);
+function loop(t){if(vis)draw(t);if(!reduce)requestAnimationFrame(loop);}
+draw(0);if(!reduce)requestAnimationFrame(loop);
+})();
+/* ═══ v2: showreel video (uses showreel.mp4 if present) ═══ */
+(function(){var v=document.getElementById("sr-video");if(!v)return;
+fetch("showreel.mp4",{method:"HEAD"}).then(function(r){if(!r.ok)return;v.src="showreel.mp4";v.hidden=false;var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){v.play().catch(function(){});}else v.pause();});io.observe(v);}).catch(function(){});})();
+/* ═══ v2: filter counts ═══ */
+$$(".chip[data-f]").forEach(function(ch){var f=ch.dataset.f,n=f==="all"?$$("#grid .card").length:$$("#grid .card[data-cat='"+f+"']").length;ch.dataset.n=n;});
+/* ═══ v2: packs button ═══ */
+var ap=$("#ask-packs");if(ap)ap.addEventListener("click",function(){var ta=form.message;ta.value=t("packs_msg");ta.focus();ta.setSelectionRange(ta.value.length,ta.value.length);ta.scrollIntoView({behavior:"smooth",block:"center"});});
+
 /* ═══ init ═══ */
  $("#year").textContent=new Date().getFullYear();
 applyLang();
@@ -2380,6 +2519,25 @@ function init(){
   },true);
   window.addEventListener("beforeprint",function(){document.documentElement.style.display="none";});
   window.addEventListener("afterprint",function(){document.documentElement.style.display="";});
+})();
+</script>
+<script>
+/* ═══ v3 cinematic layer ═══ */
+(function(){
+"use strict";
+var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches,fine=window.matchMedia&&matchMedia("(pointer:fine)").matches;
+function mk(c){var d=document.createElement("div");d.className=c;d.setAttribute("aria-hidden","true");document.body.appendChild(d);return d;}
+mk("cine-grain");mk("cine-vig");var sp=mk("cine-spot");
+if(fine&&!rm){var mx=0,my=0,raf=0;addEventListener("mousemove",function(e){mx=e.clientX;my=e.clientY;if(!raf)raf=requestAnimationFrame(function(){raf=0;sp.style.setProperty("--mx",mx+"px");sp.style.setProperty("--my",my+"px");});},{passive:true});}
+else sp.style.display="none";
+/* viewfinder HUD with running timecode on the hero */
+var hero=document.querySelector("#hero");
+if(hero){var h=document.createElement("div");h.className="cine-hud";h.setAttribute("aria-hidden","true");
+h.innerHTML='<i></i><i></i><i></i><i></i><span class="rec"><b></b>REC</span><span class="tc">00:00:00:00</span><span class="meta">PIRATES TN · 24 FPS · 2.39:1</span><span class="meta2">F4REES</span>';
+hero.appendChild(h);var tc=h.querySelector(".tc"),t0=performance.now();
+function pad(n){return n<10?"0"+n:""+n;}
+function tick(){var s=(performance.now()-t0)/1000,f=Math.floor((s%1)*24);tc.textContent=pad(Math.floor(s/3600))+":"+pad(Math.floor(s/60)%60)+":"+pad(Math.floor(s)%60)+":"+pad(f);if(!document.hidden)setTimeout(function(){requestAnimationFrame(tick);},rm?1000:41);else setTimeout(tick,1000);}
+tick();}
 })();
 </script>
 </body>
