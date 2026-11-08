@@ -756,16 +756,19 @@ html[data-theme="light"] .cine-grain,html[data-theme="light"] .cine-vig,html[dat
 /* hero: slow push-in + anamorphic flare + viewfinder HUD */
 .hero-slide{animation:kb 26s ease-in-out infinite alternate}
 @keyframes kb{from{scale:1.02;translate:0 0}to{scale:1.13;translate:-1.2% -1%}}
-.hero-bgwrap::after{content:"";position:absolute;left:-15%;right:-15%;top:22%;height:2px;z-index:2;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(90deg,transparent,rgba(232,200,147,.0) 20%,rgba(255,226,170,.75) 50%,rgba(232,200,147,0) 80%,transparent);box-shadow:0 0 46px 7px rgba(232,200,147,.2);animation:flare 11s ease-in-out infinite}
-@keyframes flare{0%,100%{transform:translateX(-14%);opacity:.0}35%{opacity:.9}50%{transform:translateX(10%);opacity:.65}80%{opacity:.1}}
+.hero-bgwrap::after{content:"";position:absolute;left:-15%;right:-15%;top:22%;height:2px;z-index:2;pointer-events:none;mix-blend-mode:screen;background:linear-gradient(90deg,transparent,rgba(232,200,147,.0) 20%,rgba(255,226,170,.75) 50%,rgba(232,200,147,0) 80%,transparent);box-shadow:0 0 46px 7px rgba(232,200,147,.2);animation:flare 18s ease-in-out infinite}
+@keyframes flare{0%,76%{transform:translateX(-32%);opacity:0}84%{opacity:.6}100%{transform:translateX(32%);opacity:0}}
 .cine-hud{position:absolute;top:26px;bottom:calc(var(--bar,64px) * 2 + 26px);left:clamp(16px,2.4vw,34px);right:clamp(16px,2.4vw,34px);z-index:5;pointer-events:none;font-family:var(--mono);font-size:.62rem;letter-spacing:.2em;color:rgba(242,237,227,.72);direction:ltr}
-.cine-hud i{position:absolute;width:26px;height:26px;border:0 solid rgba(242,237,227,.55)}
+.cine-hud i{position:absolute;width:26px;height:26px;border:0 solid rgba(242,237,227,.22)}
 .cine-hud i:nth-child(1){left:0;top:0;border-width:1.5px 0 0 1.5px}.cine-hud i:nth-child(2){right:0;top:0;border-width:1.5px 1.5px 0 0}
 .cine-hud i:nth-child(3){left:0;bottom:0;border-width:0 0 1.5px 1.5px}.cine-hud i:nth-child(4){right:0;bottom:0;border-width:0 1.5px 1.5px 0}
-.cine-hud .rec{position:absolute;left:14px;top:12px;display:flex;align-items:center;gap:8px}
-.cine-hud .rec b{width:9px;height:9px;border-radius:50%;background:#e53935;animation:recb 1.2s steps(2) infinite}
+.cine-rec{margin-left:auto;display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:.58rem;letter-spacing:.2em;color:rgba(242,237,227,.62);direction:ltr;white-space:nowrap;pointer-events:none}
+html[dir=rtl] .cine-rec{margin-left:0;margin-right:auto}
+.cine-rec .rec{display:flex;align-items:center;gap:7px}
+.cine-rec .tc{font-variant-numeric:tabular-nums}
+@media(max-width:760px){.cine-rec .tc{display:none}}
+.cine-rec .rec b{width:9px;height:9px;border-radius:50%;background:#e53935;animation:recb 1.2s steps(2) infinite}
 @keyframes recb{50%{opacity:.15}}
-.cine-hud .tc{position:absolute;right:14px;top:12px;font-variant-numeric:tabular-nums}
 @media(max-width:640px){.cine-hud{font-size:.54rem}.cine-hud i{width:18px;height:18px}}
 /* colour grade: teal shadows / amber highlights on all footage */
 .card img,.reel img,.reel-hero img,.reel-hero video{filter:saturate(.9) contrast(1.08) brightness(.96)}
@@ -787,7 +790,7 @@ html[data-theme="light"] .card::after,html[data-theme="light"] .reel::after{disp
 [dir=rtl] .card-open{right:auto;left:12px}
 [dir=rtl] .card-year{left:auto;right:12px}
 .card-year{max-width:calc(100% - 62px)}
-@media(prefers-reduced-motion:reduce){.cine-grain,.hero-slide,.hero-bgwrap::after,.cine-hud .rec b{animation:none}.reveal{filter:none;transition-duration:.01s}}
+@media(prefers-reduced-motion:reduce){.cine-grain,.hero-slide,.hero-bgwrap::after,.cine-rec .rec b{animation:none}.reveal{filter:none;transition-duration:.01s}}
 </style>
 </head>
 <body>
@@ -2531,8 +2534,9 @@ else sp.style.display="none";
 /* viewfinder HUD with running timecode on the hero */
 var hero=document.querySelector("#hero");
 if(hero){var h=document.createElement("div");h.className="cine-hud";h.setAttribute("aria-hidden","true");
-h.innerHTML='<i></i><i></i><i></i><i></i><span class="rec"><b></b>REC</span><span class="tc">00:00:00:00</span>';
-hero.appendChild(h);var tc=h.querySelector(".tc"),t0=performance.now();
+h.innerHTML='<i></i><i></i><i></i><i></i>';hero.appendChild(h);
+var bt=document.querySelector(".bar-top"),pn=document.getElementById("phase-now"),r=document.createElement("span");r.className="cine-rec";r.setAttribute("aria-hidden","true");r.innerHTML='<span class="rec"><b></b>REC</span><span class="tc">00:00:00:00</span>';
+if(bt)bt.insertBefore(r,pn||null);var tc=r.querySelector(".tc"),t0=performance.now();
 function pad(n){return n<10?"0"+n:""+n;}
 function tick(){var s=(performance.now()-t0)/1000,f=Math.floor((s%1)*24);tc.textContent=pad(Math.floor(s/3600))+":"+pad(Math.floor(s/60)%60)+":"+pad(Math.floor(s)%60)+":"+pad(f);if(!document.hidden)setTimeout(function(){requestAnimationFrame(tick);},rm?1000:41);else setTimeout(tick,1000);}
 tick();}
