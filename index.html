@@ -791,6 +791,13 @@ html[data-theme="light"] .card::after,html[data-theme="light"] .reel::after{disp
 [dir=rtl] .card-year{left:auto;right:12px}
 .card-year{max-width:calc(100% - 62px)}
 @media(prefers-reduced-motion:reduce){.cine-grain,.hero-slide,.hero-bgwrap::after,.cine-rec .rec b{animation:none}.reveal{filter:none;transition-duration:.01s}}
+/* ═══ v6: clapboard/hero footage fully visible ═══ */
+.hero-bgwrap video.hero-slide{mix-blend-mode:normal;filter:brightness(.95) saturate(1.06) contrast(1.06)}
+html .hero-veil,html[data-theme="dark"] .hero-veil{background:linear-gradient(180deg,rgba(3,10,18,.16) 0,rgba(3,10,18,.04) 38%,rgba(3,10,18,.5) 100%),linear-gradient(90deg,rgba(3,10,18,.7) 0,rgba(3,10,18,.26) 30%,rgba(3,10,18,0) 54%,rgba(3,10,18,.14) 100%)}
+.cine-vig{background:radial-gradient(ellipse at 50% 48%,transparent 66%,rgba(0,0,0,.34) 100%)}
+.hero-bgwrap::after{height:1px;box-shadow:0 0 24px 3px rgba(232,200,147,.12)}
+@keyframes flare{0%,76%{transform:translateX(-32%);opacity:0}84%{opacity:.4}100%{transform:translateX(32%);opacity:0}}
+html[data-theme="light"] .hero-veil{background:linear-gradient(90deg,rgba(241,244,241,.42),rgba(241,244,241,.12) 48%,rgba(241,244,241,.34))}
 </style>
 </head>
 <body>
